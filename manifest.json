@@ -1,0 +1,51 @@
+{
+    "background": {
+        "scripts": ["code/jquery.min.js", "code/background.js", "code/analytics.js"],
+        "persistent": false
+    },
+    "content_scripts": [ {
+        "matches": [ "*://*.gaiaonline.com/*" ],
+        "exclude_matches": [ "*://*.gaiaonline.com/profiles/*/*", "*://*.gaiaonline.com/p/*/*"],
+        "css": [ "code/css/main.css" ],
+        "js": [ "code/js/css.js" ],
+        "run_at": "document_start"
+    }, {
+    "content_scripts": [ {
+        "matches": [ "*://*.gaiaonline.com/*" ],
+        "exclude_matches": [ "*://*.gaiaonline.com/profiles/*/*", "*://*.gaiaonline.com/p/*/*"],
+        "js": [ "code/js/jquery.min.js", "code/js/main.js" ]
+    }, {
+    "content_scripts": [ {
+        "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
+        "css": [ "code/css/forum.css" ],
+        "js": [ "code/js/forumcss.js" ],
+        "run_at": "document_start"
+    }, {
+    "content_scripts": [ {
+        "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
+        "js": [ "code/js/forum.js" ]
+    }, {
+    "content_scripts": [ {
+        "matches": [ "*://*.gaiaonline.com/forum/compose/*", "*://*.gaiaonline.com/guilds/posting.php*", "*://*.gaiaonline.com/profile/privmsg.php*", "*://*.gaiaonline.com/profiles/*mode=addcomment*" ],
+        "js": [ "code/js/format.js" ]
+    },
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+    "description": "Change the way you experience Gaia.",
+    "homepage_url": "http://chrome.google.com/webstore/detail/lmgjagdflhhfjflolfalapokbplfldna",
+    "icons": {
+        "128": "mages/logo/128.png",
+        "48": "mages/logo/48.png"
+    },
+    "manifest_version": 2,
+    "minimum_chrome_version": "28",
+    "name": "BetaGaia",
+    "options_page": "settings/main.html",
+    "browser_action": {
+        "default_icon": "images/logo/19.png",
+        "default_popup": "code/popup/popup.html",
+        "default_title": "BetterGaia"
+    },
+    "permissions": [ "alarms", "tabs", "storage", "notifications", "http://*.gaiaonline.com/*", "https://*.gaiaonline.com/*" ],
+    "version": "0.2014.1",
+    "web_accessible_resources": [ "code/html/mygaia.html", "code/js/jquery-2.0.3.min.map" ]
+}
