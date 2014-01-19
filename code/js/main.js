@@ -1,26 +1,22 @@
+/*
+Main JS 
+Copyright (c) BetterGaia and Bowafishtech
+Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+*/
+
+// Gaia Logo
+$('#gaia_header .userName').append('<ul id="bg_logo"><a>gaia</a></ul>');
+
 // Widgets
-$('#gaia_header .userName').append('<ul id="bg_widgets">\
-    <li class="bgfriends">\
-        <a></a>\
-        <div></div>\
-    </li>\
-    <li class="bgmessages">\
-        <a></a>\
-        <div></div>\
-    </li>\
-    <li class="bgthreads">\
-        <a></a>\
-        <div></div>\
-    </li>\
-    <li class="bgwatchlist">\
-        <a></a>\
-        <div></div>\
-    </li>\
+$('#gaia_header .userName').prepend('<ul id="bg_widgets">\
+    <li class="bgfriends"><a></a><div></div></li>\
+    <li class="bgmessages"><a></a><div></div></li>\
+    <li class="bgthreads"><a></a><div></div></li>\
+    <li class="bgwatchlist"><a></a><div></div></li>\
 </ul>');
 
-
 // Shortcuts
-$('#gaia_header .userName').append('<ul id="bg_shortcuts"><a>Shortcuts</a></ul>');
+$('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a></ul>');
 
 // Private Messages
 if (/*pref['main.features.messages'] == true && */document.location.pathname.indexOf('/profile/privmsg.php') > -1) {

@@ -1,3 +1,13 @@
+/*
+Main CSS 
+Copyright (c) BetterGaia and Bowafishtech
+Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+*/
+
+html, html[xmlns] {background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/background/legacy.jpg) center top repeat #666;}
+html, body {height: auto !important; min-height: 100%;}
+html body {background: none;}
+
 /* Glyphicons */
 @font-face {
     font-family: 'Glyphicons Halflings';
@@ -16,14 +26,17 @@ body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 body div#gaia_header {border: none; width: auto;}
 body div#gaia_header .header_content {margin: 0 auto;}
 
-    /* Theme color */
-    body #gaia_header .hud-account ul {background-color: #5A80A1;}
+/* Theme color */
+body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A1;}
 
-    /* Username */
-    body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; right: 50%; margin-right: -570px; z-index: 500; height: auto; overflow: visible;}
-    body #gaia_header .hud-account * {box-sizing: border-box;}
-    body #gaia_header .hud-account ul {float: left; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
-    body #gaia_header .hud-account ul:last-of-type {border-bottom-right-radius: 13px;}
+/* Username */
+body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
+body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
+body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
+/*body #gaia_header .hud-account ul:last-of-type {border-bottom-right-radius: 13px;}*/
+
+    /* Logo */
+    body #gaia_header .hud-account ul#bg_logo {float: left; margin-left: 0; border-radius: 0 0 30px 0/0 0 75px 0; padding: 0 15px;}
 
     /* Name */
     body #gaia_header .hud-account .hud-item-list {z-index: 1; padding: 0 20px 0 15px;}
@@ -52,12 +65,13 @@ body div#gaia_header .header_content {margin: 0 auto;}
         #bg_widgets li.bgfriends a {padding-left: 15px;}
         #bg_widgets li.bgwatchlist a {padding-right: 20px}
     #bg_widgets li:hover a {font-size: 13px;}
+    #bg_widgets li a:hover {text-decoration: none !important;}
     #bg_widgets li a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
         #bg_widgets li.bgfriends a:before {content: '\e008';}
         #bg_widgets li.bgmessages a:before {content: '\2709';}
         #bg_widgets li.bgthreads a:before {content: '\e044';}
         #bg_widgets li.bgwatchlist a:before {content: '\e105';}
-    #bg_widgets li a:after {font-size: 12px; display: none; position: absolute; }
+    #bg_widgets li a:after {display: none; position: absolute; background: #FFF; color: #222; text-align: center; width: 50px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; left: 50%; margin-left: calc(-100%/2);}
         #bg_widgets li.bgfriends a:after {content: 'Friends';}
         #bg_widgets li.bgmessages a:after {content: 'Private Messages';}
         #bg_widgets li.bgthreads a:after {content: 'Subscribed Threads';}
@@ -68,18 +82,25 @@ body div#gaia_header .header_content {margin: 0 auto;}
     #bg_shortcuts {z-index: 3;}
     #bg_shortcuts > a {height: 25px; color: #FFF; line-height: 22px; padding: 0 10px 0 15px; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
     #bg_shortcuts > a:after {font-size: 13px; font-family: 'Glyphicons Halflings'; content: '\e159'; padding-left: 5px;}
+    #bg_shortcuts > a:hover {text-decoration: none !important;}
     #bg_shortcuts:hover > a:after {content: '\e160';}
 
+/* User HUD */
+body #gaia_header .hud-stats {top: 27px; background: none;}
+body #gaia_header .hud-stats .hud-item-list {padding: 0; margin: 0; border: 0;}
+body #gaia_header .hud-stats .end-cap, body #gaia_header .hud-stats .hud-spacer {display: none;}
+body #gaia_header .hud-stats .hud-item-list .hud-item {margin-left: 12px; overflow: visible; text-shadow: 0 1px 1px rgba(0,0,0,0.75);}
+body #gaia_header .header_content #achievements-unlocked-list {border: 0; width: 20px; padding: 0; background-position: center right; display: block; height: 25px; margin: 0 0 0 -10px;}
+
 /* Navigation */
-body #gaia_menu_bar {height: 30px;}
-body #gaia_menu_bar * {box-sizing: border-box;}
+body #gaia_menu_bar {height: 27px; background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15)); box-shadow: rgba(255,255,255,0.5) 0 -1px 0px inset, rgba(0,0,0,0.5) 0 1px 0 inset, rgba(0,0,0,0.4) 0 1px 2px; background-position: 0;}
 body #gaia_menu_bar #newmenu {width: 1140px; margin: 0 auto; position: relative;}
 body #gaia_menu_bar #newmenu #nav {}
-#nav > li {width: auto; position: relative;}
+#nav > li {width: auto; position: relative; background: none; padding: 0; margin: 0;}
 #nav li.megamenu-divider, #nav li .lt_selector, #nav li .rt_selector {display: none;}
-#nav > li > a {height: 30px;}
-#nav > li .main_panel_container {position: absolute;}
-#nav > li .main_panel_container .panel-title {height: 44px;}
+#nav > li > a {box-sizing: border-box; height: 27px; margin: 0; padding: 3px 10px; }
+#nav > li .main_panel_container {position: absolute; margin: 0; top: 27px;}
+#nav > li .main_panel_container .panel-title {}
 
 /* Private messages */
 body.mail #bg_messages {display: block; box-sizing: border-box; clear: both; overflow: auto; width: 900px;}
@@ -249,3 +270,30 @@ body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 	body #editor-textcolor #editor_palette_textcolor {margin: 0; overflow: auto;}
 	body #editor-textcolor #editor_palette_textcolor a {margin: 0;}
 	body #editor-textcolor #editor_palette_textcolor a:hover {opacity: 0.5;}
+
+/* Footer */
+body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37);}
+body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
+body #gaia_footer ul {font-size: 11px;}
+
+	/* BetterGaia Links */
+	body #gaia_footer .accessAid {position: static; margin: 0; visibility: visible; font-size: 11px; font-weight: normal; text-align: left; display: block; width: 20%; float: right; padding: 12px 10px 0 10px; text-align: right; display: none;}
+	body #gaia_footer .accessAid .bg_links {display: block;}
+		body #gaia_footer .accessAid .bg_links links {margin-top: 5px; display: block;}
+		body #gaia_footer .accessAid .bg_links links a {color: #3E53A2;}
+
+	body #gaia_footer .accessAid .bg_topofpage {border-radius: 20px; height: 19px; margin: 4px 1px 0 5px; line-height: 18px; background: -webkit-linear-gradient(top, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; text-decoration: none; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: block; position: absolute; top: 0; z-index: 2; right: 8px;}
+		body #gaia_footer .accessAid .bg_topofpage:hover {background: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7);}
+		body #gaia_footer .accessAid .bg_topofpage:active {background: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); color: #FFF;}
+
+	/* Links */
+	body #gaia_footer > ul {padding: 5px; margin: 0; background: linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); border: 2px solid rgba(222,232,254,0.9); border-width: 0 2px 2px; border-radius: 0; width: auto; float: none;}
+    body #gaia_footer > ul:after {content: ''; display: table; clear: both;}
+    body #gaia_footer > ul li {border: 0; padding: 0; text-align: left; width: 100px; float: left; margin: 0 5px 0 0;}
+	body #gaia_footer > ul li a {display: block; color: #333 !important; margin: 0 0 1px; padding: 2px 4px; border-radius: 2px; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+	body #gaia_footer > ul li a:hover {background: #448FC1; color: #FFF !important;}
+	
+	/* Copyright */
+	body #gaia_footer > p {background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0) 60%), linear-gradient(to bottom, #955A95, #864B86); border-top: 1px solid rgba(255,255,255,0.4); border-radius: 5px 5px 0 0; margin: 0; height: 27px; padding: 5px 0 0 31px; display: block; color: rgba(255,255,255,0.5); font-size: 11px; text-shadow: 0 1px 0 rgba(0,0,0,0.12); position: absolute; top: 0; left: 0; width: 100%; text-align: left; position: absolute;}
+	body #gaia_footer > p:before {content: "\210A"; color: #FFF; text-shadow: 0 1px 1px rgba(0,0,0,0.5); display: block; position: absolute; top: 0; left: 7px; font-size: 15px;}
+	body #gaia_footer > p:after {content: "+"; color: #FFF; text-shadow: 0 1px 1px rgba(0,0,0,0.5); display: block; position: absolute; top: 6px; left: 16px; font-size: 10px; font-weight: bold;}

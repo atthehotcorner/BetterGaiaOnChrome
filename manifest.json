@@ -43,5 +43,5 @@
     },
     "permissions": [ "alarms", "tabs", "storage", "notifications", "http://*.gaiaonline.com/*", "https://*.gaiaonline.com/*" ],
     "version": "0.2014.1",
-    "web_accessible_resources": [ "code/html/mygaia.html", "code/js/jquery-2.0.3.min.map", "/code/css/glyphicons-halflings-regular.woff" ]
+    "web_accessible_resources": [ "code/html/mygaia.html", "code/js/jquery-2.0.3.min.map", "/code/css/glyphicons-halflings-regular.woff", "/images/background/legacy.jpg" ]
 }

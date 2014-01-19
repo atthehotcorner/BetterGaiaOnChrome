@@ -1,10 +1,16 @@
+/*
+Forums CSS 
+Copyright (c) BetterGaia and Bowafishtech
+Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+*/
+
 /* Background */
 body.forum div#content, body.app-page_forum div#content {background: none; width: 1140px; margin: 0 auto;}
 
 /* Main Page */
-body #gaia_content.grid_billie_holiday #bd {width: 750px; padding: 10px 25px 0 10px; border-radius: 8px;}
+body #gaia_content.grid_billie_holiday #bd {width: 750px; padding: 10px 15px 0 10px; border-radius: 8px;}
 
-/* BetterGaia Forums CSS Copyright (c) 2012 BetterGaia and bowafishtech.org */
+
 
 /* Changes Main Page Layout */
 body.forums #content, html body.app-page_forum #content {background: none;}
