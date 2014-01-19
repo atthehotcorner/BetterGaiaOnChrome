@@ -1,3 +1,8 @@
+/* Glyphicons */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/code/css/glyphicons-halflings-regular.woff') format('woff');
+}
 
 /* Hide Ads */
 #bb-advertisement, #offer_banner, #grid_ad, .gaia-ad {display: none !important;}
@@ -7,9 +12,71 @@ body #content {width: auto; border: none; background: none;}
 body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_billie_holiday {background: none;}
 body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
-/* Stretch Header */
+/* Header */
 body div#gaia_header {border: none; width: auto;}
 body div#gaia_header .header_content {margin: 0 auto;}
-body #gaia_menu_bar {}
+
+    /* Theme color */
+    body #gaia_header .hud-account ul {background-color: #5A80A1;}
+
+    /* Username */
+    body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; right: 50%; margin-right: -570px; z-index: 500; height: auto; overflow: visible;}
+    body #gaia_header .hud-account * {box-sizing: border-box;}
+    body #gaia_header .hud-account ul {float: left; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 0 2px rgba(0,0,0,0.9), inset 0 -1px 7px rgba(255,255,255,0.5); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
+    body #gaia_header .hud-account ul:last-of-type {border-bottom-right-radius: 13px;}
+
+    /* Name */
+    body #gaia_header .hud-account .hud-item-list {z-index: 1; padding: 0 20px 0 15px;}
+    body #gaia_header .hud-account .hud-item-list .hud-item {height: 25px;}
+
+    body #gaia_header .hud-account .hud-item-list .avatarName {min-width: 0; font-size: 0; line-height: 0;}
+    body #gaia_header .hud-account .hud-item-list .avatarName span {font-weight: normal !important; width: calc(100% - 3px); display: block; overflow: hidden; font-size: 13px; line-height: 25px; height: 25px;}
+    body #gaia_header .hud-account .hud-item-list:after {content: '\e159'; font-size: 13px; font-family: 'Glyphicons Halflings'; color: #FFF; line-height: 22px;}
+    body #gaia_header .hud-account .hud-item-list:hover:after {content: '\e160';}
+
+    body #gaia_header .hud-account .hud-item-list li:nth-of-type(n+2) {display: none;}
+    body #gaia_header .hud-account .hud-item-list:hover li:nth-of-type(2n) {display: block; background: #FFF; right: 0; position: absolute; width: 75px; padding: 0;}
+        body #gaia_header .hud-account .hud-item-list li:nth-of-type(2) {top: 25px;}
+        body #gaia_header .hud-account .hud-item-list li:nth-of-type(4) {top: 50px;}
+        body #gaia_header .hud-account .hud-item-list li:nth-of-type(6) {top: 75px;}
+    body #gaia_header .hud-account .hud-item-list li a {color: #222; display: block; height: 25px; padding: 0 5px;}
+    body #gaia_header .hud-account .hud-item-list li a:before {font-family: 'Glyphicons Halflings'; font-size: 13px; margin: 0 5px 0 0; top: 1px; position: relative;}
+        body #gaia_header .hud-account .hud-item-list li:nth-of-type(2) a:before {content: '\e163';}
+        body #gaia_header .hud-account .hud-item-list li:nth-of-type(4) a:before {content: '\e019';}
+        body #gaia_header .hud-account .hud-item-list li:nth-of-type(6) a:before {content: '\e085';}
+
+    /* Widgets */
+    body #gaia_header .hud-account ul#bg_widgets {z-index: 2;}
+    #bg_widgets li {float: left; height: 25px; position: relative;}
+    #bg_widgets li a {height: 25px; color: #FFF; display: block; padding: 0 10px; line-height: 22px;}
+        #bg_widgets li.bgfriends a {padding-left: 15px;}
+        #bg_widgets li.bgwatchlist a {padding-right: 20px}
+    #bg_widgets li:hover a {font-size: 13px;}
+    #bg_widgets li a:before {font-size: 13px; font-family: 'Glyphicons Halflings';}
+        #bg_widgets li.bgfriends a:before {content: '\e008';}
+        #bg_widgets li.bgmessages a:before {content: '\2709';}
+        #bg_widgets li.bgthreads a:before {content: '\e044';}
+        #bg_widgets li.bgwatchlist a:before {content: '\e105';}
+    #bg_widgets li a:after {font-size: 12px; display: none; position: absolute; }
+        #bg_widgets li.bgfriends a:after {content: 'Friends';}
+        #bg_widgets li.bgmessages a:after {content: 'Private Messages';}
+        #bg_widgets li.bgthreads a:after {content: 'Subscribed Threads';}
+        #bg_widgets li.bgwatchlist a:after {content: 'Watchlist';}
+    #bg_widgets li:hover a:after {display: block;}
+
+    /* Shortcuts */
+    #bg_shortcuts {z-index: 3;}
+    #bg_shortcuts > a {height: 25px; color: #FFF; line-height: 22px; padding: 0 10px 0 15px;}
+    #bg_shortcuts > a:after {font-size: 13px; font-family: 'Glyphicons Halflings'; content: '\e159'; padding-left: 5px;}
+    #bg_shortcuts:hover > a:after {content: '\e160';}
+
+/* Navigation */
+body #gaia_menu_bar {height: 30px;}
+body #gaia_menu_bar * {box-sizing: border-box;}
 body #gaia_menu_bar #newmenu {width: 1140px; margin: 0 auto; position: relative;}
-body #gaia_menu_bar #newmenu #nav {position: absolute;}
+body #gaia_menu_bar #newmenu #nav {}
+#nav > li {width: auto; position: relative;}
+#nav li.megamenu-divider, #nav li .lt_selector, #nav li .rt_selector {display: none;}
+#nav > li > a {height: 30px;}
+#nav > li .main_panel_container {position: absolute;}
+#nav > li .main_panel_container .panel-title {height: 44px;}
