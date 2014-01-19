@@ -15,6 +15,19 @@ $('#gaia_header .userName').prepend('<ul id="bg_widgets">\
     <li class="bgwatchlist"><a></a><div></div></li>\
 </ul>');
 
+$('#bg_widgets > li a').on('click', function() {
+    //if ($(this).hasClass('bgloaded')) {
+        $(this).parent().siblings('li').removeClass('bgopen');
+        $(this).parent().toggleClass('bgopen');
+    /*}
+    else {
+        if ($(this).hasClass('bgfriends')) {}
+        else if ($(this).hasClass('bgmessages')) {}
+        else if ($(this).hasClass('bgthreads')) {}
+        else if ($(this).hasClass('bgwatchlist')) {}
+    }*/
+});
+
 // Shortcuts
 $('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a></ul>');
 
