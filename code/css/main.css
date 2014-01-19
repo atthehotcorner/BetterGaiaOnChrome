@@ -1,0 +1,15 @@
+
+/* Hide Ads */
+#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad {display: none !important;}
+
+/* Stretch Page, Remove BG */
+body #content {width: auto; border: none; background: none;}
+body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_billie_holiday {background: none;}
+body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
+
+/* Stretch Header */
+body div#gaia_header {border: none; width: auto;}
+body div#gaia_header .header_content {margin: 0 auto;}
+body #gaia_menu_bar {}
+body #gaia_menu_bar #newmenu {width: 1140px; margin: 0 auto; position: relative;}
+body #gaia_menu_bar #newmenu #nav {position: absolute;}
