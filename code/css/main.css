@@ -4,9 +4,9 @@ Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
-html, html[xmlns] {background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/background/legacy.jpg) center top repeat #666;}
+html[xmlns\:og], html[xmlns\:fb] {background-color: transparent;}
 html, body {height: auto !important; min-height: 100%;}
-html body {background: none;}
+body.time-day, body.time-night, body.time-dawn, .time-dusk {background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/background/legacy.jpg) center top repeat #666;}
 
 /* Glyphicons */
 @font-face {
@@ -18,13 +18,13 @@ html body {background: none;}
 #bb-advertisement, #offer_banner, #grid_ad, .gaia-ad {display: none !important;}
 
 /* Stretch Page, Remove BG */
-body #content {width: auto; border: none; background: none;}
+body > #content {width: auto; border: none; background: none;}
 body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_billie_holiday {background: none;}
 body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
 /* Header */
 body div#gaia_header {border: none; width: auto;}
-body div#gaia_header .header_content {margin: 0 auto;}
+body div#gaia_header .header_content {margin: 0 auto; min-width: 1140px; background-repeat: repeat-y;}
 
 /* Theme color */
 body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A1;}
@@ -91,6 +91,7 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     #bg_shortcuts > a:after {font-size: 13px; font-family: 'Glyphicons Halflings'; content: '\e159'; padding-left: 5px;}
     #bg_shortcuts > a:hover {text-decoration: none !important;}
     #bg_shortcuts:hover > a:after {content: '\e160';}
+    #bg_shortcuts > div {background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; right: 0; position: absolute; z-index: 1;}
 
 /* User HUD */
 body #gaia_header .hud-stats {top: 27px; background: none;}

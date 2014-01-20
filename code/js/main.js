@@ -4,10 +4,13 @@ Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
+function MainJS() {
+
 // Gaia Logo
 $('#gaia_header .userName').append('<ul id="bg_logo"><a>gaia</a></ul>');
 
 // Widgets
+if (prefs['header.widgets'] == true) {
 $('#gaia_header .userName').prepend('<ul id="bg_widgets">\
     <li class="bgfriends"><a></a><div></div></li>\
     <li class="bgmessages"><a></a><div></div></li>\
@@ -27,9 +30,12 @@ $('#bg_widgets > li a').on('click', function() {
         else if ($(this).hasClass('bgwatchlist')) {}
     }*/
 });
-
+}
+    
 // Shortcuts
-$('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a></ul>');
+if (prefs['shortcuts'] == true) {
+$('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
+}
 
 // Private Messages
 if (/*pref['main.features.messages'] == true && */document.location.pathname.indexOf('/profile/privmsg.php') > -1) {
@@ -77,3 +83,13 @@ if (/*pref['main.features.messages'] == true && */document.location.pathname.ind
 		else $('body.mail #pm_content table tr[bgcolor][height="42"]').removeClass('bgpm_hide');
 	});
 }
+
+} // ---
+
+// Get Storage
+if (prefs['appliedUserPrefs'] == false)
+chrome.storage.sync.get(null, function(response) {
+    for (var key in response) {prefs[key] = response[key];}
+    MainJS();
+});
+else MainJS();
