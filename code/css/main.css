@@ -6,7 +6,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 html[xmlns\:og], html[xmlns\:fb] {background-color: transparent;}
 html, body {height: auto !important; min-height: 100%;}
-body.time-day, body.time-night, body.time-dawn, .time-dusk {background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/background/legacy.jpg) center top repeat #666;}
+body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/background/legacy.jpg) center top repeat #666;}
 
 /* Glyphicons */
 @font-face {
@@ -15,10 +15,10 @@ body.time-day, body.time-night, body.time-dawn, .time-dusk {background: url(chro
 }
 
 /* Hide Ads */
-#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad {display: none !important;}
+#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}
 
 /* Stretch Page, Remove BG */
-body > #content {width: auto; border: none; background: none;}
+body > #content {width: 1140px; border: none; background: none;}
 body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_billie_holiday {background: none;}
 body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
@@ -33,10 +33,10 @@ body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A
 body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
 body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
 body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
-/*body #gaia_header .hud-account ul:last-of-type {border-bottom-right-radius: 13px;}*/
 
     /* Logo */
-    body #gaia_header .hud-account ul#bg_logo {float: left; margin-left: 0; border-radius: 0 0 30px 0/0 0 75px 0; padding: 0 15px;}
+    body #gaia_header .hud-account ul#bg_logo {float: left; margin-left: 0; border-radius: 0 0 30px 0/0 0 75px 0; overflow: hidden;}
+    body #gaia_header .hud-account ul#bg_logo a {padding: 0 15px; color: #FFF; display: block; height: 25px; font-size: 19px; line-height: 28px; text-decoration: none; padding: 0 5px 0 15px;}
 
     /* Name */
     body #gaia_header .hud-account .hud-item-list {z-index: 1; padding: 0 20px 0 15px;}
@@ -63,27 +63,29 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     /* Widgets */
     body #gaia_header .hud-account ul#bg_widgets {z-index: 2;}
     #bg_widgets li {float: left; height: 25px; position: relative;}
-    #bg_widgets li a {height: 25px; color: #FFF; display: block; padding: 0 10px; line-height: 22px; cursor: pointer;}
-        #bg_widgets li.bgfriends a {padding-left: 15px;}
-        #bg_widgets li.bgwatchlist a {padding-right: 20px}
-    #bg_widgets li:hover a {font-size: 13px;}
-    #bg_widgets li a:hover {text-decoration: none !important;}
-    #bg_widgets li a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
-        #bg_widgets li.bgfriends a:before {content: '\e008';}
-        #bg_widgets li.bgmessages a:before {content: '\2709';}
-        #bg_widgets li.bgthreads a:before {content: '\e044';}
-        #bg_widgets li.bgwatchlist a:before {content: '\e105';}
-    #bg_widgets li a:after {display: block; position: absolute; background: #FFF; color: #222; text-align: center; width: 70px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; top: 28px; left: 50%; margin-left: -35px; transition: all 0.2s ease; opacity: 0; margin-top: 10px; pointer-events: none; z-index: 3;}
-        #bg_widgets li.bgfriends a:after {content: 'Friends';}
-        #bg_widgets li.bgmessages a:after {content: 'Private Messages';}
-        #bg_widgets li.bgthreads a:after {content: 'Subscribed Threads';}
-        #bg_widgets li.bgwatchlist a:after {content: 'Watchlist';}
-    #bg_widgets li:hover a:after, #bg_widgets li.bgopen a:after {display: block; opacity: 1; margin-top: 0;}
-    #bg_widgets li.bgopen a:after {z-index: 2;}
+    #bg_widgets li > a {height: 25px; color: #FFF; display: block; padding: 0 10px; line-height: 22px; cursor: pointer;}
+        #bg_widgets li.bgfriends > a {padding-left: 15px;}
+        #bg_widgets li.bgwatchlist > a {padding-right: 20px}
+    #bg_widgets li:hover > a {font-size: 13px;}
+    #bg_widgets li > a:hover {text-decoration: none !important;}
+    #bg_widgets li > a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
+        #bg_widgets li.bgfriends > a:before {content: '\e008';}
+        #bg_widgets li.bgmessages > a:before {content: '\2709';}
+        #bg_widgets li.bgthreads > a:before {content: '\e044';}
+        #bg_widgets li.bgwatchlist > a:before {content: '\e105';}
+    #bg_widgets li > a:after {display: block; position: absolute; background: #FFF; color: #222; text-align: center; width: 70px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; top: 28px; left: 50%; margin-left: -35px; transition: all 0.2s ease; opacity: 0; margin-top: 10px; pointer-events: none; z-index: 3;}
+        #bg_widgets li.bgfriends > a:after {content: 'Friends';}
+        #bg_widgets li.bgmessages > a:after {content: 'Private Messages';}
+        #bg_widgets li.bgthreads > a:after {content: 'Subscribed Threads';}
+        #bg_widgets li.bgwatchlist > a:after {content: 'Watchlist';}
+    #bg_widgets li:not(.bgopen):hover > a:after {display: block; opacity: 1; margin-top: 0;}
 
-    #bg_widgets li div {display: none; transition: all 0.5s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; min-height: 100px; box-shadow: 0 1px 3px rgba(0,0,0,0.5);}
-    #bg_widgets li:not(.bgopen):hover div {display: block;}
-    #bg_widgets li.bgopen div {display: block; -webkit-transform: scale(1);}
+    #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; min-height: 100px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0;}
+    #bg_widgets li > div:before {content: ''; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #FFF; position: absolute; top: -7px; left: 50%; margin-left: -6px;}
+    #bg_widgets li.bgbgfriends > div {margin-left: -98px;}
+    #bg_widgets li.bgwatchlist > div {margin-left: -105px;}
+    #bg_widgets li:not(.bgopen):hover > div {display: block;}
+    #bg_widgets li.bgopen > div {display: block; -webkit-transform: scale(1); opacity: 1;}
 
     /* Shortcuts */
     #bg_shortcuts {z-index: 3;}
@@ -91,7 +93,8 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     #bg_shortcuts > a:after {font-size: 13px; font-family: 'Glyphicons Halflings'; content: '\e159'; padding-left: 5px;}
     #bg_shortcuts > a:hover {text-decoration: none !important;}
     #bg_shortcuts:hover > a:after {content: '\e160';}
-    #bg_shortcuts > div {background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; right: 0; position: absolute; z-index: 1;}
+    #bg_shortcuts > div {background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; right: 0; position: absolute; z-index: 1; display: none;}
+    #bg_shortcuts:hover > div {display: block;}
 
 /* User HUD */
 body #gaia_header .hud-stats {top: 27px; background: none;}
@@ -278,6 +281,115 @@ body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 	body #editor-textcolor #editor_palette_textcolor {margin: 0; overflow: auto;}
 	body #editor-textcolor #editor_palette_textcolor a {margin: 0;}
 	body #editor-textcolor #editor_palette_textcolor a:hover {opacity: 0.5;}
+
+/* Post Formatting Buttons */
+body textarea ~ #bg_postbuttons * {box-sizing: border-box;}
+body textarea ~ #bg_postbuttons {background: #F8F8F8; border: 1px solid #DDD; border-width: 0 1px 1px; padding: 5px 0 0 5px; overflow: hidden; height: auto;}
+body textarea ~ #bg_postbuttons > a {margin: 0 5px 5px 0; cursor: pointer; display: block; float: left; padding: 2px 5px; background: rgba(255,255,255,0.75); border-radius: 4px; color: #222 !important; font: normal 12px Arial, Helvetica, sans-serif; border: 2px solid rgba(0,0,0,0.15);}
+body textarea ~ #bg_postbuttons > a:not(.current):hover {background: rgba(0,0,0,0.15); border-color: transparent;}
+body textarea ~ #bg_postbuttons > a:not(.current):active {background: rgba(255,255,255,0.75); border-color: #5AC8FA;}
+body textarea ~ #bg_postbuttons > a.current {background: #5AC8FA; border-color: transparent; color: #FFF !important; cursor: default;}
+
+/* External Link Redirect */
+.bgredirect {border: 0; top: 0; position: fixed; z-index: 500; bottom: 0; left: 0; right: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.78);}
+.bgredirect table.warn_block {background: none;}
+.bgredirect table.warn_block #warn_block {-webkit-animation: popin 0.3s ease 0.1s 1 normal forwards; opacity: 0;}
+
+@-webkit-keyframes popin {
+	0% {opacity: 0; -webkit-transform: scale(0.8);}
+	90% {opacity: 0.9; -webkit-transform: scale(1.05);}
+	100% {opacity: 1; -webkit-transform: scale(1);}
+}
+
+.bgredirect table.warn_block .bgclose {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 10px; bottom: 12px;}
+	.bgredirect table.warn_block .bgclose:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
+	.bgredirect table.warn_block .bgclose:hover:after {background: #FFF; color: #000;}
+
+table.warn_block {display: table; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #44352C;}
+table.warn_block * {box-sizing: border-box;}
+table.warn_block td[valign="middle"] {display: table-cell; vertical-align: middle;}
+
+table.warn_block #warn_block {height: auto; width: 600px; position: relative; margin: -3% 0 0; border: 0; background: none; display: block; padding: 0 0 55px;}
+table.warn_block #warn_block div {width: 600px; height: auto; font: normal 12px/18px Arial, Helvetica, sans-serif; border: 0; text-align: left; margin: 0;}
+table.warn_block #warn_block u {text-decoration: none; font-weight: bold;}
+
+table.warn_block #warn_block #warn_head {padding: 15px 10px 10px; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(241,191,105,0)); color: #FFF; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); text-align: center; position: relative;}
+table.warn_block #warn_block #warn_body {padding: 15px 15px 10px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border-top: 3px solid #3C3C3C;}
+table.warn_block #warn_block #link_display {padding: 10px 10px 10px 15px; background: #FFF; border-bottom: 3px solid #3C3C3C; position: absolute; bottom: 0; line-height: 2.5; border-top: 2px solid #DEE8FE; height: 55px;}
+	table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline-block; line-height: 1; max-width: 490px; float: right; padding: 8px 10px; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.1)); text-overflow: ellipsis; overflow: hidden; font-weight: bold; text-decoration: none;}
+	table.warn_block #warn_block #link_display a.link_display:hover {color: #5682C4; background-color: #F7F7F7;}
+	table.warn_block #warn_block #link_display a.link_display:active {background-color: #DEDEDE;}
+table.warn_block #warn_block #warn_no_logout {background: #F3FAFF; padding: 0 15px;}
+table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 10px 15px 15px;}
+
+/* Draw All */
+#dailyReward .bg_drawall {background: -webkit-linear-gradient(left top, #FF1B1B, #850019); border: 1px solid #C8CED2; position: absolute; right: -25px; bottom: 16px; cursor: pointer; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.5) inset, 0 1px 1px rgba(0,0,0,0.7); box-sizing: border-box; font: bold 9px/7px 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color: #FFCC00; text-transform: uppercase; padding: 4px 3px 5px 2px;}
+#dailyReward .bg_drawall em {font-weight: bold; float: right; text-transform: lowercase; margin-left: -7px; font-size: 13px;}
+#dailyReward .bg_drawall:before, #dailyReward .bg_drawall:after {content: ''; background: -webkit-linear-gradient(top, #C8CED2, #9CA0A4); width: 1px; height: 13px; display: block; position: absolute; bottom: -14px; left: 7px; box-shadow: 0 1px 0 rgba(0,0,0,0.5); border-right: 1px solid rgba(0,0,0,0.5);}
+#dailyReward .bg_drawall:after {right: 7px; left: auto;}
+#dailyReward .bg_drawall:hover {opacity: 0.7;}
+
+#bg_drawall {position: fixed; top: 50%; left: 50%; margin: -110px 0 0 -437px; width: 875px; z-index: 777; padding: 0; height: 0; overflow: none; opacity: 0; -webkit-transition: opacity 0 ease 0; visibility: hidden;}
+#bg_drawall.bgopen {height: auto; overflow: visible; opacity: 1; -webkit-transition: opacity .7s ease .2s; visibility: visible;}
+#bg_drawall.bgopen + div.bettergaia.mask {display: block;  z-index: 500; background: #000;}
+	
+#bg_drawall * {box-sizing: border-box;}
+	
+#bg_drawall .bgda_header {padding: 15px 10px 10px; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); text-align: center; position: relative;}
+	#bg_drawall .bgda_header strong {display: block; color: #FFF;}
+
+	#bg_drawall .bgda_header .bonus {color: #FFF; text-shadow: 0 1px 0 rgba(0,0,0,0.4); border-radius: 20px; background: rgba(0,0,0,0.4); font-size: 11px; padding: 2px 6px; margin: 0; display: inline-block;}
+	#bg_drawall .bgda_header .bonus:empty {display: none;}
+
+	#bg_drawall .bgda_header #bg_candyclose {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 10px; bottom: 12px;}
+	#bg_drawall .bgda_header #bg_candyclose:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
+	#bg_drawall .bgda_header #bg_candyclose:hover:after {background: #FFF; color: #000;}
+	
+#bg_drawall ul {border: 3px solid #3C3C3C; border-width: 3px 0;}
+#bg_drawall ul:after {content: ""; display: table; clear: both;}
+#bg_drawall ul > li {float: left; width: 125px; height: 130px; margin: 0; background: -webkit-radial-gradient(bottom, circle, #FFF 0%, #ABABAB 100%); text-align: center; border-left: 1px solid #999; position: relative; list-style: none;}
+
+@-webkit-keyframes flipInX {
+    0% {-webkit-transform: perspective(400px) rotateX(90deg); -webkit-transform-origin: center top; opacity: 0;}
+    40% {-webkit-transform: perspective(400px) rotateX(-10deg);}
+    70% {-webkit-transform: perspective(400px) rotateX(10deg);}
+    100% {-webkit-transform: perspective(0) rotateX(0deg); opacity: 1; -webkit-animation-fill-mode: none;}
+}
+
+#bg_drawall.bgopen ul > li {-webkit-animation-duration: 0.9s; -webkit-animation-delay: .2s; -webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both; -webkit-backface-visibility: visible !important; -webkit-animation-name: flipInX;}
+#bg_drawall.bgopen ul > li:nth-of-type(1) {-webkit-animation-delay: .8s; border-left: 0;}
+#bg_drawall.bgopen ul > li:nth-of-type(2) {-webkit-animation-delay: .6s;}
+#bg_drawall.bgopen ul > li:nth-of-type(3) {-webkit-animation-delay: .3s;}
+#bg_drawall.bgopen ul > li:nth-of-type(4) {-webkit-animation-delay: .1s;}
+#bg_drawall.bgopen ul > li:nth-of-type(5) {-webkit-animation-delay: .3s;}
+#bg_drawall.bgopen ul > li:nth-of-type(6) {-webkit-animation-delay: .6s;}
+#bg_drawall.bgopen ul > li:nth-of-type(7) {-webkit-animation-delay: .8s;}
+
+#bg_drawall ul > li div {height: 100px; padding: 10px;}
+#bg_drawall ul > li div span {overflow: hidden; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.5) 2px, transparent 55%, transparent 76%, rgba(255,255,255,0.1) 100%) #FAA90F; color: #000; display: inline-block; cursor: pointer; box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 1px 1px rgba(0,0,0,0.5); transition: background-color ease 0.5s, opacity ease 0.2s; border: 5px solid rgba(0,0,0,0.2); text-shadow: 0 1px 0 rgba(255,255,255,0.4); border-radius: 50px/20px; height: 50px; width: 100px; font-weight: bold; font-size: 10px; letter-spacing: 3px; margin-top: 15px; text-transform: uppercase; opacity: 1;}
+#bg_drawall ul > li div span:hover {background-color: #FFC934;}
+#bg_drawall ul > li div span:active {background-color: #C17B00; box-shadow: 0 -1px 0 rgba(255,255,255,0.5) inset, 0 -2px 0px rgba(0,0,0,0.5); margin-top: 18px;}
+#bg_drawall ul > li div span a {display: block; pointer-events: none; height: 100%; line-height: 38px; background-repeat: no-repeat; background-image: linear-gradient(to bottom right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 37%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0.0) 50%); background-position: -100px -100px, 0 0; background-size: 250% 250%, 100% 100%; transition: background-position 0s ease;}
+#bg_drawall ul > li div span:hover a {background-position: 0 0, 0 0; transition-duration: 0.5s;}
+#bg_drawall ul > li h5 {height: 30px; font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif; margin: 0; display: block;}
+	
+#bg_drawall ul > li.bgc_loading {background: #316589 url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/load.gif) center 38px no-repeat;}
+#bg_drawall ul > li.bgc_loading h5 {color: rgba(225,225,225,0.3);}
+#bg_drawall ul > li.bgc_loading div span {opacity: 0; pointer-events: none;}
+
+#bg_drawall ul > li.bgc_error {}
+#bg_drawall ul > li.bgc_error div {vertical-align: middle; display: table-cell; width: 140px;}
+
+#bg_drawall ul > li.bgc_candy {}
+#bg_drawall ul > li.bgc_candy div {font: 10px/15px Arial, Tahoma, Geneva, sans-serif; vertical-align: middle; display: table-cell; width: 140px;}
+#bg_drawall ul > li.bgc_candy div a {color: #03C; text-decoration: none;}
+#bg_drawall ul > li.bgc_candy div a:hover {text-decoration: underline;}
+#bg_drawall ul > li.bgc_candy div img {width: 30px; height: 30px;}
+#bg_drawall ul > li.bgc_candy div info {display: inline-block; padding: 10px; margin: -10px;}
+#bg_drawall ul > li.bgc_candy div info:before {content: 'i'; border-radius: 7px; background: rgba(0,0,0,0.5); color: #FFF; display: block; font: italic bold 10px Georgia, "Times New Roman", Times, serif; height: 14px; padding: 1px 0 0; text-align: center; width: 14px;}
+#bg_drawall ul > li.bgc_candy div info message {background: #FFF; visibility: hidden; padding: 5px; font-size: 10px; position: absolute; display: block; z-index: 2; width: 110px; margin-left: -55px; left: 50%; top: 75px; border: 2px solid #C9A900; box-shadow: 0 1px 3px rgba(177,153,29,0.9); transition: opacity ease 0.4s, margin-top ease 0.5s; opacity: 0; margin-top: 10px; border-radius: 2px;}
+#bg_drawall ul > li.bgc_candy div info:hover message {opacity: 1; visibility: visible; margin-top: 0;}
+#bg_drawall ul > li.bgc_candy div h6 {font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif;}
 
 /* Footer */
 body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37);}

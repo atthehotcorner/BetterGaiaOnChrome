@@ -10,8 +10,6 @@ body.forum div#content, body.app-page_forum div#content {background: none; width
 /* Main Page */
 body #gaia_content.grid_billie_holiday #bd {width: 750px; padding: 10px 15px 0 10px; border-radius: 8px;}
 
-
-
 /* Changes Main Page Layout */
 body.forums #content, html body.app-page_forum #content {background: none;}
 body.forums > #content {width: auto;}

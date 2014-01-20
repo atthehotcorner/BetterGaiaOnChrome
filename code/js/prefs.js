@@ -7,9 +7,16 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 var prefs = {
     // Header
     'header.widgets': true,
+    'header.drawAll': true,
+    'header.shortcuts': true,
+    'header.shortcuts.list': {'cat': 'b', '2': 'd', 'h': 'Cat'},
 
-    // Shortcuts
-    'shortcuts': true,
-
+    // PMs
+    'pms': true,
+    
+    // Forum
+    'forum.externalLinks': true,
+    
+    // Other
     'appliedUserPrefs': false
 };
