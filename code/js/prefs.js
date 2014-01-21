@@ -9,8 +9,21 @@ var prefs = {
     'header.widgets': true,
     'header.drawAll': true,
     'header.shortcuts': true,
-    'header.shortcuts.list': {'cat': 'b', '2': 'd', 'h': 'Cat'},
-
+    'header.shortcuts.list': {
+        'MyGaia': '/mygaia/',
+        'Private Messages': '/profile/privmsg.php',
+        'Forums': '/forum/',
+        'My Posts': '/forum/myposts/',
+        'My Topics': '/forum/mytopics/',
+        'Subscribed Threads': '/forum/subscription/',
+        'Shops': '/market/',
+        'Trades': '/gaia/bank.php',
+        'Marketplace': '/marketplace/',
+        'Guilds': '/guilds/',
+        'Top of Page': '#',
+        'Bottom of Page': '#bg_bottomofpage'
+    },
+    
     // PMs
     'pms': true,
     
@@ -18,5 +31,6 @@ var prefs = {
     'forum.externalLinks': true,
     
     // Other
-    'appliedUserPrefs': false
+    'appliedUserPrefs': false,
+    'version': ''
 };

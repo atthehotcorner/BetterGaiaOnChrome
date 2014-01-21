@@ -23,8 +23,8 @@ body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_bil
 body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
 /* Home Page */
-body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; box-sizing: border-box; border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 10px 10px 20px -15px rgba(0,0,0,0.5) inset; position: relative; margin: 0 10px 10px 0; background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/logo/500.png); background-size: 100% 100%;}
-body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last):after {display: block; position: absolute; top: 35px; left: 35px; content: 'BetterGaia'; text-transform: uppercase; letter-spacing: 2px; color: #222; font-size: 14px;}
+body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; box-sizing: border-box; border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 0 0 10px rgba(0,0,0,0.25) inset; position: relative; margin: 0 10px 10px 0; background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/logo/500.png); background-size: 100% 100%;}
+body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last):after {display: block; position: absolute; top: 35px; left: 33px; content: 'BetterGaia'; text-transform: uppercase; letter-spacing: 4px; color: #444; font-size: 20px;}
 body.index #gaia_content.grid_madonna #bd-div {min-height: 486px;}
 
 /* Header */
@@ -78,28 +78,53 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
         #bg_widgets li.bgmessages > a:before {content: '\2709';}
         #bg_widgets li.bgthreads > a:before {content: '\e044';}
         #bg_widgets li.bgwatchlist > a:before {content: '\e105';}
-    #bg_widgets li > a:after {display: block; position: absolute; background: #FFF; color: #222; text-align: center; width: 70px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; top: 28px; left: 50%; margin-left: -35px; transition: all 0.2s ease; opacity: 0; margin-top: 10px; pointer-events: none; z-index: 3;}
+    #bg_widgets li > a:after {display: block; position: absolute; background: #FFF; color: #222; text-align: center; width: 70px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; top: 28px; left: 50%; margin-left: -35px; transition: all 0.2s ease; opacity: 0; margin-top: 10px; pointer-events: none; z-index: 3; box-shadow: 0 1px 3px rgba(0,0,0,0.5);}
         #bg_widgets li.bgfriends > a:after {content: 'Friends';}
         #bg_widgets li.bgmessages > a:after {content: 'Private Messages';}
         #bg_widgets li.bgthreads > a:after {content: 'Subscribed Threads';}
         #bg_widgets li.bgwatchlist > a:after {content: 'Watchlist';}
     #bg_widgets li:not(.bgopen):hover > a:after {display: block; opacity: 1; margin-top: 0;}
 
-    #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; min-height: 100px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0;}
+    #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 0; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0;}
     #bg_widgets li > div:before {content: ''; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #FFF; position: absolute; top: -7px; left: 50%; margin-left: -6px;}
     #bg_widgets li.bgbgfriends > div {margin-left: -98px;}
     #bg_widgets li.bgwatchlist > div {margin-left: -105px;}
     #bg_widgets li:not(.bgopen):hover > div {display: block;}
     #bg_widgets li.bgopen > div {display: block; -webkit-transform: scale(1); opacity: 1;}
 
+    #bg_widgets li > div a {display: block; color: #222; padding: 7px 9px; border-bottom: 1px solid rgba(0,0,0,0.05); text-decoration: none !important;}
+    #bg_widgets li > div a:hover {background: #7EACC5; color: #FFF !important;}
+    #bg_widgets li > div p {padding: 9px 9px 11px; margin: 0; text-align: center;}
+        #bg_widgets li > div a:first-of-type, #bg_widgets li > div p:first-of-type {border-radius: 3px 3px 0 0;}
+        #bg_widgets li > div a:last-of-type, #bg_widgets li > div p:last-of-type {border-bottom: 0; border-radius: 0 0 3px 3px;}
+        #bg_widgets li > div a:only-of-type, #bg_widgets li > div p:only-of-type {border-radius: 3px;}
+
+    #bg_widgets li.bgwatchlist > div a:after {content: ''; display: table; clear: both;}
+    #bg_widgets li.bgwatchlist > div a img, #bg_widgets li.bgwatchlist > div span {display: block; float: left;}
+    #bg_widgets li.bgwatchlist > div span {line-height: 30px; padding-left: 10px;}
+
+    @-webkit-keyframes loading {
+        0% {-webkit-transform: rotate(0deg);}
+        100% {-webkit-transform: rotate(360deg);}
+    }
+    #bg_widgets li.bgloading > div {min-height: 75px;}
+    #bg_widgets li.bgloading > div:after {content: '\e030'; color: #222; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 15px auto; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
+
     /* Shortcuts */
     #bg_shortcuts {z-index: 3;}
+    #bg_shortcuts:hover:before {content: ''; display: block; position: absolute; width: 100px; height: 5px; right: 0; bottom: -5px;}
     #bg_shortcuts > a {height: 25px; color: #FFF; line-height: 22px; padding: 0 10px 0 15px; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
     #bg_shortcuts > a:after {font-size: 13px; font-family: 'Glyphicons Halflings'; content: '\e159'; padding-left: 5px;}
     #bg_shortcuts > a:hover {text-decoration: none !important;}
     #bg_shortcuts:hover > a:after {content: '\e160';}
-    #bg_shortcuts > div {background: #FFF; color: #222; border-radius: 3px; padding: 10px; width: 200px; top: 28px; right: 0; position: absolute; z-index: 1; display: none;}
+
+    #bg_shortcuts > div {background: #FFF; color: #222; box-shadow: 0 1px 3px rgba(0,0,0,0.5); border-radius: 3px; padding: 0; width: 200px; top: 28px; right: 0; position: absolute; z-index: 1; display: none;}
     #bg_shortcuts:hover > div {display: block;}
+    #bg_shortcuts > div a {display: block; color: #222 !important; padding: 7px 9px; border-bottom: 1px solid rgba(0,0,0,0.05); text-decoration: none !important;}
+    #bg_shortcuts > div a:hover {background: #7EACC5; color: #FFF !important;}
+        #bg_shortcuts > div a:first-of-type {border-radius: 3px 3px 0 0;}
+        #bg_shortcuts > div a:last-of-type {border-bottom: 0; border-radius: 0 0 3px 3px;}
+        #bg_shortcuts > div a:only-of-type {border-radius: 3px;}
 
 /* User HUD */
 body #gaia_header .hud-stats {top: 27px; background: none;}
@@ -317,7 +342,7 @@ body textarea ~ #bg_postbuttons > a.current {background: #5AC8FA; border-color: 
 
 @-webkit-keyframes popin {
 	0% {opacity: 0; -webkit-transform: scale(0.8);}
-	90% {opacity: 0.9; -webkit-transform: scale(1.05);}
+	90% {opacity: 0.9; -webkit-transform: scale(1);}
 	100% {opacity: 1; -webkit-transform: scale(1);}
 }
 
@@ -392,10 +417,15 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall ul > li div span a {display: block; pointer-events: none; height: 100%; line-height: 38px; background-repeat: no-repeat; background-image: linear-gradient(to bottom right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 37%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0.0) 50%); background-position: -100px -100px, 0 0; background-size: 250% 250%, 100% 100%; transition: background-position 0s ease;}
 #bg_drawall ul > li div span:hover a {background-position: 0 0, 0 0; transition-duration: 0.5s;}
 #bg_drawall ul > li h5 {height: 30px; font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif; margin: 0; display: block;}
-	
-#bg_drawall ul > li.bgc_loading {background: #316589 url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/load.gif) center 38px no-repeat;}
+
+@-webkit-keyframes loading {
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+#bg_drawall ul > li.bgc_loading {background: #316589;}
+#bg_drawall ul > li.bgc_loading:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 30px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
 #bg_drawall ul > li.bgc_loading h5 {color: rgba(225,225,225,0.3);}
-#bg_drawall ul > li.bgc_loading div span {opacity: 0; pointer-events: none;}
+#bg_drawall ul > li.bgc_loading div {display: none;}
 
 #bg_drawall ul > li.bgc_error {}
 #bg_drawall ul > li.bgc_error div {vertical-align: middle; display: table-cell; width: 140px;}
@@ -412,28 +442,28 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall ul > li.bgc_candy div h6 {font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif;}
 
 /* Footer */
-body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37);}
+body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0 !important; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37);}
 body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
 body #gaia_footer ul {font-size: 11px;}
 
-	/* BetterGaia Links */
-	body #gaia_footer .accessAid {position: static; margin: 0; visibility: visible; font-size: 11px; font-weight: normal; text-align: left; display: block; width: 20%; float: right; padding: 12px 10px 0 10px; text-align: right; display: none;}
-	body #gaia_footer .accessAid .bg_links {display: block;}
-		body #gaia_footer .accessAid .bg_links links {margin-top: 5px; display: block;}
-		body #gaia_footer .accessAid .bg_links links a {color: #3E53A2;}
+    /* Links */
+    body #gaia_footer > ul {padding: 5px; margin: 0; background: linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); border: 2px solid rgba(222,232,254,0.9); border-width: 0 2px 2px; border-radius: 0; width: auto; float: none;}
+        body #gaia_footer > ul:after {content: ''; display: table; clear: both;}
+        body #gaia_footer > ul li {border: 0; padding: 0; text-align: left; width: 100px; float: left; margin: 0 5px 0 0;}
+    body #gaia_footer > ul li a {display: block; color: #333 !important; margin: 0 0 1px; padding: 2px 4px; border-radius: 2px; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    body #gaia_footer > ul li a:hover {background: #448FC1; color: #FFF !important;}
 
-	body #gaia_footer .accessAid .bg_topofpage {border-radius: 20px; height: 19px; margin: 4px 1px 0 5px; line-height: 18px; background: -webkit-linear-gradient(top, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; text-decoration: none; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: block; position: absolute; top: 0; z-index: 2; right: 8px;}
-		body #gaia_footer .accessAid .bg_topofpage:hover {background: -webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7);}
-		body #gaia_footer .accessAid .bg_topofpage:active {background: -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); color: #FFF;}
+    /* Credits */
+    body #gaia_footer > ul #bg_credits {font-size: 11px; width: 20%; float: right; padding: 2px 5px 25px text-align: right;}
+    #bg_credits links {margin-top: 5px; display: block;}
+    #bg_credits links a {color: #3E53A2;}
 
-	/* Links */
-	body #gaia_footer > ul {padding: 5px; margin: 0; background: linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); border: 2px solid rgba(222,232,254,0.9); border-width: 0 2px 2px; border-radius: 0; width: auto; float: none;}
-    body #gaia_footer > ul:after {content: ''; display: table; clear: both;}
-    body #gaia_footer > ul li {border: 0; padding: 0; text-align: left; width: 100px; float: left; margin: 0 5px 0 0;}
-	body #gaia_footer > ul li a {display: block; color: #333 !important; margin: 0 0 1px; padding: 2px 4px; border-radius: 2px; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-	body #gaia_footer > ul li a:hover {background: #448FC1; color: #FFF !important;}
-	
-	/* Copyright */
-	body #gaia_footer > p {background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0) 60%), linear-gradient(to bottom, #955A95, #864B86); border-top: 1px solid rgba(255,255,255,0.4); border-radius: 5px 5px 0 0; margin: 0; height: 27px; padding: 5px 0 0 31px; display: block; color: rgba(255,255,255,0.5); font-size: 11px; text-shadow: 0 1px 0 rgba(0,0,0,0.12); position: absolute; top: 0; left: 0; width: 100%; text-align: left; position: absolute;}
-	body #gaia_footer > p:before {content: "\210A"; color: #FFF; text-shadow: 0 1px 1px rgba(0,0,0,0.5); display: block; position: absolute; top: 0; left: 7px; font-size: 15px;}
-	body #gaia_footer > p:after {content: "+"; color: #FFF; text-shadow: 0 1px 1px rgba(0,0,0,0.5); display: block; position: absolute; top: 6px; left: 16px; font-size: 10px; font-weight: bold;}
+    /* Top of Page */
+    #bg_credits .bgtopofpage {border-radius: 20px; height: 19px; margin: 4px 1px 0 5px; line-height: 18px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; text-decoration: none; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: block; position: absolute; top: 0; z-index: 2; right: 8px;}
+    #bg_credits .bgtopofpage:hover {background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7);}
+    #bg_credits .bgtopofpage:active {background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); color: #FFF;}
+
+    /* Copyright */
+    body #gaia_footer > p {background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0) 60%), linear-gradient(to bottom, #955A95, #864B86); border-top: 1px solid rgba(255,255,255,0.4); border-radius: 5px 5px 0 0; margin: 0; height: 27px; padding: 5px 0 0 31px; display: block; color: rgba(255,255,255,0.5); font-size: 11px; text-shadow: 0 1px 0 rgba(0,0,0,0.12); position: absolute; top: 0; left: 0; width: 100%; text-align: left; position: absolute;}
+    body #gaia_footer > p:before {content: "\210A"; color: #FFF; text-shadow: 0 1px 1px rgba(0,0,0,0.5); display: block; position: absolute; top: 0; left: 7px; font-size: 15px;}
+    body #gaia_footer > p:after {content: "+"; color: #FFF; text-shadow: 0 1px 1px rgba(0,0,0,0.5); display: block; position: absolute; top: 6px; left: 16px; font-size: 10px; font-weight: bold;}

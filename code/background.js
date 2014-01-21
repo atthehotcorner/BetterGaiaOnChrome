@@ -1,8 +1,12 @@
-// BetterGaia by bowafishtech
-// becoming faster, light and cleaner since summer 2013
+/*
+BetterGaia by bowafishtech
+Copyright (c) BetterGaia and Bowafishtech
+Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+*/
 
 // Check if install, update
 chrome.runtime.onInstalled.addListener(function(details) {
+    chrome.storage.local.set({version: chrome.runtime.getManifest().version;});
 });
 
 // Send data to scripts
