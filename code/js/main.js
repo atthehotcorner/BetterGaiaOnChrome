@@ -29,6 +29,7 @@ if (prefs['header.widgets'] == true) {
         <li class="bgmessages"><a></a><div></div></li>\
         <li class="bgthreads"><a></a><div></div></li>\
         <li class="bgwatchlist"><a></a><div></div></li>\
+		<li class="bgsettings"><a></a><div></div></li>\
     </ul>');
     
     $('#bg_widgets > li a').on('click', function() {
@@ -126,6 +127,30 @@ if (prefs['header.widgets'] == true) {
                 })
                 .always(function(data) {
                     $('#bg_widgets .bgwatchlist').removeClass('bgloading').addClass('bgloaded');
+                });            
+            }
+
+			// BetterGaia Settings
+            else if ($(this).parent().hasClass('bgsettings')) {
+                $(this).parent().addClass('bgloading');
+                
+                $.get('/marketplace/watchlist/', 'html')
+                .done(function(data) {
+                    if ($("#watchlist_wrapper #watchlist .watchlist_rows > tbody > tr > td span.nolistings", data).length > 0) $('#bg_widgets .bgsettings div').append('<p>There are no items in your watchlist.</p>');
+                    else {
+                        var items = $("#watchlist_wrapper #watchlist .watchlist_rows > tbody > tr > td.watchlist_rows_item_field a:first-child", data);
+                        $(items).each(function() {
+                            var time = $(this).parent().parent().find('td.watchlist_rows_timeleft').text();
+                            var name = $(this).next('a').text();
+                            $('#bg_widgets .bgsettings div').append($(this).attr('title', name).append('<span>' + time + '</span>'));
+                        });
+                    }
+                })
+                .fail(function(data) {
+                    $('#bg_widgets .bgsettings div').html("<p>There was a problem loading your BetterGaia's settings.</p>");
+                })
+                .always(function(data) {
+                    $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
                 });            
             }
         }

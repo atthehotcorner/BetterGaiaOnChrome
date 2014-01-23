@@ -69,8 +69,8 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     body #gaia_header .hud-account ul#bg_widgets {z-index: 2;}
     #bg_widgets li {float: left; height: 25px; position: relative;}
     #bg_widgets li > a {height: 25px; color: #FFF; display: block; padding: 0 10px; line-height: 22px; cursor: pointer;}
-        #bg_widgets li.bgfriends > a {padding-left: 15px;}
-        #bg_widgets li.bgwatchlist > a {padding-right: 20px}
+        #bg_widgets li:first-of-type > a {padding-left: 15px;}
+        #bg_widgets li:last-of-type > a {padding-right: 20px;}
     #bg_widgets li:hover > a {font-size: 13px;}
     #bg_widgets li > a:hover {text-decoration: none !important;}
     #bg_widgets li > a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
@@ -78,11 +78,13 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
         #bg_widgets li.bgmessages > a:before {content: '\2709';}
         #bg_widgets li.bgthreads > a:before {content: '\e044';}
         #bg_widgets li.bgwatchlist > a:before {content: '\e105';}
+		#bg_widgets li.bgsettings > a:before {content: '\e019';}
     #bg_widgets li > a:after {display: block; position: absolute; background: #FFF; color: #222; text-align: center; width: 70px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; top: 28px; left: 50%; margin-left: -35px; transition: all 0.2s ease; opacity: 0; margin-top: 10px; pointer-events: none; z-index: 3; box-shadow: 0 1px 3px rgba(0,0,0,0.5);}
         #bg_widgets li.bgfriends > a:after {content: 'Friends';}
         #bg_widgets li.bgmessages > a:after {content: 'Private Messages';}
         #bg_widgets li.bgthreads > a:after {content: 'Subscribed Threads';}
         #bg_widgets li.bgwatchlist > a:after {content: 'Watchlist';}
+		#bg_widgets li.bgsettings > a:after {content: 'BetterGaia Settings';}
     #bg_widgets li:not(.bgopen):hover > a:after {display: block; opacity: 1; margin-top: 0;}
 
     #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 0; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0;}
@@ -376,7 +378,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 
 #bg_drawall {position: fixed; top: 50%; left: 50%; margin: -110px 0 0 -437px; width: 875px; z-index: 777; padding: 0; height: 0; overflow: none; opacity: 0; -webkit-transition: opacity 0 ease 0; visibility: hidden;}
 #bg_drawall.bgopen {height: auto; overflow: visible; opacity: 1; -webkit-transition: opacity .7s ease .2s; visibility: visible;}
-#bg_drawall.bgopen + div.bettergaia.mask {display: block;  z-index: 500; background: #000;}
+#bg_drawall.bgopen + div.bettergaia.mask {display: block; z-index: 500; background: #000; opacity: 0.75;}
 	
 #bg_drawall * {box-sizing: border-box;}
 	
