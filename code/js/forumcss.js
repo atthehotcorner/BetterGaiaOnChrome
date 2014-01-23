@@ -5,6 +5,10 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 function ForumCss() {
+
+// Test
+console.log('3. Ran ForumCSS');
+
 } // ---
 
 // Check Storage and Fire

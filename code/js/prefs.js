@@ -36,5 +36,6 @@ var prefs = {
     'appliedMainJs': false,
     'appliedForumCss': false,
     'appliedForumJs': false,
+    'appliedFormat': false,
     'version': ''
 };

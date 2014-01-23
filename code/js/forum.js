@@ -37,7 +37,10 @@ if (prefs['forum.externalLinks'] == true) {
 			return false;
 		}
 	});
-}    
+}
+
+// Test
+console.log('4. Ran ForumJS');
 
 } // ---
 

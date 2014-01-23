@@ -275,6 +275,9 @@ if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg
 	});
 }
 
+// Test
+console.log('2. Ran MainJS');
+
 } // ---
 
 // Check Storage and Fire
