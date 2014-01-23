@@ -4,7 +4,7 @@ Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
-function ForumJS() {
+function ForumJs() {
 
 // Enable redirects on same page
 if (prefs['forum.externalLinks'] == true) {
@@ -41,10 +41,8 @@ if (prefs['forum.externalLinks'] == true) {
 
 } // ---
 
-// Get Storage
-if (prefs['appliedUserPrefs'] == false)
-chrome.storage.sync.get(null, function(response) {
-    for (var key in response) {prefs[key] = response[key];}
-    ForumJS();
-});
-else ForumJS();
+// Check Storage and Fire
+if (prefs['appliedUserPrefs'] == true && prefs['appliedForumJS'] == false) {
+	ForumJs();
+	prefs['appliedForumJS'] = true;
+}

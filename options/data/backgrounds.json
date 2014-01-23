@@ -1,0 +1,24 @@
+{
+	"Info": {
+		"lastUpdated": 20130421,
+		"imageHostPrefix": "chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/background/",
+		"latestVersion": ""
+	},
+	"Backgrounds": [
+		"http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg",
+		"legacy.jpg",
+		"four_point.jpg",
+		"clean.jpg",
+		"passing.png",
+		"wander.gif",
+		"formal.png",
+		"cerveza.jpg",
+		"oldoak.jpg",
+		"watercolor.jpg",
+		"cats.png",
+		"dogs.png",
+		"leprechaun.png",
+		"christmas.jpg",
+		"bokeh.jpg"
+	]
+}

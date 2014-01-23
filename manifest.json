@@ -7,7 +7,7 @@
         "matches": [ "*://*.gaiaonline.com/*" ],
         "exclude_matches": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
         "css": [ "code/css/main.css" ],
-        "js": [ "code/js/prefs.js", "code/js/css.js" ],
+        "js": [ "code/js/prefs.js", "code/js/maincss.js" ],
         "run_at": "document_start"
     }, {
         "matches": [ "*://*.gaiaonline.com/*" ],

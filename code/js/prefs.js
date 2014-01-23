@@ -32,5 +32,9 @@ var prefs = {
     
     // Other
     'appliedUserPrefs': false,
+    'appliedMainCss': false,
+    'appliedMainJs': false,
+    'appliedForumCss': false,
+    'appliedForumJs': false,
     'version': ''
 };

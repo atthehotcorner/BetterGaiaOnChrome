@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset=utf-8 />
+	<title>BetterGaia Settings</title>
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="icon" href="../icon/16.png">
+	<script src="../code/jquery.min.js"></script>
+	<script src="jquery-ui.min.js"></script>
+	<script src="jquery.cookie.js"></script>
+	<script src="jscolor/jscolor.js"></script>
+    <script src="moment.min.js"></script>
+	<script src="../code/analytics.js"></script>
+	<script src="options.js"></script>
+</head>
+
+<body>
+	<div id="message"><strong>Saved!</strong></div>
+
+	<header>
+		<h1>BetterGaia Settings</h1>
+		<menu>
+			<a href="#" class="features current">Home</a>
+			<a href="#stylingpage" class="styling">Personalize</a>
+			<a href="#postformattingpage" class="postformatting">Post Formating</a>
+			<a href="#shortcutspage" class="shortcuts">Shortcuts</a>
+			<a href="#usertagspage" class="usertags">Tags</a>
+			<a href="#aboutpage" class="about">About</a>
+		</menu>
+	</header>
+
+	<div id="pages">
+		<div class="page features selected">
+			<section>
+				<h3>Features</h3>
+				
+				<aside>
+					<li class="checkbox">Use Draw All for Daily Chance
+          	<input pref="main.features.drawAll" type="checkbox" /></li>
+					<li class="checkbox">Show Avatar Stats in the header
+          	<input pref="main.features.avatarStats" type="checkbox" /></li>
+					<li class="checkbox">Show content in the center of the page
+          	<input pref="main.features.centerPage" type="checkbox" /></li>
+					<li class="checkbox">Enhance private messages and use instant search
+          	<input pref="main.features.messages" type="checkbox" /></li>
+					<li class="checkbox">Hide advertisements 
+          	<input pref="main.features.hideAds" type="checkbox" /></li>
+          <li class="spacer"></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Notifications</h3>
+
+				<aside>
+					<li class="checkbox">Show desktop notifications for my account when logged in
+          	<input pref="main.features.notifications" type="checkbox" /></li>
+          <li class="range">Interval to check for account updates
+          	<input pref="main.features.notifications.time" type="range" step="1" min="1" max="60" value="5" /><span class="value">5</span></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>MyGaia</h3>
+
+				<aside>
+					<li class="checkbox">Hide Suggested Content
+          	<input pref="main.features.suggestedContent" type="checkbox" /></li>
+          <li class="spacer"></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Header</h3>
+				
+				<aside>
+					<li class="checkbox">Stretch the header background
+            <input pref="main.handn.header.overflow" type="checkbox" /></li>
+					<li class="checkbox">Show <em>Get Gaia Cash</em> and <em>Refill</em> buttons
+            <input pref="main.handn.header.getGaiaCash" type="checkbox" /></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Username</h3>
+
+				<aside>
+					<li class="checkbox">Float notification bars on top of the page
+          	<input pref="main.handn.bar.float" type="checkbox" /></li>
+					<li class="checkbox">Use widgets by your username
+          	<input pref="main.handn.bar.links" type="checkbox" /></li>
+					<li class="checkbox">Show <em>Welcome back!</em> around your username
+            <input pref="main.handn.bar.showWelcome" type="checkbox" /></li>
+          <li class="spacer"></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Forums</h3>
+				<aside>
+					<li class="checkbox">Use a set width for threads
+            <input pref="main.forums.size" type="checkbox" /></li>
+					<li class="checkbox">Show external link warning in same page
+            <input pref="main.forums.externalLinks" type="checkbox" /></li>
+					<li class="checkbox">Use thread preview in thread listings
+            <input pref="main.forums.previewThreads" type="checkbox" /></li>
+					<li class="checkbox">Hide polls, then show when used
+            <input pref="main.forums.pollDropDown" type="checkbox" /></li>
+					<li class="checkbox">Show post links at the top of posts
+            <input pref="main.forums.quoteAbovePost" type="checkbox" /></li>
+					<li class="checkbox">Show posts with a background
+            <input pref="main.forums.whiteBgAvis" type="checkbox" /></li>
+					<li class="checkbox">Hide Post Tipping for posts
+            <input pref="main.forums.postTipping" type="checkbox" /></li>
+					<li class="checkbox">Use off-white background for posts
+            <input pref="main.forums.postOffWhite" type="checkbox" /></li>
+				</aside>
+			</section>
+		</div> <!-- Features -->
+
+		<div class="page styling">
+			<section id="preview"><div>
+				<div class="header">
+        	<a class="toggle" title="Unpin Preview">&#8854;<span>&oplus;</span></a>
+          <a class="size" title="Zoom Out">&#10132;</a>
+        
+        	<div class="logo"></div>
+					<div class="username">
+           	<item>BetterGaia</item>
+						<item>
+							<a class="bgib_friends"></a>
+							<a class="bgib_pms"></a>
+							<a class="bgib_sbct"></a>
+							<a class="bgib_wchl"></a>
+						</item>
+       			<item>Shortcuts</item>
+					</div>
+					<div class="coins">
+          	<item><span></span>1,337</item>
+						<item><span></span>227</item>
+					</div>
+				</div>
+
+				<div class="navigation">
+					<div class="bar" style="background-color: rgba(25,33,45,0.9);">
+						<a>Home</a>
+						<a class="hover" style="background-color: #965296;">MyGaia</a>
+						<a>Shops</a>
+						<a class="current" style="background-color: #84602C;">Forum</a>
+						<a>World</a>
+						<a>Games</a>
+					</div>
+				</div>
+        
+        <div class="thread_header">
+					<div class="linklist" style="background-color: #BF7F40;">
+						<a>Gaia Forums</a>
+						<a>Gaia Online</a>
+						<a>Gaia Guides and Resources</a>
+					</div>
+					<div class="thread_title">
+						<img height="19" width="18" src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAMAAACO0hVbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAADJAdTBPiUxWlURZo1tskmxxk2F8v3J/oW6Hsf8rCfyiCv2/T/7wLIWQspqgtI2awJSoyaSrxKGs0a2yx6q01bS4yre+2Pzxp/79ssTH08XM39LT1MrU5NTa5dvf7OTm6unr8u3w9/Hx8vb29/P1+vn6/P7+/gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHc7z0oAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQBQYWludC5ORVQgdjMuNS44NzuAXQAAAOJJREFUKFM9kNGWgyAMBaWAoLZI1S3buhCCQv//Cy0q3bwxJyG5U23fihMftq3Nz6ogUEQa0nbXrj3Z+uC0xxT77vZ763bm1aU26Z2Ca6/P9/PaVqa+KMgE76xJpU9JWFICzRqIpvy3co1hZtrnRoHTudcRCGtwiikXR6B/xy1KoRXsjqiZmHu6HHsJwE+0DVM2gK3rZb9PagTBNKbgnTV1vzNHHZo4ixHBzRNxR4568FGw0YOzA9dntheHYEOefEkyfR3QwSN6K4le/r08uIVsRvnDUnElpaYSirfCouQ5QKkPyEZ7tnm/ELUAAAAASUVORK5CYII=' />
+						<a>BetterGaia ► Since August 2008</a>
+					</div>
+				</div></div>
+      </section>
+
+			<section id="background" class="group">
+				<h3>Background</h3>
+
+				<aside class="left group">
+        	<p>Select a background, or use a custom image with its URL.</p>
+					<div class="ask">
+          	<h3>Use your own <span class="close" title="Close">&#10005;</span></h3>
+            <input type="text" placeholder="URL" />
+            <button class="right">Done</button>
+          </div>
+        </aside>
+				<aside class="right columns">
+	        <p>Fine-tune how your background shows on the page.</p>
+        
+					<li class="checkbox">Float background while scrolling
+          	<input pref="style.other.background.float" type="checkbox" /></li>
+					<li class="checkbox">Repeat the background image
+          	<input pref="style.background.repeat" type="checkbox" /></li>
+					<li>Choose the background color of the page
+          	<input pref="style.background.color" type='text' class="color" value="12403D" /></li>
+					<li>Position the origin of the background image
+						<select>
+							<option value='top left'>Top Left</option>
+							<option value='top center'>Top Center</option>
+							<option value='top right'>Top Right</option>
+							<option value='center left'>Center Left</option>
+							<option value='center center'>Center Center</option>
+							<option value='center right'>Center Right</option>
+							<option value='bottom left'>Bottom Left</option>
+							<option value='bottom center'>Bottom Center</option>
+							<option value='bottom right'>Bottom Right</option>
+						</select> 
+					</li>
+				</aside>
+			</section> <!-- end Background -->
+
+			<section id="header">
+				<h3>Header <a href="http://www.gaiaonline.com/guilds/viewtopic.php?t=22742005" class="right" target="_blank"><button type="button">Get More Headers</button></a></h3>
+        <p>Select a image to use in the header.</p>
+
+				<aside><div>
+        	<div class="ask">
+          	<h3>Use your own <span class="close" title="Close">&#10005;</span></h3>
+            <input type="text" placeholder="Main Image URL" />
+            <input type="text" placeholder="Background Image URL" />
+            <button class="right">Done</button>
+          </div>
+        </div></aside>
+			</section> <!-- end header -->
+	
+			<section id="logo">
+				<h3>Logo</h3>
+        <p>Select a logo to use in the header.</p>
+				
+				<aside>
+					<li><input type="radio" name="lg" label="Gaia Online" value="http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png" /></li>
+					<li><input type="radio" name="lg" label="Golden Gaia" value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/goldengaia.png" /></li>
+					<li><input type="radio" name="lg" label="Omnidrink" value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/omnidrink.png" /></li>
+					<li><input type="radio" name="lg" label="Custom URL" value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo_options.png" /></li>
+				</aside>
+        
+       	<div class="ask">
+         	<h3>Use your own <span class="close" title="Close">&#10005;</span></h3>
+           <input type="text" placeholder="URL" />
+           <button class="right">Done</button>
+         </div>
+			</section> <!-- end logo -->
+
+			<section id="navigation">
+				<h3>Navigation <button class="reset right">Reset</button></h3>
+        <p>Choose the colors of the navigation.</p>
+				
+				<aside>
+					<li>Background <input pref="style.nav" type='text' class="color" value="7EACC5" /></li>
+					<li>Hover <input pref="style.nav.hover" type='text' class="color" value="396C7C" /></li>
+					<li>Current page <input pref="style.nav.current" type='text' class="color" value="93F2FF" /></li>
+				</aside>
+			</section>
+
+			<section id="thread_header">
+				<h3>Forums <button class="reset right">Reset</button></h3>
+        <p>Choose a background color for the header.</p>
+				
+				<aside>
+					<li>Background <input pref="style.forums.threadHeader" type='text' class="color" value="BF7F40" /></li>
+          <li>Posts <input pref="style.forums.postHeader" type='text' class="color" value="92B1CA" /></li>
+				</aside>
+			</section>
+      
+      <hr>
+		</div> <!-- Styling -->
+
+		<div class="page postformatting">
+      <p class="disable">Disable&nbsp;&nbsp;<input pref="posts.settings.disable.postFormatter" type="checkbox" /></p>
+
+			<section id="postformating" class="list">
+				<h3>Post Formats <a class="right"><button class="save">Save</button> <button class="add">Add Format</button></a></h3>
+        <p>Style your forum posts. Your first format will be the one inserted automatically. 
+        	<span>Make sure to save your formats.</span></p>
+
+				<aside class="group"></aside>
+			</section>
+
+			<section>
+				<h3>Quoting</h3>
+				
+				<aside class="columns">
+					<li class="checkbox">When replying, place format before the quote
+          	<input pref="posts.settings.quotes.endOfFormat" type="checkbox" /></li>
+					<li class="checkbox">Remove BBCode from quoted posts
+          	<input pref="posts.settings.quotes.removeFormatting" type="checkbox" /></li>
+					<li class="checkbox">Wrap quoted posts in a spoiler tag
+          	<input pref="posts.settings.quotes.spoilerWrap" type="checkbox" /></li>
+          <li class="range">Number of lines used to separate post and quotes
+          	<input pref="posts.settings.quotes.rangeNumber" type="range" step="1" min="0" max="10" value="2" /><span class="value">2</span></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Defaults</h3>
+				<p>Choose where you want your post formats to be used.</p>
+
+				<aside class="columns">
+					<li class="checkbox">Forums
+          	<input pref="posts.settings.pages.forums" type="checkbox" /></li>
+					<li class="checkbox">Guilds
+          	<input pref="posts.settings.pages.guildForums" type="checkbox" /></li>
+          <li class="checkbox">Private Messages
+          	<input pref="posts.settings.pages.pms" type="checkbox" /></li>
+          <li class="checkbox">Profile Comments
+          	<input pref="posts.settings.pages.profileComments" type="checkbox" /></li>
+				</aside>
+			</section>
+		</div> <!-- Post formatter -->
+
+		<div class="page shortcuts">	
+			<p class="disable">Disable&nbsp;&nbsp;<input pref="shortcuts.settings.disable" type="checkbox" /></p>
+
+			<section id="shortcuts" class="list">
+				<h3>Links <a class="right"><button class="save">Save</button> <button class="add">Add Link</button></a></h3>
+       	<p>Edit the links that are shown next by your username.
+        	<span>Make sure to save your links.</span></p>
+
+				<aside></aside>
+			</section>
+		</div> <!-- Shortcuts -->
+
+		<div class="page usertags">	
+			<p class="disable">Disable&nbsp;&nbsp;<input pref="usertags.settings.disable" type="checkbox" /></p>
+
+			<section id="usertags">
+				<h3>User Tags <a class="right"><button class="save">Save</button></a></h3>
+       	<p>Manage your tags shown next to users' names.
+        	<span>Make sure to save your tags.</span></p>
+
+				<aside></aside>
+			</section>
+		</div> <!-- User tags -->
+
+		<div class="page about">
+			<section>
+				<h3>About</h3>
+
+				<aside>
+					<li>
+						<p>BetterGaia is an add-on that changes how you experience Gaia Online. It's not a clumsy toolbar nor a useless menu. BetterGaia redesigns Gaia's layout, with your ideas in mind.</p>
+						<p>BetterGaia is a different kind of add-on. It doesn't add bulky menus, excessive buttons, or unattractive features. BetterGaia changes how Gaia looks. A simple change like redesigning Gaia's layout does sounds small, but alltogether it makes a big impact.</p>
+						<p>Thanks for joining users just like you that now experience Gaia in a whole new perspective. Do everyday tasks on Gaia more quickly and efficiently than before, with redesigned forums, improved site UI, and pages that just work, better.</p>
+
+						<p><a href="http://bowafishtech.org/" target="_blank"><button>bowafishtech</button></a> Think the future.</p>
+					</li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Credits</h3>
+				<p>BetterGaia would like to thank:</p>
+
+				<aside>
+					<li>jQuery</li>
+          <li>Chrome</li>
+          <li>Design language formally known as Metro</li>
+          <li>Inspiration, ideas from Reddit Enhancement Suite</li>
+          <li>Patterns made by Travis Beckham - squidfingers.com</li>
+          <li>Backgrounds designed by Evan Eckard - dinpattern.com</li>
+          <li>Fugue Icons created by Yusuke Kamiyamane - pinvoke.com</li>
+          <li>Background created by Matt Forsythe - comingupforair.net/ojingogo</li>
+          <li>Gaia Online</li>
+          <li>Our beta testers</li>
+          <li>And of course the regulars</li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Instant Update</h3>
+				
+				<aside>
+					<li>Update and fix user experience breaking issues in between regular updates for BetterGaia.</li>
+          <li><input pref="instantUpdate" type="checkbox" /></li>
+				</aside>
+			</section>
+
+			<section>
+				<h3>Reset</h3>
+				
+				<aside>
+					<li>Is BetterGaia not functioning? Like to reset all of BetterGaia's settings?</li>
+          <li>I acknowledge my preferences will be lost. <input class="agreeReset" type="checkbox" /></li>
+					<li><button class="reset">Reset BetterGaia</button></li>
+				</aside>
+			</section>
+
+			<section style="pointer-events: none; display: none;">
+				<h3>Sync</h3>
+				
+				<aside>
+					<li>Save your settings for BetterGaia with Chrome Sync and access them on any computer with Google Chrome. <br>You must be signed into Google Chrome in order for settings to save to the cloud.</li>
+          <li><strong>Last Change:</strong> <span class="lastSync">Never</span>
+          	<input pref="sync" type="checkbox" /></li>
+				</aside>
+			</section>
+		</div> <!-- About -->
+	</div> <!-- end sections -->
+</body>

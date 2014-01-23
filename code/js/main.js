@@ -4,7 +4,7 @@ Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
-function MainJS() {
+function MainJs() {
 
 // Credits
 $('body > #gaia_footer ul').prepend('<div id="bg_credits">\
@@ -277,10 +277,8 @@ if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg
 
 } // ---
 
-// Get Storage
-if (prefs['appliedUserPrefs'] == false)
-chrome.storage.sync.get(null, function(response) {
-    for (var key in response) {prefs[key] = response[key];}
-    MainJS();
-});
-else MainJS();
+// Check Storage and Fire
+if (prefs['appliedUserPrefs'] == true && prefs['appliedMainJs'] == false) {
+	MainJs();
+	prefs['appliedMainJs'] = true;
+}
