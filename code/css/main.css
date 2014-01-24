@@ -14,8 +14,8 @@ body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_bloc
     src: url('chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/code/css/glyphicons-halflings-regular.woff') format('woff');
 }
 
-/* Hide Ads */
-#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}
+/* Hide Ads *
+#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}*/
 
 /* Stretch Page, Remove BG */
 body > #content {width: 1140px; border: none; background: none;}
@@ -87,14 +87,14 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
 		#bg_widgets li.bgsettings > a:after {content: 'BetterGaia Settings';}
     #bg_widgets li:not(.bgopen):hover > a:after {display: block; opacity: 1; margin-top: 0;}
 
-    #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 0; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0;}
+    #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 0; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0; /*max-height: 80vh;*/}
     #bg_widgets li > div:before {content: ''; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #FFF; position: absolute; top: -7px; left: 50%; margin-left: -6px;}
-    #bg_widgets li.bgbgfriends > div {margin-left: -98px;}
-    #bg_widgets li.bgwatchlist > div {margin-left: -105px;}
+    #bg_widgets li:first-of-type > div {margin-left: -98px;}
+    #bg_widgets li:last-of-type > div {margin-left: -105px;}
     #bg_widgets li:not(.bgopen):hover > div {display: block;}
     #bg_widgets li.bgopen > div {display: block; -webkit-transform: scale(1); opacity: 1;}
 
-    #bg_widgets li > div a {display: block; color: #222; padding: 7px 9px; border-bottom: 1px solid rgba(0,0,0,0.05); text-decoration: none !important;}
+    #bg_widgets li > div a {display: block; color: #222; padding: 7px 9px; border-bottom: 1px solid rgba(0,0,0,0.05); text-decoration: none !important; cursor: pointer;}
     #bg_widgets li > div a:hover {background: #7EACC5; color: #FFF !important;}
     #bg_widgets li > div p {padding: 9px 9px 11px; margin: 0; text-align: center;}
         #bg_widgets li > div a:first-of-type, #bg_widgets li > div p:first-of-type {border-radius: 3px 3px 0 0;}

@@ -5,6 +5,9 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 var prefs = {
+    // General
+    'adsHide': true,
+  
     // Header
     'header.widgets': true,
     'header.drawAll': true,

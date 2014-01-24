@@ -6,6 +6,10 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 function MainJs() {
 
+// Remove Ads
+if (prefs['adsHide'] == true)
+$('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove();
+
 // Credits
 $('body > #gaia_footer > p').append('<div id="bg_credits">\
     <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ prefs['version'] +'</small></a>\
@@ -126,21 +130,17 @@ if (prefs['header.widgets'] == true) {
                 });            
             }
 
-			// BetterGaia Settings
+            // BetterGaia Settings
             else if ($(this).parent().hasClass('bgsettings')) {
                 $(this).parent().addClass('bgloading');
                 
-                $.get('/marketplace/watchlist/', 'html')
+                $.get('chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/code/html/settings-widget.html', 'html')
                 .done(function(data) {
-                    if ($("#watchlist_wrapper #watchlist .watchlist_rows > tbody > tr > td span.nolistings", data).length > 0) $('#bg_widgets .bgsettings div').append('<p>There are no items in your watchlist.</p>');
-                    else {
-                        var items = $("#watchlist_wrapper #watchlist .watchlist_rows > tbody > tr > td.watchlist_rows_item_field a:first-child", data);
-                        $(items).each(function() {
-                            var time = $(this).parent().parent().find('td.watchlist_rows_timeleft').text();
-                            var name = $(this).next('a').text();
-                            $('#bg_widgets .bgsettings div').append($(this).attr('title', name).append('<span>' + time + '</span>'));
-                        });
-                    }
+                    $('#bg_widgets .bgsettings div').html(data);
+                    $('#bg_widgets .bgsettings .bgversion').text(prefs['version']);
+                    $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
+                        chrome.extension.sendMessage({elements: 'settings'});
+                    });
                 })
                 .fail(function(data) {
                     $('#bg_widgets .bgsettings div').html("<p>There was a problem loading your BetterGaia's settings.</p>");
@@ -270,9 +270,6 @@ if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg
 		else $('body.mail #pm_content table tr[bgcolor][height="42"]').removeClass('bgpm_hide');
 	});
 }
-
-// Test
-console.log('2. Ran MainJS');
 
 } // ---
 

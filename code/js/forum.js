@@ -39,13 +39,10 @@ if (prefs['forum.externalLinks'] == true) {
 	});
 }
 
-// Test
-console.log('4. Ran ForumJS');
-
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] == true && prefs['appliedForumJS'] == false) {
+if (prefs['appliedUserPrefs'] == true && prefs['appliedForumJs'] == false) {
 	ForumJs();
-	prefs['appliedForumJS'] = true;
+	prefs['appliedForumJs'] = true;
 }

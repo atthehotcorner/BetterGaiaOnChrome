@@ -5,41 +5,59 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 function MainCss() {
+var css = '';
 
-// Test
-console.log('1. Ran MainCSS');
+if (prefs['adsHide'] == true)
+css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}';
+
+// Add CSS
+var head = document.getElementsByTagName('head');
+if (head.length > 0) {
+    var style = document.createElement('style');
+    style.setAttribute('bg-css', '');
+    style.appendChild(document.createTextNode(css));
+    head[0].appendChild(style);
+}
 
 } // ---
 
 // Get Storage and Fire
 if (prefs['appliedUserPrefs'] != true)
 chrome.storage.sync.get(null, function(response) {
-    for (var key in response) {
+  for (var key in response) {
 		try {prefs[key] = response[key];}
 		catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
-	}
+  }
 
-	prefs['appliedUserPrefs'] == true;
+	prefs['appliedUserPrefs'] = true;
 
-	if (prefs['appliedMainCss'] == false) {
+  // Could use some code reuse
+  if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] == false) {
 		MainCss();
 		prefs['appliedMainCss'] = true;
 	}
-	if (prefs['appliedMainJs'] == false) {
+	if (typeof(MainJs) == 'function' && prefs['appliedMainJs'] == false) {
 		MainJs();
 		prefs['appliedMainJs'] = true;
 	}
-	if (prefs['appliedForumCss'] == false) {
+	if (typeof(ForumCss) == 'function' && prefs['appliedForumCss'] == false) {
 		ForumCss();
 		prefs['appliedForumCss'] = true;
 	}
-	if (prefs['appliedForumJs'] == false) {
+	if (typeof(ForumJs) == 'function' && prefs['appliedForumJs'] == false) {console.log('ss')
 		ForumJs();
 		prefs['appliedForumJs'] = true;
 	}
-	if (typeof(Format == 'function') && prefs['appliedFormat'] == false) {
+	if (typeof(Format) == 'function' && prefs['appliedFormat'] == false) {
 		Format();
 		prefs['appliedFormat'] = true;
 	}
 });
 else CssJs();
+
+chrome.storage.local.get(null, function(response) {
+  for (var key in response) {
+		try {prefs[key] = response[key];}
+		catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
+  }
+});
