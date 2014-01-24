@@ -37,17 +37,22 @@ if (prefs['header.widgets'] == true) {
             // Friends
             if ($(this).parent().hasClass('bgfriends')) {
                 $(this).parent().addClass('bgloading');
-                
-                $.post('/gapi/rest/gfooter/', {method: 'getfriendlist'})
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/gapi/rest/gfooter/',
+                    data: {'method': 'getfriendlist'},
+                    dataType: 'text json',
+                    cache: false
+                })
                 .done(function(data) {
                     if (data['message'] == 'success') 
                         $.each(data['friendList'], function(i, value) {
                             var online = (data['friendList'][i]['fid'] == '')? 'offline' : 'online';
-                            $('#bg_widgets .bgfriends div').append("<friend class='" + online + "'>\
-                                <a href='http://www.gaiaonline.com/profiles/" + data['friendList'][i]['uid'] + "/' target='_black'>\
-                                <img src='http://a2.cdn.gaiaonline.com/gaia/members/" + data['friendList'][i]['hs'] + "' />\
-                                <span>" + data['friendList'][i]['un'] + "</span></a>\
-                            </friend>");
+                            $('#bg_widgets .bgfriends div').append("<a href='/profiles/" + data['friendList'][i]['uid'] + "/' target='_black' class='" + online + "'>\
+                                <img src='/gaia/members/" + data['friendList'][i]['hs'] + "' />\
+                                <span>" + data['friendList'][i]['un'] + "</span>\
+                            </a>");
                         });
                     else $('#bg_widgets .bgfriends div').html('<p>There was a problem fetching your friends list. <br> Error: ' + data['statusCode'] + '</p>');
                 })

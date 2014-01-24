@@ -36,12 +36,7 @@
     "minimum_chrome_version": "28",
     "name": "BetaGaia",
     "options_page": "settings/main.html",
-    "browser_action": {
-        "default_icon": "images/logo/19.png",
-        "default_popup": "code/popup/popup.html",
-        "default_title": "BetterGaia"
-    },
-    "permissions": [ "alarms", "tabs", "storage", "notifications", "http://*.gaiaonline.com/*", "https://*.gaiaonline.com/*" ],
+    "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*" ],
     "version": "2014.1",
-    "web_accessible_resources": [ "code/html/mygaia.html", "code/html/settings-widget.html", "code/js/jquery-2.0.3.min.map", "/code/css/glyphicons-halflings-regular.woff", "/images/background/legacy.jpg", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png" ]
+    "web_accessible_resources": [ "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/background/legacy.jpg", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png" ]
 }
