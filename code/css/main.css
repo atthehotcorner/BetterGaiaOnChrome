@@ -539,6 +539,7 @@ body #gaia_footer ul {font-size: 11px;}
 
     /* Credits */
     body #gaia_footer #bg_credits {display: inline-block; float: right;}
+    body #gaia_footer #bg_credits a {color: #FFF;}
     #bg_credits .bgtopofpage {border-radius: 20px; height: 19px; margin: -2px 5px 0 2px; line-height: 18px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: inline-block;}
     #bg_credits .bgtopofpage:hover {background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7); text-decoration: none;}
     #bg_credits .bgtopofpage:active {background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); color: #FFF;}

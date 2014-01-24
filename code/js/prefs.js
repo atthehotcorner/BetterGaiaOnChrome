@@ -32,7 +32,14 @@ var prefs = {
     
     // Forum
     'forum.externalLinks': true,
-    
+    'forum.previewThreads': true,
+
+    // Usertags
+    'usertags': true,
+    'usertags.list': {
+        '12345': ['cat', 'He is a cat.', 2014]
+    },
+
     // Other
     'appliedUserPrefs': false,
     'appliedMainCss': false,
