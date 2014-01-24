@@ -40,5 +40,5 @@ var prefs = {
     'appliedForumCss': false,
     'appliedForumJs': false,
     'appliedFormat': false,
-    'version': ''
+    'version': '2014'
 };

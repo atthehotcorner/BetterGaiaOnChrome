@@ -6,7 +6,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 // Check if install, update
 chrome.runtime.onInstalled.addListener(function(details) {
-    chrome.storage.local.set({version: chrome.runtime.getManifest().version;});
+    chrome.storage.local.set({version: chrome.runtime.getManifest().version});
 });
 
 // Send data to scripts
