@@ -7,13 +7,9 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 function MainJS() {
 
 // Credits
-$('body > #gaia_footer ul').prepend('<div id="bg_credits">\
-    <span>You\'re using BetterGaia <small>'+ prefs['version'] +'</small> by bowafishtech.</span> \
-    <links>\
-        <a href="/forum/t.45053993/" target="_blank"> Official Thread</a>. \
-        <a href="http://facebook.com/BetterGaia/" target="_blank">Our Facebook</a>. \
-        <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>. \
-    </links>\
+$('body > #gaia_footer > p').append('<div id="bg_credits">\
+    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ prefs['version'] +'</small></a>\
+    by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
     <iframe style="height: 0; border: 0; visibility: hidden;" src="http://bowafishtech.org/bgsidebar/data/"></iframe>\
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
