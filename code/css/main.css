@@ -449,19 +449,15 @@ body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
 body #gaia_footer ul {font-size: 11px;}
 
     /* Links */
-    body #gaia_footer > ul {padding: 5px; margin: 0; background: linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); border: 2px solid rgba(222,232,254,0.9); border-width: 0 2px 2px; border-radius: 0; width: auto; float: none;}
+    body #gaia_footer > ul {padding: 5px 110px 5px 5px; margin: 0; border: 2px solid rgba(222,232,254,0.9); border-radius: 0; width: auto; float: none; background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/logo/text.png) bottom right no-repeat, linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); background-size: contain;}
         body #gaia_footer > ul:after {content: ''; display: table; clear: both;}
         body #gaia_footer > ul li {border: 0; padding: 0; text-align: left; width: 100px; float: left; margin: 0 5px 0 0;}
     body #gaia_footer > ul li a {display: block; color: #333 !important; margin: 0 0 1px; padding: 2px 4px; border-radius: 2px; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
     body #gaia_footer > ul li a:hover {background: #448FC1; color: #FFF !important;}
 
     /* Credits */
-    body #gaia_footer > ul #bg_credits {font-size: 11px; width: 20%; float: right; padding: 2px 5px 25px text-align: right;}
-    #bg_credits links {margin-top: 5px; display: block;}
-    #bg_credits links a {color: #3E53A2;}
-
-    /* Top of Page */
-    #bg_credits .bgtopofpage {border-radius: 20px; height: 19px; margin: 4px 1px 0 5px; line-height: 18px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; text-decoration: none; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: block; position: absolute; top: 0; z-index: 2; right: 8px;}
+    body #gaia_footer #bg_credits {display: inline-block;}
+    #bg_credits .bgtopofpage {border-radius: 20px; height: 19px; margin: 4px 1px 0 5px; line-height: 18px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; text-decoration: none; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: inline-block; float: right;}
     #bg_credits .bgtopofpage:hover {background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7);}
     #bg_credits .bgtopofpage:active {background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); color: #FFF;}
 
