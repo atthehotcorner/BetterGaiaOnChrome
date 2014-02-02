@@ -304,7 +304,7 @@ body.forums #content #post_container .post .postcontent {}
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta span.date > abbr {border: 0; font-size: 13px;}
 
 	/* Avatar */
-	body.forums #content #post_container .post .postcontent .avatar_wrapper {clear: none !important; height: auto !important; width: 120px; float: left; margin: -30px 0 0;}
+	body.forums #content #post_container .post .postcontent .avatar_wrapper {clear: none !important; height: auto !important; width: 120px; float: left; margin: -33px 0 0;}
 	body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box {display: block;}
 	body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box a {width: 120px; float: none;}
 	body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box a.avatar, body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box #animated_item {width: auto; float: none; margin: 0 0 15px;}
@@ -460,7 +460,7 @@ body.forums #gaia_content.grid_dizzie_gillespie > #bd #yui-main {margin: 0;}
 
 	/* Header */
 	body.forums #gaia_content.grid_dizzie_gillespie #forum-header {width: auto; padding: 0 0 0 32px; height: 25px; background: none; position: relative; margin: 0 0 15px;}
-	body.forums #gaia_content.grid_dizzie_gillespie #forum-header h2 {background: #FFF url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/icons/addpost.png) center center no-repeat; height: 27px; width: 27px; border-radius: 3px; box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 0 3px #FFF inset; font-size: 0; position: absolute; top: 0; left: 0; display: block;}
+	body.forums #gaia_content.grid_dizzie_gillespie #forum-header h2 {background: #FFF; height: 27px; width: 27px; border-radius: 3px; box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 0 3px #FFF inset; font-size: 0; position: absolute; top: 0; left: 0; display: block;}
 
 	/* Preview */
 	body.forums #content > #gaia_content #yui-main .yui-b #preview {margin: 0 0 20px;}

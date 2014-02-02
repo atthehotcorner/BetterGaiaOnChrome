@@ -24,7 +24,6 @@ body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
 /* Home Page */
 body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; box-sizing: border-box; border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 0 0 10px rgba(0,0,0,0.25) inset; position: relative; margin: 0 10px 10px 0; background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/500.png); background-size: 100% 100%;}
-body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last):after {display: block; position: absolute; top: 35px; left: 33px; content: 'BetterGaia'; text-transform: uppercase; letter-spacing: 5px; color: #444; font-size: 20px;}
 body.index #gaia_content.grid_madonna #bd-div {min-height: 486px;}
 
 /* Editor Toolbar */
@@ -69,12 +68,12 @@ body #editor-textcolor #editor_palette_textcolor a {margin: 0;}
 body #editor-textcolor #editor_palette_textcolor a:hover {opacity: 0.5;}
 
 /* Post Formatting */
-body textarea ~ #bg_postbuttons * {box-sizing: border-box;}
-body textarea ~ #bg_postbuttons {background: #F8F8F8; border: 1px solid #DDD; border-width: 0 1px 1px; padding: 5px 0 0 5px; overflow: hidden; height: auto;}
-body textarea ~ #bg_postbuttons > a {margin: 0 5px 5px 0; cursor: pointer; display: block; float: left; padding: 2px 5px; background: rgba(255,255,255,0.75); border-radius: 4px; color: #222 !important; font: normal 12px Arial, Helvetica, sans-serif; border: 2px solid rgba(0,0,0,0.15);}
-body textarea ~ #bg_postbuttons > a:not(.current):hover {background: rgba(0,0,0,0.15); border-color: transparent;}
-body textarea ~ #bg_postbuttons > a:not(.current):active {background: rgba(255,255,255,0.75); border-color: #5AC8FA;}
-body textarea ~ #bg_postbuttons > a.current {background: #5AC8FA; border-color: transparent; color: #FFF !important; cursor: default;}
+body textarea ~ #bg_formatter * {box-sizing: border-box;}
+body textarea ~ #bg_formatter {background: #F8F8F8; border: 1px solid #DDD; border-width: 0 1px 1px; padding: 5px 0 0 5px; overflow: hidden; height: auto;}
+body textarea ~ #bg_formatter > a {margin: 0 5px 5px 0; cursor: pointer; display: block; float: left; padding: 2px 5px; background: rgba(255,255,255,0.75); border-radius: 4px; color: #222 !important; font: normal 12px Arial, Helvetica, sans-serif; border: 2px solid rgba(0,0,0,0.15);}
+body textarea ~ #bg_formatter > a:not(.current):hover {background: rgba(0,0,0,0.15); border-color: transparent;}
+body textarea ~ #bg_formatter > a:not(.current):active {background: rgba(255,255,255,0.75); border-color: #5AC8FA;}
+body textarea ~ #bg_formatter > a.current {background: #5AC8FA; border-color: transparent; color: #FFF !important; cursor: default;}
 
 /* Header */
 body div#gaia_header {border: none; width: auto;}
