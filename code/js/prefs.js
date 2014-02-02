@@ -7,6 +7,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 var prefs = {
     // General
     'adsHide': true,
+    'instantUpdating': true,
   
     // Header
     'header.widgets': true,

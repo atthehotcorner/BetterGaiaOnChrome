@@ -247,14 +247,17 @@ body.forums #content #post_container .post.achievement_badges {}
 body.forums #content #post_container .post * {box-sizing: border-box;}
 body.forums #content #post_container .post .postcontent {}
 
+    /* Theme */
+    body.forums #content #post_container .post .postcontent .user_info_wrapper, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options, body.forums #content #post_container .post .postcontent .post-signature {background-color: #CFE6F9;}
+
 	/* Styles Post Dice, Number, ect. */ 
-	body.forums #content #post_container .post .postcontent h2.rollDice, body.forums #content #post_container .post .postcontent h2.genRandomNumber {position: static; border-radius: 3px 3px 0 0; font-size: 11px; margin: 0; border: 0; font: normal 11px "Lucida Grande", "Lucida Sans Unicode", Arial, Tahoma, Verdana, sans-serif; padding: 5px 5px 5px 130px; height: auto; min-height: 38px; border: 1px solid #EEE; z-index: 1; position: relative;}
-	body.forums #content #post_container .post .postcontent h2 + .user_info_wrapper {border-radius: 0 0 3px 3px;}
+	body.forums #content #post_container .post .postcontent h2.rollDice, body.forums #content #post_container .post .postcontent h2.genRandomNumber {position: static; border-radius: 3px 3px 0 0; font-size: 11px; margin: 0 0 0 130px; border: 0; font-size: 11px; padding: 5px 5px 5px 130px; height: auto; min-height: 38px; border: 1px solid #EEE; z-index: 1; position: relative;}
+	body.forums #content #post_container .post .postcontent h2 + .user_info_wrapper {border-radius: 0;}
 
 	/* Username bar */
-	body.forums #content #post_container .post .postcontent .user_info_wrapper {background: linear-gradient(to bottom, rgba(255,255,255,0.37) 10%, rgba(255,255,255,0)) #CFE6F9; border-radius: 3px 3px 0 0; border-top: 1px solid rgba(255,255,255,0.2); box-shadow: 0 1px 2px rgba(0,0,0,0.1); padding: 0; margin: 0 0 0 130px;}
-	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info {height: 32px; padding: 6px 15px 0; float: none; background: none; width: auto; overflow: visible;}
-	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_name {float: left; display: block; font: bold 14px "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(255,255,255,0.4); margin-right: 10px;}
+	body.forums #content #post_container .post .postcontent .user_info_wrapper {background-image: linear-gradient(to bottom, rgba(255,255,255,0.37) 10%, rgba(255,255,255,0)); border-radius: 3px 3px 0 0; border-top: 1px solid rgba(255,255,255,0.5); border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 1px 2px rgba(0,0,0,0.1); padding: 0; margin: 0 0 0 130px;}
+	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info {height: 31px; padding: 6px 15px 0; float: none; background: none; width: auto; overflow: visible;}
+	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_name {float: left; display: block; font: bold 14px "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(255,255,255,0.75); margin-right: 10px;}
 	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_title {font-size: 11px; padding: 0; padding: 3px 0 0; float: left; display: block;}
 	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_title .user_title_hint {float: right; margin: 0 0 0 5px;}
 	
@@ -300,15 +303,6 @@ body.forums #content #post_container .post .postcontent {}
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta span.date {margin: 1px 0 0; font-size: 0;}
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta span.date > abbr {border: 0; font-size: 13px;}
 
-		/* BG toggle post */
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse {float: right; height: 25px; width: 25px; background: -webkit-linear-gradient(top, rgba(255,255,255,0.6), rgba(255,255,255,0.3)); border-radius: 0 3px 3px 0; margin: -4px -7px 0 0; position: relative; cursor: pointer; border-left: 1px solid rgba(255,255,255,0.3);}
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover {background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0.5));}
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:active {background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0.6));}
-
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:after {content: "\25B2"; color: rgba(0,0,0,0.4); background: rgba(255,255,255,0.7); width: 15px; display: block; position: absolute; top: 5px; right: 5px; text-align: center; height: 15px; line-height: 12px; border-radius: 7px; font-size: 11px; padding: 2px 1px 1px 2px; box-shadow: 0 1px 1px rgba(0,0,0,0.5) inset; box-sizing: border-box; text-shadow: 0 1px 1px #FFF;}
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover:after {background: rgba(255,255,255,0.9); color: rgba(0,0,0,0.7);}
-		body.forums #content #post_container .post.bgpc_hidden .postcontent .user_info_wrapper .user_info .bg_postcollapse:after {content: "\25BC";}
-
 	/* Avatar */
 	body.forums #content #post_container .post .postcontent .avatar_wrapper {clear: none !important; height: auto !important; width: 120px; float: left; margin: -30px 0 0;}
 	body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box {display: block;}
@@ -341,21 +335,24 @@ body.forums #content #post_container .post .postcontent {}
 	body.forums #content #post_container .post .postcontent .message .messagecontent:before {content: ''; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-right: 12px solid #FFF; position: absolute; left: -12px; top: 15px;}
 
 		/* Post options */
-		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {float: none; bottom: 0; position: absolute; padding: 0; background-color: #CFE6F9; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(218,218,218,0.05)); width: 100%; height: 30px; border-top: 1px solid rgba(0,0,0,0.2); margin: 0;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {float: none; bottom: 0; position: absolute; padding: 0 8px; width: 100%; height: 30px; border-top: 1px solid rgba(0,0,0,0.1); margin: 0;}
 			/* Options on top */
-			/*body.forums #content #post_container .post .postcontent .message .messagecontent {padding: 22px 0 0;}
-			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {bottom: auto; top: 0; position: absolute; border-radius: 3px 3px 0 0; border-bottom: 1px solid #B7D1E8; border-top: 0;}
-			body.forums #content #post_container .post .postcontent .post-signature {box-shadow: 0 -5px 0 #FFF;}
-			body.forums #content #post_container .post.bgpc_hidden .postcontent .post-signature {box-shadow: none;}*/
+			/*body.forums #content #post_container .post .postcontent .message .messagecontent {padding: 30px 0 0;}
+			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {bottom: auto; top: 0; border-bottom: 1px solid rgba(0,0,0,0.1); border-top: 0;}*/
 
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul {margin: 0; padding: 0;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li {display: inline-block; height: 29px; margin: 0; float: none; line-height: 29px;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a {background: none; text-indent: 0; text-decoration: none; margin: 0; height: 29px; width: auto; padding: 8px 10px; color: #4B8CB7; border-right: 1px solid #B7D1E8; cursor: pointer; float: left; display: block; -webkit-user-select: none; font-size: 12px;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li {display: inline; height: 29px; margin: 0; float: none; line-height: 29px;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a {background: none; text-indent: 0; text-decoration: none; margin: 0; height: 29px; width: auto; padding: 7px; cursor: pointer; float: left; display: block; -webkit-user-select: none; font-size: 12px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a span {background: none; display: inline; height: auto; line-height: 14px; padding: 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a:hover {color: #FF8243;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a:active {padding: 4px 7px;}
-			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options a.post-report, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options a.post-delete {float: right; border-left: 1px solid #B7D1E8; border-right: 0;}
-			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options a.bg_togglesig {float: left;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options a.post-report, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options a.post-delete {float: right;}
+        body.forums .post-options ul li > a > span:before, body.forums .post-options ul li a.tipbox_button > span:before {font-family: 'Glyphicons Halflings'; font-size: 13px; position: relative; top: 1px; margin-right: 3px; height: 0;}
+        body.forums .post-options ul li > a.post-quote > span:before {content: '\e111';}
+        body.forums .post-options ul li > a.post-edit > span:before {content: '\270f';}
+        body.forums .post-options ul li a.tipbox_button > span:before {content: '\e102';}
+        body.forums .post-options ul li > a.post-report > span:before {content: '\e101';}
+        body.forums .post-options ul li > a.post-delete > span:before {content: '\e020';}
 			
 			/* Tipping links */
 			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li > .tipbox {display: block; float: left; height: 21px; width: auto; position: relative;}
@@ -445,19 +442,12 @@ body.forums #content #post_container .post .postcontent {}
 		
 		/* Fixes Friends, Inventory Box */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble > .inventory {top: 5px; right: 5px;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble > .friends {position: static; border-width: 1px 0; width: auto; background-color: #FFF; border-radius: 7px 7px 0 0;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble > .friends {position: static; border-width: 1px 0; width: auto; background-color: #FFF;}
 
 	/* Signature */
-	body.forums #content #post_container .post .postcontent .post-signature {clear: both; float: none; width: auto; margin: 0 0 0 130px; background: #E7EEFE;  border-top: 1px solid rgba(0,0,0,0.1);}
+	body.forums #content #post_container .post .postcontent .post-signature {clear: both; float: none; width: auto; margin: 0 0 0 130px; border-top: 1px solid rgba(0,0,0,0.125); background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6));}
     body.forums #content #post_container .post .postcontent .post-signature .user-sig, body.forums #content #post_container .post .postcontent .post-signature .extra_sigs {padding: 10px;}
     body.forums #content #post_container .post .postcontent .post-signature .user-sig:empty, body.forums #content #post_container .post .postcontent .post-signature .extra_sigs:empty {display: none;}
-
-	/* Adds Styles for Post Collapses */
-	body.forums #content #post_container .post.bgpc_hidden {margin: 0 0 20px; min-height: 0;}
-	body.forums #content #post_container .post.bgpc_hidden .postcontent > div, body.forums #content #post_container .post.bgpc_hidden .postcontent > h2 {display: none;}
-	body.forums #content #post_container .post.bgpc_hidden .postcontent > div.user_info_wrapper {display: block;}
-	body.forums #content #post_container .post.bgpc_hidden h2 ~ div.user_info_wrapper {border-radius: 3px;}
-	body.forums #content #post_container .post.bgpc_hidden .post-signature {box-shadow: 0 0 0; border-radius: 7px; border: 0;}
 
 /* Styles Thread Page while loading */
 body.forums #pjax-overlay {position: static !important; height: auto !important; width: auto !important;}

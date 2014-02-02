@@ -18,7 +18,7 @@ body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_bloc
 #bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}*/
 
 /* Stretch Page, Remove BG */
-body > #content {width: 1140px; border: none; background: none;}
+body > #content {width: 1140px; border: none; background: none; margin-left: auto; margin-right: auto;}
 body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_billie_holiday {background: none;}
 body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
@@ -157,6 +157,13 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
         #bg_widgets li > div a:last-of-type, #bg_widgets li > div p:last-of-type {border-bottom: 0; border-radius: 0 0 3px 3px;}
         #bg_widgets li > div a:only-of-type, #bg_widgets li > div p:only-of-type {border-radius: 3px;}
 
+    #bg_widgets li.bgfriends > div a {height: 40px; position: relative;}
+    #bg_widgets li.bgfriends > div a:after {position: absolute; content: ''; right: 10px; top: 16px; width: 7px; height: 7px; font-size: 0px; border-radius: 10px; background: #EEE;}
+    #bg_widgets li.bgfriends > div a.online:after {background: #82D02F;}
+    #bg_widgets li.bgfriends > div a > * {display: block; float: left;}
+    #bg_widgets li.bgfriends > div a img {height: 25px; width: 25px; }
+    #bg_widgets li.bgfriends > div a span {width: calc(100% - 25px); padding: 5px; text-overflow: ellipsis; overflow: hidden;}
+
     #bg_widgets li.bgwatchlist > div a:after {content: ''; display: table; clear: both;}
     #bg_widgets li.bgwatchlist > div a img, #bg_widgets li.bgwatchlist > div span {display: block; float: left;}
     #bg_widgets li.bgwatchlist > div span {line-height: 30px; padding-left: 10px;}
@@ -221,6 +228,191 @@ body #gaia_menu_bar #newmenu #nav {}
 #nav > li > a {box-sizing: border-box; height: 27px; margin: 0; padding: 3px 10px; }
 #nav > li .main_panel_container {position: absolute; margin: 0; top: 27px;}
 #nav > li .main_panel_container .panel-title {}
+
+/* Styles MyGaia Page */
+body.mygaia #mygaia_tabs > span {display: none;}
+
+body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g {position: relative;}
+body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left {float: right; margin: 10px 219px 0 0; width: 440px;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #req_bird,
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #my_choc,
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #feed_goldguy,
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .rc,
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft,
+	body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .clear, 
+	body.mygaia #gaia_content #bd #friends2.mg_content .bg, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right > div + br {display: none;}
+body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right {float: left; margin: 10px 0 0 10px; width: 230px;}
+body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both;}
+
+	/* Fix ad */
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right #grid_ad {overflow: hidden; width: 230px;}
+
+	/* Module footers */
+	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft {background: none; border: 0;}
+	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft.see_all {border: 0 none; display: block !important; margin: 5px 0 0; height: 15px; background: none;}
+	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft div.see_all {background: none; padding: 0; float: right;}
+	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft div.see_all a {width: auto; display: inline-block;}
+	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft div.see_all #notice_settings {margin: 0 0 0 5px; border-left: 1px solid #000; padding: 0 0 0 5px; position: static; display: inline-block;}
+		body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft div.see_all #notice_settings:only-child {border-width: 0;}
+
+	/* Add text to headers */
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g .mg_sprite.hd:before {background: none; color: #538947; padding: 5px 0 7px 0;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .suggested .hd:before {content: "Suggested";}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd:before {content: "Status"; box-shadow: 0 4px 0 #5BAAAD;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .hd:before {content: "My Stats";}
+	body.mygaia #bd .mg_content.req .mg_sprite.hd:before {content: "Requests";}
+	body.mygaia #bd .mg_content.friends .mg_sprite.hd:before {content: "Friends";}
+	body.mygaia #bd .mg_content.mystuff .mg_sprite.hd:before {content: "Notices";}
+	body.mygaia #bd .mg_content.notices .mg_sprite.hd:before {content: "My Friend's Stuff";}
+
+	/* Status */
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status {margin: 0 0 15px;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding: 1px 0; box-sizing: border-box;}
+	
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd {background: #F5F7FF; border: 1px solid #5BAAAD; border-radius: 3px; box-shadow: 0 0 7px -2px #5BAAAD inset; position: relative;}
+		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status {padding: 0; background: none; position: relative;}
+		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status:after {position: absolute; content: ''; bottom: -5px; left: 5px; right: 5px; height: 5px; display: block; background: -webkit-linear-gradient(top, rgba(245,247,255,1), rgba(245,247,255,0)); z-index: 2;}
+			body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status div.avatar {box-shadow: 0 0 2px rgba(0,0,0,0.5); background: #FFF; border: 0; margin: 5px;}
+			body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status {border: 1px solid #A3B4C8; border-radius: 6px; background: #FFF; float: right; padding: 5px 7px; width: 140px; margin: 5px; overflow: visible; box-shadow: 0 0 10px -2px #B5C8DD inset;}
+			body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status.ing .status {border-color: #3E53A2;}
+				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status p {background: none; padding: 0; margin: 0;}
+				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status div.lead {left: -8px; top: 15px;}
+
+				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status div:not([class]) {background: none; margin: 0; padding: 0;}
+				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status div:not([class]) .plenty {position: static; float: right; margin: 0;}
+	
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .friend_statuses {padding: 0; max-height: 150px; overflow: auto; border: 0; margin: 0;}
+		body.mygaia #gaia_content .mg_status .friend_statuses div.avatar {float: left; margin: 0 0 0 5px; border-radius: 2px; background: #FFF;}
+		body.mygaia #gaia_content .mg_status .friend_statuses h4 {margin: 2px 0 2px 5px; display: block; clear: both;}
+		body.mygaia #gaia_content .mg_status .friend_statuses .clear {height: 7px !important;}
+		body.mygaia #gaia_content .mg_status .friend_statuses .status {border: 1px solid #A3B4C8; border-radius: 6px; background: #FFF; float: right; padding: 5px 7px; width: 65%; margin: 5px; overflow: visible; box-shadow: 0 0 10px -2px #B5C8DD inset; z-index: 1;}
+			body.mygaia #gaia_content .mg_status .friend_statuses .status p {background: none; padding: 0; margin: 0;}
+			body.mygaia #gaia_content .mg_status .friend_statuses .status div.lead {left: -8px; top: 15px;}
+			body.mygaia #gaia_content .mg_status .friend_statuses .status .timestamp {position: absolute; right: 0; top: -17px;}
+
+		/* Scrollbar */
+		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar {width: 8px; height: 8px;}
+
+		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:start {display: none;}
+		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end {display: block; background: rgba(0,0,0,0.4);}
+			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement, body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment {box-shadow: 0 0 5px rgba(0,0,0,0.2); border-radius: 3px; border: 1px solid rgba(0,0,0,0.4); height: 14px; width: 14px; display: block; background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
+			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement:hover, body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment:hover {background-color: rgba(0,0,0,0.17)}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:active, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:active {background-color: rgba(0,0,0,0.3)}
+
+			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement {border-bottom: 0; border-radius: 3px 3px 0 0;}
+			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment {border-radius: 0 0 3px 3px;}
+
+		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-track {margin: 10px 0;}
+			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-track-piece {border-radius: 7px 0 0 7px; box-shadow: 0 0 5px rgba(0,0,0,0.2) inset; background: rgba(0,0,0,0.05);}
+			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb {border-radius: 7px 0 0 7px; border: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 5px rgba(0,0,0,0.2); background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
+				body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,0.17)}
+				body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb:active {background-color: rgba(0,0,0,0.3)}
+
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status #mygaia_see_more_status {position: absolute; right: 0;}
+		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status #mygaia_see_more_status a {font-weight: normal; background: url(http://s.cdn.gaiaonline.com/images/gaia_global/body/arrows/ic_hyperlink_arrow_15x15.png) no-repeat; padding: 0 0 0 18px; display: block; height: 15px;}
+	
+	/* My Stats */
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats {height: auto;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd {padding: 5px;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd h3.activity {margin: 5px 0 0;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd ul li {padding: 3px 0;}
+	
+	/* Feeds */
+	body.mygaia #gaia_content #bd .mg_content {margin: 0 0 15px;}
+	body.mygaia #gaia_content #bd .mg_content .mg_sprite.hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #517747; padding: 1px 0; box-sizing: border-box;}
+
+	body.mygaia #gaia_content #bd .mg_content .bd {background: #FFF; border: 1px solid #90C085; border-radius: 3px; box-shadow: 0 0 7px -2px #90C085 inset; padding: 0; overflow: visible;}
+	body.mygaia #gaia_content #bd .mg_content .bd > p {padding: 10px 12px; margin: 0;}
+	body.mygaia #gaia_content #bd .mg_content .bd ul {margin: 0; /*max-height: 220px; overflow: auto;*/}
+	body.mygaia #gaia_content #bd .mg_content .bd ul li {display: block; padding: 6px 10px; width: auto; height: auto; margin: 0;}
+		body.mygaia #gaia_content #bd .mg_content .bd ul li:first-child {border-radius: 3px 3px 0 0; padding-top: 10px;}
+		body.mygaia #gaia_content #bd .mg_content .bd ul li:last-child {border-radius: 0 0 3px 3px; padding-bottom: 10px;}
+		body.mygaia #gaia_content #bd .mg_content .bd ul li:only-child {border-radius: 3px; padding: 10px;}
+		
+		body.mygaia #gaia_content #bd .mg_content .bd ul li .content {width: 270px;}
+		body.mygaia #gaia_content #bd .mg_content .bd ul li .controls {padding: 2px 0 0;}
+		
+		/* Scrollbar */
+		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar {width: 8px; height: 8px;}
+
+		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:start {display: none;}
+		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end {display: block; background: rgba(0,0,0,0.4);}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment {box-shadow: 0 0 5px rgba(0,0,0,0.2); border-radius: 3px; border: 1px solid rgba(0,0,0,0.4); height: 14px; width: 14px; display: block; background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:hover, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:hover {background-color: rgba(0,0,0,0.17)}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:active, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:active {background-color: rgba(0,0,0,0.3)}
+
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement {border-bottom: 0; border-radius: 3px 3px 0 0;}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment {border-radius: 0 0 3px 3px;}
+
+		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-track {margin: 10px 0;}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-track-piece {border-radius: 7px 0 0 7px; box-shadow: 0 0 5px rgba(0,0,0,0.2) inset; background: rgba(0,0,0,0.05);}
+			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb {border-radius: 7px 0 0 7px; border: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
+				body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,0.17)}
+				body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb:active {background-color: rgba(0,0,0,0.3)}
+
+	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds {padding: 0;}
+	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds > p {padding: 10px 12px; margin: 0;}
+	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds ul li div.message {width: auto; float: none;}
+
+	/* Suggested Content */
+	body.mygaia #gaia_content #bd .mg_content.suggested {display: none;}
+	body.mygaia #gaia_content #bd .mg_content.suggested .mg_sprite.hd a#edit_interests {font: normal 11px Arial, Helvetica, sans-serif; top: 4px; right: 0;}
+
+	body.mygaia #gaia_content #bd .mg_content.suggested h3 {padding: 3px 5px;}
+
+	body.mygaia #gaia_content #bd .mg_content.suggested .bd {padding: 0; max-height: 145px;}
+		body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends {}
+			body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend {width: auto; display: block; float: none; clear: both; overflow: auto; margin: 0; padding: 5px;}
+			body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend:hover {background: #E3FF99;}
+				body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend .left.avatar img {width: 24px; height: 24px;}
+				body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend .left:not(.avatar) a:first-child {font-size: 11px; font-weight: bold; display: block;}
+				body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend .left:not(.avatar) a:not(:first-child) {margin: 0; display: inline;}
+				body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend .left:not(.avatar) a:last-child {border-left: 1px solid #3E53A2; padding-left: 5px; margin-left: 1px;}
+			body.mygaia #gaia_content #bd .mg_content.suggested .bd #suggested_friends .friend .close {top: 5px; right: 5px;}
+
+	/* Friends */
+	body.mygaia #gaia_content #bd #friends2.mg_content {margin: 0;}
+	body.mygaia #gaia_content #bd #friends2.mg_content .bd {padding: 5px 5px 0; max-height: none; background: #FFF; overflow: visible;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd * {box-sizing: border-box;}
+		
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd #find_friends_a {top: 5px; right: 0; z-index: 5;}
+		
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends {}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 0 0 0 24px; margin: 0 0 5px; box-sizing: border-box; width: 210px; overflow: visible; height: 24px; border-radius: 0;}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:nth-child(odd) {margin: 0 8px 5px 0;}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover {background: rgb(223,244,198);}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover .user_name a {}
+		
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .user_name {padding: 0; display: block; font-size: 12px;}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .user_name a {display: block; padding: 5px 7px; font-weight: normal;}
+
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .dropBox {margin: 0; background: #FFF; width: 24px; height: 24px; position: absolute; top: 0; left: 0;}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .dropBox img {width: 24px; height: 24px;}
+			
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status {position: absolute; right: 8px; top: 8px; width: 7px; height: 7px; font-size: 0; border-radius: 10px; background: rgb(130,208,47);}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status a {font-size: 9px; top: 8px; right: -8px; width: 186px; padding: 0 0 0 8px; position: absolute;}
+			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover .online_status a {background: rgb(223,244,198);}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status.offline {background: #EEE;}
+		
+		body.mygaia #gaia_content #bd #friends2.mg_content .ft.see_all {border: 0 none; display: block !important; margin: 5px 0 0; height: 15px; background: none;}
+			body.mygaia #gaia_content #bd #friends2.mg_content .ft.see_all .see_all {background: none; padding: 0; float: right;}
+
+	/* Clear DIV */
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear {font-size: inherit !important; width: 215px; height: auto !important; margin: 0; position: absolute; right: 10px; top: 45px;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear:empty {background: #316589 url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/load.gif) center center no-repeat; margin-top: 25px; height: 50px !important;}
+	
+    /* BetterGaia Sidebar */
+    body.mygaia #bg_sidebar * {box-sizing: border-box;}
+    body.mygaia #bg_sidebar .bgversion {float: right; padding-top: 4px;}
+    body.mygaia #bg_sidebar > * {border-bottom: 1px solid rgba(0,0,0,0.05); padding: 7px 9px;}
+    body.mygaia #bg_sidebar p {font-size: 11px; margin: 0;}
+    body.mygaia #bg_sidebar a {display: block; cursor: pointer;}
+    body.mygaia #bg_sidebar > a:first-of-type {font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding-top: 0; cursor: default;}
+
+    body.mygaia #bg_sidebar section {height: 150px; font-size: 11px; overflow: auto;}
+    body.mygaia #bg_sidebar section strong {border-bottom: 1px solid rgba(0,0,0,0.05); display: block; padding: 0 5px 5px;}
+    body.mygaia #bg_sidebar section ol {padding: 0 0 10px;}
+    body.mygaia #bg_sidebar section ol li {margin: 2px 0 0 20px;}
 
 /* Private messages */
 body.mail #bg_messages {display: block; box-sizing: border-box; clear: both; overflow: auto; width: 900px;}
@@ -351,7 +543,7 @@ body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 		body.mail #gaia_content .message_box.bbcodable {margin-top: 36px !important;}
 
 /* Guilds */
-body.guilds #content {background: none;}
+body.guilds #content {background: none; margin: 0 auto;}
 body.guilds #content > #content-padding {background: #FFF; width: 930px; margin: 15px auto; padding: 10px; border-radius: 4px;}
 
 	/* Index Page */
@@ -540,6 +732,7 @@ body #gaia_footer ul {font-size: 11px;}
     /* Credits */
     body #gaia_footer #bg_credits {display: inline-block; float: right;}
     body #gaia_footer #bg_credits a {color: #FFF;}
+    body #gaia_footer #bg_credits a:hover {text-decoration: underline;}
     #bg_credits .bgtopofpage {border-radius: 20px; height: 19px; margin: -2px 5px 0 2px; line-height: 18px; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)); text-shadow: 0 1px 0 rgba(0,0,0,0.2); padding: 0 8px; font-size: 11px; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #FFF; cursor: pointer; display: inline-block;}
-    #bg_credits .bgtopofpage:hover {background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7); text-decoration: none;}
+    #bg_credits .bgtopofpage:hover {background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)); color: rgba(255,255,255,0.7); text-decoration: none !important;}
     #bg_credits .bgtopofpage:active {background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2)); color: #FFF;}

