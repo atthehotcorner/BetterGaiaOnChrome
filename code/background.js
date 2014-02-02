@@ -19,66 +19,24 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             else chrome.tabs.create({url: optionsUrl});
         });	
     }
-    else if (request.elements == "reset") {setPrefs(); sendResponse({"reset": true});}
-});
-
-chrome.runtime.onConnect.addListener(function(port) {
-	console.assert(port.name == 'bettergaia');
-	port.onMessage.addListener(function(msg) {
-		if (msg.request == 'usertag') {
-			var stored = false;
-			var usertags = localStorage["usertags"].split("ITSurHRTnSOL");
-
-			// not empty
-			if (usertags.length >= 1 && usertags[0] != "") {
-				for (var i=0; i < usertags.length; ++i) {
-					usertags[i] = JSON.parse(usertags[i]);
-
-					// check if user already in store and replace
-					if (usertags[i].userid == msg.tag.userid) {
-						usertags[i] = msg.tag;
-						stored = true;
-					}					
-				}
-			}
-			// add to end otherwise
-			if (stored == false) {
-				if (usertags[0] == "") usertags[0] = msg.tag;
-				else usertags.push(msg.tag);
-				stored = true;
-			}
-
-			// save to localstorage
-			if (stored == true) {
-				var stringifiedUserTags = "";
-				for (var i=0; i < usertags.length; ++i) stringifiedUserTags += JSON.stringify(usertags[i]) + "ITSurHRTnSOL";
-				if (stringifiedUserTags.slice(-12) == "ITSurHRTnSOL") stringifiedUserTags = stringifiedUserTags.slice(0,-12);
-				
-				// save
-				localStorage["usertags"] = stringifiedUserTags;
-				port.postMessage({result: 'success'});
-			}
-			else port.postMessage({result: 'fail'});
-		}
-  });
+    else if (request.elements == 'reset') {sendResponse({'reset': true});}
 });
 
 // On start
 chrome.runtime.onStartup.addListener(function() {
-	// Create alarms
-	if (JSON.parse(localStorage["main.features.notifications"]) == true) {
-		chrome.alarms.create('gaia-notifications', {
-			when: 0,
-			periodInMinutes: parseInt(localStorage["main.features.notifications.time"], 10)
-		});
-	}
+    // Create alarm for user notifications
+    chrome.storage.sync.get(['notifications', 'notifications.time'], function(data) {
+        if (typeof(data['notifications']) == 'undefined') data['notifications'] = true;
+        if (typeof(data['notifications.time']) == 'undefined') data['notifications.time'] = 15;
+        if (data['notifications']) chrome.alarms.create('gaia-notifications', {when: 0, periodInMinutes: data['notifications.time']});
+    });
 });
 
 // Fire alarm
 chrome.alarms.onAlarm.addListener(function(alarm) {
 	if (alarm.name == 'gaia-notifications') {	
 		$.get('http://gaiaonline.com/supportal/header', function(data) {
-			var r = $("<div/>").html(data);
+			var r = $('<div/>').html(data);
 
 			if (r.find('#notifyBubbleContainer').length == 1) {
 				var text = [], userimg = '';
@@ -102,7 +60,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 						title: 'Hey ' + r.find('#gaia_header .header_content .userName ul.hud-item-list li.avatarName span').text().slice(0,-1) + ', you got...',
 						message: '',
 						items: text,
-						buttons: [{title: 'Open Gaia', iconUrl: 'images/icons/mailbox.png'}, {title: 'Hide these notifications for now', iconUrl: 'images/icons/clock.png'}],
+						buttons: [{title: 'Open Gaia', iconUrl: 'images/mailbox.png'}, {title: 'Hide these notifications for now', iconUrl: 'images/clock.png'}],
 						priority: 1
 					}, function() {}); 
 				}			

@@ -9,7 +9,7 @@ var css = '';
 
 // Hide Ads
 if (prefs['adsHide'] == true)
-css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}';
+css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}';
 
 // Instant CSS Updating
 if (prefs['instantUpdating'] == true) {

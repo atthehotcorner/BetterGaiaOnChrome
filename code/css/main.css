@@ -15,7 +15,7 @@ body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_bloc
 }
 
 /* Hide Ads *
-#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame {display: none !important;}*/
+#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}*/
 
 /* Stretch Page, Remove BG */
 body > #content {width: 1140px; border: none; background: none; margin-left: auto; margin-right: auto;}

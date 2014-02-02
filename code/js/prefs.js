@@ -8,7 +8,9 @@ var prefs = {
     // General
     'adsHide': true,
     'instantUpdating': true,
-  
+    'notifications': true,
+    'notifications.time': 15,
+
     // Header
     'header.widgets': true,
     'header.drawAll': true,
@@ -54,7 +56,7 @@ var prefs = {
     // Usertags
     'usertags': true,
     'usertags.list': {
-        '12345': ['cat', 'He is a cat.', 2014]
+        '12345': ['cat', 'He is a cat.', 'http://google.com', 2014]
     },
 
     // Other
