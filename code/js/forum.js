@@ -71,7 +71,7 @@ if (prefs['usertags'] == true) {
 		if (avibox.find('a.avatar').length == 0) userid = avibox.find('#animated_item > object').attr('onmousedown').replace("window.location='", '').split("/")[5];
 		else userid = avibox.find('a.avatar').attr("href").split("/")[5];
 	
-		$(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span title="Tag this user"></span></div>');
+		$(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span></span></div>');
 	});
 	
 	// Add stored tags

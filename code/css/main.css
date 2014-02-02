@@ -6,12 +6,12 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 html[xmlns\:og], html[xmlns\:fb] {background-color: transparent;}
 html, body {height: auto !important; min-height: 100%;}
-body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/background/legacy.jpg) center top repeat #666;}
+body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/background/legacy.jpg) center top repeat #666;}
 
 /* Glyphicons */
 @font-face {
     font-family: 'Glyphicons Halflings';
-    src: url('chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/code/css/glyphicons-halflings-regular.woff') format('woff');
+    src: url('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/css/glyphicons-halflings-regular.woff') format('woff');
 }
 
 /* Hide Ads *
@@ -23,7 +23,7 @@ body #gaia_content, body #gaia_content.grid_madonna, body #gaia_content.grid_bil
 body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 
 /* Home Page */
-body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; box-sizing: border-box; border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 0 0 10px rgba(0,0,0,0.25) inset; position: relative; margin: 0 10px 10px 0; background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/logo/500.png); background-size: 100% 100%;}
+body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; box-sizing: border-box; border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 0 0 10px rgba(0,0,0,0.25) inset; position: relative; margin: 0 10px 10px 0; background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/500.png); background-size: 100% 100%;}
 body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last):after {display: block; position: absolute; top: 35px; left: 33px; content: 'BetterGaia'; text-transform: uppercase; letter-spacing: 5px; color: #444; font-size: 20px;}
 body.index #gaia_content.grid_madonna #bd-div {min-height: 486px;}
 
@@ -93,7 +93,7 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     body #gaia_header .hud-account ul#bg_logo a {padding: 0 15px; color: #FFF; display: block; height: 25px; font-size: 19px; line-height: 28px; text-decoration: none; padding: 0 5px 0 15px;}
 
 		body #gaia_header .hud-account ul#bg_logo.bgscrolling {display: block;}
-		body #gaia_header .header_content .notificationChanges {opacity: 1; -webkit-filter: blur(0); transition: opacity 0 ease 0, -webkit-filter 0 ease 0;}
+		body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0, -webkit-filter: 0 ease 0;}
 		body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -500px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s; -webkit-filter: blur(1px);}
 		body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; -webkit-filter: blur(0); transition: opacity 0 ease 0, -webkit-filter 0 ease 0;}
 		body #gaia_header .header_content .notificationChanges.bgscrolling h3 {-webkit-transform: scaleY(-1);}
@@ -526,7 +526,7 @@ body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
 body #gaia_footer ul {font-size: 11px;}
 
     /* Links */
-    body #gaia_footer > ul {padding: 5px 110px 5px 5px; margin: 0; border: 2px solid rgba(222,232,254,0.9); border-radius: 0; width: auto; float: none; background: url(chrome-extension://njohilcffefdmkfhmhjeifgacmjnggla/images/logo/text.png) bottom right no-repeat, linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); background-size: contain;}
+    body #gaia_footer > ul {padding: 5px 110px 5px 5px; margin: 0; border: 2px solid rgba(222,232,254,0.9); border-radius: 0; width: auto; float: none; background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/text.png) bottom right no-repeat, linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); background-size: contain;}
         body #gaia_footer > ul:after {content: ''; display: table; clear: both;}
         body #gaia_footer > ul li {border: 0; padding: 0; text-align: left; width: 100px; float: left; margin: 0 5px 0 0;}
     body #gaia_footer > ul li a {display: block; color: #333 !important; margin: 0 0 1px; padding: 2px 4px; border-radius: 2px; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
