@@ -435,6 +435,7 @@ body.forums #content #post_container .post .postcontent {}
 
 		/* Styles Quotes */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote {padding: 0; margin: 10px 0;}
+    body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote + br + .quote {margin-top: 0;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .quote {margin: 0;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .cite {padding: 3px 5px; display: inline-block; background: rgba(0,0,0,0.05);}		
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .quoted {background: rgba(0,50,83,0.025); border: 1px solid rgba(0,0,0,0.05); padding: 10px;}
