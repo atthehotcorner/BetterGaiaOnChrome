@@ -11,6 +11,10 @@ var css = '';
 if (prefs['adsHide'] == true)
 css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}';
 
+// Float Username
+if (prefs['header.float'] == false)
+css += 'body #gaia_header .hud-account {position: absolute;}';
+
 // Show Suggested Content
 if (prefs['mygaia.suggested'] == false)
 css += 'body.mygaia #gaia_content #bd .mg_content.suggested {display: block;}';
@@ -38,6 +42,10 @@ css += 'body #gaia_header .header_content {background-image: url(' + prefs['head
 // Header Background Base
 if (prefs['header.background.base'] != 'default')
 css += 'body #gaia_header {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
+
+// Header Background Stretch
+if (prefs['header.background.stretch'] == false)
+css += 'body div#gaia_header {width: 1140px;}';
 
 // Logo
 if (prefs['header.logo'] != 'default') 

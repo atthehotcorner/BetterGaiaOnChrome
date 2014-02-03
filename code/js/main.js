@@ -20,11 +20,13 @@ $('body > #gaia_footer > p').append('<span id="bg_credits">\
 </span>');
 
 // Gaia Logo
-$('#gaia_header .userName').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
+if (prefs['header.float'] == true) {
+    $('#gaia_header .userName').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
 
-$(window).scroll(function() {
-    $('#bg_logo, #gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
-});
+    $(window).scroll(function() {
+        $('#bg_logo, #gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
+    });
+}
 
 // Add BG Siderbar to MyGaia
 if (document.location.pathname.indexOf('/mygaia/') > -1) {
