@@ -33,7 +33,7 @@ if (prefs['forum.previewThreads'] == true) {
 // Adds Instants
 $('body.forums .post .message .messagecontent .post-options ul').each(function () {
 	if ($(this).find('a.post-quote').length > 0 || $(this).find('a.post-edit').length > 0) 
-      $(this).prepend('<div class="bg_instant"><li><a class="bg_instanttext">Instant:</a></li></div>');
+      $(this).prepend('<div class="bg_instant"><li><a class="bg_instanttext"><span>Instant</span></a></li></div>');
 
 	if ($(this).find('a.post-quote').length > 0) {
 		$(this).find('.bg_instant').append('<li><a class="bg_instantquote"><span>Quote</span></a></li>');
