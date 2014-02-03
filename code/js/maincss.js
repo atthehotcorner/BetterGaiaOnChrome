@@ -57,10 +57,19 @@ var rgb = hexToRgb(prefs['header.nav']);
 css += 'body #gaia_header .header_content .goldMessage {background: linear-gradient(to right, rgba('+ rgb +',0), rgba('+ rgb +',0.5), rgba('+ rgb +',0)), radial-gradient(ellipse at center top, rgba(255,255,255,0.25), rgba(255,255,255,0) 50%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.25), rgba(0,0,0,0) 50%)';
 
 // Nav Hover
-css += 'body #gaia_header #gaia_menu_bar #nav > li:hover, body #gaia_header #gaia_menu_bar #nav > li:hover:active, body #gaia_header #gaia_menu_bar #nav > li > .main_panel_container >  .main_panel ~ .panel_bottom {background-color: #' + prefs['header.nav.hover'] + ';}';
+css += '#gaia_header #gaia_menu_bar #nav > li:not(#menu_search):hover, #gaia_header #gaia_menu_bar #nav > li:not(#menu_search):hover:active {background-color: #' + prefs['header.nav.hover'] + ';}';
 
 // Nav Current
-css += 'body #gaia_header #gaia_menu_bar #nav > li.selected {background-color: #' + prefs['header.nav.current'] + ';}';
+css += '#gaia_header #gaia_menu_bar #nav > li.selected {background-color: #' + prefs['header.nav.current'] + ';}';
+
+// Add CSS
+var head = document.getElementsByTagName('head');
+if (head.length > 0) {
+    var style = document.createElement('style');
+    style.setAttribute('bg-css', '');
+    style.appendChild(document.createTextNode(css));
+    head[0].appendChild(style);
+}
 
 // Instant CSS Updating
 if (prefs['instantUpdating'] == true) {
@@ -76,15 +85,6 @@ if (prefs['instantUpdating'] == true) {
             }
         }
     });
-}
-
-// Add CSS
-var head = document.getElementsByTagName('head');
-if (head.length > 0) {
-    var style = document.createElement('style');
-    style.setAttribute('bg-css', '');
-    style.appendChild(document.createTextNode(css));
-    head[0].appendChild(style);
 }
 
 } // ---
