@@ -21,8 +21,8 @@ var options = {
 		$("#pages .page.features section aside li.range span.value").html(localStorage["main.features.notifications.time"]);
 
 		// Set up preview
-		if ($.cookie('preview-hide') == 'true') $("#preview > div").addClass("hide");
-		if ($.cookie('preview-small') == 'true') $("#preview > div").addClass("small");
+		//if ($.cookie('preview-hide') == 'true') $("#preview > div").addClass("hide");
+		//if ($.cookie('preview-small') == 'true') $("#preview > div").addClass("small");
 
 		// -- Add backgrounds
 		$.ajax({type: "GET", url: "data/backgrounds.json", dataType: "json", async: false,
@@ -89,7 +89,7 @@ var options = {
 				else {
 					$("#header aside ol.hOther input").val(header).prop("checked", true);
 				}
-				$("#preview .header").attr("style", "background-image: url(" + header.split(", ")[0] + ");");
+				//$("#preview .header").attr("style", "background-image: url(" + header.split(", ")[0] + ");");
 
 			},
 			error: function() {}
@@ -120,7 +120,7 @@ var options = {
 		//$("#preview .thread_header .linklist").css({"background-color": "#" + localStorage["style.forums.postHeader"]});
 
 		// -- Add post formats
-		var postformating = localStorage["posts.formatter.formats"].split("ITSurHRTnSOL");
+		//var postformating = localStorage["posts.formatter.formats"].split("ITSurHRTnSOL");
 		var formats = "";
 	
 		if (postformating.length >= 1 && postformating[0] != "") {
@@ -151,7 +151,7 @@ var options = {
 		$("#pages .page.postformatting section aside li.range span.value").html(localStorage["posts.settings.quotes.rangeNumber"]);
 	
 		// -- Shortcuts	
-		var shortcuts = localStorage["shortcuts"].split("ITSurHRTnSOL");
+		//var shortcuts = localStorage["shortcuts"].split("ITSurHRTnSOL");
 		var links = "";
 	
 		if (shortcuts.length >= 1 && shortcuts[0] != "") {
@@ -171,7 +171,7 @@ var options = {
 		// -- END shortcuts
 
 		// -- Usertags	
-		var usertags = localStorage["usertags"].split("ITSurHRTnSOL");
+		/*var usertags = localStorage["usertags"].split("ITSurHRTnSOL");
 		var tags = "";
 	
 		if (usertags.length >= 1 && usertags[0] != "") {
@@ -198,7 +198,7 @@ var options = {
 				</li>";
 			});
 			$("#usertags aside").append(tags);
-		}
+		}*/
 		// -- END usertags
 
 		this.loadPrefs();
@@ -715,9 +715,9 @@ var options = {
 		}
 		
 		// Event tracking
-		$("#preview a.toggle").click(function(){ _gaq.push(['_trackEvent', 'Settings', 'clicked', 'Preview Unpin']); });
+		/*$("#preview a.toggle").click(function(){ _gaq.push(['_trackEvent', 'Settings', 'clicked', 'Preview Unpin']); });
 		$("#preview a.size").click(function(){ _gaq.push(['_trackEvent', 'Settings', 'clicked', 'Preview Shrink']); });
-		$("#header h3 a.right").click(function(){ _gaq.push(['_trackEvent', 'Settings', 'clicked', 'Get More Headers']); });
+		$("#header h3 a.right").click(function(){ _gaq.push(['_trackEvent', 'Settings', 'clicked', 'Get More Headers']); });*/
 	}
 }
 

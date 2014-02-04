@@ -4,14 +4,13 @@
 	<meta charset=utf-8 />
 	<title>BetterGaia Settings</title>
 
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="main.css">
 	<link rel="icon" href="../icon/16.png">
-	<script src="../code/jquery.min.js"></script>
+	<script src="../code/js/jquery.min.js"></script>
 	<script src="jquery-ui.min.js"></script>
-	<script src="jquery.cookie.js"></script>
 	<script src="jscolor/jscolor.js"></script>
     <script src="moment.min.js"></script>
-	<script src="../code/analytics.js"></script>
+	<script src="../code/js/analytics.js"></script>
 	<script src="options.js"></script>
 </head>
 
@@ -19,7 +18,7 @@
 	<div id="message"><strong>Saved!</strong></div>
 
 	<header>
-		<h1>BetterGaia Settings</h1>
+		<h1>Settings</h1>
 		<menu>
 			<a href="#" class="features current">Home</a>
 			<a href="#stylingpage" class="styling">Personalize</a>
@@ -38,14 +37,18 @@
 				<aside>
 					<li class="checkbox">Use Draw All for Daily Chance
           	<input pref="main.features.drawAll" type="checkbox" /></li>
-					<li class="checkbox">Show Avatar Stats in the header
-          	<input pref="main.features.avatarStats" type="checkbox" /></li>
-					<li class="checkbox">Show content in the center of the page
-          	<input pref="main.features.centerPage" type="checkbox" /></li>
 					<li class="checkbox">Enhance private messages and use instant search
           	<input pref="main.features.messages" type="checkbox" /></li>
 					<li class="checkbox">Hide advertisements 
           	<input pref="main.features.hideAds" type="checkbox" /></li>
+					<li class="checkbox">Hide suggested content in MyGaia
+          	<input pref="main.features.suggestedContent" type="checkbox" /></li>
+					<li class="checkbox">Stretch the header background
+            <input pref="main.handn.header.overflow" type="checkbox" /></li>
+					<li class="checkbox">Float username and notifications on top of the page
+          	<input pref="main.handn.bar.float" type="checkbox" /></li>
+					<li class="checkbox">Add widgets by your username
+          	<input pref="main.handn.bar.links" type="checkbox" /></li>
           <li class="spacer"></li>
 				</aside>
 			</section>
@@ -56,65 +59,21 @@
 				<aside>
 					<li class="checkbox">Show desktop notifications for my account when logged in
           	<input pref="main.features.notifications" type="checkbox" /></li>
-          <li class="range">Interval to check for account updates
+          <li class="range">Check for new notifications every
           	<input pref="main.features.notifications.time" type="range" step="1" min="1" max="60" value="5" /><span class="value">5</span></li>
-				</aside>
-			</section>
-
-			<section>
-				<h3>MyGaia</h3>
-
-				<aside>
-					<li class="checkbox">Hide Suggested Content
-          	<input pref="main.features.suggestedContent" type="checkbox" /></li>
-          <li class="spacer"></li>
-				</aside>
-			</section>
-
-			<section>
-				<h3>Header</h3>
-				
-				<aside>
-					<li class="checkbox">Stretch the header background
-            <input pref="main.handn.header.overflow" type="checkbox" /></li>
-					<li class="checkbox">Show <em>Get Gaia Cash</em> and <em>Refill</em> buttons
-            <input pref="main.handn.header.getGaiaCash" type="checkbox" /></li>
-				</aside>
-			</section>
-
-			<section>
-				<h3>Username</h3>
-
-				<aside>
-					<li class="checkbox">Float notification bars on top of the page
-          	<input pref="main.handn.bar.float" type="checkbox" /></li>
-					<li class="checkbox">Use widgets by your username
-          	<input pref="main.handn.bar.links" type="checkbox" /></li>
-					<li class="checkbox">Show <em>Welcome back!</em> around your username
-            <input pref="main.handn.bar.showWelcome" type="checkbox" /></li>
-          <li class="spacer"></li>
 				</aside>
 			</section>
 
 			<section>
 				<h3>Forums</h3>
 				<aside>
-					<li class="checkbox">Use a set width for threads
+					<li class="checkbox">Constain width of forums
             <input pref="main.forums.size" type="checkbox" /></li>
 					<li class="checkbox">Show external link warning in same page
             <input pref="main.forums.externalLinks" type="checkbox" /></li>
 					<li class="checkbox">Use thread preview in thread listings
             <input pref="main.forums.previewThreads" type="checkbox" /></li>
-					<li class="checkbox">Hide polls, then show when used
-            <input pref="main.forums.pollDropDown" type="checkbox" /></li>
-					<li class="checkbox">Show post links at the top of posts
-            <input pref="main.forums.quoteAbovePost" type="checkbox" /></li>
-					<li class="checkbox">Show posts with a background
-            <input pref="main.forums.whiteBgAvis" type="checkbox" /></li>
-					<li class="checkbox">Hide Post Tipping for posts
-            <input pref="main.forums.postTipping" type="checkbox" /></li>
-					<li class="checkbox">Use off-white background for posts
-            <input pref="main.forums.postOffWhite" type="checkbox" /></li>
+        <li class="spacer"></li>
 				</aside>
 			</section>
 		</div> <!-- Features -->
@@ -203,7 +162,7 @@
 			</section> <!-- end Background -->
 
 			<section id="header">
-				<h3>Header <a href="http://www.gaiaonline.com/guilds/viewtopic.php?t=22742005" class="right" target="_blank"><button type="button">Get More Headers</button></a></h3>
+				<h3>Header <a href="http://www.gaiaonline.com/guilds/viewtopic.php?t=24085591" class="right" target="_blank"><button type="button">Get More Headers</button></a></h3>
         <p>Select a image to use in the header.</p>
 
 				<aside><div>
