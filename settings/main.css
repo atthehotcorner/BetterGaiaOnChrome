@@ -1,15 +1,27 @@
-﻿/* (c) BetterGaia, bowafishtech.org. v0.4 */
+/*
+Settings CSS
+Copyright (c) BetterGaia and Bowafishtech
+Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+*/
 
 /* Page Reset */
 *:not(button) {margin: 0; padding: 0; outline: none; border: 0; list-style: none; box-sizing: border-box;}
 header, menu, #pages .page, aside, article, footer, address {display: block;}  
 html {background: #FFF; height: 100%;}
-body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #333; min-width: 960px; max-width: 1500px; margin: 0 auto;}
+body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #333; min-width: 960px; max-width: 1500px; margin: 0 auto; height: 100%;}
 
 /* #pages .page Elements */
 a {color: #004A7F; text-decoration: none; cursor: pointer;}
 	a:hover {color: #5D8DAF; text-decoration: none;}
 	a:active {color: #004A7F;}
+
+h1, h2, h3, h4, h5, h6 {font-weight: normal; padding: 0 0 15px; color: #4CA5FF;}
+h1 {font-size: 35px;}
+h2 {font-size: 30px;}
+h3 {font-size: 25px;}
+h4 {font-size: 20px;}
+h5 {font-size: 15px;}
+h6 {font-size: 10px;}
 
 input, textarea, button, select {}
 input[type="checkbox"], input[type="radio"] {cursor: pointer;}
@@ -109,8 +121,8 @@ input[type='checkbox'][disabled]::after {background: #A6A6A6;}
 }
 
 /* Header */
-header {width: 170px; position: absolute; background: -webkit-radial-gradient(top right, 100% 90%, #52B2C0, rgba(209,225,228,0));}
-	header h1 {margin: 33px 0 25px 30px; height: 36px; background: url(../images/logo/text.png) left top no-repeat; background-size: contain; font-size: 14px; display: block; padding: 8px 0 0 62px;}
+header {width: 170px; position: absolute; top: 0; bottom: 0; left: 0; background: linear-gradient(to right, #AEDBE2, #52B2C0); box-shadow: -20px 0 20px -20px rgba(0,0,0,0.2) inset;}
+header h1 {margin: 33px 0 25px 30px; height: 36px; background: url(../images/logo/text.png) left top no-repeat; background-size: contain; font-size: 14px; display: block; padding: 8px 0 0 62px;}
 @media (min-height: 440px) {
     header {position: fixed;}
 }
@@ -123,7 +135,7 @@ header {width: 170px; position: absolute; background: -webkit-radial-gradient(to
 			menu a.current {background: #FFF; color: #222;}
 
 /* Pages */
-#pages {background: #FFF; padding: 30px; margin-left: 170px; box-shadow: -20px 0 20px -20px rgba(0,0,0,0.2); min-width: 785px;}
+#pages {background: #FFF; padding: 30px; margin-left: 170px; min-width: 785px;}
 #pages .page {background: #FFF; visibility: hidden; position: relative; height: 0; opacity: 0; overflow: hidden;}
 #pages .page.selected {visibility: visible; opacity: 1; overflow: visible; height: auto;}
 

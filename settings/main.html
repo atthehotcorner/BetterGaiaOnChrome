@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset=utf-8 />
-	<title>BetterGaia Settings</title>
+    <meta charset=utf-8 />
+    <title>BetterGaia Settings</title>
 
-	<link rel="stylesheet" href="main.css">
-	<link rel="icon" href="../icon/16.png">
-	<script src="../code/js/jquery.min.js"></script>
-	<script src="jquery-ui.min.js"></script>
-	<script src="jscolor/jscolor.js"></script>
-    <script src="moment.min.js"></script>
-	<script src="../code/js/analytics.js"></script>
-	<script src="options.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="../images/logo/48.png">
 </head>
 
 <body>
@@ -36,19 +30,19 @@
 				
 				<aside>
 					<li class="checkbox">Use Draw All for Daily Chance
-          	<input pref="main.features.drawAll" type="checkbox" /></li>
+          	<input pref="header.drawAll" type="checkbox" /></li>
 					<li class="checkbox">Enhance private messages and use instant search
-          	<input pref="main.features.messages" type="checkbox" /></li>
+          	<input pref="pms" type="checkbox" /></li>
 					<li class="checkbox">Hide advertisements 
-          	<input pref="main.features.hideAds" type="checkbox" /></li>
+          	<input pref="adsHide" type="checkbox" /></li>
 					<li class="checkbox">Hide suggested content in MyGaia
-          	<input pref="main.features.suggestedContent" type="checkbox" /></li>
+          	<input pref="mygaia.suggested" type="checkbox" /></li>
 					<li class="checkbox">Stretch the header background
-            <input pref="main.handn.header.overflow" type="checkbox" /></li>
+            <input pref="header.background.stretch" type="checkbox" /></li>
 					<li class="checkbox">Float username and notifications on top of the page
-          	<input pref="main.handn.bar.float" type="checkbox" /></li>
+          	<input pref="header.float" type="checkbox" /></li>
 					<li class="checkbox">Add widgets by your username
-          	<input pref="main.handn.bar.links" type="checkbox" /></li>
+          	<input pref="header.widgets" type="checkbox" /></li>
           <li class="spacer"></li>
 				</aside>
 			</section>
@@ -57,10 +51,25 @@
 				<h3>Notifications</h3>
 
 				<aside>
-					<li class="checkbox">Show desktop notifications for my account when logged in
-          	<input pref="main.features.notifications" type="checkbox" /></li>
-          <li class="range">Check for new notifications every
-          	<input pref="main.features.notifications.time" type="range" step="1" min="1" max="60" value="5" /><span class="value">5</span></li>
+          <li class="range">When logged in, check for and <br>show new notifications on the desktop every
+              <select pref="notifications">
+				          <option value="1">1 minute</option>
+                  <option value="2">2 minutes</option>
+                  <option value="3">3 minutes</option>
+                  <option value="5">5 minutes</option>
+                  <option value="10">10 minutes</option>
+                  <option value="15">15 minutes</option>
+                  <option value="20">20 minutes</option>
+                  <option value="25">25 minutes</option>
+                  <option value="30">30 minutes</option>
+                  <option value="45">45 minutes</option>
+                  <option value="60">1 hour</option>
+                  <option value="120">2 hours</option>
+                  <option value="180">3 hours</option>
+                  <option value="240">4 hours</option>
+                  <option value="300">5 hours</option>
+                  <option value="0">Never</option>
+						  </select>
 				</aside>
 			</section>
 
@@ -68,11 +77,11 @@
 				<h3>Forums</h3>
 				<aside>
 					<li class="checkbox">Constain width of forums
-            <input pref="main.forums.size" type="checkbox" /></li>
+            <input pref="forum.constrain" type="checkbox" /></li>
 					<li class="checkbox">Show external link warning in same page
-            <input pref="main.forums.externalLinks" type="checkbox" /></li>
+            <input pref="forum.externalLinks" type="checkbox" /></li>
 					<li class="checkbox">Use thread preview in thread listings
-            <input pref="main.forums.previewThreads" type="checkbox" /></li>
+            <input pref="forum.previewThreads" type="checkbox" /></li>
         <li class="spacer"></li>
 				</aside>
 			</section>
@@ -229,22 +238,34 @@
 			</section>
 
 			<section>
-				<h3>Quoting</h3>
+				<h4>Quotes</h4>
 				
 				<aside class="columns">
-					<li class="checkbox">When replying, place format before the quote
+					<li class="checkbox">Place format before the quote
           	<input pref="posts.settings.quotes.endOfFormat" type="checkbox" /></li>
 					<li class="checkbox">Remove BBCode from quoted posts
           	<input pref="posts.settings.quotes.removeFormatting" type="checkbox" /></li>
 					<li class="checkbox">Wrap quoted posts in a spoiler tag
           	<input pref="posts.settings.quotes.spoilerWrap" type="checkbox" /></li>
-          <li class="range">Number of lines used to separate post and quotes
-          	<input pref="posts.settings.quotes.rangeNumber" type="range" step="1" min="0" max="10" value="2" /><span class="value">2</span></li>
+          <li class="range">Seperate format and quote with
+                <select pref="">
+				          <option value="1">1 line</option>
+                  <option value="2">2 lines</option>
+                  <option value="3">3 lines</option>
+                  <option value="4">4 lines</option>
+                  <option value="5">5 lines</option>
+                  <option value="6">6 lines</option>
+                  <option value="7">7 lines</option>
+                  <option value="8">8 lines</option>
+                  <option value="9">9 lines</option>
+                  <option value="10">10 lines</option>
+                </select>
+            </li>
 				</aside>
 			</section>
 
 			<section>
-				<h3>Defaults</h3>
+				<h4>Defaults</h4>
 				<p>Choose where you want your post formats to be used.</p>
 
 				<aside class="columns">
@@ -348,4 +369,12 @@
 			</section>
 		</div> <!-- About -->
 	</div> <!-- end sections -->
+
+    <script src="../code/js/jquery.min.js"></script>
+    <script src="../code/js/prefs.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jscolor/jscolor.js"></script>
+    <script src="moment.min.js"></script>
+    <script src="../code/js/analytics.js"></script>
+    <script src="main.js"></script>
 </body>
