@@ -52,16 +52,14 @@ function Main() {
     });
 };
 
-// Set defaults
+// Save a default
 var defaultPrefs = prefs;
-var savedPrefs;
 
 // Get synced settings
 chrome.storage.sync.get(null, function(response) {
-    savedPrefs = response;
+    for (var key in response) {
+        try {prefs[key] = response[key];}
+        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
+    }
     Main();
-  /*for (var key in response) {
-		try {prefs[key] = response[key];}
-		catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
-  }*/
 });
