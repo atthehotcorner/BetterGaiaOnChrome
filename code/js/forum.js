@@ -133,7 +133,7 @@ if (prefs['usertags'] == true) {
     if (!$.isEmptyObject(tags)) {
         $.each(tags, function(key, tag){
             if ($('.bgUserTag a[userid="' + key + '"]')) {
-                var url = tag[2];console.log(tag)
+                var url = tag[2];
                 if (url.match(/\S/) && url.length > 1) $('.bgUserTag a[userid="' + key + '"]').attr({href: url}).text(tag[1]);
                 else $('.bgUserTag a[userid="' + key + '"]').text(tag[1]);
             }
