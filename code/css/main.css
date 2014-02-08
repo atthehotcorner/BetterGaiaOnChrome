@@ -141,7 +141,7 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
         #bg_widgets li.bgmessages > a:before {content: '\2709';}
         #bg_widgets li.bgthreads > a:before {content: '\e044';}
         #bg_widgets li.bgwatchlist > a:before {content: '\e105';}
-		#bg_widgets li.bgsettings > a:before {content: '\e019';}
+        #bg_widgets li.bgsettings > a:before {content: '\e019';}
     #bg_widgets li > a:after {display: block; position: absolute; background: #FFF; color: #222; text-align: center; width: 70px; border-radius: 3px; padding: 5px; font-size: 11px; line-height: 11px; top: 28px; left: 50%; margin-left: -35px; transition: all 0.2s ease; opacity: 0; margin-top: 10px; pointer-events: none; z-index: 3; box-shadow: 0 1px 3px rgba(0,0,0,0.5);}
         #bg_widgets li.bgfriends > a:after {content: 'Friends';}
         #bg_widgets li.bgmessages > a:after {content: 'Private Messages';}
