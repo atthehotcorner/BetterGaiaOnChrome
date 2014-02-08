@@ -31,6 +31,14 @@ function Main() {
         else $(this).prop('disabled', true);
     });
 
+    // Set bar links
+    $('bar a[pref]').each(function(){
+        var pref = $(this).attr('pref');
+        if (typeof(prefs[pref]) != 'undefined') $(this).attr('value', prefs[pref]);
+        if ($(this).attr('value') == 'false') $(this).closest('page').addClass('off');
+        else $(this).closest('page').removeClass('off');
+    });
+
     // Insert formats
     $.each(prefs['format.list'], function(key, format) {
         $('#postformating aside format.add').before('<format>' + key + '</format>');
@@ -42,11 +50,11 @@ function Main() {
 
     // Insert shortcuts
     $.each(prefs['header.shortcuts.list'], function(name, url) {
-        $('#shortcuts aside').before('<link>' + name + url + '</link>');
+        $('#shortcuts aside slink.add').before('<slink>' + name + ': ' + url + '</slink>');
     });
     
-    $('#shortcuts aside link.add').on('click', function(){
-        $(this).before('<link>Kat</link>');
+    $('#shortcuts aside slink.add').on('click', function(){
+        $(this).before('<slink>Kat</slink>');
     });
 
     // Enable Saving
@@ -75,6 +83,37 @@ function Save() {
             chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
         }
     });
+
+		// Update bar links
+		$('bar a[pref]').on('click', function(){
+        $(this).attr('value', ($(this).attr('value') == 'true')? false:true);
+        var pref = $(this).attr('pref'), value = ($(this).attr('value') == 'true')? true:false;
+        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+        if ($(this).attr('value') == 'false') $(this).closest('page').addClass('off');
+        else $(this).closest('page').removeClass('off');
+		});
+
+		// Reset
+		$('page.about input.agreeReset').on('click', function(){
+        if($(this).prop('checked')) {
+            $("page.about button.reset").show();
+            $(this).prop("disabled", true);
+        }
+		});
+
+		$('page.about button.reset').on('click', function(){
+        localStorage.clear();
+        chrome.storage.local.clear(function(){
+            chrome.storage.sync.clear(function(){
+                chrome.runtime.reload();
+            });
+        });
+		});
 }
 
 $(window).scroll(function() {

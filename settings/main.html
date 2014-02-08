@@ -206,13 +206,13 @@
 
         <page class="postformatting">
             <bar>
-                <a class="disable" pref="format">On</a>
+                <a class="disable" pref="format"></a>
                 <a class="save">Save</a>
             </bar>
     
             <section id="postformating">
                 <h3>Post Formats</h3>
-                <p>Style your forum posts. Your first format will be the one inserted automatically.</p>
+                <p>Style your forum posts. Your first format will be inserted automatically.</p>
 
                 <aside>
                     <format class="add"></format>
@@ -257,7 +257,7 @@
 
         <page class="shortcuts">	
             <bar>
-                <a class="disable" pref="shortcuts">On</a>
+                <a class="disable" pref="header.shortcuts"></a>
                 <a class="save">Save</a>
             </bar>
 
@@ -266,14 +266,14 @@
        	        <p>Edit the links that are shown next by your username.</p>
 
                 <aside>
-                    <link class="add"></link>
+                    <slink class="add"></slink>
                 </aside>
             </section>
         </page> <!-- Shortcuts -->
 
         <page class="usertags">
             <bar>
-                <a class="disable" pref="usertags">On</a>
+                <a class="disable" pref="usertags"></a>
             </bar>
 
             <section id="usertags">
@@ -284,70 +284,56 @@
             </section>
         </page> <!-- User tags -->
 
-		<page class="about">
-			<section>
-				<h3>About</h3>
+        <page class="about">
+            <section>
+                <h3>About</h3>
 
-				<aside>
-					<li>
-						<p>BetterGaia is an add-on that changes how you experience Gaia Online. It's not a clumsy toolbar nor a useless menu. BetterGaia redesigns Gaia's layout, with your ideas in mind.</p>
-						<p>BetterGaia is a different kind of add-on. It doesn't add bulky menus, excessive buttons, or unattractive features. BetterGaia changes how Gaia looks. A simple change like redesigning Gaia's layout does sounds small, but alltogether it makes a big impact.</p>
-						<p>Thanks for joining users just like you that now experience Gaia in a whole new perspective. Do everyday tasks on Gaia more quickly and efficiently than before, with redesigned forums, improved site UI, and pages that just work, better.</p>
+                <aside>
+                    <p>BetterGaia is an add-on that changes how you experience Gaia Online. It's not a clumsy toolbar nor a useless menu. BetterGaia redesigns Gaia's layout, with your ideas in mind.</p>
+                    <p>BetterGaia is a different kind of add-on. It doesn't add bulky menus, excessive buttons, or unattractive features. BetterGaia changes how Gaia looks. A simple change like redesigning Gaia's layout does sounds small, but alltogether it makes a big impact.</p>
+                    <p>Thanks for joining users just like you that now experience Gaia in a whole new perspective. Do everyday tasks on Gaia more quickly and efficiently than before, with redesigned forums, improved site UI, and pages that just work, better.</p>
+                    <p><a href="http://bowafishtech.org/" target="_blank"><button>bowafishtech</button></a> Think the future.</p>
+                </aside>
+            </section>
 
-						<p><a href="http://bowafishtech.org/" target="_blank"><button>bowafishtech</button></a> Think the future.</p>
-					</li>
-				</aside>
-			</section>
+            <section>
+                <h4>Credits</h4>
+                <p>BetterGaia would like to thank:</p>
 
-			<section>
-				<h3>Credits</h3>
-				<p>BetterGaia would like to thank:</p>
+                <aside>
+                    <li>jQuery</li>
+                    <li>Chrome</li>
+                    <li>Design language formally known as Metro</li>
+                    <li>Inspiration, ideas from Reddit Enhancement Suite</li>
+                    <li>Patterns made by Travis Beckham - squidfingers.com</li>
+                    <li>Backgrounds designed by Evan Eckard - dinpattern.com</li>
+                    <li>Fugue Icons created by Yusuke Kamiyamane - pinvoke.com</li>
+                    <li>Background created by Matt Forsythe - comingupforair.net/ojingogo</li>
+                    <li>Gaia Online</li>
+                    <li>Our beta testers</li>
+                    <li>And of course the regulars</li>
+                </aside>
+            </section>
 
-				<aside>
-					<li>jQuery</li>
-          <li>Chrome</li>
-          <li>Design language formally known as Metro</li>
-          <li>Inspiration, ideas from Reddit Enhancement Suite</li>
-          <li>Patterns made by Travis Beckham - squidfingers.com</li>
-          <li>Backgrounds designed by Evan Eckard - dinpattern.com</li>
-          <li>Fugue Icons created by Yusuke Kamiyamane - pinvoke.com</li>
-          <li>Background created by Matt Forsythe - comingupforair.net/ojingogo</li>
-          <li>Gaia Online</li>
-          <li>Our beta testers</li>
-          <li>And of course the regulars</li>
-				</aside>
-			</section>
+            <section>
+                <h4>Instant Update</h4>
 
-			<section>
-				<h3>Instant Update</h3>
-				
-				<aside>
-					<li>Update and fix user experience breaking issues in between regular updates for BetterGaia.</li>
-          <li><input pref="instantUpdate" type="checkbox" /></li>
-				</aside>
-			</section>
+                <aside>
+                    <li>Update and fix user experience breaking issues in between regular updates. <input pref="instantUpdating" type="checkbox"></li>
+				        </aside>
+            </section>
 
-			<section>
-				<h3>Reset</h3>
-				
-				<aside>
-					<li>Is BetterGaia not functioning? Like to reset all of BetterGaia's settings?</li>
-          <li>I acknowledge my preferences will be lost. <input class="agreeReset" type="checkbox" /></li>
-					<li><button class="reset">Reset BetterGaia</button></li>
-				</aside>
-			</section>
+            <section>
+                <h4>Reset</h4>
 
-			<section style="pointer-events: none; display: none;">
-				<h3>Sync</h3>
-				
-				<aside>
-					<li>Save your settings for BetterGaia with Chrome Sync and access them on any computer with Google Chrome. <br>You must be signed into Google Chrome in order for settings to save to the cloud.</li>
-          <li><strong>Last Change:</strong> <span class="lastSync">Never</span>
-          	<input pref="sync" type="checkbox" /></li>
-				</aside>
-			</section>
-		</page> <!-- About -->
-	</div> <!-- end sections -->
+                <aside>
+                    <p>Is BetterGaia not functioning? Like to reset all of BetterGaia's settings?</p>
+                    <li>I acknowledge my preferences will be lost. <input class="agreeReset" type="checkbox"></li>
+                    <li><button class="reset">Reset BetterGaia</button></li>
+                </aside>
+            </section>
+        </page> <!-- About -->
+    </div> <!-- end sections -->
 
     <script src="../code/js/jquery.min.js"></script>
     <script src="../code/js/prefs.js"></script>
