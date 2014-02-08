@@ -131,9 +131,9 @@ if (prefs['usertags'] == true) {
     });
 
     if (!$.isEmptyObject(tags)) {
-        $.each(function(key, tag){
+        $.each(tags, function(key, tag){
             if ($('.bgUserTag a[userid="' + key + '"]')) {
-                var url = tag[2];
+                var url = tag[2];console.log(tag)
                 if (url.match(/\S/) && url.length > 1) $('.bgUserTag a[userid="' + key + '"]').attr({href: url}).text(tag[1]);
                 else $('.bgUserTag a[userid="' + key + '"]').text(tag[1]);
             }
@@ -191,15 +191,13 @@ if (prefs['usertags'] == true) {
 
         // Save
         if (letsSave) {
-            chrome.storage.sync.get('usertags.list', function(data){
-                data['usertags.list'][userid.val()] = [username, tag.val(), url.val(), Date.now()];    
-                
-                // Save
-                chrome.storage.sync.set({'usertags.list': data['usertags.list']}, function(){
-                    $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
-                    tag.closest('.post').removeClass('bgut_loaded bgut_open');
-					          tag.closest('div').remove();
-                });
+            prefs['usertags.list'][userid.val()] = [username, tag.val(), url.val(), Date.now()];
+
+            // Save
+            chrome.storage.sync.set({'usertags.list': prefs['usertags.list']}, function(){
+                $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
+                tag.closest('.post').removeClass('bgut_loaded bgut_open');
+                tag.closest('div').remove();
             });
         }
     });
