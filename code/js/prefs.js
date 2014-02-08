@@ -8,7 +8,7 @@ var prefs = {
     // General
     'adsHide': true,
     'instantUpdating': true,
-    'notifications': 15,
+    'notifications': '15',
 
     // Background
     'background.image': 'default',
@@ -78,7 +78,7 @@ var prefs = {
     'format.quote.removeFormatting': false,
     'format.quote.spoilerWrap': false,
     'format.quote.endOfFormat': false,
-    'format.quote.rangeNumber': 2,
+    'format.quote.rangeNumber': '2',
     
     // Usertags
     'usertags': true,

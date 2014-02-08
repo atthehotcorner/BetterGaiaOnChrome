@@ -26,8 +26,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 chrome.runtime.onStartup.addListener(function() {
     // Create alarm for user notifications
     chrome.storage.sync.get(['notifications'], function(data) {
-        if (typeof(data['notifications']) == 'undefined') data['notifications'] = 15;
-        if (data['notifications'] > 0) chrome.alarms.create('gaia-notifications', {when: 0, periodInMinutes: data['notifications']});
+        if (typeof(data['notifications']) == 'undefined') data['notifications'] = '15';
+        if (parseInt(data['notifications']) > 0) chrome.alarms.create('gaia-notifications', {when: 0, periodInMinutes: parseInt(data['notifications'])});
     });
 });
 

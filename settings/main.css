@@ -5,10 +5,16 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 /* Page Reset */
-*:not(button) {margin: 0; padding: 0; outline: none; border: 0; list-style: none; box-sizing: border-box;}
+*:not(button), *:before, *:after {margin: 0; padding: 0; outline: none; border: 0; list-style: none; box-sizing: border-box;}
 header, menu, #pages .page, aside, article, footer, address {display: block;}  
-html {background: #FFF; height: 100%;}
-body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #333; min-width: 960px; max-width: 1500px; margin: 0 auto; height: 100%;}
+html {background: linear-gradient(to right, #52B2C0, #52B2C0) #FFF; background-size: 170px 100%; background-repeat: no-repeat; min-height: 100%;}
+body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #333; min-width: 960px; max-width: 1500px; height: 100%;}
+
+/* Glyphicons */
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/css/glyphicons-halflings-regular.woff') format('woff');
+}
 
 /* #pages .page Elements */
 a {color: #004A7F; text-decoration: none; cursor: pointer;}
@@ -71,10 +77,12 @@ button[disabled], input[type='submit'][disabled], button[disabled]:hover, input[
 .page.about button.reset {display: none;}
 
 /* Select */
-select {-webkit-appearance: button; border-radius: 2px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); -webkit-padding-end: 20px; -webkit-padding-start: 2px; -webkit-user-select: none; background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sCDwEnBT3jKacAAABaSURBVCjPY2CgA4gC4jQ8OIpokxKBgJmZ+RuQ+R8dg8RB8kQb9v//f4UFCxYsZGNj+4lsEIgPEgfJk+RPdAPJNgjdQD4+vi8UGYRs4Nu3b5soNgjJQFZi1AEAhHNE/wdnPVcAAAAASUVORK5CYII=") center right no-repeat, -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5); border: 1px solid #AAA; color: #555; font: normal 13px Arial, Helvetica, sans-serif; min-width: 6em; overflow: hidden; padding: 2px; text-overflow: ellipsis; white-space: nowrap;}
-select:disabled {color: graytext;}
-select:enabled:hover {box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2); background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sCDwEnBT3jKacAAABaSURBVCjPY2CgA4gC4jQ8OIpokxKBgJmZ+RuQ+R8dg8RB8kQb9v//f4UFCxYsZGNj+4lsEIgPEgfJk+RPdAPJNgjdQD4+vi8UGYRs4Nu3b5soNgjJQFZi1AEAhHNE/wdnPVcAAAAASUVORK5CYII="), -webkit-linear-gradient(#fefefe, #f8f8f8 40%, #e9e9e9); color: #333;}
-select:enabled:active {box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2); background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sCDwEnBT3jKacAAABaSURBVCjPY2CgA4gC4jQ8OIpokxKBgJmZ+RuQ+R8dg8RB8kQb9v//f4UFCxYsZGNj+4lsEIgPEgfJk+RPdAPJNgjdQD4+vi8UGYRs4Nu3b5soNgjJQFZi1AEAhHNE/wdnPVcAAAAASUVORK5CYII="), -webkit-linear-gradient(#f4f4f4, #efefef 40%, #dcdcdc); color: #444;}
+select {-webkit-appearance: none; -webkit-padding-end: 20px; -webkit-padding-start: 2px; -webkit-user-select: none; background: #FFF; border: 2px solid #A6A6A6; color: #444; min-width: 125px; overflow: hidden; padding: 2px; text-overflow: ellipsis; white-space: nowrap; margin: 10px 0 0;}
+select::after {content: '\e159'; font-size: 20px; font-family: 'Glyphicons Halflings';}
+select:disabled {color: #FFF; background: #A6A6A6; box-shadow: 0 0 0 1px #FFF inset;}
+select:enabled {cursor: pointer;}
+select:enabled:hover {border-color: #7F7F7F;}
+select:enabled:active {background: rgba(0,0,0,0.15);}
 
 /* Checkbox */
 input[type='checkbox'] {
@@ -100,6 +108,15 @@ input[type='checkbox']:checked::after {right: 0;}
 
 input[type='checkbox'][disabled]::after {background: #A6A6A6;}
 
+.bar {float: right;}
+.bar a {display: inline-block; text-align: center; line-height: 10px; padding: 0 10px; margin-left: 25px; color: #222;}
+.bar a:hover:before {background: rgba(0,0,0,0.1);}
+.bar a:active:before {background: #222; color: #FFF;}
+.bar a:before {content: '\e159'; font-size: 20px; font-family: 'Glyphicons Halflings'; line-height: 37px; display: block; height: 40px; width: 40px; border: 2px solid #222; text-align: center; border-radius: 40px; margin-bottom: 10px;}
+.bar a.save:before {content: '\e172'}
+.bar a.disable:before {content: '\e017'}
+.bar a.add:before {content: '\2b'}
+
 
 /* Message */
 #message {font-weight: bold; text-align: center; position: fixed; z-index: 10; top: -100px; left: 50%; margin-left: -75px; width: 150px; background: -webkit-linear-gradient(top, #EEE, #DDD); color: #333; border-radius: 0 0 15px 15px; box-shadow: 0 0 10px 5px #FFF, 0 -1px 5px rgba(0,0,0,0.25) inset; transition: top 0.5s cubic-bezier(0.305, 0.085, 0.410, 1.185) 0s;}
@@ -108,56 +125,40 @@ input[type='checkbox'][disabled]::after {background: #A6A6A6;}
 #message.show {top: -10px;}
 #message.show strong {background-position: 125px 0; -webkit-transition-duration: 0.5s;}
 
-/* Range slider */
-#pages .page.features section aside li.range span.value {padding: 0 0 0 30px; font-weight: bold;}
-#pages .page.features section aside li.range span.value:after {content: ' Minutes';}
-
-@-webkit-keyframes pulse {
-      0% {background-color: #45CEEF;}
-     25% {background-color: #FFF5A5;}
-     50% {background-color: #FFD4DA;}
-     75% {background-color: #99D2E4;}
-     100% {background-color: #D8CAB4;}
-}
-
 /* Header */
-header {width: 170px; position: absolute; top: 0; bottom: 0; left: 0; background: linear-gradient(to right, #AEDBE2, #52B2C0); box-shadow: -20px 0 20px -20px rgba(0,0,0,0.2) inset;}
+header {width: 170px; position: absolute; top: 0; bottom: 0; left: 0;}
 header h1 {margin: 33px 0 25px 30px; height: 36px; background: url(../images/logo/text.png) left top no-repeat; background-size: contain; font-size: 14px; display: block; padding: 8px 0 0 62px;}
 @media (min-height: 440px) {
     header {position: fixed;}
 }
 
-	menu {margin: 0 0 100px; overflow: hidden;}
-		menu a {display: block; -webkit-transition: all 0.3s ease;}
-			menu a {cursor: pointer; font-size: 14px; font-weight: normal; padding: 10px 30px 10px 200px; display: block; color: #444; float: right; width: 340px; clear: both;}
-			menu a:hover {color: #777; background: rgba(255,255,255,0.5);}
-			menu a:active {background: rgba(255,255,255,0.75);}
-			menu a.current {background: #FFF; color: #222;}
+menu {margin: 0 0 100px; overflow: hidden;}
+menu a {display: block; -webkit-transition: all 0.3s ease;}
+menu a {cursor: pointer; font-size: 14px; font-weight: normal; padding: 10px 30px 10px 200px; display: block; color: #444; float: right; width: 340px; clear: both;}
+menu a:hover {color: #777; background: rgba(255,255,255,0.5);}
+menu a:active {}
+menu a.current {background: #FFF; color: #222;}
 
 /* Pages */
-#pages {background: #FFF; padding: 30px; margin-left: 170px; min-width: 785px;}
-#pages .page {background: #FFF; visibility: hidden; position: relative; height: 0; opacity: 0; overflow: hidden;}
-#pages .page.selected {visibility: visible; opacity: 1; overflow: visible; height: auto;}
+#pages {padding: 15px 30px; margin-left: 170px; min-width: 785px;}
+#pages page {visibility: hidden; position: relative; height: 0; opacity: 0; overflow: hidden; display: block;}
+#pages page.selected {visibility: visible; opacity: 1; overflow: visible; height: auto;}
 
-#pages .page h1 {display: block; font-size: 25px; line-height: 25px; font-weight: normal; color: rgba(0,0,0,0.45); border-bottom: 1px solid #CCC; margin: 0; height: 62px;}
-#pages .page h1 + p {margin: -35px 0 29px;}
-#pages .page p.disable {position: absolute; top: 11px; left: 160px;}
-#pages .page.shortcuts p.disable {left: 70px;}
-#pages .page p.disable input[type="checkbox"] {margin: 0 0 -5px 10px; display: inline-block; z-index: 1;}
+#pages page h1 {display: block; font-size: 25px; line-height: 25px; font-weight: normal; color: rgba(0,0,0,0.45); border-bottom: 1px solid #CCC; margin: 0; height: 62px;}
+#pages page h1 + p {margin: -35px 0 29px;}
+#pages page p.disable {position: absolute; top: 11px; left: 160px;}
+#pages page.shortcuts p.disable {left: 70px;}
+#pages page p.disable input[type="checkbox"] {margin: 0 0 -5px 10px; display: inline-block; z-index: 1;}
 
-/* Section */
-#pages .page.hide section {opacity: 0.5; pointer-events: none;}
+/* Page sections */
+page section {position: relative; padding: 15px 0; clear: both;}
 
-#pages .page section:first-of-type {padding-top: 0;}
-#pages .page section {position: relative; border-bottom: 1px solid rgba(0,0,0,0.1); padding: 15px 0 10px; clear: both;}
-	#pages .page section > h3, #pages .page .ask h3 {font-size: 25px; font-weight: normal; padding: 0 0 15px; color: #4CA5FF;}
-	#pages .page section > p:first-of-type {margin-bottom: 15px;}
-	#pages .page section > h3 + p {margin: -15px 0 15px !important;}
+page section aside {display: block;}
+page section aside:after {content: ''; display: table; clear: both;}
 
-	#pages .page section aside {display: block;}
-	#pages .page.features section aside:after, #pages .page section aside.columns:after {content: ""; display: table; clear: both;}
-	#pages .page.features section aside li, #pages .page section aside.columns li {min-height: 71px; float: left; width: 50%; padding-right: 10px;}
-	#pages .page.features section aside li input, #pages .page section aside.columns li input, #pages .page section aside.columns li select {display: block; float: none !important;}
+/* Home page */
+page.features section aside li {min-height: 70px; float: left; width: 45%; padding-right: 10px;}
+page.features section aside li input, #pages .page section aside.columns li input, #pages .page section aside.columns li select {display: block; float: none !important;}
 
 	#pages .page section aside li {display: block; overflow: hidden; padding: 0 0 10px;}
 		#pages .page section aside li:last-child:not(:hover) {border-bottom-color: transparent;}
@@ -166,10 +167,6 @@ header h1 {margin: 33px 0 25px 30px; height: 36px; background: url(../images/log
 		#pages .page section aside li input[type="checkbox"] {display: block;}
 
 		#pages .page section aside li input.color {box-shadow: 0 0 0 2px #A6A6A6 inset, 0 0 0 3px #FFF inset; margin: 10px 0; padding: 5px; display: block; width: 100px; margin: 1px 7px 0 0; cursor: pointer;}
-
-		#pages .page section aside li.checkbox {}
-		#pages .page section aside li.radio {}
-		#pages .page section aside li.spacer {height: 71px;}
 	
 	#pages .page section ol {width: 180px; float: left; margin: 0 10px 0 0;}
 	#pages .page section ol h3 {position: static; padding: 0 0 10px; width: auto;}
@@ -288,6 +285,13 @@ header h1 {margin: 33px 0 25px 30px; height: 36px; background: url(../images/log
 	#thread_header {width: 34% !important;}
 	
 	/* Post Formating */
+#postformating {}
+#postformating .left {width: 300px; max-height: 230px; overflow: auto;}
+#postformating .left format {display: block; height: 50px; background: #AAA; margin: 0 10px 10px 0;}
+#postformating .left format.add {text-align: center; margin-bottom: 0;}
+#postformating .left format.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #FFF; color: #FFF; text-align: left; border-radius: 35px; margin-top: 10px; text-indent: 5px;}
+#postformating .right {width: calc(100% - 310px);}
+
 	#pages .page section#postformating {}
 	#pages .page section#postformating > h3 + p span, #pages .page section#postformating.needtosave > h3 + p {font-size: 0;}
 	#pages .page section#postformating.needtosave > h3 + p span {font-size: 14px; font-weight: bold;}

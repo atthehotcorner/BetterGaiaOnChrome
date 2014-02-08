@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset=utf-8 />
+    <meta charset="utf-8">
     <title>BetterGaia Settings</title>
 
     <link rel="stylesheet" href="main.css">
@@ -9,85 +9,73 @@
 </head>
 
 <body>
-	<div id="message"><strong>Saved!</strong></div>
+    <header>
+        <h1>Settings</h1>
+        <menu>
+            <a href="#" class="features current">Home</a>
+            <a href="#stylingpage" class="styling">Personalize</a>
+            <a href="#postformattingpage" class="postformatting">Post Formating</a>
+            <a href="#shortcutspage" class="shortcuts">Shortcuts</a>
+            <a href="#usertagspage" class="usertags">Tags</a>
+            <a href="#aboutpage" class="about">About</a>
+        </menu>
+    </header>
 
-	<header>
-		<h1>Settings</h1>
-		<menu>
-			<a href="#" class="features current">Home</a>
-			<a href="#stylingpage" class="styling">Personalize</a>
-			<a href="#postformattingpage" class="postformatting">Post Formating</a>
-			<a href="#shortcutspage" class="shortcuts">Shortcuts</a>
-			<a href="#usertagspage" class="usertags">Tags</a>
-			<a href="#aboutpage" class="about">About</a>
-		</menu>
-	</header>
+    <div id="pages">
+        <page class="features selected">
+            <section>
+                <h3>Features</h3>
 
-	<div id="pages">
-		<div class="page features selected">
-			<section>
-				<h3>Features</h3>
-				
-				<aside>
-					<li class="checkbox">Use Draw All for Daily Chance
-          	<input pref="header.drawAll" type="checkbox" /></li>
-					<li class="checkbox">Enhance private messages and use instant search
-          	<input pref="pms" type="checkbox" /></li>
-					<li class="checkbox">Hide advertisements 
-          	<input pref="adsHide" type="checkbox" /></li>
-					<li class="checkbox">Hide suggested content in MyGaia
-          	<input pref="mygaia.suggested" type="checkbox" /></li>
-					<li class="checkbox">Stretch the header background
-            <input pref="header.background.stretch" type="checkbox" /></li>
-					<li class="checkbox">Float username and notifications on top of the page
-          	<input pref="header.float" type="checkbox" /></li>
-					<li class="checkbox">Add widgets by your username
-          	<input pref="header.widgets" type="checkbox" /></li>
-          <li class="spacer"></li>
-				</aside>
-			</section>
+                <aside>
+                    <li>Use Draw All for Daily Chance <input pref="header.drawAll" type="checkbox" /></li>
+                    <li>Enhance private messages and use instant search <input pref="pms" type="checkbox" /></li>
+                    <li>Hide suggested content in MyGaia <input pref="mygaia.suggested" type="checkbox" /></li>
+                    <li>Stretch the header background <input pref="header.background.stretch" type="checkbox" /></li>
+                    <li>Float username and notifications when scrolling <input pref="header.float" type="checkbox" /></li>
+                    <li>Hide advertisements <input pref="adsHide" type="checkbox" /></li>
+                    <li>Add widgets by your username <input pref="header.widgets" type="checkbox" /></li>
+                </aside>
+            </section>
 
-			<section>
-				<h3>Notifications</h3>
+            <section>
+                <h3>Notifications</h3>
 
-				<aside>
-          <li class="range">When logged in, check for and <br>show new notifications on the desktop every
-              <select pref="notifications">
-				          <option value="1">1 minute</option>
-                  <option value="2">2 minutes</option>
-                  <option value="3">3 minutes</option>
-                  <option value="5">5 minutes</option>
-                  <option value="10">10 minutes</option>
-                  <option value="15">15 minutes</option>
-                  <option value="20">20 minutes</option>
-                  <option value="25">25 minutes</option>
-                  <option value="30">30 minutes</option>
-                  <option value="45">45 minutes</option>
-                  <option value="60">1 hour</option>
-                  <option value="120">2 hours</option>
-                  <option value="180">3 hours</option>
-                  <option value="240">4 hours</option>
-                  <option value="300">5 hours</option>
-                  <option value="0">Never</option>
-						  </select>
-				</aside>
-			</section>
+                <aside>
+                    <li>When logged in, check for and show new notifications on the desktop every
+                        <select pref="notifications">
+                            <option value="1">1 minute</option>
+                            <option value="2">2 minutes</option>
+                            <option value="3">3 minutes</option>
+                            <option value="5">5 minutes</option>
+                            <option value="10">10 minutes</option>
+                            <option value="15">15 minutes</option>
+                            <option value="20">20 minutes</option>
+                            <option value="25">25 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="120">2 hours</option>
+                            <option value="180">3 hours</option>
+                            <option value="240">4 hours</option>
+                            <option value="300">5 hours</option>
+                            <option value="0">Never</option>
+                        </select>
+                    </li>
+                </aside>
+            </section>
 
-			<section>
-				<h3>Forums</h3>
-				<aside>
-					<li class="checkbox">Constain width of forums
-            <input pref="forum.constrain" type="checkbox" /></li>
-					<li class="checkbox">Show external link warning in same page
-            <input pref="forum.externalLinks" type="checkbox" /></li>
-					<li class="checkbox">Use thread preview in thread listings
-            <input pref="forum.previewThreads" type="checkbox" /></li>
-        <li class="spacer"></li>
-				</aside>
-			</section>
-		</div> <!-- Features -->
+            <section>
+				        <h3>Forums</h3>
 
-		<div class="page styling">
+                <aside>
+                    <li>Constain width of forums <input pref="forum.constrain" type="checkbox" /></li>
+                    <li>Show external link warning in same page <input pref="forum.externalLinks" type="checkbox" /></li>
+                    <li>Use thread preview in thread listings <input pref="forum.previewThreads" type="checkbox" /></li>
+                </aside>
+            </section>
+        </page> <!-- Features -->
+
+		<page class="styling">
 			<section id="preview"><div>
 				<div class="header">
         	<a class="toggle" title="Unpin Preview">&#8854;<span>&oplus;</span></a>
@@ -224,17 +212,27 @@
 			</section>
       
       <hr>
-		</div> <!-- Styling -->
+		</page> <!-- Styling -->
 
-		<div class="page postformatting">
-      <p class="disable">Disable&nbsp;&nbsp;<input pref="posts.settings.disable.postFormatter" type="checkbox" /></p>
+		<page class="postformatting">        
+        <div class="bar">
+            <a class="disable" pref="format">On</a>
+            <a class="add">Add</a>
+            <a class="save">Save</a>
+        </div>
 
 			<section id="postformating" class="list">
-				<h3>Post Formats <a class="right"><button class="save">Save</button> <button class="add">Add Format</button></a></h3>
-        <p>Style your forum posts. Your first format will be the one inserted automatically. 
-        	<span>Make sure to save your formats.</span></p>
+				<h3>Post Formats</h3>
+        <p>Style your forum posts. Your first format will be the one inserted automatically.</p>
 
-				<aside class="group"></aside>
+				<aside class="group">
+            <div class="left">
+                <format class="add"></format>
+            </div>
+            <div class="right">
+                Test
+            </div>
+        </aside>
 			</section>
 
 			<section>
@@ -265,8 +263,7 @@
 			</section>
 
 			<section>
-				<h4>Defaults</h4>
-				<p>Choose where you want your post formats to be used.</p>
+				<h4>Use formatting in these places</h4>
 
 				<aside class="columns">
 					<li class="checkbox">Forums
@@ -279,9 +276,9 @@
           	<input pref="posts.settings.pages.profileComments" type="checkbox" /></li>
 				</aside>
 			</section>
-		</div> <!-- Post formatter -->
+		</page> <!-- Post formatter -->
 
-		<div class="page shortcuts">	
+		<page class="shortcuts">	
 			<p class="disable">Disable&nbsp;&nbsp;<input pref="shortcuts.settings.disable" type="checkbox" /></p>
 
 			<section id="shortcuts" class="list">
@@ -291,9 +288,9 @@
 
 				<aside></aside>
 			</section>
-		</div> <!-- Shortcuts -->
+		</page> <!-- Shortcuts -->
 
-		<div class="page usertags">	
+		<page class="usertags">	
 			<p class="disable">Disable&nbsp;&nbsp;<input pref="usertags.settings.disable" type="checkbox" /></p>
 
 			<section id="usertags">
@@ -303,9 +300,9 @@
 
 				<aside></aside>
 			</section>
-		</div> <!-- User tags -->
+		</page> <!-- User tags -->
 
-		<div class="page about">
+		<page class="about">
 			<section>
 				<h3>About</h3>
 
@@ -367,7 +364,7 @@
           	<input pref="sync" type="checkbox" /></li>
 				</aside>
 			</section>
-		</div> <!-- About -->
+		</page> <!-- About -->
 	</div> <!-- end sections -->
 
     <script src="../code/js/jquery.min.js"></script>

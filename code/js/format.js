@@ -41,8 +41,8 @@ if ((prefs['format'] == true)
                         post.val(newPost);
                     }
     
-                    if (prefs['format.quote.endOfFormat'] == true) post.val(decodeURI(format[0]) + '\n' + repeat('\n', prefs['format.quote.rangeNumber']) + post.val());
-                    else post.val(post.val() + '\n' + repeat('\n', prefs['format.quote.rangeNumber']) + decodeURI(format[0]));
+                    if (prefs['format.quote.endOfFormat'] == true) post.val(decodeURI(format[0]) + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + post.val());
+                    else post.val(post.val() + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + decodeURI(format[0]));
                 }
     
                 // If blank
@@ -72,12 +72,12 @@ if ((prefs['format'] == true)
                 // Textbox has quote
                 if (encodeURI(post.val()).indexOf($(this).siblings('a.current').attr('code')) != -1) {
                     var content = encodeURI(post.val()).replace($(this).siblings('a.current').attr('code'), '');
-                    content = content.replace('%0A' + repeat('%0A', prefs['format.quote.rangeNumber']), '');
+                    content = content.replace('%0A' + repeat('%0A', parseInt(prefs['format.quote.rangeNumber'], 10)), '');
                     post.val(decodeURI(content));
                 }
 
-                if (prefs['format.quote.endOfFormat'] == true) post.val(format + '\n' + repeat('\n', prefs['format.quote.rangeNumber']) + post.val());
-                else post.val(post.val() + '\n' + repeat('\n', prefs['format.quote.rangeNumber']) + format);
+                if (prefs['format.quote.endOfFormat'] == true) post.val(format + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + post.val());
+                else post.val(post.val() + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + format);
             }
 
             $('select[name=basic_type][identity="' + identity + '"]').val($(this).attr('poststyle'));

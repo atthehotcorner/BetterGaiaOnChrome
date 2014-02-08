@@ -8,8 +8,8 @@ function Main() {
     // Set up pages
     $('header menu').on('click', 'a:not(.current)', function(){
         var tabClass = $(this).attr('class');
-        $('#pages .page.selected').removeClass('selected');
-        $('#pages .page.' + tabClass).addClass('selected');
+        $('#pages page.selected').removeClass('selected');
+        $('#pages page.' + tabClass).addClass('selected');
 
         $('header menu a.current').removeClass('current');
         $(this).addClass('current');
@@ -29,6 +29,24 @@ function Main() {
         else $(this).prop('disabled', true);
     });
 
+    // Insert formats
+    $.each(prefs['format.list'], function(key, format) {
+        $('#postformating aside format.add').before('<format>' + key + '</format>');
+    });
+    
+    $('#postformating aside format.add').on('click', function(){
+        $(this).before('<format>Kat</format>');
+    });
+
+    // Insert shortcuts
+    $.each(prefs['header.shortcuts.list'], function(name, url) {
+        $('#shortcuts aside').before('<link>' + name + url + '</link>');
+    });
+    
+    $('#postformating aside format.add').on('click', function(){
+        $(this).before('<format>Kat</format>');
+    });
+    
     // Update checkboxes
     $('input[type="checkbox"][pref]:not([disabled])').on('change', function(){
         var pref = $(this).attr('pref'), value = $(this).prop('checked');
