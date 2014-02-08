@@ -14,7 +14,7 @@ var prefs = {
     'background.image': 'default',
     'background.color': '666666',
     'background.repeat': true,
-    'background.position': 'center top',
+    'background.position': 'top center',
     'background.float': false,
 
     // Header

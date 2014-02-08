@@ -15,6 +15,8 @@ function Main() {
         $(this).addClass('current');
 		});
 
+    if (window.location.hash) $('header menu a[href="' + window.location.hash + '"]').click();
+
     // Set checkboxes
     $('input[type="checkbox"][pref]').each(function(){
         var pref = $(this).attr('pref');
@@ -43,10 +45,15 @@ function Main() {
         $('#shortcuts aside').before('<link>' + name + url + '</link>');
     });
     
-    $('#postformating aside format.add').on('click', function(){
-        $(this).before('<format>Kat</format>');
+    $('#shortcuts aside link.add').on('click', function(){
+        $(this).before('<link>Kat</link>');
     });
-    
+
+    // Enable Saving
+    Save();
+};
+
+function Save() {
     // Update checkboxes
     $('input[type="checkbox"][pref]:not([disabled])').on('change', function(){
         var pref = $(this).attr('pref'), value = $(this).prop('checked');
@@ -68,7 +75,11 @@ function Main() {
             chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
         }
     });
-};
+}
+
+$(window).scroll(function() {
+    $('#preview > div').width($('page.styling').width() / 0.65).toggleClass('scrolling', $(window).scrollTop() > $('#preview').offset().top);
+});
 
 // Save a default
 var defaultPrefs = prefs;
