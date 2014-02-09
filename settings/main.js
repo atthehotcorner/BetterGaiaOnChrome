@@ -57,6 +57,12 @@ function Main() {
         $(this).before('<slink>Kat</slink>');
     });
 
+    // Set sync usage
+    chrome.storage.sync.getBytesInUse(function(data){
+        $('page.about strong.inuse').text(data);
+        $('page.about strong.outof').text(chrome.storage.sync.QUOTA_BYTES);
+    });
+
     // Enable Saving
     Save();
 };
