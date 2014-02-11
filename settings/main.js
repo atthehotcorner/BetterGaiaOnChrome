@@ -44,21 +44,17 @@ function Main() {
         else $(this).closest('page').removeClass('off');
     });
 
-
-    // Enable format sorting
-    function formatSorting() {
-        $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){
-            //Triggered when the user stopped sorting and the DOM position has changed.
-            console.log('done dragging!');
-        });
-    }
-
     // Insert formats
     $.each(prefs['format.list'], function(key, format) {
         $('#postformating aside format.add').before('<format data-bbcode="' + format[0] + '" data-poststyle="' + format[1] + '"><strong>' + key + '</strong>\
         <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
     });
-    formatSorting();
+
+    // Enable format sorting
+    $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){
+        //Triggered when the user stopped sorting and the DOM position has changed.
+        console.log('done dragging!');
+    });
     
     $('#postformating aside format.add').on('click', function(){
         var bbcode = "%5Bcolor=#003040%5D%E2%96%8C%5B/color%5D%5Bb%5D%5Bsize=11%5D%5Bcolor=#777%5DA%20SHIP%20IS%20SAFE%20IN%20HARBOR,%5B/color%5D%5B/size%5D%5B/b%5D%0A%5Bcolor=#276B91%5D%E2%96%8C%5B/color%5D%5Bb%5D%5Bsize=11%5D%5Bcolor=#777%5DBUT%20THAT'S%20NOT%20WHAT%20SHIPS%20ARE%20FOR.%5B/color%5D%5B/size%5D%5B/b%5D%0A%0A%0A%0A%5Balign=right%5D%5Bb%5DWelcome%20to%20%5Burl=http://bettergaia.com/%5DBetterGaia%5B/url%5D.%5B/b%5D%0A%5Bi%5DNeed%20help?%20%5Burl=http://www.gaiaonline.com/forum/t.45053993/%5DSee%20our%20thread.%5B/url%5D%5B/i%5D%5B/align%5D";
@@ -68,14 +64,33 @@ function Main() {
         $('#postformating aside').sortable('destroy').sortable({items: 'format:not(.add)'});
     });
 
+    $('#postformating aside').on('click', 'format .clear a.delete', function(){
+        $(this).closest('format').remove();
+    });
+
     // Insert shortcuts
     $.each(prefs['header.shortcuts.list'], function(name, url) {
-        $('#shortcuts aside slink.add').before('<slink>' + name + ': ' + url + '</slink>');
+        $('#shortcuts aside slink.add').before('<slink><strong data-url="' + url + '">' + name + '</strong>\
+        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></slink>');
+    });
+
+    // Enable link sorting
+    $('#shortcuts aside').sortable({items: 'slink:not(.add)'}).on('sortupdate', function(){
+        //Triggered when the user stopped sorting and the DOM position has changed.
+        console.log('done dragging!');
     });
     
     $('#shortcuts aside slink.add').on('click', function(){
-        $(this).before('<slink>Kat</slink>');
+        $(this).before('<slink><strong data-url="http://www.gaiaonline.com/">Gaia Online</strong>\
+        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></slink>');
+
+        $('#shortcuts aside').sortable('destroy').sortable({items: 'slink:not(.add)'});
     });
+
+    $('#shortcuts aside').on('click', 'slink .clear a.delete', function(){
+        $(this).closest('slink').remove();
+    });
+
 
     // Set sync usage
     chrome.storage.sync.getBytesInUse(function(data){
