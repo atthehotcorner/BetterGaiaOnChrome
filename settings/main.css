@@ -228,13 +228,27 @@ page section aside.left + aside.right {width: 50%;}
 /* Post Formating */
 #postformating {}
 
-#postformating format {display: block; height: 50px; background: #AAA; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left;}
+#postformating format, #postformating .sortable-placeholder {display: block; min-height: 61px; border: 2px solid #E4E4E4; cursor: move; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left; padding: 5px 10px;}
+#postformating .sortable-placeholder {border-style: dashed;}
+#postformating .sortable-dragging {background: #FFF;}
 @media (min-width: 1200px) {
-    #postformating format {width: calc((100% / 4) - 10px);}
+    #postformating format, #postformating .sortable-placeholder {width: calc((100% / 4) - 10px);}
 }
-#postformating format.add {text-align: center; margin-bottom: 0;}
-#postformating format.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #FFF; color: #FFF; text-align: left; border-radius: 35px; margin-top: 10px; text-indent: 5px;}
 
+#postformating format:first-of-type:not(.sortable-dragging) {position: relative; border-color: #4CA5FF; box-shadow: 0 0 0 1px #4CA5FF inset;}
+#postformating format:first-of-type:not(.sortable-dragging):after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block;  text-align: center; top: 0px; right: 0px; position: absolute; font-size: 14px; line-height: 1.4;}
+
+#postformating format.add {text-align: center; margin-bottom: 0; cursor: pointer;}
+#postformating format.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #555; color: #555; text-align: left; border-radius: 35px; margin-top: 10px; text-indent: 5px;}
+
+#postformating format strong {display: block; text-overflow: ellipsis; overflow: hidden;}
+
+#postformating format .clear {margin-top: 3px; text-align: right;}
+#postformating format.sortable-dragging .clear {pointer-events: none;}
+#postformating format .clear a {margin-left: 10px;}
+#postformating format .clear a:before {font-size: 15px; font-family: 'Glyphicons Halflings'; content: '\e124'; margin-right: 5px;}
+#postformating format .clear a.edit:before {content: '\270f';}
+#postformating format .clear a.delete:before {content: '\e020';}
 
 	#pages .page section#postformating aside li {cursor: move; display: block; padding: 15px; position: relative; float: left; width: 23%; height: 75px; margin: 0 10px 10px 0; box-shadow: 0 0 0 1px #DDD inset; background: #FFF; overflow: visible;}
 	#pages .page section#postformating aside li:first-of-type {box-shadow: 0 0 0 4px #4CA5FF inset !important; position: relative;}
@@ -279,7 +293,7 @@ page section aside.left + aside.right {width: 50%;}
 #pages .page section#shortcuts aside {position: relative; counter-reset: list; padding: 0 0 15px;}
 #pages .page section#shortcuts aside:empty:after {content: "There aren't any links here! To get started, add a link.";}
 
-#shortcuts slink {display: block; height: 50px; background: #AAA; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left;}
+#shortcuts slink {display: block; height: 50px; border: 2px solid #E4E4E4; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left;}
 @media (min-width: 1200px) {
     #shortcuts slink {width: calc((100% / 4) - 10px);}
 }

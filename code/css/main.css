@@ -84,7 +84,7 @@ body textarea ~ #bg_formatter > a:not(.current):active {background: rgba(255,255
 body textarea ~ #bg_formatter > a.current {background: #5AC8FA; border-color: transparent; color: #FFF !important; cursor: default;}
 
 /* Header */
-body div#gaia_header {border: none; width: auto;}
+body div#gaia_header {border: none; width: auto; margin: 0 auto;}
 body div#gaia_header .header_content {margin: 0 auto; min-width: 1140px; background-repeat: repeat-y;}
 
 /* Theme color */
