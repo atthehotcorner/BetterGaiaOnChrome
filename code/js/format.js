@@ -24,10 +24,14 @@ if ((prefs['format'] == true)
         $(this).add("select[name=basic_type]:not([identity])").attr("identity", identity);
 
         // Adds formatting bar
-        var formattingbar = '', i = 0;
+        var formattingbar = '';
+		if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
+			prefs['format.list'] = localPrefs['format.list'];
+			console.warn('Your formats are currently saved locally.');
+		}
 
         $.each(prefs['format.list'], function(index, format) {
-            if (i == 0) {
+            if (index == 0) {
                 formattingbar += '<a code="' + format[1] + '" poststyle="' + format[2] + '" class="current">' + format[0] + '</a>';
 
                 // if quote
@@ -54,7 +58,6 @@ if ((prefs['format'] == true)
 
             // Not first
             else formattingbar += '<a code="' + format[1] + '" poststyle="' + format[2] + '">' + format[0] + '</a>';
-            i++;
         });
 
         $(this).after('<div id="bg_formatter" identity="' + identity + '">' + formattingbar + '</div>');

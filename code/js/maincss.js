@@ -104,8 +104,8 @@ chrome.storage.sync.get(null, function(response) {
 		try {prefs[key] = response[key];}
 		catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
   }
-
-	prefs['appliedUserPrefs'] = true;
+  
+  prefs['appliedUserPrefs'] = true;
 
   // Could use some code reuse
   if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] == false) {
@@ -132,8 +132,5 @@ chrome.storage.sync.get(null, function(response) {
 else CssJs();
 
 chrome.storage.local.get(null, function(response) {
-  for (var key in response) {
-		try {prefs[key] = response[key];}
-		catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
-  }
+  localPrefs = response;
 });
