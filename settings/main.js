@@ -45,8 +45,8 @@ function Main() {
     });
 
     // Insert formats
-    $.each(prefs['format.list'], function(key, format) {
-        $('#postformating aside format.add').before('<format data-bbcode="' + format[0] + '" data-poststyle="' + format[1] + '"><strong>' + key + '</strong>\
+    $.each(prefs['format.list'], function(index, format) {
+        $('#postformating aside format.add').before('<format data-bbcode="' + format[1] + '" data-poststyle="' + format[2] + '"><strong>' + format[0] + '</strong>\
         <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
     });
 
@@ -124,6 +124,23 @@ function Save() {
             chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
         }
     });
+
+    // Save formats
+	function saveFormat() {
+	var formats = [];
+	$('#postformating aside format:not(.add)').each(function(index, element) {
+		var name = $(this).find('strong').text();
+		var bbcode = $(this).attr('data-bbcode');
+		var style = $(this).attr('data-poststyle');
+		formats.push([name, bbcode, parseInt(style, 10)]);
+    });
+	chrome.storage.sync.set({'format.list': formats}, function(){console.log(formats, ' saved.');});
+	}
+
+	// save bar for formats
+	$('page.postformatting bar a.save').on('click', function(){
+		saveFormat();
+	});
 
 		// Update bar links
 		$('bar a[pref]').on('click', function(){
