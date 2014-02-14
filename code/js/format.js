@@ -26,9 +26,9 @@ if ((prefs['format'] == true)
         // Adds formatting bar
         var formattingbar = '', i = 0;
 
-        $.each(prefs['format.list'], function(key, format) {
+        $.each(prefs['format.list'], function(index, format) {
             if (i == 0) {
-                formattingbar += '<a code="' + format[0] + '" poststyle="' + format[1] + '" class="current">' + key + '</a>';
+                formattingbar += '<a code="' + format[1] + '" poststyle="' + format[2] + '" class="current">' + format[0] + '</a>';
 
                 // if quote
                 if (post.val().substr(0,8) == '[quote="' && post.val().replace(/\n\s*/g,'').substr(-8) == '[/quote]') {
@@ -41,19 +41,19 @@ if ((prefs['format'] == true)
                         post.val(newPost);
                     }
     
-                    if (prefs['format.quote.endOfFormat'] == true) post.val(decodeURI(format[0]) + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + post.val());
-                    else post.val(post.val() + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + decodeURI(format[0]));
+                    if (prefs['format.quote.endOfFormat'] == true) post.val(decodeURI(format[1]) + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + post.val());
+                    else post.val(post.val() + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + decodeURI(format[1]));
                 }
     
                 // If blank
-                else if (post.val().length == 0) post.val(decodeURI(format[0]));
+                else if (post.val().length == 0) post.val(decodeURI(format[1]));
                 
                 // In the end
-                $('select[name=basic_type][identity="' + identity + '"]').val(format[1]);
+                $('select[name=basic_type][identity="' + identity + '"]').val(format[2]);
             }
 
             // Not first
-            else formattingbar += '<a code="' + format[0] + '" poststyle="' + format[1] + '">' + key + '</a>';
+            else formattingbar += '<a code="' + format[1] + '" poststyle="' + format[2] + '">' + format[0] + '</a>';
             i++;
         });
 
