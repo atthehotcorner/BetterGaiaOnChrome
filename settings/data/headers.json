@@ -1,17 +1,16 @@
 {
-	"Info": {
-		"lastUpdated": 20130713,
-		"imageHostPrefix": "chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/header/",
-		"latestVersion": ""
+	"info": {
+		"version": 20140217,
+		"host": "http://i.imgur.com/"
 	},
 	"2009": {
-		"Easter": ["09/easter.jpg", "09/easter_bg.jpg"],
-		"Earth Day": ["09/earthday.jpg", "09/earthday_bg.jpg"],
-		"Prom": ["09/prom.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/rs_header_bg_bassken_night_tile.jpg"],
-		"Summer": ["09/summer.jpg", "09/summer_bg.jpg"],
-		"Camp": ["09/camp.jpg", "09/camp_bg.jpg"],
-		"Halloween": ["09/halloween.jpg", "09/halloween_bg.jpg"],
-		"Christmas": ["09/xmas.jpg", "09/xmas_bg.jpg"]
+		"Easter": ["wZU1xZ3.jpg", "wzOdFfP.jpg"],
+		"Earth Day": ["3yMo50M.jpg", "E76CCum.jpg"],
+		"Prom": ["CpkDYmQ.jpg", "mBx1ysa.jpg"],
+		"Summer": ["6LUjfFo.jpg", "c5KlJ6l.jpg"],
+		"Camp": ["QIlf575.jpg", "sVOAIJV.jpg"],
+		"Halloween": ["lCMRfHP.jpg", "qq2R5AG.jpg"],
+		"Christmas": ["d7Ttojw.jpg", "d7Ttojw.jpg"]
 	},
 	"2010": {
 		"Love Charm RIG": ["http://s.cdn.gaiaonline.com/images/rig/january2010/0110_rig.jpg", "http://s.cdn.gaiaonline.com/images/rig/january2010/0110_rig_tile.jpg"],
@@ -99,11 +98,8 @@
 		"What the Fluff!": ["http://s.cdn.gaiaonline.com/images/event/summer2013/summer2k13wtfluff_header.jpg", "http://s.cdn.gaiaonline.com/images/event/summer2013/summer2k13wtfluff_header_cut.jpg"],
 		"Carnival Du Gothique CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/0235debf9df9.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/d85dedfcee8b.jpg"]
 	},
-	"Other": {
-		"Custom URL": ["chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo_options.png"]
-	},
 	"Towns": {
-		"Barton & Current Events": ["http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_barton_sprite.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_barton_tile_sprite.jpg"],
+		"Barton & Current Events": ["default", "default"],
 		"Aekea": ["http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_aekea_sprite.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_aekea_tile_sprite.jpg"],
 		"Bassken": ["http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_bassken_sprite.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_bassken_tile_sprite.jpg"],
 		"Durem": ["http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_durem_sprite.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_durem_tile_sprite.jpg"],

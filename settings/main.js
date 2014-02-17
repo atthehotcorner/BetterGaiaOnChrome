@@ -68,8 +68,8 @@ function Main() {
 	})
 	.done(function(data){
 		$.each(data['Backgrounds'], function(index, url) {
-            if (url == 'default') $('#background a.customurl').before('<a value="' + url + '"></a>');
-            else $('#background a.customurl').before('<a value="' + url + '" style="background-image: url(' + url + ');"></a>');
+            if (url == 'default') $('#background a.customurl').before('<a data-url="' + url + '"></a>');
+            else $('#background a.customurl').before('<a data-url="' + url + '" style="background-image: url(' + url + ');"></a>');
         });
     })
 	.fail(function(data){
@@ -77,9 +77,9 @@ function Main() {
     });
    
     var bgurl = prefs['background.image'];
-    if ($('#background a[value="' + bgurl + '"]').length > 0) $('#background a[value="' + bgurl + '"]').addClass('selected');
+    if ($('#background a[data-url="' + bgurl + '"]').length > 0) $('#background a[data-url="' + bgurl + '"]').addClass('selected');
     else {
-        $('#background a.customurl').attr('value', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
+        $('#background a.customurl').attr('data-url', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
     }
 	// END backgrounds
 
@@ -92,51 +92,45 @@ function Main() {
 		async: false
 	})
 	.done(function(data){
-		/*$.each(data['Headers'], function(index, url) {
-            if (url == 'default') $('#headers a.customurl').before('<a value="' + url + '"></a>');
-            else $('#headers a.customurl').before('<a value="' + url + '" style="background-image: url(' + url + ');"></a>');
-        });*/
+        // get host prefix
+        var host = data['info']['host'];
+        delete data['info'];
 
-				var headersList = data;
-				var imageHostPrefix = headersList.Info.imageHostPrefix;
-				
-				// get only the image data
-				var imageYears = [];
-				$.each(headersList, function(key, value) {
-					if (key != "Info") imageYears.push(key);
-				});
-				imageYears.reverse();
-			
-				// add header options to page
-				$.each(imageYears, function(key, year) {
-					$("#header aside > div").append("<ol class='h" + year + "'><h3>" + year + "</h3></ol>");
-			
-					$.each(headersList[year], function(key, value) {
-						var url = "";
-						if (value[0].substring(0,7) != "http://" && value[0].substring(0,19) != "chrome-extension://") {url += imageHostPrefix + value[0];}
-						else {url += value[0];}
-						if (value[1]) {
-							if (value[1].substring(0,7) != "http://" && value[1].substring(0,19) != "chrome-extension://") {url += ", " + imageHostPrefix + value[1];}
-							else {url += ", " + value[1];}
-						}
-						$("#header ol.h" + year).append("<li class='radio'><input type='radio' name='hr' value='" + url + "' />" + key + "</li>");
-					});
-				});
+        // add header options to page
+        $.each(data, function(key, headers){
+            // Add title
+            $('#header aside').prepend('<div class="h' + key + '"><h4>' + key + '</h4></div>');
+
+            // Add headers
+            $.each(headers, function(name, url) {
+                // check if url needs prefix
+                if (url[0] != 'default' && url[0].substring(0,7) != 'http://' && url[0].substring(0,19) != 'chrome-extension://') url[0] = host + url[0];
+                if (url[1] != 'default' && url[1].substring(0,7) != 'http://' && url[1].substring(0,19) != 'chrome-extension://') url[1] = host + url[1];
+
+                if (url[0] == 'default') $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
+                else $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '" style="background-image: url(' + url[0] + ');"></a>');
+            });
+        });
     })
 	.fail(function(data){
 		console.warn('Couldn\'t insert header options.');
     });
+
+    var hrurl = prefs['header.background'], hrbaseurl = prefs['header.background.base'];
+    if ($('#header a[data-url="' + hrurl + '"][data-base-url="' + hrurl + '"]').length > 0) $('#header a[data-url="' + hrurl + '"][data-base-url="' + hrurl + '"]').addClass('selected');
+    else if (hrurl == 'default') $('#header a.customurl').attr({'data-url': hrurl, 'data-base-url': hrbaseurl}).addClass('selected');
+    else $('#header a.customurl').attr({'data-url': hrurl, 'data-base-url': hrbaseurl}).addClass('selected').css({'background-image': 'url(' + hrurl + ')'});
 	// -- END headers
 
    	// -- Add logos
     var logourl = prefs['header.logo'];
-    if ($('#logo a[value="' + logourl + '"]').length > 0) $('#logo a[value="' + logourl + '"]').addClass('selected');
-    else $('#logo a.customurl').attr('value', logourl).addClass('selected');
+    if ($('#logo a[data-url="' + logourl + '"]').length > 0) $('#logo a[data-url="' + logourl + '"]').addClass('selected');
+    else $('#logo a.customurl').attr('data-url', logourl).addClass('selected');
 
-		$('#logo a[value]:not([value="default"])').each(function(){
-        $(this).css({'background-image': 'url(' + $(this).attr('value') + ')'});
+		$('#logo a[data-url]:not([data-url="default"])').each(function(){
+        $(this).css({'background-image': 'url(' + $(this).attr('data-url') + ')'});
     });
-		// END logos 
+    // END logos 
 
     // Enable format sorting
     $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){

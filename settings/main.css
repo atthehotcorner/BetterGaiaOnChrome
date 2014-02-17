@@ -198,31 +198,26 @@ page section aside.left + aside.right {width: 50%;}
 #preview2 .post .postbody {background: #FFF; min-height: 10px;}
 
 /* Square Options */
-.squares a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0;}
+.squares a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0; position: relative; background-color: #DEDEDE;}
 .squares a.customurl {box-shadow: 0 0 0 3px #A6A6A6 inset; font-size: 11px; line-height: 1; padding: 13px 5px 0;}
 .squares a:hover {box-shadow: 0 0 0 3px #7F7F7F inset;}
-.squares a.selected {box-shadow: 0 0 0 3px #4CA5FF inset !important; position: relative;}
+.squares a.selected {box-shadow: 0 0 0 3px #4CA5FF inset !important;}
 .squares a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 1px; right: 1px; position: absolute; font-size: 14px; line-height: 1.4;}
 
 /* Backgrounds */
 #background .left a {background-size: 50px 50px;}
-#background .left a[value="default"] {background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg);}
+#background .left a[data-url="default"] {background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg);}
 	
 /* Headers */
-#pages .page section#header aside {height: 240px; overflow-x: auto; overflow-y: hidden;}
-#pages .page section#header aside > div {overflow: hidden;}
-#pages .page section#header ol li {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;}
-
-#pages .page section#header ol:last-child {margin-right: 0;}
-#pages .page section#header ol > div {float: left; width: 180px;}
-#pages .page section#header ol h3 {padding: 0;}
-#pages .page section#header ol aside li {float: left; width: 160px;}
-#pages .page section#header ol aside li:nth-of-type(1) {border-width: 0 0 1px;}
-#pages .page section#header ol aside li input {vertical-align: middle;}
+#header aside > div {display: block;}
+#header aside > div:after {content: ''; display: table; clear: both;}
+#header aside a[data-name]:hover:before {position: absolute; content: attr(data-name); white-space: nowrap; -webkit-transform: translate(-50%, -5px); left: 50%; bottom: 100%; border: 2px solid #A6A6A6; background: #FFF; padding: 5px 10px; color: #222;}
+#header aside a {background-size: cover;}
+#header aside a[data-url="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_barton_sprite.jpg);}
 	
 /* Logo */
-#logo a {background-size: 75px; background-color: #EEE;}
-#logo a[value="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png);}
+#logo a {background-size: 75px;}
+#logo a[data-url="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png);}
 
 /* Colors */
 #logo, #navigation, #thread_header {}
