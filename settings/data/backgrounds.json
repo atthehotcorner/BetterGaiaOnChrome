@@ -1,23 +1,23 @@
 {
-	'Backgrounds': [
-		'default',
-		'http://i.imgur.com/vg2mlt5.jpg',
-		'http://i.imgur.com/33a4gwZ.jpg',
-    'http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg',
-    'http://i.imgur.com/vODSvML.png',
-		'http://i.imgur.com/885Yrc6.png',
-		'http://i.imgur.com/yh7mFwK.gif',
-		'http://i.imgur.com/M4y8Ox1.png',
-    'http://i.imgur.com/HRpwvio.png',
-		'http://i.imgur.com/6c0kqCL.jpg',
-		'http://i.imgur.com/d9EC8Uq.jpg',
-    'http://i.imgur.com/f5BpliR.jpg',
-    'http://i.imgur.com/TKgE1Ks.png',
-		'http://i.imgur.com/BrOY6Dz.jpg',
-		'http://i.imgur.com/jYvc0Ze.png',
-		'http://i.imgur.com/slxNu0L.png',
-		'http://i.imgur.com/nbS4mjN.png',
-		'http://i.imgur.com/4LpzJUe.jpg',
-		'http://i.imgur.com/YK8asbD.jpg'
+	"Backgrounds": [
+		"default",
+		"http://i.imgur.com/vg2mlt5.jpg",
+		"http://i.imgur.com/33a4gwZ.jpg",
+		"http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg",
+		"http://i.imgur.com/vODSvML.png",
+		"http://i.imgur.com/885Yrc6.png",
+		"http://i.imgur.com/yh7mFwK.gif",
+		"http://i.imgur.com/M4y8Ox1.png",
+		"http://i.imgur.com/HRpwvio.png",
+		"http://i.imgur.com/6c0kqCL.jpg",
+		"http://i.imgur.com/d9EC8Uq.jpg",
+		"http://i.imgur.com/f5BpliR.jpg",
+		"http://i.imgur.com/TKgE1Ks.png",
+		"http://i.imgur.com/BrOY6Dz.jpg",
+		"http://i.imgur.com/jYvc0Ze.png",
+		"http://i.imgur.com/slxNu0L.png",
+		"http://i.imgur.com/nbS4mjN.png",
+		"http://i.imgur.com/4LpzJUe.jpg",
+		"http://i.imgur.com/YK8asbD.jpg"
 	]
 }

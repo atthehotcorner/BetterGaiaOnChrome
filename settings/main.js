@@ -58,23 +58,75 @@ function Main() {
         <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
     });
 
-		// -- Add backgrounds
-		$.ajax({type: 'GET', url: 'data/backgrounds.json', dataType: 'json', async: false}).done(function(data){
-        console.log('cat')
-        // add backgrounds to page
-				$.each(data['Backgrounds'], function(index, url) {
+	// -- Add backgrounds
+	$.ajax({
+		type: 'GET',
+		url: 'data/backgrounds.json',
+		dataType: 'text json',
+		cache: false,
+		async: false
+	})
+	.done(function(data){
+		$.each(data['Backgrounds'], function(index, url) {
             if (url == 'default') $('#background a.customurl').before('<a value="' + url + '"></a>');
             else $('#background a.customurl').before('<a value="' + url + '" style="background-image: url(' + url + ');"></a>');
         });
+    })
+	.fail(function(data){
+		console.warn('Couldn\'t insert background options.');
     });
-    
+   
     var bgurl = prefs['background.image'];
     if ($('#background a[value="' + bgurl + '"]').length > 0) $('#background a[value="' + bgurl + '"]').addClass('selected');
     else {
         $('#background a.customurl').attr('value', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
-        
     }
-		// END backgrounds
+	// END backgrounds
+
+	// -- Add headers
+	$.ajax({
+		type: 'GET',
+		url: 'data/headers.json',
+		dataType: 'text json',
+		cache: false,
+		async: false
+	})
+	.done(function(data){
+		/*$.each(data['Headers'], function(index, url) {
+            if (url == 'default') $('#headers a.customurl').before('<a value="' + url + '"></a>');
+            else $('#headers a.customurl').before('<a value="' + url + '" style="background-image: url(' + url + ');"></a>');
+        });*/
+
+				var headersList = data;
+				var imageHostPrefix = headersList.Info.imageHostPrefix;
+				
+				// get only the image data
+				var imageYears = [];
+				$.each(headersList, function(key, value) {
+					if (key != "Info") imageYears.push(key);
+				});
+				imageYears.reverse();
+			
+				// add header options to page
+				$.each(imageYears, function(key, year) {
+					$("#header aside > div").append("<ol class='h" + year + "'><h3>" + year + "</h3></ol>");
+			
+					$.each(headersList[year], function(key, value) {
+						var url = "";
+						if (value[0].substring(0,7) != "http://" && value[0].substring(0,19) != "chrome-extension://") {url += imageHostPrefix + value[0];}
+						else {url += value[0];}
+						if (value[1]) {
+							if (value[1].substring(0,7) != "http://" && value[1].substring(0,19) != "chrome-extension://") {url += ", " + imageHostPrefix + value[1];}
+							else {url += ", " + value[1];}
+						}
+						$("#header ol.h" + year).append("<li class='radio'><input type='radio' name='hr' value='" + url + "' />" + key + "</li>");
+					});
+				});
+    })
+	.fail(function(data){
+		console.warn('Couldn\'t insert header options.');
+    });
+	// -- END headers
 
    	// -- Add logos
     var logourl = prefs['header.logo'];

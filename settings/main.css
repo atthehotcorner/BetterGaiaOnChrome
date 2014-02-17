@@ -197,11 +197,16 @@ page section aside.left + aside.right {width: 50%;}
 #preview2 .post .username {background-image: linear-gradient(to bottom, rgba(255,255,255,0.37) 10%, rgba(255,255,255,0)); border-radius: 4px 4px 0 0; border-top: 1px solid rgba(255,255,255,0.5); border-bottom: 1px solid rgba(0,0,0,0.1); background-color: #CFE6F9; font: bold 14px "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(255,255,255,0.75); padding: 5px 10px;}
 #preview2 .post .postbody {background: #FFF; min-height: 10px;}
 
+/* Square Options */
+.squares a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0;}
+.squares a.customurl {box-shadow: 0 0 0 3px #A6A6A6 inset; font-size: 11px; line-height: 1; padding: 13px 5px 0;}
+.squares a:hover {box-shadow: 0 0 0 3px #7F7F7F inset;}
+.squares a.selected {box-shadow: 0 0 0 3px #4CA5FF inset !important; position: relative;}
+.squares a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 1px; right: 1px; position: absolute; font-size: 14px; line-height: 1.4;}
+
 /* Backgrounds */
-#background aside.left a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0; background-size: 50px 50px;}
-#background aside.left a.selected {box-shadow: 0 0 0 4px #4CA5FF inset !important; position: relative;}
-#background aside.left a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 2px; right: 2px; position: absolute; font-size: 14px; line-height: 1.4;}
-#background aside.left a.customurl {box-shadow: 0 0 0 4px #A6A6A6 inset; font-size: 11px; line-height: 1; padding: 13px 5px 0;}
+#background .left a {background-size: 50px 50px;}
+#background .left a[value="default"] {background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg);}
 	
 /* Headers */
 #pages .page section#header aside {height: 240px; overflow-x: auto; overflow-y: hidden;}
@@ -216,11 +221,8 @@ page section aside.left + aside.right {width: 50%;}
 #pages .page section#header ol aside li input {vertical-align: middle;}
 	
 /* Logo */
-#logo a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0; background-size: 75px; background-color: #EEE;}
+#logo a {background-size: 75px; background-color: #EEE;}
 #logo a[value="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png);}
-#logo a.selected {box-shadow: 0 0 0 4px #4CA5FF inset !important; position: relative;}
-#logo a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 2px; right: 2px; position: absolute; font-size: 14px; line-height: 1.4;}
-#logo a.customurl {box-shadow: 0 0 0 4px #A6A6A6 inset; font-size: 11px; line-height: 1; padding: 13px 5px 0;}
 
 /* Colors */
 #logo, #navigation, #thread_header {}
