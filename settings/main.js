@@ -50,12 +50,41 @@ function Main() {
     if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
         prefs['format.list'] = localPrefs['format.list'];
         console.warn('Your formats are currently saved locally.');
+        $('page.postformatting .localonly').show();
     }
 	
     $.each(prefs['format.list'], function(index, format) {
         $('#postformating aside format.add').before('<format data-bbcode="' + format[1] + '" data-poststyle="' + format[2] + '"><strong>' + format[0] + '</strong>\
         <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
     });
+
+		// -- Add backgrounds
+		$.ajax({type: 'GET', url: 'data/backgrounds.json', dataType: 'json', async: false}).done(function(data){
+        console.log('cat')
+        // add backgrounds to page
+				$.each(data['Backgrounds'], function(index, url) {
+            if (url == 'default') $('#background a.customurl').before('<a value="' + url + '"></a>');
+            else $('#background a.customurl').before('<a value="' + url + '" style="background-image: url(' + url + ');"></a>');
+        });
+    });
+    
+    var bgurl = prefs['background.image'];
+    if ($('#background a[value="' + bgurl + '"]').length > 0) $('#background a[value="' + bgurl + '"]').addClass('selected');
+    else {
+        $('#background a.customurl').attr('value', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
+        
+    }
+		// END backgrounds
+
+   	// -- Add logos
+    var logourl = prefs['header.logo'];
+    if ($('#logo a[value="' + logourl + '"]').length > 0) $('#logo a[value="' + logourl + '"]').addClass('selected');
+    else $('#logo a.customurl').attr('value', logourl).addClass('selected');
+
+		$('#logo a[value]:not([value="default"])').each(function(){
+        $(this).css({'background-image': 'url(' + $(this).attr('value') + ')'});
+    });
+		// END logos 
 
     // Enable format sorting
     $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){
@@ -108,6 +137,7 @@ function Main() {
     if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
         prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
         console.warn('Your shortcuts are currently saved locally.');
+        $('page.shortcuts .localonly').show();
     }
 
     $.each(prefs['header.shortcuts.list'], function(index, data) {
@@ -210,12 +240,14 @@ function Save() {
                 if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
                     chrome.storage.local.set({'format.list': formats}, function(){
                         console.log('formats saved locally.');
+                        $('page.postformatting .localonly').show();
                         chrome.storage.sync.set({'format.list': {}});
                     });
                 }
             }
             else {
                 console.log('formats saved to sync.');
+                $('page.postformatting .localonly').hide();
                 chrome.storage.local.remove('format.list');
             }
         });
@@ -236,12 +268,14 @@ function Save() {
                 if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
                     chrome.storage.local.set({'header.shortcuts.list': links}, function(){
                         console.log('shortcuts saved locally.');
+                        $('page.shortcuts .localonly').show();
                         chrome.storage.sync.set({'header.shortcuts.list': {}});
                     });
                 }
             }
             else {
                 console.log('shortcuts saved to sync.');
+                $('page.shortcuts .localonly').hide();
                 chrome.storage.local.remove('header.shortcuts.list');
             }
         });

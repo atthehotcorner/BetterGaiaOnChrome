@@ -30,7 +30,7 @@ h5 {font-size: 15px;}
 h6 {font-size: 10px;}
 
 input, textarea, button, select {}
-input[type="checkbox"], input[type="radio"] {cursor: pointer;}
+
 .left {float: left;}
 .right {float: right;}
 .clear {display: block; clear: both;}
@@ -56,6 +56,9 @@ select:enabled:active {background-color: rgba(0,0,0,0.15);}
 input[type='text'], textarea {border: 2px solid #A6A6A6; padding: 4px;}
 input[type='text']:hover, textarea:hover {border-color: #7F7F7F;}
 input[type='text']:focus, textarea:focus {border-color: #4CA5FF;}
+
+/* Radio */
+input[type="radio"] {cursor: pointer; display: block;}
 
 /* Checkbox */
 input[type='checkbox'] {
@@ -106,6 +109,9 @@ menu a.current {background: #FFF; color: #222;}
 #pages page.shortcuts p.disable {left: 70px;}
 #pages page p.disable input[type="checkbox"] {margin: 0 0 -5px 10px; display: inline-block; z-index: 1;}
 
+#pages .localonly {display: none; font-weight: bold;}
+#pages .localonly:before {font-family: 'Glyphicons Halflings'; content: '\e197'; margin-right: 5px; font-weight: normal;}
+
 /* Page bar */
 page bar {position: absolute; right: 0; top: 15px; display: block; z-index: 1;}
 page bar a {display: inline-block; text-align: center; line-height: 10px; padding: 0 10px; margin-left: 25px; color: #222;}
@@ -148,7 +154,7 @@ page section aside.left + aside.right {width: 50%;}
 
 /* Preview Display */
 #preview {padding: 0; height: 115px;}
-#preview > div {background: #2D363D url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/background/legacy.jpg) top left; -webkit-transform: scale(0.65); -webkit-transform-origin: 0 0; width: calc(100% / 0.65);}
+#preview > div {background: #2D363D url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg) top left; -webkit-transform: scale(0.65); -webkit-transform-origin: 0 0; width: calc(100% / 0.65);}
 #preview > div:not(.hide).scrolling {position: fixed; top: 0; z-index: 2;}
 #preview a.toggle {display: block; position: absolute; color: #FFF; text-shadow: 0 1px 0 #222; font-size: 25px; line-height: 25px; top: 10px; right: 12px;}
 
@@ -176,7 +182,7 @@ page section aside.left + aside.right {width: 50%;}
 #preview .navigation > div {width: 1140px; margin: 0 auto;}
 #preview .navigation a {float: left; color: #FFF; display: block; font: bold 12px/20px Arial, Helvetica, Geneva, sans-serif; height: 27px; padding: 3px 10px; cursor: default;}
 
-#preview2 {background: #2D363D url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/background/legacy.jpg) top left; padding: 10px 10px 0 10px;}
+#preview2 {background: #2D363D url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg) top left; padding: 10px 10px 0 10px;}
 #preview2 > div {width: 740px; margin: 0 auto;}
 #preview2 .thread_header {}
 #preview2 .thread_header .linklist {height: 27px; display: block; background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.02), rgba(0,0,0,0.27)); border-radius: 3px 3px 0 0; box-shadow: 0 0 3px rgba(0,0,0,0.4); font-size: 14px; line-height: 27px;}
@@ -194,7 +200,7 @@ page section aside.left + aside.right {width: 50%;}
 /* Backgrounds */
 #background aside.left a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0; background-size: 50px 50px;}
 #background aside.left a.selected {box-shadow: 0 0 0 4px #4CA5FF inset !important; position: relative;}
-#background aside.left a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block;  text-align: center; top: 2px; right: 2px; position: absolute; font-size: 14px; line-height: 1.4;}
+#background aside.left a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 2px; right: 2px; position: absolute; font-size: 14px; line-height: 1.4;}
 #background aside.left a.customurl {box-shadow: 0 0 0 4px #A6A6A6 inset; font-size: 11px; line-height: 1; padding: 13px 5px 0;}
 	
 /* Headers */
@@ -210,7 +216,11 @@ page section aside.left + aside.right {width: 50%;}
 #pages .page section#header ol aside li input {vertical-align: middle;}
 	
 /* Logo */
-#pages .page section#logo aside li {cursor: pointer;}
+#logo a {width: 50px; height: 50px; display: block; float: left; margin: 0 10px 10px 0; background-size: 75px; background-color: #EEE;}
+#logo a[value="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png);}
+#logo a.selected {box-shadow: 0 0 0 4px #4CA5FF inset !important; position: relative;}
+#logo a.selected:after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 2px; right: 2px; position: absolute; font-size: 14px; line-height: 1.4;}
+#logo a.customurl {box-shadow: 0 0 0 4px #A6A6A6 inset; font-size: 11px; line-height: 1; padding: 13px 5px 0;}
 
 /* Colors */
 #logo, #navigation, #thread_header {}

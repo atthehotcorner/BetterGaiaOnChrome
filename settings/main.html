@@ -103,6 +103,9 @@
 
 				        <aside class="left">
                     <p>Select a background, or use your own image.</p>
+
+                    <a class="customurl">Custom URL</a>
+
                     <div class="ask">
                         <h3>Use your own <span class="close" title="Close">&#10005;</span></h3>
                         <input type="text" placeholder="URL" />
@@ -155,10 +158,10 @@
                     <h3>Logo</h3>
                     <p>Select a logo to use in the header.</p>
 
-                    <li><input type="radio" name="lg" label="Gaia Online" value="http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png"></li>
-                    <li><input type="radio" name="lg" label="Golden Gaia" value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/goldengaia.png"></li>
-                    <li><input type="radio" name="lg" label="Omnidrink" value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/omnidrink.png"></li>
-                    <li><input type="radio" name="lg" label="Custom URL" value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo_options.png"></li>
+                    <a value="default"></a>
+                    <a value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/goldengaia.png"></a>
+                    <a value="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/omnidrink.png"></li>
+                    <a class="customurl">Custom URL</a>
 
                     <div class="ask">
                         <h3>Use your own <span class="close" title="Close">&#10005;</span></h3>
@@ -213,6 +216,7 @@
             <section id="postformating">
                 <h3>Post Formats</h3>
                 <p>Style your forum posts. Your first format will be inserted automatically.</p>
+                <p class="localonly">You are currently over your storage limit for your formats. Your formats will be saved locally instead.</p>
 
                 <aside>
                     <format class="add"></format>
@@ -286,6 +290,7 @@
             <section id="shortcuts">
 				        <h3>Shortcuts</h3>
        	        <p>Edit the links that are shown next by your username.</p>
+                <p class="localonly">You are currently over your storage limit for your links. Your links will be saved locally instead.</p>
 
                 <aside>
                     <slink class="add"></slink>
@@ -370,6 +375,5 @@
     <script src="jquery.sortable.min.js"></script>
     <script src="jscolor/jscolor.js"></script>
     <script src="moment.min.js"></script>
-    <script src="../code/js/analytics.js"></script>
     <script src="main.js"></script>
 </body>
