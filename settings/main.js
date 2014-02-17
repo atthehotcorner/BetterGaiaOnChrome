@@ -46,11 +46,11 @@ function Main() {
 
     // Insert formats
 	
-	//  if local prefs are set
-	if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
-		prefs['format.list'] = localPrefs['format.list'];
-		console.warn('Your formats are currently saved locally.');
-	}
+    // if local prefs are set
+    if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
+        prefs['format.list'] = localPrefs['format.list'];
+        console.warn('Your formats are currently saved locally.');
+    }
 	
     $.each(prefs['format.list'], function(index, format) {
         $('#postformating aside format.add').before('<format data-bbcode="' + format[1] + '" data-poststyle="' + format[2] + '"><strong>' + format[0] + '</strong>\
@@ -100,6 +100,26 @@ function Main() {
         $(this).closest('slink').remove();
     });
 
+    // Insert usertags
+    $.each(prefs['usertags.list'], function(id, data) {
+        $('#usertags aside').append('<usertag data-id="' + id + '">\
+            <div class="username">' + data[0] + '</div>\
+            <div class="tag">' + data[1] + '</div>\
+            <div class="url">' + data[2] + '</div>\
+            <div class="createdon">' + moment(data[3]).calendar() + '</div>\
+            <a class="delete">Delete</a>\
+        </usertag>');
+    });
+
+    $('#usertags aside a.delete').on('click', function(){
+        var id = $(this).closest('usertag').attr('data-id');
+        chrome.storage.sync.get('usertags.list', function(data){
+            delete data['usertags.list'][id];
+            chrome.storage.sync.set({'usertags.list': data['usertags.list']}, function(){
+                $('#usertags usertag[data-id="' + id + '"]').remove();
+            });
+        });
+    });
 
     // Set sync usage
     chrome.storage.sync.getBytesInUse(function(data){
@@ -136,37 +156,38 @@ function Save() {
     });
 
     // Save formats
-	function saveFormat() {
-	var formats = [];
-	$('#postformating aside format:not(.add)').each(function(index, element) {
-		var name = $(this).find('strong').text();
-		var bbcode = $(this).attr('data-bbcode');
-		var style = $(this).attr('data-poststyle');
-		formats.push([name, bbcode, parseInt(style, 10)]);
-    });
-	chrome.storage.sync.set({'format.list': formats}, function(){
-		
-		if (typeof(chrome.runtime.lastError) == 'object') {
-			console.warn('Error when setting formats: ' + chrome.runtime.lastError['message']);
-			// save to local
-			if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
-				chrome.storage.local.set({'format.list': formats}, function(){
-					console.log('formats saved locally.');
-					chrome.storage.sync.set({'format.list': {}});
-				});
-			}
-		}
-		else {
-			console.log('formats saved to sync.');
-			chrome.storage.local.remove('format.list');
-		}
-	});
-	}
+    function saveFormat() {
+        var formats = [];
+        $('#postformating aside format:not(.add)').each(function(index, element) {
+            var name = $(this).find('strong').text();
+            var bbcode = $(this).attr('data-bbcode');
+            var style = $(this).attr('data-poststyle');
+            formats.push([name, bbcode, parseInt(style, 10)]);
+        });
 
-	// save bar for formats
-	$('page.postformatting bar a.save').on('click', function(){
-		saveFormat();
-	});
+        chrome.storage.sync.set({'format.list': formats}, function(){
+            if (typeof(chrome.runtime.lastError) == 'object') {
+                console.warn('Error when setting formats: ' + chrome.runtime.lastError['message']);
+                
+                // save to local
+                if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
+                    chrome.storage.local.set({'format.list': formats}, function(){
+                        console.log('formats saved locally.');
+                        chrome.storage.sync.set({'format.list': {}});
+                    });
+                }
+            }
+            else {
+                console.log('formats saved to sync.');
+                chrome.storage.local.remove('format.list');
+            }
+        });
+    }
+
+    // save bar for formats
+    $('page.postformatting bar a.save').on('click', function(){
+        saveFormat();
+    });
 
 		// Update bar links
 		$('bar a[pref]').on('click', function(){

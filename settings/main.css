@@ -290,16 +290,13 @@ page section aside.left + aside.right {width: 50%;}
 
 #usertags aside:empty:before {content: "No tags here. To get started, add a tag for a user in the forums.";}
 
-#pages .page section#usertags aside li {display: block; width: 100%; padding: 10px 0; position: relative; border-bottom: 1px solid #DDD; overflow: visible;}
-#pages .page section#usertags aside li:before {content: counter(list) '.'; counter-increment: list; display: table-cell; vertical-align: middle; padding-right: 10px;}
-#pages .page section#usertags aside li:last-of-type {border-bottom: 0;}
-
-#pages .page section#usertags aside li > * {display: table-cell; vertical-align: middle;}
-#pages .page section#usertags aside li div.username {width: 25%; padding-right: 5px; font-weight: bold}
-#pages .page section#usertags aside li div.userid {width: 25%; padding-right: 5px; display: none;}
-#pages .page section#usertags aside li div.tag {width: 25%; padding-right: 5px;}
-#pages .page section#usertags aside li div.createdon {width: 15%; padding-right: 5px;}
-#pages .page section#usertags aside li div.url {width: 35%; padding-right: 5px;}	
-#pages .page section#usertags aside li div.url:empty:after {content: '(No URL)'; color: #BBB;}
-#pages .page section#usertags aside li .options {width: auto; text-align: center; position: relative; font-weight: bold;}
-#pages .page section#usertags aside li .options .delete {font-weight: bold; font-size: 15px;}
+#usertags usertag {display: block; border-bottom: 1px solid #DDD;}
+#usertags usertag:last-of-type {border-bottom: 0;}
+#usertags usertag > * {display: table-cell; vertical-align: middle;}
+#usertags usertag div.username {width: 25%; padding-right: 5px; font-weight: bold}
+#usertags usertag div.tag {width: 25%; padding-right: 5px;}
+#usertags usertag div.url {width: 35%; padding-right: 5px;}	
+#usertags usertag div.url:empty:after {content: '(No URL)'; color: #BBB; font-style: italic;}
+#usertags usertag div.createdon {width: 15%; padding-right: 5px;}
+#usertags usertag a.delete {font-weight: normal;}
+#usertags usertag a.delete:before {font-size: 15px; font-family: 'Glyphicons Halflings'; margin-right: 5px; content: '\e020';}
