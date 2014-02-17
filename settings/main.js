@@ -103,25 +103,33 @@ function Main() {
     });
     
     // Insert shortcuts
-    $.each(prefs['header.shortcuts.list'], function(name, url) {
+
+    // if local prefs are set
+    if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
+        prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
+        console.warn('Your shortcuts are currently saved locally.');
+    }
+
+    $.each(prefs['header.shortcuts.list'], function(index, data) {
         $('#shortcuts aside slink.add').before('<slink>\
-            <strong>' + name + '</strong>\
-            <span class="url">' + url + '</span>\
-            <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div>\
+            <input type="text" class="name" placeholder="Name" value="' + data[0] + '">\
+            <input type="text" class="url" placeholder="URL" value="' + data[1] + '">\
+            <div class="clear"><a class="delete">Delete</a></div>\
         </slink>');
     });
-    $('#shortcuts slink strong, #shortcuts slink span').attr('contenteditable','true');
 
-    /* Enable link sorting
+    // Enable link sorting
     $('#shortcuts aside').sortable({items: 'slink:not(.add)'}).on('sortupdate', function(){
         //Triggered when the user stopped sorting and the DOM position has changed.
         console.log('done dragging!');
-    });*/
+    });
     
     $('#shortcuts aside slink.add').on('click', function(){
-        $(this).before('<slink><strong>Gaia Online</strong><span>http://www.gaiaonline.com/</span>\
-        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></slink>').before().children('strong, span').attr('contenteditable','true');
-
+        $(this).before('<slink>\
+            <input type="text" class="name" placeholder="Name" value="Gaia Online">\
+            <input type="text" class="url" placeholder="URL" value="http://www.gaiaonline.com/">\
+            <div class="clear"><a class="delete">Delete</a></div>\
+        </slink>');
         $('#shortcuts aside').sortable('destroy').sortable({items: 'slink:not(.add)'});
     });
 
@@ -185,7 +193,7 @@ function Save() {
     });
 
     // Save formats
-    function saveFormat() {
+    $('page.postformatting bar a.save').on('click', function(){
         var formats = [];
         $('#postformating aside format:not(.add)').each(function(index, element) {
             var name = $(this).find('strong').text();
@@ -211,11 +219,32 @@ function Save() {
                 chrome.storage.local.remove('format.list');
             }
         });
-    }
+    });
 
-    // save bar for formats
-    $('page.postformatting bar a.save').on('click', function(){
-        saveFormat();
+    // Save shortcuts
+    $('page.shortcuts bar a.save').on('click', function(){
+        var links = [];
+        $('#shortcuts aside slink:not(.add)').each(function() {
+            links.push([$(this).find('input.name').val(), $(this).find('input.url').val()]);
+        });
+
+        chrome.storage.sync.set({'header.shortcuts.list': links}, function(){
+            if (typeof(chrome.runtime.lastError) == 'object') {
+                console.warn('Error when setting shortcuts: ' + chrome.runtime.lastError['message']);
+                
+                // save to local
+                if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
+                    chrome.storage.local.set({'header.shortcuts.list': links}, function(){
+                        console.log('shortcuts saved locally.');
+                        chrome.storage.sync.set({'header.shortcuts.list': {}});
+                    });
+                }
+            }
+            else {
+                console.log('shortcuts saved to sync.');
+                chrome.storage.local.remove('header.shortcuts.list');
+            }
+        });
     });
 
 		// Update bar links

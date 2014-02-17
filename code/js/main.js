@@ -191,11 +191,16 @@ if (prefs['header.widgets'] == true) {
     
 // Shortcuts
 if (prefs['header.shortcuts'] == true) {
-    $('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
-    var links = prefs['header.shortcuts.list'];
-    for (var key in links) {
-        $('#bg_shortcuts div').append('<a href="' + links[key] + '">' + key + '</a>');
+    // check if local prefs exist
+    if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
+        prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
+        console.warn('Your shortcuts are currently saved locally.');
     }
+
+    $('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
+    $(prefs['header.shortcuts.list']).each(function(index, data){
+        $('#bg_shortcuts div').append('<a href="' + data[1] + '">' + data[0] + '</a>');
+    });
 }
 
 // Draw All

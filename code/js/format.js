@@ -25,10 +25,12 @@ if ((prefs['format'] == true)
 
         // Adds formatting bar
         var formattingbar = '';
-		if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
-			prefs['format.list'] = localPrefs['format.list'];
-			console.warn('Your formats are currently saved locally.');
-		}
+
+        // check if local prefs exist
+        if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
+            prefs['format.list'] = localPrefs['format.list'];
+            console.warn('Your formats are currently saved locally.');
+        }
 
         $.each(prefs['format.list'], function(index, format) {
             if (index == 0) {

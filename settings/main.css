@@ -263,7 +263,7 @@ page.postformatting.editing > *:not(#editformat) {opacity: 0.5; pointer-events: 
 #editformat .clear {text-align: right;}
 
 /* Shortcuts */
-#shortcuts slink, #shortcuts .sortable-placeholder {display: block; min-height: 82px; border: 2px solid #E4E4E4; cursor: move; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left; padding: 5px 10px;}
+#shortcuts slink, #shortcuts .sortable-placeholder {display: block; min-height: 94px; border: 2px solid #E4E4E4; cursor: move; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left; padding: 5px 10px;}
 #shortcuts .sortable-placeholder {border-style: dashed;}
 #shortcuts .sortable-dragging {background: #FFF;}
 @media (min-width: 1200px) {
@@ -271,14 +271,12 @@ page.postformatting.editing > *:not(#editformat) {opacity: 0.5; pointer-events: 
 }
 
 #shortcuts slink.add {text-align: center; cursor: pointer;}
-#shortcuts slink.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #555; color: #555; text-align: left; border-radius: 35px; margin-top: 10px; text-indent: 5px;}
+#shortcuts slink.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #555; color: #555; text-align: left; border-radius: 35px; margin-top: 15px; text-indent: 5px;}
 #shortcuts slink.add:after {content: 'Add'; display: block; margin-top: 2px;}
 
-#shortcuts slink strong, #shortcuts slink span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; cursor: text;}
-#shortcuts slink:hover strong, #shortcuts slink:hover span {text-overflow: clip; border: 2px solid #A6A6A6; margin: -2px -4px 0; padding: 0 2px; position: relative;}
-#shortcuts slink:hover span {margin-bottom: -4px;}
-#shortcuts slink strong:hover, #shortcuts slink span:hover {border-color: #7F7F7F; z-index: 1;}
-#shortcuts slink strong:focus, #shortcuts slink span:focus {border-color: #4CA5FF; z-index: 1;}
+#shortcuts slink input {display: block; width: 100%;}
+#shortcuts slink input:hover, #shortcuts slink input:focus {position: relative; z-index: 1;}
+#shortcuts slink input.url {margin-top: -2px;}
 
 #shortcuts slink .clear {margin-top: 3px; text-align: right;}
 #shortcuts slink.sortable-dragging .clear {pointer-events: none;}

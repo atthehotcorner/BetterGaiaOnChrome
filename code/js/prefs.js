@@ -23,20 +23,20 @@ var prefs = {
     'header.drawAll': true,
 
     'header.shortcuts': true,
-    'header.shortcuts.list': {
-        'MyGaia': '/mygaia/',
-        'Private Messages': '/profile/privmsg.php',
-        'Forums': '/forum/',
-        'My Posts': '/forum/myposts/',
-        'My Topics': '/forum/mytopics/',
-        'Subscribed Threads': '/forum/subscription/',
-        'Shops': '/market/',
-        'Trades': '/gaia/bank.php',
-        'Marketplace': '/marketplace/',
-        'Guilds': '/guilds/',
-        'Top of Page': '#',
-        'Bottom of Page': '#bg_bottomofpage'
-    },
+    'header.shortcuts.list': [
+        ['MyGaia', '/mygaia/'],
+        ['Private Messages', '/profile/privmsg.php'],
+        ['Forums', '/forum/'],
+        ['My Posts', '/forum/myposts/'],
+        ['My Topics', '/forum/mytopics/'],
+        ['Subscribed Threads', '/forum/subscription/'],
+        ['Shops', '/market/'],
+        ['Trades', '/gaia/bank.php'],
+        ['Marketplace', '/marketplace/'],
+        ['Guilds', '/guilds/'],
+        ['Top of Page', '#'],
+        ['Bottom of Page', '#bg_bottomofpage']
+    ],
     
     'header.background': 'default',
     'header.background.base': 'default',
