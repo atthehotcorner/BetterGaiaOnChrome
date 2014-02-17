@@ -52,6 +52,11 @@ select:enabled {cursor: pointer;}
 select:enabled:hover {border-color: #7F7F7F;}
 select:enabled:active {background-color: rgba(0,0,0,0.15);}
 
+/* Text */
+input[type='text'], textarea {border: 2px solid #A6A6A6; padding: 4px;}
+input[type='text']:hover, textarea:hover {border-color: #7F7F7F;}
+input[type='text']:focus, textarea:focus {border-color: #4CA5FF;}
+
 /* Checkbox */
 input[type='checkbox'] {
   -webkit-appearance: none;
@@ -114,6 +119,13 @@ page bar a.disable[value='false']:after {content: 'Off';}
 page bar a.add:before {content: '\2b';}
 page.off > *:not(bar), page.off > bar > *:not(.disable) {pointer-events: none; opacity: 0.5;}
 
+@-webkit-keyframes glow {
+    0% {background: rgba(154,233,134,0);}
+    90% {background: rgba(154,233,134,0.8); border-color: #186618;}
+    100% {background: rgba(154,233,134,0);}
+}
+page bar a.save:before {-webkit-animation: glow 3s infinite;}
+
 /* Page sections */
 page section {position: relative; padding: 15px 0; clear: both;}
 page section:after {content: ''; display: table; clear: both;}
@@ -127,26 +139,6 @@ page section aside li input, page section li select {display: block;}
 
 page section aside.left {width: 50%; padding-right: 30px;}
 page section aside.left + aside.right {width: 50%;}
-
-/* Home page */
-#pages .page section aside li input.color {box-shadow: 0 0 0 2px #A6A6A6 inset, 0 0 0 3px #FFF inset; margin: 10px 0; padding: 5px; display: block; width: 100px; margin: 1px 7px 0 0; cursor: pointer;}
-	
-
-	/* Lists */
-	#pages .page section.list aside:empty:after {padding-bottom: 15px; display: block;}
-	#pages .page section.list aside li a.handle {display: block; float: left; height: 19px; margin: 3px 0 0 5px; width: 8px; border: 3px outset #555; border-width: 0 3px;}
-	#pages .page section.list aside li:hover a.handle {border-color: #FFF;}
-	#pages .page section.list aside li.ui-state-highlight {background: #FAD892; border-bottom: 1px solid rgba(0,0,0,0.3); box-shadow: 0 1px 0 rgba(0,0,0,0.8) inset;}
-
-	#pages .page section.list aside li .options a {display: block; padding: 2px; display: inline-block; padding: 2px 5px;}
-
-	#pages .page section.list aside li .options .edit {}
-	#pages .page section.list aside li .options .edit:hover {}
-	#pages .page section.list aside li .options .edit:active {}
-
-	#pages .page section.list aside li .options .delete {font-weight: bold; font-size: 15px;}
-	#pages .page section.list aside li .options .delete:hover {}
-	#pages .page section.list aside li .options .delete:active {}
 
 /* Ask Popup */
 #pages page .ask {position: absolute; display: none; background: #FFF; width: 300px; top: 0; left: 0; z-index: 1; padding: 10px 15px 15px; border: 2px solid #000; margin: 10px 0 0 10px;}
@@ -256,12 +248,19 @@ page section aside.left + aside.right {width: 50%;}
 #postformating format .clear a.edit:before {content: '\270f';}
 #postformating format .clear a.delete:before {content: '\e020';}
 
-		/* Ask popup */
-		#pages .page section#postformating div.ask {top: 55px; cursor: default; min-width: 600px; width: auto; left: 50%; margin-left: -150px;}
-		#pages .page section#postformating li:nth-child(4n+4) div.ask {right: 50%; margin-right: -150px; left: auto; margin-left: 0;}
-		#pages .page section#postformating div.ask textarea {min-height: 150px; padding: 5px;}
-		#pages .page section#postformating div.ask .form {margin: 0 260px 0 0;}
-		#pages .page section#postformating div.ask .right {width: 240px; padding: 5px 10px; border: 1px solid #CCC; font: 13px/1.231 'Lucida Grande', LucidaGrande, Lucida, Verdana,arial,helvetica,clean,sans-serif;}
+/* Edit format popup */
+page.postformatting.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
+
+#editformat {width: 600px; top: 60px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #A6A6A6; display: none;}
+.editing #editformat {display: block;}
+#editformat .left, #editformat .right {width: 50%;}
+#editformat .left {padding-right: 10px;}
+#editformat .right:empty:before {content: 'Preview';}
+#editformat h3 {}
+#editformat h3 input {position: relative; top: -4px; margin: 0 0 0 5px;}
+#editformat textarea {min-height: 300px; display: block; width: 100%;}
+#editformat select {display: block; width: 100%;}
+#editformat .clear {text-align: right;}
 
 /* Shortcuts */
 #shortcuts slink, #shortcuts .sortable-placeholder {display: block; min-height: 82px; border: 2px solid #E4E4E4; cursor: move; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left; padding: 5px 10px;}
@@ -275,8 +274,11 @@ page section aside.left + aside.right {width: 50%;}
 #shortcuts slink.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #555; color: #555; text-align: left; border-radius: 35px; margin-top: 10px; text-indent: 5px;}
 #shortcuts slink.add:after {content: 'Add'; display: block; margin-top: 2px;}
 
-#shortcuts slink strong {display: block; text-overflow: ellipsis; overflow: hidden;}
-#shortcuts slink strong:after {font-weight: normal; content: attr(data-url); display: block; text-overflow: ellipsis; overflow: hidden;}
+#shortcuts slink strong, #shortcuts slink span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; cursor: text;}
+#shortcuts slink:hover strong, #shortcuts slink:hover span {text-overflow: clip; border: 2px solid #A6A6A6; margin: -2px -4px 0; padding: 0 2px; position: relative;}
+#shortcuts slink:hover span {margin-bottom: -4px;}
+#shortcuts slink strong:hover, #shortcuts slink span:hover {border-color: #7F7F7F; z-index: 1;}
+#shortcuts slink strong:focus, #shortcuts slink span:focus {border-color: #4CA5FF; z-index: 1;}
 
 #shortcuts slink .clear {margin-top: 3px; text-align: right;}
 #shortcuts slink.sortable-dragging .clear {pointer-events: none;}

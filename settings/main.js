@@ -70,28 +70,57 @@ function Main() {
         $(this).before('<format data-bbcode="' + bbcode + '" data-poststyle="0" draggable="true"><strong>' + name[Math.floor(Math.random() * name.length)] + '</strong>\
         <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
 
+        // re-enable sorting
         $('#postformating aside').sortable('destroy').sortable({items: 'format:not(.add)'});
+    });
+
+    $('#postformating aside').on('click', 'format .clear a.edit', function(){
+        var format = $(this).closest('format');
+        $('#editformat h3 input').val(format.find('strong').text());
+        $('#editformat textarea').val(decodeURI(format.attr('data-bbcode')));
+        $('#editformat select').val(format.attr('data-poststyle'));
+        
+        $(this).closest('format').addClass('editing');
+        $('page.postformatting').addClass('editing');
+    });
+
+    $('#editformat .clear .done').on('click', function(){
+        $('#postformating format.editing strong').text($('#editformat h3 input').val());
+        $('#postformating format.editing').attr({
+            'data-bbcode': encodeURI($('#editformat textarea').val()), 
+            'data-poststyle': $('#editformat select').val()
+        });
+
+        $('page.postformatting.editing, #postformatting format.editing').removeClass('editing');    
+    });
+
+    $('#editformat .clear .cancel').on('click', function(){
+        $('page.postformatting.editing, #postformatting format.editing').removeClass('editing');       
     });
 
     $('#postformating aside').on('click', 'format .clear a.delete', function(){
         $(this).closest('format').remove();
     });
-
+    
     // Insert shortcuts
     $.each(prefs['header.shortcuts.list'], function(name, url) {
-        $('#shortcuts aside slink.add').before('<slink><strong data-url="' + url + '">' + name + '</strong>\
-        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></slink>');
+        $('#shortcuts aside slink.add').before('<slink>\
+            <strong>' + name + '</strong>\
+            <span class="url">' + url + '</span>\
+            <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div>\
+        </slink>');
     });
+    $('#shortcuts slink strong, #shortcuts slink span').attr('contenteditable','true');
 
-    // Enable link sorting
+    /* Enable link sorting
     $('#shortcuts aside').sortable({items: 'slink:not(.add)'}).on('sortupdate', function(){
         //Triggered when the user stopped sorting and the DOM position has changed.
         console.log('done dragging!');
-    });
+    });*/
     
     $('#shortcuts aside slink.add').on('click', function(){
-        $(this).before('<slink><strong data-url="http://www.gaiaonline.com/">Gaia Online</strong>\
-        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></slink>');
+        $(this).before('<slink><strong>Gaia Online</strong><span>http://www.gaiaonline.com/</span>\
+        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></slink>').before().children('strong, span').attr('contenteditable','true');
 
         $('#shortcuts aside').sortable('destroy').sortable({items: 'slink:not(.add)'});
     });
