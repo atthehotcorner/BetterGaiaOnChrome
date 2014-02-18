@@ -94,6 +94,17 @@ function Main() {
         else $(this).closest('page').removeClass('off');
     });
 
+		// Remove alarm
+		$('select[pref="notifications"]').on('change', function(){
+        if ($(this).val() == '0') {
+            chrome.alarms.clear('gaia-notifications');
+            chrome.notifications.clear('gaia-notify', function(){});
+        }
+        else {
+            chrome.alarms.create('gaia-notifications', {when: 0, periodInMinutes: parseInt($(this).val(), 10)});
+        }
+		});
+
     // Insert formats
 	
     // if local prefs are set
@@ -187,6 +198,19 @@ function Main() {
     });
     // END logos 
 
+    // nav color reset
+    $('#navigation .reset').on('click', function(){
+        $('input[pref="header.nav"]').minicolors('value', defaultPrefs['header.nav']);
+        $('input[pref="header.nav.hover"]').minicolors('value', defaultPrefs['header.nav.hover']);
+        $('input[pref="header.nav.current"]').minicolors('value', defaultPrefs['header.nav.current']);
+    });
+
+    // nav color reset
+    $('#thread_header .reset').on('click', function(){
+        $('input[pref="forum.threadHeader"]').minicolors('value', defaultPrefs['forum.threadHeader']);
+        $('input[pref="forum.postHeader"]').minicolors('value', defaultPrefs['forum.postHeader']);
+    });
+    
     // Enable format sorting
     $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){
         //Triggered when the user stopped sorting and the DOM position has changed.

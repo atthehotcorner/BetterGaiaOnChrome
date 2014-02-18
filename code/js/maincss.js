@@ -21,11 +21,11 @@ css += 'body.mygaia #gaia_content #bd .mg_content.suggested {display: block;}';
 
 // Background
 if (prefs['background.image'] != 'default')
-css += '.time-day, .time-dawn, .time-night, .time-dusk, table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
+css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
 
 // Background Options
-css += '.time-day, .time-dawn, .time-night, .time-dusk {';
-    css += 'background-color: #' + prefs['background.color'] + ';'; // Color
+css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {';
+    css += 'background-color: ' + prefs['background.color'] + ';'; // Color
     css += 'background-position: ' + prefs['background.position'] + ';'; // Position
     if (prefs['background.repeat'] == false) css += 'background-repeat: no-repeat;'; // Repeat
     if (prefs['background.float'] == true) css += 'background-attachment: fixed;'; // Float
@@ -52,7 +52,7 @@ if (prefs['header.logo'] != 'default')
 css += 'body #gaia_header .header_content .gaiaLogo a, body #gaia_header .header_content .gaiaLogo a:hover {background-image: url(' + prefs['header.logo'] + ');}';
 
 // Navigation and HUD
-css += 'body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #' + prefs['header.nav'] + ';}';
+css += 'body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: ' + prefs['header.nav'] + ';}';
 
 function hexToRgb(hex) {
     var bigint = parseInt(hex, 16);
@@ -61,19 +61,20 @@ function hexToRgb(hex) {
     var b = bigint & 255;
     return r + "," + g + "," + b;
 }
-var rgb = hexToRgb(prefs['header.nav']);
-css += 'body #gaia_header .header_content .goldMessage {background: linear-gradient(to right, rgba('+ rgb +',0), rgba('+ rgb +',0.5), rgba('+ rgb +',0)), radial-gradient(ellipse at center top, rgba(255,255,255,0.25), rgba(255,255,255,0) 50%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.25), rgba(0,0,0,0) 50%)';
+var rgb = hexToRgb(prefs['header.nav.current']);
+css += 'body #gaia_header .header_content .goldMessage {linear-gradient(to right, rgba(' + rgb + ', 0), rgba(' + rgb + ',0.5), rgba(' + rgb + ',0)), radial-gradient(ellipse at center top, rgba(255,255,255,0.25), rgba(255,255,255,0) 50%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.25), rgba(0,0,0,0) 50%);}';
 
 // Nav Hover
-css += '#gaia_header #gaia_menu_bar #nav > li:not(#menu_search):hover, #gaia_header #gaia_menu_bar #nav > li:not(#menu_search):hover:active {background-color: #' + prefs['header.nav.hover'] + ';}';
+css += '#nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {background-color: ' + prefs['header.nav.hover'] + ';}';
 
 // Nav Current
-css += '#gaia_header #gaia_menu_bar #nav > li.selected {background-color: #' + prefs['header.nav.current'] + ';}';
+css += '#nav > li.selected {background-color: ' + prefs['header.nav.current'] + ';}';
 
 // Add CSS
 var head = document.getElementsByTagName('head');
 if (head.length > 0) {
     var style = document.createElement('style');
+    style.type = 'text/css';
     style.setAttribute('bg-css', '');
     style.appendChild(document.createTextNode(css));
     head[0].appendChild(style);
