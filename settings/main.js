@@ -2,7 +2,24 @@
 Settings JS 
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+
+I know this isn't modular, but its the 1st edition :p
 */
+
+var Preview = {
+    set: {
+        background: function(url) {
+            $('#preview > div, #preview2').css({'background-image': 'url(' + url + ')'});
+        },
+        header: function(url, baseurl) {
+            if (baseurl == 'default') $('#preview .header').removeAttr('style');
+            else $('#preview .header').css({'background-image': 'url(' + baseurl + ')'});
+
+            if (url == 'default') $('#preview .header > div').removeAttr('style');
+            else $('#preview .header > div').css({'background-image': 'url(' + url + ')'});
+        }
+    }
+};
 
 function Main() {
     // Set up pages
@@ -81,6 +98,8 @@ function Main() {
     else {
         $('#background a.customurl').attr('data-url', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
     }
+    
+    Preview.set.background(bgurl);
 	// END backgrounds
 
 	// -- Add headers
@@ -116,10 +135,12 @@ function Main() {
 		console.warn('Couldn\'t insert header options.');
     });
 
-    var hrurl = prefs['header.background'], hrbaseurl = prefs['header.background.base'];
-    if ($('#header a[data-url="' + hrurl + '"][data-base-url="' + hrurl + '"]').length > 0) $('#header a[data-url="' + hrurl + '"][data-base-url="' + hrurl + '"]').addClass('selected');
-    else if (hrurl == 'default') $('#header a.customurl').attr({'data-url': hrurl, 'data-base-url': hrbaseurl}).addClass('selected');
-    else $('#header a.customurl').attr({'data-url': hrurl, 'data-base-url': hrbaseurl}).addClass('selected').css({'background-image': 'url(' + hrurl + ')'});
+    var value = [prefs['header.background'], prefs['header.background.base']];
+    if ($('#header a[data-url="' + value[0] + '"][data-base-url="' + value[1] + '"]').length > 0) $('#header a[data-url="' + value[0] + '"][data-base-url="' + value[1] + '"]').addClass('selected');
+    else if (value[0] == 'default') $('#header a.customurl').attr({'data-url': value[0], 'data-base-url': value[1]}).addClass('selected');
+    else $('#header a.customurl').attr({'data-url': value[0], 'data-base-url': value[1]}).addClass('selected').css({'background-image': 'url(' + value[0] + ')'});
+    
+    Preview.set.header(value[0], value[1]);
 	// -- END headers
 
    	// -- Add logos
@@ -260,6 +281,57 @@ function Save() {
     // Update selects
     $('select[pref]:not([disabled])').on('change', function(){
         var pref = $(this).attr('pref'), value = $(this).val();
+        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+    });
+
+    // save background
+    $('#background aside.left').on('click', 'a[data-url]:not(.selected)', function(){
+        var pref = 'background.image', value = $(this).attr('data-url');
+        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+
+        $('#background .left a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');        
+        Preview.set.background(value);
+    });
+
+    // save header
+    $('#header aside').on('click', 'a[data-url]:not(.selected)', function(){
+        var pref = ['header.background', 'header.background.base'], value = [$(this).attr('data-url'), $(this).attr('data-base-url')];
+        if (defaultPrefs[pref[0]] == value[0]) chrome.storage.sync.remove(pref[0], function(){console.log(pref[0] + ' removed.');});
+        else {
+            var send = {};
+            send[pref[0]] = value[0];
+            chrome.storage.sync.set(send, function(){console.log(pref[0] + ' saved.');});
+        }
+        
+        if (defaultPrefs[pref[1]] == value[1]) chrome.storage.sync.remove(pref[1], function(){console.log(pref[1] + ' removed.');});
+        else {
+            var send = {};
+            send[pref[1]] = value[1];
+            chrome.storage.sync.set(send, function(){console.log(pref[1] + ' saved.');});
+        }
+
+        $('#header aside a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');
+        Preview.set.header(value[0], value[1]);
+    });    
+
+    // save logo
+    $('#logo').on('click', 'a[data-url]:not(.selected)', function(){
+        $('#logo a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');
+
+        var pref = 'header.logo', value = $(this).attr('data-url');
         if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
         else {
             var send = {};
