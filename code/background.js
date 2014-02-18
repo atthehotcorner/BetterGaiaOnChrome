@@ -7,6 +7,12 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 // Check if install, update
 chrome.runtime.onInstalled.addListener(function(details) {
     chrome.storage.local.set({version: chrome.runtime.getManifest().version});
+
+    var optionsUrl = chrome.runtime.getURL('settings/main.html#welcome');
+    chrome.tabs.query({url: optionsUrl}, function(tabs) {
+        if (tabs.length) chrome.tabs.update(tabs[0].id, {active: true});
+        else chrome.tabs.create({url: optionsUrl});
+    });	
 });
 
 // Send data to scripts

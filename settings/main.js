@@ -64,6 +64,7 @@ function Main() {
 
     if (window.location.hash) {
         if (window.location.hash == '#welcome') {
+            $('header menu a.current').removeClass('current');
             $('#pages page.selected').removeClass('selected');
             $('#pages page.welcome').addClass('selected');
             $('header').addClass('hidden');
@@ -319,7 +320,13 @@ function Main() {
             });
         });
     });
-
+    
+    // button on welcome page
+    $('page.welcome button').on('click', function(){
+        $('header').removeClass('hidden');
+        $('header menu a.features').click();
+    });
+        
     // Set sync usage
     chrome.storage.sync.getBytesInUse(function(data){
         $('page.about strong.inuse').text(data);
