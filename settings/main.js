@@ -9,7 +9,8 @@ I know this isn't modular, but its the 1st edition :p
 var Preview = {
     set: {
         background: function(url) {
-            $('#preview > div, #preview2').css({'background-image': 'url(' + url + ')'});
+            if (url == 'default') $('#preview > div, #preview2').removeAttr('style');
+            else $('#preview > div, #preview2').css({'background-image': 'url(' + url + ')'});
         },
         header: function(url, baseurl) {
             if (baseurl == 'default') $('#preview .header').removeAttr('style');
@@ -17,6 +18,10 @@ var Preview = {
 
             if (url == 'default') $('#preview .header > div').removeAttr('style');
             else $('#preview .header > div').css({'background-image': 'url(' + url + ')'});
+        },
+        logo: function(url) {
+            if (url == 'default')$('#preview .logo').removeAttr('style');
+            else $('#preview .logo').css({'background-image': 'url(' + url + ')'});
         }
     }
 };
@@ -147,8 +152,9 @@ function Main() {
     var logourl = prefs['header.logo'];
     if ($('#logo a[data-url="' + logourl + '"]').length > 0) $('#logo a[data-url="' + logourl + '"]').addClass('selected');
     else $('#logo a.customurl').attr('data-url', logourl).addClass('selected');
-
-		$('#logo a[data-url]:not([data-url="default"])').each(function(){
+    Preview.set.logo(logourl);
+    
+    $('#logo a[data-url]:not([data-url="default"])').each(function(){
         $(this).css({'background-image': 'url(' + $(this).attr('data-url') + ')'});
     });
     // END logos 
@@ -290,7 +296,7 @@ function Save() {
     });
 
     // save background
-    $('#background aside.left').on('click', 'a[data-url]:not(.selected)', function(){
+    $('#background aside.left').on('click.default', 'a[data-url]:not(.selected)', function(){
         var pref = 'background.image', value = $(this).attr('data-url');
         if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
         else {
@@ -305,7 +311,7 @@ function Save() {
     });
 
     // save header
-    $('#header aside').on('click', 'a[data-url]:not(.selected)', function(){
+    $('#header aside').on('click.default', 'a[data-url]:not(.selected)', function(){
         var pref = ['header.background', 'header.background.base'], value = [$(this).attr('data-url'), $(this).attr('data-base-url')];
         if (defaultPrefs[pref[0]] == value[0]) chrome.storage.sync.remove(pref[0], function(){console.log(pref[0] + ' removed.');});
         else {
@@ -327,10 +333,7 @@ function Save() {
     });    
 
     // save logo
-    $('#logo').on('click', 'a[data-url]:not(.selected)', function(){
-        $('#logo a[data-url].selected').removeClass('selected');
-        $(this).addClass('selected');
-
+    $('#logo').on('click.default', 'a[data-url]:not(.selected)', function(){
         var pref = 'header.logo', value = $(this).attr('data-url');
         if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
         else {
@@ -338,6 +341,10 @@ function Save() {
             send[pref] = value;
             chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
         }
+
+        $('#logo a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');
+        Preview.set.logo(value);
     });
 
     // Save formats
@@ -411,6 +418,38 @@ function Save() {
         }
         if ($(this).attr('value') == 'false') $(this).closest('page').addClass('off');
         else $(this).closest('page').removeClass('off');
+		});
+    
+        // enable asks
+        $('a.customurl').on('click', function(){
+            // prefill data
+            if (typeof($(this).attr('data-url')) == 'string') {
+                $(this).closest('aside').find('.ask input.url').val($(this).attr('data-url'));
+            }
+            if (typeof($(this).attr('data-base-url')) == 'string') {
+                $(this).closest('aside').find('.ask input.baseurl').val($(this).attr('data-base-url'));
+            }
+
+            // show
+			$(this).closest('aside').addClass('editing');
+            return false;
+		});
+
+        $('.ask h3 .close').on('click', function(){
+			$(this).closest('aside').removeClass('editing');
+		});
+
+		$('.ask button').on('click', function(){
+            var customurl = $(this).closest('aside').find('a.customurl');
+
+            // Update Value
+            if ($.trim($(this).siblings('input.url').val()) != '') {
+                if ($(this).siblings('input.baseurl').length > 0) customurl.attr('data-base-url', $(this).siblings('input.baseurl').val());
+                customurl.attr('data-url', $(this).siblings('input.url').val()).removeClass('selected').trigger('click.default');
+            }
+				
+            // Close Ask
+            $(this).closest('aside').removeClass('editing');
 		});
 
 		// Reset

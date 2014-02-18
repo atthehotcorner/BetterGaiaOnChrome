@@ -147,10 +147,13 @@ page section aside.left {width: 50%; padding-right: 30px;}
 page section aside.left + aside.right {width: 50%;}
 
 /* Ask Popup */
-#pages page .ask {position: absolute; display: none; background: #FFF; width: 300px; top: 0; left: 0; z-index: 1; padding: 10px 15px 15px; border: 2px solid #000; margin: 10px 0 0 10px;}
-#pages page .ask input[type='text'], #pages .page .ask textarea {border: 1px solid #A6A6A6; padding: 5px 10px; width: 100%; margin: 0 0 10px;}
-#pages page .ask input[type='text']:focus {border-color: #4CA5FF;}
-#pages page .ask h3 .close {float: right; cursor: pointer; color: #000;}
+page aside.editing > *:not(.ask) {opacity: 0.5; pointer-events: none;}
+
+page .ask {position: absolute; display: none; background: #FFF; width: 300px; bottom: 55px; left: 10px; z-index: 1; padding: 10px 15px 15px; border: 2px solid #222;}
+page aside.editing .ask {display: block;}
+page .ask input[type='text'], #pages .page .ask textarea {width: 100%; margin: 0 0 10px;}
+page .ask input[type='text']:focus {border-color: #4CA5FF;}
+page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 
 /* Preview Display */
 #preview {padding: 0; height: 115px;}
@@ -209,7 +212,6 @@ page section aside.left + aside.right {width: 50%;}
 #background .left a[data-url="default"] {background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg);}
 	
 /* Headers */
-#header aside > div {display: block;}
 #header aside > div:after {content: ''; display: table; clear: both;}
 #header aside a[data-name]:hover:before {position: absolute; content: attr(data-name); white-space: nowrap; -webkit-transform: translate(-50%, -5px); left: 50%; bottom: 100%; border: 2px solid #A6A6A6; background: #FFF; padding: 5px 10px; color: #222;}
 #header aside a {background-size: cover;}
@@ -258,7 +260,7 @@ page section aside.left + aside.right {width: 50%;}
 /* Edit format popup */
 page.postformatting.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 
-#editformat {width: 600px; top: 60px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #A6A6A6; display: none;}
+#editformat {width: 600px; top: 60px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #222; display: none;}
 .editing #editformat {display: block;}
 #editformat .left, #editformat .right {width: 50%;}
 #editformat .left {padding-right: 10px;}
