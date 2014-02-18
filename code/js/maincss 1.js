@@ -133,3 +133,7 @@ chrome.storage.sync.get(null, function(response) {
   });
 });
 else CssJs();
+
+chrome.storage.local.get(null, function(response) {
+  localPrefs = response;
+});

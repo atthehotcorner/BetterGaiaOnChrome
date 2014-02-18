@@ -43,14 +43,39 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
 }
 
 // Widgets
+$('#gaia_header .userName').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
+$('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
+    // BetterGaia Settings
+    if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
+        $(this).parent().addClass('bgloading');
+    
+        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
+        .done(function(data) {
+            $('#bg_widgets .bgsettings div').html(data);
+            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + localPrefs['version']);
+            $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
+                chrome.extension.sendMessage({elements: 'settings'});
+            });
+        })
+        .fail(function(data) {
+            $('#bg_widgets .bgsettings div').html("<p>There was a problem loading your BetterGaia's settings.</p>");
+        })
+        .always(function(data) {
+            $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
+        });
+    }
+
+    // Open
+    $(this).parent().siblings('li').removeClass('bgopen');
+    $(this).parent().toggleClass('bgopen');
+});
+
 if (prefs['header.widgets'] == true) {
-    $('#gaia_header .userName').prepend('<ul id="bg_widgets">\
+    $('#bg_widgets > li.bgsettings').before('\
         <li class="bgfriends"><a></a><div></div></li>\
         <li class="bgmessages"><a></a><div></div></li>\
         <li class="bgthreads"><a></a><div></div></li>\
-        <li class="bgwatchlist"><a></a><div></div></li>\
-		<li class="bgsettings"><a></a><div></div></li>\
-    </ul>');
+    <li class="bgwatchlist"><a></a><div></div></li>');
     
     $('#bg_widgets > li a').on('click', function() {
         if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
@@ -154,31 +179,13 @@ if (prefs['header.widgets'] == true) {
                     $('#bg_widgets .bgwatchlist').removeClass('bgloading').addClass('bgloaded');
                 });            
             }
-
-            // BetterGaia Settings
-            else if ($(this).parent().hasClass('bgsettings')) {
-                $(this).parent().addClass('bgloading');
-                
-                $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
-                .done(function(data) {
-                    $('#bg_widgets .bgsettings div').html(data);
-                    $('#bg_widgets .bgsettings .bgversion').text('Ver ' + localPrefs['version']);
-                    $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
-                        chrome.extension.sendMessage({elements: 'settings'});
-                    });
-                })
-                .fail(function(data) {
-                    $('#bg_widgets .bgsettings div').html("<p>There was a problem loading your BetterGaia's settings.</p>");
-                })
-                .always(function(data) {
-                    $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
-                });            
-            }
         }
         
         // Open
-        $(this).parent().siblings('li').removeClass('bgopen');
-        $(this).parent().toggleClass('bgopen');
+        if (!$(this).parent().hasClass('bgsettings')) {
+            $(this).parent().siblings('li').removeClass('bgopen');
+            $(this).parent().toggleClass('bgopen');
+        }
     });
 }
     
@@ -329,7 +336,7 @@ if (prefs['instantUpdating'] == true) {
                 if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
                     chrome.storage.local.set({css: $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()});
                 }
-                else chrome.storage.local.clear();
+                else chrome.storage.local.remove('css');
             }
             if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
                 var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');

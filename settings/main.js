@@ -62,7 +62,14 @@ function Main() {
         });
 		});
 
-    if (window.location.hash) $('header menu a[href="' + window.location.hash + '"]').click();
+    if (window.location.hash) {
+        if (window.location.hash == '#welcome') {
+            $('#pages page.selected').removeClass('selected');
+            $('#pages page.welcome').addClass('selected');
+            $('header').addClass('hidden');
+        }
+        else $('header menu a[href="' + window.location.hash + '"]').click();
+    }
 
     // Set checkboxes
     $('input[type="checkbox"][pref]').each(function(){

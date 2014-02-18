@@ -94,6 +94,9 @@ header h1 {margin: 39px 30px 25px 30px; height: 25px; background: url(../images/
     header {position: fixed;}
 }
 
+header.hidden > * {display: none;}
+header.hidden:before {content: ''; height: 100%; background: url(../images/logo/text.png) center 45% no-repeat; display: block;}
+
 menu {margin: 0 0 100px; overflow: hidden;}
 menu a {display: block; -webkit-transition: all 0.3s ease;}
 menu a {cursor: pointer; font-size: 14px; font-weight: normal; padding: 10px 30px 10px 200px; display: block; color: #444; float: right; width: 340px; clear: both;}
@@ -311,3 +314,11 @@ page.postformatting.editing > *:not(#editformat) {opacity: 0.5; pointer-events: 
 #usertags usertag div.createdon {width: 15%; padding-right: 5px;}
 #usertags usertag a.delete {font-weight: normal;}
 #usertags usertag a.delete:before {font-size: 15px; font-family: 'Glyphicons Halflings'; margin-right: 5px; content: '\e020';}
+
+/* Welcome */
+page.welcome {}
+page.welcome .icons {text-align: center;}
+page.welcome .icons li {float: left; width: calc((100% / 3) - 30px); display: block; margin-right: 30px;}
+page.welcome .icons li:before {font-size: 200px; font-family: 'Glyphicons Halflings'; content: '\e198'; height: 240px; line-height: 210px; display: block;}
+page.welcome .icons li:nth-of-type(2):before {content: '\e005'; line-height: 245px;}
+page.welcome .icons li:nth-of-type(3):before {content: '\e104'; line-height: 250px;}

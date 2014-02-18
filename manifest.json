@@ -35,7 +35,7 @@
     },
     "manifest_version": 2,
     "minimum_chrome_version": "28",
-    "name": "BetaGaia",
+    "name": "BetterGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*" ],
     "version": "2014.10",
