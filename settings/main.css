@@ -106,11 +106,7 @@ menu a.current {background: #FFF; color: #222;}
 #pages page {visibility: hidden; position: relative; height: 0; opacity: 0; overflow: hidden; display: block;}
 #pages page.selected {visibility: visible; opacity: 1; overflow: visible; height: auto;}
 
-#pages page h1 {display: block; font-size: 25px; line-height: 25px; font-weight: normal; color: rgba(0,0,0,0.45); border-bottom: 1px solid #CCC; margin: 0; height: 62px;}
-#pages page h1 + p {margin: -35px 0 29px;}
-#pages page p.disable {position: absolute; top: 11px; left: 160px;}
-#pages page.shortcuts p.disable {left: 70px;}
-#pages page p.disable input[type="checkbox"] {margin: 0 0 -5px 10px; display: inline-block; z-index: 1;}
+#pages page h3 + p {margin-top: -10px; padding-bottom: 10px;}
 
 #pages .localonly {display: none; font-weight: bold;}
 #pages .localonly:before {font-family: 'Glyphicons Halflings'; content: '\e197'; margin-right: 5px; font-weight: normal;}
