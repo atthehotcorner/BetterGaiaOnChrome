@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>BetterGaia Settings</title>
 
+    <link rel="stylesheet" href="minicolors/jquery.minicolors.css">
     <link rel="stylesheet" href="main.css">
     <link rel="icon" href="../images/logo/48.png">
 </head>
@@ -84,15 +85,15 @@
                         <item>BetterGaia</item>
                         <item></item>
                         <item>Shortcuts</item>
-					           </div>
-					           <div class="coins"><item>1,337</item><item>227</item><item>562</item></div>
+                    </div>
+				    <div class="coins"><item>1,337</item><item>227</item><item>562</item></div>
                 </div></div>
 
-                <div class="navigation" style="background-color: rgba(25,33,45,0.9);"><div>
+                <div class="navigation"><div>
                     <a>Home</a>
-                    <a class="hover" style="background-color: #965296;">MyGaia</a>
+                    <a class="hover">MyGaia</a>
                     <a>Shops</a>
-                    <a class="current" style="background-color: #84602C;">Forum</a>
+                    <a class="current">Forum</a>
                     <a>World</a>
                     <a>Games</a>
                 </div></div>
@@ -118,7 +119,7 @@
 
                     <li>Tile background image <input pref="background.repeat" type="checkbox"></li>
                     <li>Float background when scrolling <input pref="background.float" type="checkbox"></li>
-                    <li>Background color <input pref="background.color" type="color" value="12403D"></li>
+                    <li>Background color <input pref="background.color" type='text' class="color" value="#666666"></li>
                     <li>Position of background image
                         <select pref="background.position">
                             <option value='top left'>Top Left</option>  
@@ -179,9 +180,9 @@
                     <h3>Navigation <button class="reset right">Reset</button></h3>
                     <p>Choose the colors of the navigation.</p>
 
-                    <li>Base <input pref="header.nav" type='text' class="color" value="7EACC5"></li>
-                    <li>Hover <input pref="header.nav.hover" type='text' class="color" value="396C7C"></li>
-                    <li>Current <input pref="header.nav.current" type='text' class="color" value="93F2FF"></li>
+                    <li>Base <input pref="header.nav" type='text' class="color" value="#7EACC5"></li>
+                    <li>Hover <input pref="header.nav.hover" type='text' class="color" value="#396C7C"></li>
+                    <li>Current <input pref="header.nav.current" type='text' class="color" value="#93F2FF"></li>
                 </aside>    
             </section> <!-- end logo and nav -->
 
@@ -189,16 +190,16 @@
                 <a class="toggle" title="Unpin"></a>
 
                 <div class="thread_header">
-                    <div class="linklist" style="background-color: #BF7F40;">
+                    <div class="linklist">
                         <a>Gaia Forums</a><a>Gaia Online</a><a>Gaia Guides and Resources</a>
                     </div>
                     <div class="thread_title">BetterGaia ► Since August 2008</div>
-				        </div>
+				</div>
 
                 <div class="post">
                     <div class="username">BetterGaia</div>
                     <div class="postbody"></div>
-				        </div>
+				</div>
             </div></section>
 
             <section id="thread_header">
@@ -206,8 +207,8 @@
                 <p>Choose a background color for the header.</p>
 
                 <aside>
-                    <li>Background <input pref="style.forums.threadHeader" type='text' class="color" value="BF7F40"></li>
-                    <li>Posts <input pref="style.forums.postHeader" type='text' class="color" value="92B1CA"></li>
+                    <li>Background <input pref="forum.threadHeader" type='text' class="color" value="#BF7F40"></li>
+                    <li>Posts <input pref="forum.postHeader" type='text' class="color" value="#92B1CA"></li>
                 </aside>
             </section>
         </page> <!-- Styling -->
@@ -251,7 +252,7 @@
             </section>
 
             <section>
-				        <h4>Quotes</h4>
+				<h4>Quotes</h4>
 
                 <aside class="column">
                     <li>Place format before the quote <input pref="format.quote.endOfFormat" type="checkbox"></li>
@@ -259,7 +260,7 @@
                     <li>Wrap quoted posts in a spoiler tag <input pref="format.quote.spoilerWrap" type="checkbox"></li>
                     <li>Seperate format and quote with
                         <select pref="format.quote.rangeNumber">
-				                    <option value="1">1 line</option>
+				            <option value="1">1 line</option>
                             <option value="2">2 lines</option>
                             <option value="3">3 lines</option>
                             <option value="4">4 lines</option>
@@ -271,7 +272,7 @@
                             <option value="10">10 lines</option>
                         </select>
                     </li>
-				        </aside>
+				</aside>
             </section>
 
             <section>
@@ -293,7 +294,7 @@
             </bar>
 
             <section id="shortcuts">
-				        <h3>Shortcuts</h3>
+				<h3>Shortcuts</h3>
        	        <p>Edit the links that are shown next by your username.</p>
                 <p class="localonly">You are currently over your storage limit for your links. Your links will be saved locally instead.</p>
 
@@ -378,7 +379,7 @@
     <script src="../code/js/jquery.min.js"></script>
     <script src="../code/js/prefs.js"></script>
     <script src="jquery.sortable.min.js"></script>
-    <script src="jscolor/jscolor.js"></script>
+    <script src="minicolors/jquery.minicolors.min.js"></script>
     <script src="moment.min.js"></script>
     <script src="main.js"></script>
 </body>

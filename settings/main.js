@@ -22,6 +22,24 @@ var Preview = {
         logo: function(url) {
             if (url == 'default')$('#preview .logo').removeAttr('style');
             else $('#preview .logo').css({'background-image': 'url(' + url + ')'});
+        },
+        color: function(pref, value) {
+            if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+            else {
+                var send = {};
+                send[pref] = value;
+                chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+            }
+
+            var dict = {
+                'background.color': '#preview > div, #preview2',
+                'header.nav': '#preview .navigation',
+                'header.nav.hover': '#preview .navigation .hover',
+                'header.nav.current': '#preview .navigation .current',
+                'forum.threadHeader': '#preview2 .thread_header .linklist',
+                'forum.postHeader': '#preview2 .post .username'
+            };
+            if (dict[pref]) $(dict[pref]).css({'background-color': value});
         }
     }
 };
@@ -53,6 +71,13 @@ function Main() {
 
     // Set selects
     $('select[pref]').each(function(){
+        var pref = $(this).attr('pref');
+        if (typeof(prefs[pref]) != 'undefined') $(this).val(prefs[pref]);
+        else $(this).prop('disabled', true);
+    });
+
+    // set colors
+    $('input[pref].color').each(function(){
         var pref = $(this).attr('pref');
         if (typeof(prefs[pref]) != 'undefined') $(this).val(prefs[pref]);
         else $(this).prop('disabled', true);
@@ -451,6 +476,14 @@ function Save() {
             // Close Ask
             $(this).closest('aside').removeClass('editing');
 		});
+    
+        // enable colorpickers
+        $('input[pref].color').minicolors({
+            change: function(hex, opacity) {Preview.set.color($(this).attr('pref'), hex);},
+            changeDelay: 200,
+            letterCase: 'uppercase',
+            position: 'top left'
+        });
 
 		// Reset
 		$('page.about input.agreeReset').on('click', function(){

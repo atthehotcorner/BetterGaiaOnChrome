@@ -12,7 +12,7 @@ var prefs = {
 
     // Background
     'background.image': 'default',
-    'background.color': '666666',
+    'background.color': '#666666',
     'background.repeat': true,
     'background.position': 'top center',
     'background.float': false,
@@ -44,9 +44,9 @@ var prefs = {
     
     'header.logo': 'default',
     
-    'header.nav': '5A80A1',
-    'header.nav.hover': '396C7C',
-    'header.nav.current': '93F2FF',
+    'header.nav': '#5A80A1',
+    'header.nav.hover': '#396C7C',
+    'header.nav.current': '#93F2FF',
 
     // MyGaia
     'mygaia.suggested': true,
@@ -59,8 +59,8 @@ var prefs = {
     'forum.previewThreads': true,
     'forum.constrain': true,
 
-    'forum.threadHeader': 'BF7F40',
-		'forum.postHeader': 'CFE6F9',
+    'forum.threadHeader': '#BF7F40',
+    'forum.postHeader': '#CFE6F9',
 
     // Format
     'format': true,
