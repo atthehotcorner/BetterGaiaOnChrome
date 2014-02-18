@@ -23,14 +23,7 @@ var Preview = {
             if (url == 'default')$('#preview .logo').removeAttr('style');
             else $('#preview .logo').css({'background-image': 'url(' + url + ')'});
         },
-        color: function(pref, value) {
-            if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
-            else {
-                var send = {};
-                send[pref] = value;
-                chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
-            }
-
+        color: function(pref) {
             var dict = {
                 'background.color': '#preview > div, #preview2',
                 'header.nav': '#preview .navigation',
@@ -39,7 +32,16 @@ var Preview = {
                 'forum.threadHeader': '#preview2 .thread_header .linklist',
                 'forum.postHeader': '#preview2 .post .username'
             };
-            if (dict[pref]) $(dict[pref]).css({'background-color': value});
+            if (dict[pref]) $(dict[pref]).css({'background-color': $('input[pref="' + pref + '"]').val()});
+        },
+        colors: function(pref, value) {
+            if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+            else {
+                var send = {};
+                send[pref] = value;
+                chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+            }
+            this.color(pref);
         }
     }
 };
@@ -81,6 +83,7 @@ function Main() {
         var pref = $(this).attr('pref');
         if (typeof(prefs[pref]) != 'undefined') $(this).val(prefs[pref]);
         else $(this).prop('disabled', true);
+        Preview.set.color(pref);
     });
 
     // Set bar links
@@ -479,7 +482,7 @@ function Save() {
     
         // enable colorpickers
         $('input[pref].color').minicolors({
-            change: function(hex, opacity) {Preview.set.color($(this).attr('pref'), hex);},
+            change: function(hex, opacity) {Preview.set.colors($(this).attr('pref'), hex);},
             changeDelay: 200,
             letterCase: 'uppercase',
             position: 'top left'

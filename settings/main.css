@@ -36,7 +36,9 @@ input, textarea, button, select {}
 .clear {display: block; clear: both;}
 
 /* Colorpicker */
-.minicolors-theme-default.minicolors {display: block;}
+input.color {margin: 10px 0 0;}
+.minicolors-theme-default.minicolors {display: block; margin: 10px 0 0;}
+.minicolors-theme-default.minicolors input.color {margin: 0;}
 .minicolors-theme-default .minicolors-input {height: auto;}
 
 /* Button */
