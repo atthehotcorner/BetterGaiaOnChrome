@@ -12,7 +12,7 @@ $('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove()
 
 // Credits
 $('body > #gaia_footer > p').append('<span id="bg_credits">\
-    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ prefs['version'] +'</small></a> \
+    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ localPrefs['version'] +'</small></a> \
     by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
@@ -32,7 +32,7 @@ if (prefs['header.float'] == true) {
 if (document.location.pathname.indexOf('/mygaia/') > -1) {
     $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', function(data){
         $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
-        $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
+        $('body.mygaia .clear .bgversion').text('Ver ' + localPrefs['version']);
 	
         $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
         
@@ -162,7 +162,7 @@ if (prefs['header.widgets'] == true) {
                 $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
                 .done(function(data) {
                     $('#bg_widgets .bgsettings div').html(data);
-                    $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
+                    $('#bg_widgets .bgsettings .bgversion').text('Ver ' + localPrefs['version']);
                     $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
                         chrome.extension.sendMessage({elements: 'settings'});
                     });
@@ -321,7 +321,7 @@ if (prefs['instantUpdating'] == true) {
     })
     .done(function(html) {
         if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
-            var version = parseInt(prefs['version'].replace(/\./g,''));
+            var version = parseInt(localPrefs['version'].replace(/\./g,''));
             html = $('.postcontent:eq(1) .postbody', html);
 
             // look for new code

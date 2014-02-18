@@ -96,8 +96,19 @@
 		"Seven Seas CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/5c7e3d98a667.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/5a1699541907.jpg"],
 		"Game On CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/a61815193ed1.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/21184cda8166.jpg"],
 		"What the Fluff!": ["http://s.cdn.gaiaonline.com/images/event/summer2013/summer2k13wtfluff_header.jpg", "http://s.cdn.gaiaonline.com/images/event/summer2013/summer2k13wtfluff_header_cut.jpg"],
-		"Carnival Du Gothique CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/0235debf9df9.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/d85dedfcee8b.jpg"]
+		"Carnival Du Gothique CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/0235debf9df9.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/d85dedfcee8b.jpg"],
+    "Starlight Redemption CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/422675eed918.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/430fe0a24c39.jpg"],
+    "Return to Valefor CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/0830c7c8f1b9.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/7e9ec36d3710.jpg"],
+    "Midnight Citadel CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/c5fdb3c41036.png", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/5d42e8ca0907.png"],
+    "Halloween Vengeance": ["http://s.cdn.gaiaonline.com/images/event/halloween2013/header/h2k13_jkveb_header.png", "http://s.cdn.gaiaonline.com/images/event/halloween2013/header/h2k13_jkveb_header_cut.png"],
+    "Verdant Grove CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/82f4e66d65ef.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/247e5500f8a5.jpg"],
+    "Checkmate Tactics CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/a4a27f51a3ac.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/223610ac73b4.jpg"],
+    "Xmas Resolution": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/91329076499c.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/54733fd92683.jpg"]
 	},
+  "2014": {
+    "Nouvelle Lune CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/e6eac8682bc5.png", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/a542ea314a19.png"],
+    "In Deep Ship CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/d6e59239864b.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/ed0fa8df7f51.jpg"]
+  },
 	"Towns": {
 		"Barton & Current Events": ["default", "default"],
 		"Aekea": ["http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_aekea_sprite.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_aekea_tile_sprite.jpg"],
