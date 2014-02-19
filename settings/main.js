@@ -5,6 +5,8 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 I know this isn't modular, but its the 1st edition :p
 */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, defaultPrefs: false, window: false, Transfer, false */
+/*jshint sub:true */
 
 var Preview = {
     set: {
@@ -195,7 +197,7 @@ function Main() {
     Preview.set.header(value[0], value[1]);
 	// -- END headers
 
-   	// -- Add logos
+    // -- Add logos
     var logourl = prefs['header.logo'];
     if ($('#logo a[data-url="' + logourl + '"]').length > 0) $('#logo a[data-url="' + logourl + '"]').addClass('selected');
     else $('#logo a.customurl').attr('data-url', logourl).addClass('selected');
@@ -331,7 +333,7 @@ function Main() {
     $('page.welcome button').on('click', function(){
         if (typeof(localStorage['version']) == 'string') Transfer.init();
         chrome.storage.local.set({'welcome': true}, function(){
-            console.log('welcome set locally.')
+            console.log('welcome set locally.');
             window.location.reload();
         });
     });
@@ -345,7 +347,7 @@ function Main() {
 
     // Enable Saving
     Save();
-};
+}
 
 function Save() {
     // Update checkboxes
@@ -553,7 +555,7 @@ function Save() {
 		});
 }
 
-function bbcodePreview(data) {search=new Array(/\[b\]([\s\S]*?)\[\/b\]/ig,/\[i\]([\s\S]*?)\[\/i\]/ig,/\[u\]([\s\S]*?)\[\/u\]/ig,/\[strike\](.*?)\[\/strike\]/ig,/\[img\](.*?)\[\/img\]/ig,/\[img(left|right)\](.*?)\[\/img(left|right)\]/ig,/\[imgmap\](.*?)\[\/imgmap\]/ig,/\[url\="?(.*?)"?\](.*?)\[\/url\]/ig,/\[url\](.*?)\[\/url\]/ig,/\[code\]([\s\S]*?)\[\/code\]/ig,/\[quote\]([\s\S]*?)\[\/quote\]/ig,/\[quote\="?(.*?)"?\]([\s\S]*?)\[\/quote\]/ig,/\[color\=(.*?)\]([\s\S]*?)\[\/color\]/ig,/\[size\="?(.*?)"?\]([\s\S]*?)\[\/size\]/gi,/\[align\="?(right|left|center)"?\]([\s\S]*?)\[\/align\]/ig,/\[align\=(.*?)\]([\s\S]*?)\[\/align\]/ig,/\[list\="?(.*?)"?\]([\s\S]*?)\[\/list\]/gi,/\[list\]/gi,/\[\/list\]/gi,/\[\*\]\s?(.*?)\n/ig,/\n\n/ig,/\[center\]([\s\S]*?)\[\/center\]/ig,/\[left\]([\s\S]*?)\[\/left\]/ig,/\[right\]([\s\S]*?)\[\/right\]/ig);replace=new Array("<strong>$1</strong>","<em>$1</em>",'<span style="text-decoration: underline">$1</span>','<span style="text-decoration: line-through">$1</span>','<img src="$1" alt="User Image" />','<img src="$2" style="float:$1;" alt="User Image" />','<img src="$1" ismap="ismap" alt="User Image" />','<a href="$1">$2</a>','<a href="$1">$1</a>','<div class="code">test</div>','<div class="quote"><div class="cite">Quote:</div><div class="quoted">$1<div class="clear"></div></div></div>','<div class="quote"><div class="cite">$1</div><div class="quoted">$2<div class="clear"></div></div></div>','<span style="color:$1">$2</span>','<span style="font-size: $1px">$2</span>','<div class="postcontent-align-$1" style="text-align: $1">$2</div>',"$1","<ol>$2</ol>","<ul>","</ul>","<li>$1</li>","<br />",'<div class="postcontent-align-center" style="text-align: center">$1</div>','<div class="postcontent-align-left" style="text-align: left">$1</div>','<div class="postcontent-align-right" style="text-align: right">$1</div>');var t;for(i=0;i<search.length;i++){var n=false;while(n==false){data=data.replace(search[i],replace[i]);t=data.match(search[i]);if(t==null){n=true}}}return data;}
+function bbcodePreview(data) {search=new Array(/\[b\]([\s\S]*?)\[\/b\]/ig,/\[i\]([\s\S]*?)\[\/i\]/ig,/\[u\]([\s\S]*?)\[\/u\]/ig,/\[strike\](.*?)\[\/strike\]/ig,/\[img\](.*?)\[\/img\]/ig,/\[img(left|right)\](.*?)\[\/img(left|right)\]/ig,/\[imgmap\](.*?)\[\/imgmap\]/ig,/\[url\="?(.*?)"?\](.*?)\[\/url\]/ig,/\[url\](.*?)\[\/url\]/ig,/\[code\]([\s\S]*?)\[\/code\]/ig,/\[quote\]([\s\S]*?)\[\/quote\]/ig,/\[quote\="?(.*?)"?\]([\s\S]*?)\[\/quote\]/ig,/\[color\=(.*?)\]([\s\S]*?)\[\/color\]/ig,/\[size\="?(.*?)"?\]([\s\S]*?)\[\/size\]/gi,/\[align\="?(right|left|center)"?\]([\s\S]*?)\[\/align\]/ig,/\[align\=(.*?)\]([\s\S]*?)\[\/align\]/ig,/\[list\="?(.*?)"?\]([\s\S]*?)\[\/list\]/gi,/\[list\]/gi,/\[\/list\]/gi,/\[\*\]\s?(.*?)\n/ig,/\n\n/ig,/\[center\]([\s\S]*?)\[\/center\]/ig,/\[left\]([\s\S]*?)\[\/left\]/ig,/\[right\]([\s\S]*?)\[\/right\]/ig);replace=new Array("<strong>$1</strong>","<em>$1</em>",'<span style="text-decoration: underline">$1</span>','<span style="text-decoration: line-through">$1</span>','<img src="$1" alt="User Image" />','<img src="$2" style="float:$1;" alt="User Image" />','<img src="$1" ismap="ismap" alt="User Image" />','<a href="$1">$2</a>','<a href="$1">$1</a>','<div class="code">test</div>','<div class="quote"><div class="cite">Quote:</div><div class="quoted">$1<div class="clear"></div></div></div>','<div class="quote"><div class="cite">$1</div><div class="quoted">$2<div class="clear"></div></div></div>','<span style="color:$1">$2</span>','<span style="font-size: $1px">$2</span>','<div class="postcontent-align-$1" style="text-align: $1">$2</div>',"$1","<ol>$2</ol>","<ul>","</ul>","<li>$1</li>","<br />",'<div class="postcontent-align-center" style="text-align: center">$1</div>','<div class="postcontent-align-left" style="text-align: left">$1</div>','<div class="postcontent-align-right" style="text-align: right">$1</div>');var t;for(i=0;i<search.length;i++){var n=false;while(n==false){data=data.replace(search[i],replace[i]);t=data.match(search[i]);if(t==null){n=true;}}}return data;}
 
 $(window).scroll(function() {
     $('#preview > div').width($('page.styling').width() / 0.65).toggleClass('scrolling', $(window).scrollTop() > $('#preview').offset().top);
@@ -569,7 +571,7 @@ chrome.storage.sync.get(null, function(response) {
 		localPrefs = response2;
 		for (var key in response) {
 			try {prefs[key] = response[key];}
-			catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
+			catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
 		}
 		Main();
 	});

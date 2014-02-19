@@ -3,16 +3,22 @@ BetterGaia by bowafishtech
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false */
+/*jshint sub:true */
 
 // Check if install, update
 chrome.runtime.onInstalled.addListener(function(details) {
     chrome.storage.local.set({version: chrome.runtime.getManifest().version});
 
-    var optionsUrl = chrome.runtime.getURL('settings/main.html#welcome');
-    chrome.tabs.query({url: optionsUrl}, function(tabs) {
-        if (tabs.length) chrome.tabs.update(tabs[0].id, {active: true});
-        else chrome.tabs.create({url: optionsUrl});
-    });	
+    if (details['reason'] == 'install' || 
+        (details['reason'] == 'update' && typeof(localStorage['version']) == 'string')
+    ) {
+        var optionsUrl = chrome.runtime.getURL('settings/main.html#welcome');
+        chrome.tabs.query({url: optionsUrl}, function(tabs) {
+            if (tabs.length) chrome.tabs.update(tabs[0].id, {active: true});
+            else chrome.tabs.create({url: optionsUrl});
+        });
+    }
 });
 
 // Send data to scripts
@@ -76,7 +82,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 
 chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
 	if (notificationId == 'gaia-notify') {
-		if (buttonIndex == 0) {
+		if (buttonIndex === 0) {
 			chrome.tabs.create({url: 'http://gaiaonline.com/'});
 			chrome.notifications.clear('gaia-notify', function(){});
 		}
