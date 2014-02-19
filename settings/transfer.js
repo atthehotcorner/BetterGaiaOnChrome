@@ -140,6 +140,12 @@ var Transfer = {
         }
 
         // Save
-        console.log(this.push);
+        chrome.storage.sync.set(this.push, function(){
+            if (typeof(chrome.runtime.lastError) == 'object') console.warn('Error when transfering: ' + chrome.runtime.lastError['message']);
+            else {
+                console.log('Done.');
+                localStorage.clear();
+            }
+        });
     }
 };

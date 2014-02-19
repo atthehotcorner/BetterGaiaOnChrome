@@ -65,10 +65,11 @@ function Main() {
     if (window.location.hash) $('header menu a[href="' + window.location.hash + '"]').click();
 
     if (typeof(localPrefs['welcome']) == 'undefined') {
-        $('header menu a.current').removeClass('current');
         $('#pages page.selected').removeClass('selected');
         $('#pages page.welcome').addClass('selected');
         $('header').addClass('hidden');
+        
+        if (typeof(localStorage['version']) == 'string') $('#pages page.welcome .ready').text($('#pages page.welcome .ready').text() + ' We\'ll also transfer your current settings.');
     }
 
     // Set checkboxes
@@ -328,9 +329,11 @@ function Main() {
     
     // button on welcome page
     $('page.welcome button').on('click', function(){
-        chrome.storage.local.set({'welcome': true}, function(){console.log('welcome set locally.')});
-        $('header').removeClass('hidden');
-        $('header menu a.features').click();
+        if (typeof(localStorage['version']) == 'string') Transfer.init();
+        chrome.storage.local.set({'welcome': true}, function(){
+            console.log('welcome set locally.')
+            window.location.reload();
+        });
     });
         
     // Set sync usage
