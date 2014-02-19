@@ -526,8 +526,8 @@ function Save() {
     
         // enable colorpickers
         $('input[pref].color').minicolors({
-            change: function(hex, opacity) {Preview.set.colors($(this).attr('pref'), hex);},
-            changeDelay: 200,
+            change: function() {Preview.set.colors($(this).attr('pref'), $(this).val());},
+            changeDelay: 500,
             letterCase: 'uppercase',
             position: 'top left'
         });
@@ -557,7 +557,7 @@ $(window).scroll(function() {
 });
 
 // Save a default
-var defaultPrefs = prefs,
+var defaultPrefs = JSON.parse(JSON.stringify(prefs)),
 localPrefs = {};
 
 // Get settings
