@@ -147,7 +147,7 @@ var Transfer = {
                 // save to local
                 if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
                     chrome.storage.local.set(data, function() {
-                        data = {};
+                        data[key] = [];
                         chrome.storage.sync.set(data);
                     });
                 }
