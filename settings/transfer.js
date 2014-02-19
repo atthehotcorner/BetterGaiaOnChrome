@@ -234,7 +234,7 @@ var Transfer = {
                     for (i = 0; i < usertags.length; i++) {
                         value = JSON.parse(usertags[i]);
                         var id = value['userid'];
-                        tags.push({id: [unescape(value['username']), unescape(value['tag']), unescape(value['url']), value['createdon']]});
+                        tags[id] = [unescape(value['username']), unescape(value['tag']), unescape(value['url']), value['createdon']];
                     }
 
                     this.push[this.other[key]] = tags;
