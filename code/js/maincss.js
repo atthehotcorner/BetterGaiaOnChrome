@@ -99,8 +99,8 @@ if (prefs['instantUpdating'] == true) {
 // Get Storage and Fire
 if (prefs['appliedUserPrefs'] != true)
 chrome.storage.sync.get(null, function(response) {
-  chrome.storage.local.get(null, function(response) {
-    localPrefs = response;
+  chrome.storage.local.get(null, function(response2) {
+    localPrefs = response2;
 
     for (var key in response) {
         try {prefs[key] = response[key];}
