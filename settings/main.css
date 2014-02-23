@@ -6,7 +6,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 /* Page Reset */
 *, *:before, *:after {margin: 0; padding: 0; outline: none; border: 0; list-style: none; box-sizing: border-box;}
-html {background: linear-gradient(to right, #a6d2ff, #a6d2ff) #FFF; background-size: 170px 100%; background-repeat: no-repeat; min-height: 100%;}
+html {background: linear-gradient(to right, #9BDCE9, #9BDCE9) #FFF; background-size: 170px 100%; background-repeat: no-repeat; min-height: 100%;}
 body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #222; min-width: 960px; max-width: 1500px; height: 100%;}
 
 /* Glyphicons */

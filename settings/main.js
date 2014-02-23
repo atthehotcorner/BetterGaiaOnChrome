@@ -2,11 +2,10 @@
 Settings JS 
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
-
-I know this isn't modular, but its the 1st edition :p
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, defaultPrefs: false, window: false, Transfer, false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, window: false, Transfer: false, moment: false */
 /*jshint sub:true */
+/*jshint multistr:true */
 
 var Preview = {
     set: {
@@ -37,7 +36,7 @@ var Preview = {
             if (dict[pref]) $(dict[pref]).css({'background-color': $('input[pref="' + pref + '"]').val()});
         },
         colors: function(pref, value) {
-            if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+            if (prefs.default[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
             else {
                 var send = {};
                 send[pref] = value;
@@ -48,48 +47,32 @@ var Preview = {
     }
 };
 
-function Main() {
-    // Set up pages
-    $('header menu').on('click', 'a:not(.current)', function(){
-        var tabClass = $(this).attr('class');
-        $('#pages page.selected').removeClass('selected');
-        $('#pages page.' + tabClass).addClass('selected');
+var Settings = {
+    page: {}
+};
 
-        $('header menu a.current').removeClass('current');
-        $(this).addClass('current');
-
-        if (tabClass == 'about')
-        chrome.storage.sync.getBytesInUse(function(data){
-            $('page.about strong.inuse').text(data);
-        });
-		});
-
-    if (window.location.hash) $('header menu a[href="' + window.location.hash + '"]').click();
-
-    if (typeof(localPrefs['welcome']) == 'undefined') {
-        $('#pages page.selected').removeClass('selected');
-        $('#pages page.welcome').addClass('selected');
-        $('header').addClass('hidden');
-        
-        if (typeof(localStorage['version']) == 'string') $('#pages page.welcome .ready').text($('#pages page.welcome .ready').text() + ' We\'ll also transfer your current settings.');
-    }
+Settings.page.init = function(pageName) {    
+    // Set nav link as init, check if init
+    $('header menu a.init.' + pageName);
+    $('header menu a.' + pageName).addClass('init');
+    pageName = 'page.' + pageName;
 
     // Set checkboxes
-    $('input[type="checkbox"][pref]').each(function(){
+    $('input[type="checkbox"][pref]', pageName).each(function() {
         var pref = $(this).attr('pref');
         if (typeof(prefs[pref]) != 'undefined') $(this).prop('checked', prefs[pref]);
         else $(this).prop('disabled', true);
     });
 
     // Set selects
-    $('select[pref]').each(function(){
+    $('select[pref]', pageName).each(function() {
         var pref = $(this).attr('pref');
         if (typeof(prefs[pref]) != 'undefined') $(this).val(prefs[pref]);
         else $(this).prop('disabled', true);
     });
 
-    // set colors
-    $('input[pref].color').each(function(){
+    // Set colors
+    $('input[pref].color', pageName).each(function() {
         var pref = $(this).attr('pref');
         if (typeof(prefs[pref]) != 'undefined') $(this).val(prefs[pref]);
         else $(this).prop('disabled', true);
@@ -97,15 +80,64 @@ function Main() {
     });
 
     // Set bar links
-    $('bar a[pref]').each(function(){
+    $('bar a[pref]', pageName).each(function() {
         var pref = $(this).attr('pref');
         if (typeof(prefs[pref]) != 'undefined') $(this).attr('value', prefs[pref]);
         if ($(this).attr('value') == 'false') $(this).closest('page').addClass('off');
         else $(this).closest('page').removeClass('off');
     });
 
-		// Remove alarm
-		$('select[pref="notifications"]').on('change', function(){
+    // enable colorpickers
+    $('input[pref].color', pageName).minicolors({
+        change: function() {Preview.set.colors($(this).attr('pref'), $(this).val());},
+        changeDelay: 500,
+        letterCase: 'uppercase',
+        position: 'top left'
+    });
+
+    // Update checkboxes
+    $('input[type="checkbox"][pref]:not([disabled])', pageName).on('change', function(){
+        var pref = $(this).attr('pref'), value = $(this).prop('checked');
+        if (prefs.default[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+    });
+
+    // Update selects
+    $('select[pref]:not([disabled])', pageName).on('change', function(){
+        var pref = $(this).attr('pref'), value = $(this).val();
+        if (prefs.default[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+    });
+
+	// Update bar links
+	$('bar a[pref]', pageName).on('click', function(){
+        $(this).attr('value', ($(this).attr('value') == 'true')? false:true);
+        var pref = $(this).attr('pref'), value = ($(this).attr('value') == 'true')? true:false;
+        if (prefs.default[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+        if ($(this).attr('value') == 'false') $(this).closest('page').addClass('off');
+        else $(this).closest('page').removeClass('off');
+    });
+};
+
+Settings.page.home = function() {
+    this.init('home');
+    var pageName = 'page.home';
+
+	// Remove alarm
+	$('select[pref="notifications"]', pageName).on('change', function(){
         if ($(this).val() == '0') {
             chrome.alarms.clear('gaia-notifications');
             chrome.notifications.clear('gaia-notify', function(){});
@@ -113,20 +145,15 @@ function Main() {
         else {
             chrome.alarms.create('gaia-notifications', {when: 0, periodInMinutes: parseInt($(this).val(), 10)});
         }
-		});
+    });
+};
 
-    // Insert formats
-	
-    // if local prefs are set
-    if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
-        prefs['format.list'] = localPrefs['format.list'];
-        console.warn('Your formats are currently saved locally.');
-        $('page.postformatting .localonly').show();
-    }
-	
-    $.each(prefs['format.list'], function(index, format) {
-        $('#postformating aside format.add').before('<format data-bbcode="' + format[1] + '" data-poststyle="' + format[2] + '"><strong>' + format[0] + '</strong>\
-        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
+Settings.page.personalize = function() {
+    this.init('personalize');
+    var pageName = 'page.personalize';
+
+    $(window).scroll(function() {
+        $('#preview > div').width($('page.personalize').width() / 0.65).toggleClass('scrolling', $(window).scrollTop() > $('#preview').offset().top);
     });
 
 	// -- Add backgrounds
@@ -210,17 +237,119 @@ function Main() {
 
     // nav color reset
     $('#navigation .reset').on('click', function(){
-        $('input[pref="header.nav"]').minicolors('value', defaultPrefs['header.nav']);
-        $('input[pref="header.nav.hover"]').minicolors('value', defaultPrefs['header.nav.hover']);
-        $('input[pref="header.nav.current"]').minicolors('value', defaultPrefs['header.nav.current']);
+        $('input[pref="header.nav"]').minicolors('value', prefs.default['header.nav']);
+        $('input[pref="header.nav.hover"]').minicolors('value', prefs.default['header.nav.hover']);
+        $('input[pref="header.nav.current"]').minicolors('value', prefs.default['header.nav.current']);
     });
 
     // nav color reset
     $('#thread_header .reset').on('click', function(){
-        $('input[pref="forum.threadHeader"]').minicolors('value', defaultPrefs['forum.threadHeader']);
-        $('input[pref="forum.postHeader"]').minicolors('value', defaultPrefs['forum.postHeader']);
+        $('input[pref="forum.threadHeader"]').minicolors('value', prefs.default['forum.threadHeader']);
+        $('input[pref="forum.postHeader"]').minicolors('value', prefs.default['forum.postHeader']);
     });
-    
+
+    // save background
+    $('#background aside.left').on('click.default', 'a[data-url]:not(.selected)', function(){
+        var pref = 'background.image', value = $(this).attr('data-url');
+        if (prefs.default[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+
+        $('#background .left a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');        
+        Preview.set.background(value);
+    });
+
+    // save header
+    $('#header aside').on('click.default', 'a[data-url]:not(.selected)', function(){
+        var pref = ['header.background', 'header.background.base'], value = [$(this).attr('data-url'), $(this).attr('data-base-url')];
+        if (prefs.default[pref[0]] == value[0]) chrome.storage.sync.remove(pref[0], function(){console.log(pref[0] + ' removed.');});
+        else {
+            var send = {};
+            send[pref[0]] = value[0];
+            chrome.storage.sync.set(send, function(){console.log(pref[0] + ' saved.');});
+        }
+        
+        if (prefs.default[pref[1]] == value[1]) chrome.storage.sync.remove(pref[1], function(){console.log(pref[1] + ' removed.');});
+        else {
+            var send2 = {};
+            send2[pref[1]] = value[1];
+            chrome.storage.sync.set(send2, function(){console.log(pref[1] + ' saved.');});
+        }
+
+        $('#header aside a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');
+        Preview.set.header(value[0], value[1]);
+    });    
+
+    // save logo
+    $('#logo').on('click.default', 'a[data-url]:not(.selected)', function(){
+        var pref = 'header.logo', value = $(this).attr('data-url');
+        if (prefs.default[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
+        else {
+            var send = {};
+            send[pref] = value;
+            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
+        }
+
+        $('#logo a[data-url].selected').removeClass('selected');
+        $(this).addClass('selected');
+        Preview.set.logo(value);
+    });
+
+    // Enable asks
+    $('a.customurl', pageName).on('click', function(){
+        // prefill data
+        if (typeof($(this).attr('data-url')) == 'string') {
+            $(this).closest('aside').find('.ask input.url').val($(this).attr('data-url'));
+        }
+        if (typeof($(this).attr('data-base-url')) == 'string') {
+            $(this).closest('aside').find('.ask input.baseurl').val($(this).attr('data-base-url'));
+        }
+
+        // show
+		$(this).closest('aside').addClass('editing');
+        return false;
+	});
+
+    $('.ask h3 .close', pageName).on('click', function(){
+		$(this).closest('aside').removeClass('editing');
+	});
+
+	$('.ask button', pageName).on('click', function(){
+        var customurl = $(this).closest('aside').find('a.customurl');
+
+        // Update Value
+        if ($.trim($(this).siblings('input.url').val()) !== '') {
+            if ($(this).siblings('input.baseurl').length > 0) customurl.attr('data-base-url', $(this).siblings('input.baseurl').val());
+            customurl.attr('data-url', $(this).siblings('input.url').val()).removeClass('selected').trigger('click.default');
+        }
+		
+        // Close Ask
+        $(this).closest('aside').removeClass('editing');
+	});
+};
+
+Settings.page.formats = function() {
+    this.init('formats');
+    var pageName = 'page.formats';
+
+    // Insert formats
+    // if local prefs are set
+    if (typeof(prefs.local['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
+        prefs['format.list'] = prefs.local['format.list'];
+        console.warn('Your formats are currently saved locally.');
+        $('.localonly', pageName).show();
+    }
+
+    $.each(prefs['format.list'], function(index, format) {
+        $('#postformating aside format.add').before('<format data-bbcode="' + format[1] + '" data-poststyle="' + format[2] + '"><strong>' + format[0] + '</strong>\
+        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
+    });
+
     // Enable format sorting
     $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){
         //Triggered when the user stopped sorting and the DOM position has changed.
@@ -231,8 +360,8 @@ function Main() {
         var bbcode = "%5Bcolor=#003040%5D%E2%96%8C%5B/color%5D%5Bb%5D%5Bsize=11%5D%5Bcolor=#777%5DA%20SHIP%20IS%20SAFE%20IN%20HARBOR,%5B/color%5D%5B/size%5D%5B/b%5D%0A%5Bcolor=#276B91%5D%E2%96%8C%5B/color%5D%5Bb%5D%5Bsize=11%5D%5Bcolor=#777%5DBUT%20THAT'S%20NOT%20WHAT%20SHIPS%20ARE%20FOR.%5B/color%5D%5B/size%5D%5B/b%5D%0A%0A%0A%0A%5Balign=right%5D%5Bb%5DWelcome%20to%20%5Burl=http://bettergaia.com/%5DBetterGaia%5B/url%5D.%5B/b%5D%0A%5Bi%5DNeed%20help?%20%5Burl=http://www.gaiaonline.com/forum/t.45053993/%5DSee%20our%20thread.%5B/url%5D%5B/i%5D%5B/align%5D",
 		name = ['Almost', 'Human', 'Grumpy Cat', 'Business Cat', 'Doge', 'Sophisticated Cat'];
 
-        $(this).before('<format data-bbcode="' + bbcode + '" data-poststyle="0" draggable="true"><strong>' + name[Math.floor(Math.random() * name.length)] + '</strong>\
-        <div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
+        $(this).before('<format data-bbcode="' + bbcode + '" data-poststyle="0" draggable="true"><strong>' + name[Math.floor(Math.random() * name.length)] + '</strong>' +
+        '<div class="clear"><a class="edit">Edit</a><a class="delete">Delete</a></div></format>');
 
         // re-enable sorting
         $('#postformating aside').sortable('destroy').sortable({items: 'format:not(.add)'});
@@ -247,8 +376,10 @@ function Main() {
         $('#editformat .right').html(bbcodePreview(decodeURI(format.attr('data-bbcode'))));
         
         $(this).closest('format').addClass('editing');
-        $('page.postformatting').addClass('editing');
+        $('page.formats').addClass('editing');
     });
+
+    function bbcodePreview(data) {var search=new Array(/\[b\]([\s\S]*?)\[\/b\]/ig,/\[i\]([\s\S]*?)\[\/i\]/ig,/\[u\]([\s\S]*?)\[\/u\]/ig,/\[strike\](.*?)\[\/strike\]/ig,/\[img\](.*?)\[\/img\]/ig,/\[img(left|right)\](.*?)\[\/img(left|right)\]/ig,/\[imgmap\](.*?)\[\/imgmap\]/ig,/\[url\="?(.*?)"?\](.*?)\[\/url\]/ig,/\[url\](.*?)\[\/url\]/ig,/\[code\]([\s\S]*?)\[\/code\]/ig,/\[quote\]([\s\S]*?)\[\/quote\]/ig,/\[quote\="?(.*?)"?\]([\s\S]*?)\[\/quote\]/ig,/\[color\=(.*?)\]([\s\S]*?)\[\/color\]/ig,/\[size\="?(.*?)"?\]([\s\S]*?)\[\/size\]/gi,/\[align\="?(right|left|center)"?\]([\s\S]*?)\[\/align\]/ig,/\[align\=(.*?)\]([\s\S]*?)\[\/align\]/ig,/\[list\="?(.*?)"?\]([\s\S]*?)\[\/list\]/gi,/\[list\]/gi,/\[\/list\]/gi,/\[\*\]\s?(.*?)\n/ig,/\n\n/ig,/\[center\]([\s\S]*?)\[\/center\]/ig,/\[left\]([\s\S]*?)\[\/left\]/ig,/\[right\]([\s\S]*?)\[\/right\]/ig);var replace=new Array("<strong>$1</strong>","<em>$1</em>",'<span style="text-decoration: underline">$1</span>','<span style="text-decoration: line-through">$1</span>','<img src="$1" alt="User Image" />','<img src="$2" style="float:$1;" alt="User Image" />','<img src="$1" ismap="ismap" alt="User Image" />','<a href="$1">$2</a>','<a href="$1">$1</a>','<div class="code">test</div>','<div class="quote"><div class="cite">Quote:</div><div class="quoted">$1<div class="clear"></div></div></div>','<div class="quote"><div class="cite">$1</div><div class="quoted">$2<div class="clear"></div></div></div>','<span style="color:$1">$2</span>','<span style="font-size: $1px">$2</span>','<div class="postcontent-align-$1" style="text-align: $1">$2</div>',"$1","<ol>$2</ol>","<ul>","</ul>","<li>$1</li>","<br />",'<div class="postcontent-align-center" style="text-align: center">$1</div>','<div class="postcontent-align-left" style="text-align: left">$1</div>','<div class="postcontent-align-right" style="text-align: right">$1</div>');var t;for(var i=0;i<search.length;i++){var n=false;while(n===false){data=data.replace(search[i],replace[i]);t=data.match(search[i]);if(t===null){n=true;}}}return data;}
 
     $('#editformat .clear .done').on('click', function(){
         $('#postformating format.editing strong').text($('#editformat h3 input').val());
@@ -257,11 +388,11 @@ function Main() {
             'data-poststyle': $('#editformat select').val()
         });
 
-        $('page.postformatting.editing, #postformatting format.editing').removeClass('editing');    
+        $('page.formats.editing, #postformatting format.editing').removeClass('editing');    
     });
 
     $('#editformat .clear .cancel').on('click', function(){
-        $('page.postformatting.editing, #postformatting format.editing').removeClass('editing');       
+        $('page.formats.editing, #postformatting format.editing').removeClass('editing');       
     });
 
 		$('#editformat textarea').bind('input propertychange', function(){
@@ -271,12 +402,46 @@ function Main() {
     $('#postformating aside').on('click', 'format .clear a.delete', function(){
         $(this).closest('format').remove();
     });
-    
-    // Insert shortcuts
 
+    // Save formats
+    $('page.formats bar a.save').on('click', function(){
+        var formats = [];
+        $('#postformating aside format:not(.add)').each(function(index, element) {
+            var name = $(this).find('strong').text();
+            var bbcode = $(this).attr('data-bbcode');
+            var style = $(this).attr('data-poststyle');
+            formats.push([name, bbcode, parseInt(style, 10)]);
+        });
+
+        chrome.storage.sync.set({'format.list': formats}, function(){
+            if (typeof(chrome.runtime.lastError) == 'object') {
+                console.warn('Error when setting formats: ' + chrome.runtime.lastError['message']);
+                
+                // save to local
+                if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
+                    chrome.storage.local.set({'format.list': formats}, function(){
+                        console.log('formats saved locally.');
+                        $('page.formats .localonly').show();
+                        chrome.storage.sync.set({'format.list': {}});
+                    });
+                }
+            }
+            else {
+                console.log('formats saved to sync.');
+                $('page.formats .localonly').hide();
+                chrome.storage.local.remove('format.list');
+            }
+        });
+    });
+};
+
+Settings.page.shortcuts = function() {
+    this.init('shortcuts');
+
+    // Insert shortcuts
     // if local prefs are set
-    if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
-        prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
+    if (typeof(prefs.local['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
+        prefs['header.shortcuts.list'] = prefs.local['header.shortcuts.list'];
         console.warn('Your shortcuts are currently saved locally.');
         $('page.shortcuts .localonly').show();
     }
@@ -308,153 +473,6 @@ function Main() {
         $(this).closest('slink').remove();
     });
 
-    // Insert usertags
-    $.each(prefs['usertags.list'], function(id, data) {
-        $('#usertags aside').append('<usertag data-id="' + id + '">\
-            <div class="username">' + data[0] + '</div>\
-            <div class="tag">' + data[1] + '</div>\
-            <div class="url">' + data[2] + '</div>\
-            <div class="createdon">' + moment(data[3]).calendar() + '</div>\
-            <a class="delete">Delete</a>\
-        </usertag>');
-    });
-
-    $('#usertags aside a.delete').on('click', function(){
-        var id = $(this).closest('usertag').attr('data-id');
-        chrome.storage.sync.get('usertags.list', function(data){
-            delete data['usertags.list'][id];
-            chrome.storage.sync.set({'usertags.list': data['usertags.list']}, function(){
-                $('#usertags usertag[data-id="' + id + '"]').remove();
-            });
-        });
-    });
-    
-    // button on welcome page
-    $('page.welcome button').on('click', function(){
-        if (typeof(localStorage['version']) == 'string') Transfer.init();
-        chrome.storage.local.set({'welcome': true}, function(){
-            console.log('welcome set locally.');
-            window.location.reload();
-        });
-    });
-        
-    // Set sync usage
-    chrome.storage.sync.getBytesInUse(function(data){
-        $('page.about strong.inuse').text(data);
-        $('page.about strong.outof').text(chrome.storage.sync.QUOTA_BYTES);
-		$('page.about strong.pereach').text(chrome.storage.sync.QUOTA_BYTES_PER_ITEM);
-    });
-
-    // Enable Saving
-    Save();
-}
-
-function Save() {
-    // Update checkboxes
-    $('input[type="checkbox"][pref]:not([disabled])').on('change', function(){
-        var pref = $(this).attr('pref'), value = $(this).prop('checked');
-        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
-        else {
-            var send = {};
-            send[pref] = value;
-            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
-        }
-    });
-
-    // Update selects
-    $('select[pref]:not([disabled])').on('change', function(){
-        var pref = $(this).attr('pref'), value = $(this).val();
-        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
-        else {
-            var send = {};
-            send[pref] = value;
-            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
-        }
-    });
-
-    // save background
-    $('#background aside.left').on('click.default', 'a[data-url]:not(.selected)', function(){
-        var pref = 'background.image', value = $(this).attr('data-url');
-        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
-        else {
-            var send = {};
-            send[pref] = value;
-            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
-        }
-
-        $('#background .left a[data-url].selected').removeClass('selected');
-        $(this).addClass('selected');        
-        Preview.set.background(value);
-    });
-
-    // save header
-    $('#header aside').on('click.default', 'a[data-url]:not(.selected)', function(){
-        var pref = ['header.background', 'header.background.base'], value = [$(this).attr('data-url'), $(this).attr('data-base-url')];
-        if (defaultPrefs[pref[0]] == value[0]) chrome.storage.sync.remove(pref[0], function(){console.log(pref[0] + ' removed.');});
-        else {
-            var send = {};
-            send[pref[0]] = value[0];
-            chrome.storage.sync.set(send, function(){console.log(pref[0] + ' saved.');});
-        }
-        
-        if (defaultPrefs[pref[1]] == value[1]) chrome.storage.sync.remove(pref[1], function(){console.log(pref[1] + ' removed.');});
-        else {
-            var send = {};
-            send[pref[1]] = value[1];
-            chrome.storage.sync.set(send, function(){console.log(pref[1] + ' saved.');});
-        }
-
-        $('#header aside a[data-url].selected').removeClass('selected');
-        $(this).addClass('selected');
-        Preview.set.header(value[0], value[1]);
-    });    
-
-    // save logo
-    $('#logo').on('click.default', 'a[data-url]:not(.selected)', function(){
-        var pref = 'header.logo', value = $(this).attr('data-url');
-        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
-        else {
-            var send = {};
-            send[pref] = value;
-            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
-        }
-
-        $('#logo a[data-url].selected').removeClass('selected');
-        $(this).addClass('selected');
-        Preview.set.logo(value);
-    });
-
-    // Save formats
-    $('page.postformatting bar a.save').on('click', function(){
-        var formats = [];
-        $('#postformating aside format:not(.add)').each(function(index, element) {
-            var name = $(this).find('strong').text();
-            var bbcode = $(this).attr('data-bbcode');
-            var style = $(this).attr('data-poststyle');
-            formats.push([name, bbcode, parseInt(style, 10)]);
-        });
-
-        chrome.storage.sync.set({'format.list': formats}, function(){
-            if (typeof(chrome.runtime.lastError) == 'object') {
-                console.warn('Error when setting formats: ' + chrome.runtime.lastError['message']);
-                
-                // save to local
-                if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
-                    chrome.storage.local.set({'format.list': formats}, function(){
-                        console.log('formats saved locally.');
-                        $('page.postformatting .localonly').show();
-                        chrome.storage.sync.set({'format.list': {}});
-                    });
-                }
-            }
-            else {
-                console.log('formats saved to sync.');
-                $('page.postformatting .localonly').hide();
-                chrome.storage.local.remove('format.list');
-            }
-        });
-    });
-
     // Save shortcuts
     $('page.shortcuts bar a.save').on('click', function(){
         var links = [];
@@ -482,97 +500,124 @@ function Save() {
             }
         });
     });
+};
 
-		// Update bar links
-		$('bar a[pref]').on('click', function(){
-        $(this).attr('value', ($(this).attr('value') == 'true')? false:true);
-        var pref = $(this).attr('pref'), value = ($(this).attr('value') == 'true')? true:false;
-        if (defaultPrefs[pref] == value) chrome.storage.sync.remove(pref, function(){console.log(pref + ' removed.');});
-        else {
-            var send = {};
-            send[pref] = value;
-            chrome.storage.sync.set(send, function(){console.log(pref + ' saved.');});
-        }
-        if ($(this).attr('value') == 'false') $(this).closest('page').addClass('off');
-        else $(this).closest('page').removeClass('off');
-		});
-    
-        // enable asks
-        $('a.customurl').on('click', function(){
-            // prefill data
-            if (typeof($(this).attr('data-url')) == 'string') {
-                $(this).closest('aside').find('.ask input.url').val($(this).attr('data-url'));
-            }
-            if (typeof($(this).attr('data-base-url')) == 'string') {
-                $(this).closest('aside').find('.ask input.baseurl').val($(this).attr('data-base-url'));
-            }
+Settings.page.usertags = function() {
+    this.init('usertags');
 
-            // show
-			$(this).closest('aside').addClass('editing');
-            return false;
-		});
+    // Insert usertags
+    $.each(prefs['usertags.list'], function(id, data) {
+        $('#usertags aside').append('<usertag data-id="' + id + '">\
+            <div class="username">' + data[0] + '</div>\
+            <div class="tag">' + data[1] + '</div>\
+            <div class="url">' + data[2] + '</div>\
+            <div class="createdon">' + moment(data[3]).calendar() + '</div>\
+            <a class="delete">Delete</a>\
+        </usertag>');
+    });
 
-        $('.ask h3 .close').on('click', function(){
-			$(this).closest('aside').removeClass('editing');
-		});
-
-		$('.ask button').on('click', function(){
-            var customurl = $(this).closest('aside').find('a.customurl');
-
-            // Update Value
-            if ($.trim($(this).siblings('input.url').val()) != '') {
-                if ($(this).siblings('input.baseurl').length > 0) customurl.attr('data-base-url', $(this).siblings('input.baseurl').val());
-                customurl.attr('data-url', $(this).siblings('input.url').val()).removeClass('selected').trigger('click.default');
-            }
-				
-            // Close Ask
-            $(this).closest('aside').removeClass('editing');
-		});
-    
-        // enable colorpickers
-        $('input[pref].color').minicolors({
-            change: function() {Preview.set.colors($(this).attr('pref'), $(this).val());},
-            changeDelay: 500,
-            letterCase: 'uppercase',
-            position: 'top left'
+    $('#usertags aside a.delete').on('click', function(){
+        var id = $(this).closest('usertag').attr('data-id');
+        chrome.storage.sync.get('usertags.list', function(data){
+            delete data['usertags.list'][id];
+            chrome.storage.sync.set({'usertags.list': data['usertags.list']}, function(){
+                $('#usertags usertag[data-id="' + id + '"]').remove();
+            });
         });
+    });
+};
 
-		// Reset
-		$('page.about input.agreeReset').on('click', function(){
+Settings.page.about = function() {
+    this.init('about');
+        
+    // Set sync usage
+    chrome.storage.sync.getBytesInUse(function(data){
+        $('page.about strong.inuse').text(data);
+        $('page.about strong.outof').text(chrome.storage.sync.QUOTA_BYTES);
+		$('page.about strong.pereach').text(chrome.storage.sync.QUOTA_BYTES_PER_ITEM);
+    });
+
+	// Reset
+	$('page.about input.agreeReset').on('click', function(){
         if($(this).prop('checked')) {
             $("page.about button.reset").show();
             $(this).prop("disabled", true);
         }
-		});
+	});
 
-		$('page.about button.reset').on('click', function(){
+	$('page.about button.reset').on('click', function(){
         localStorage.clear();
         chrome.storage.local.clear(function(){
             chrome.storage.sync.clear(function(){
                 chrome.runtime.reload();
             });
         });
-		});
-}
+    });
+};
 
-function bbcodePreview(data) {search=new Array(/\[b\]([\s\S]*?)\[\/b\]/ig,/\[i\]([\s\S]*?)\[\/i\]/ig,/\[u\]([\s\S]*?)\[\/u\]/ig,/\[strike\](.*?)\[\/strike\]/ig,/\[img\](.*?)\[\/img\]/ig,/\[img(left|right)\](.*?)\[\/img(left|right)\]/ig,/\[imgmap\](.*?)\[\/imgmap\]/ig,/\[url\="?(.*?)"?\](.*?)\[\/url\]/ig,/\[url\](.*?)\[\/url\]/ig,/\[code\]([\s\S]*?)\[\/code\]/ig,/\[quote\]([\s\S]*?)\[\/quote\]/ig,/\[quote\="?(.*?)"?\]([\s\S]*?)\[\/quote\]/ig,/\[color\=(.*?)\]([\s\S]*?)\[\/color\]/ig,/\[size\="?(.*?)"?\]([\s\S]*?)\[\/size\]/gi,/\[align\="?(right|left|center)"?\]([\s\S]*?)\[\/align\]/ig,/\[align\=(.*?)\]([\s\S]*?)\[\/align\]/ig,/\[list\="?(.*?)"?\]([\s\S]*?)\[\/list\]/gi,/\[list\]/gi,/\[\/list\]/gi,/\[\*\]\s?(.*?)\n/ig,/\n\n/ig,/\[center\]([\s\S]*?)\[\/center\]/ig,/\[left\]([\s\S]*?)\[\/left\]/ig,/\[right\]([\s\S]*?)\[\/right\]/ig);replace=new Array("<strong>$1</strong>","<em>$1</em>",'<span style="text-decoration: underline">$1</span>','<span style="text-decoration: line-through">$1</span>','<img src="$1" alt="User Image" />','<img src="$2" style="float:$1;" alt="User Image" />','<img src="$1" ismap="ismap" alt="User Image" />','<a href="$1">$2</a>','<a href="$1">$1</a>','<div class="code">test</div>','<div class="quote"><div class="cite">Quote:</div><div class="quoted">$1<div class="clear"></div></div></div>','<div class="quote"><div class="cite">$1</div><div class="quoted">$2<div class="clear"></div></div></div>','<span style="color:$1">$2</span>','<span style="font-size: $1px">$2</span>','<div class="postcontent-align-$1" style="text-align: $1">$2</div>',"$1","<ol>$2</ol>","<ul>","</ul>","<li>$1</li>","<br />",'<div class="postcontent-align-center" style="text-align: center">$1</div>','<div class="postcontent-align-left" style="text-align: left">$1</div>','<div class="postcontent-align-right" style="text-align: right">$1</div>');var t;for(i=0;i<search.length;i++){var n=false;while(n==false){data=data.replace(search[i],replace[i]);t=data.match(search[i]);if(t==null){n=true;}}}return data;}
+Settings.page.welcome = function() {
+    $('page.selected').removeClass('selected');
+    $('page.welcome').addClass('selected');
+    $('header').addClass('hidden');
 
-$(window).scroll(function() {
-    $('#preview > div').width($('page.styling').width() / 0.65).toggleClass('scrolling', $(window).scrollTop() > $('#preview').offset().top);
-});
+    if (typeof(localStorage['version']) == 'string' && prefs.local['version'] != '2014.10')
+    $('page.welcome .ready').text($('page.welcome .ready').text() + ' We\'ll also transfer your current settings.');
 
-// Save a default
-var defaultPrefs = JSON.parse(JSON.stringify(prefs)),
-localPrefs = {};
+    $('page.welcome button').on('click', function(){
+        if (typeof(localStorage['version']) == 'string' && prefs.local['version'] != '2014.10') Transfer.init();
+        chrome.storage.local.set({'welcome': true}, function(){
+            console.log('welcome set locally.');
+            window.location.reload();
+        });
+    });
+};
 
-// Get settings
-chrome.storage.sync.get(null, function(response) {
-	chrome.storage.local.get(null, function(response2) {
-		localPrefs = response2;
-		for (var key in response) {
-			try {prefs[key] = response[key];}
-			catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
-		}
-		Main();
+Settings.load = function() {
+    // Save a default
+    prefs.default = JSON.parse(JSON.stringify(prefs));
+    prefs.local = {};
+
+    // Get settings
+    chrome.storage.sync.get(null, function(response) {
+        chrome.storage.local.get(null, function(response2) {
+            // save locals
+            prefs.local = response2;
+
+            for (var key in response) {
+                try {prefs[key] = response[key];}
+                catch(e) {console.warn('Missing pref \'' + e + '\'.');}
+            }
+            Settings.init();
+        });
+    });
+};
+
+Settings.init = function() {
+    // Show welcome screen if new
+    if (typeof(prefs.local['welcome']) == 'undefined') Settings.page.welcome();
+
+    // Set up pages
+    $('header menu').on('click', 'a:not(.current)', function(){
+        var pageName = $(this).attr('page-name');
+        $('#pages page.selected').removeClass('selected');
+        $('#pages page.' + pageName).addClass('selected');
+
+        if (!$(this).hasClass('init')) {
+            Settings.page[pageName]();
+            $(this).addClass('init');
+        }
+        $('header menu a.current').removeClass('current');
+        $(this).addClass('current');
+
+        if (pageName == 'about')
+        chrome.storage.sync.getBytesInUse(function(data){
+            $('page.about strong.inuse').text(data);
+        });
 	});
-});
+
+    if (window.location.hash) $('header menu a[href="' + window.location.hash + '"]').click();
+    else Settings.page.home();
+};
+
+// Run
+Settings.load();

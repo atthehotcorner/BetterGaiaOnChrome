@@ -4,6 +4,11 @@
         "scripts": ["code/js/jquery.min.js", "code/background.js", "code/js/analytics.js"],
         "persistent": false
     },
+    "browser_action": {
+        "default_icon": "images/logo/48.png",
+        "default_popup": "code/popup/popup.html",
+        "default_title": "BetterGaia"
+    },
     "content_scripts": [ {
         "matches": [ "*://*.gaiaonline.com/*" ],
         "exclude_matches": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
@@ -38,6 +43,6 @@
     "name": "BetterGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*" ],
-    "version": "2014.10",
+    "version": "2014.12",
     "web_accessible_resources": [ "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
 }

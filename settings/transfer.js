@@ -3,7 +3,7 @@ Transfer JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, defaultPrefs: false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false */
 /*jshint sub:true */
 
 function setPrefs() {
@@ -244,7 +244,7 @@ var Transfer = {
 
         // Remove defaults
         for (key in this.push) {
-            if (this.push[key] == defaultPrefs[key]) delete this.push[key];
+            if (this.push[key] == prefs.default[key]) delete this.push[key];
         }
 
         // Save

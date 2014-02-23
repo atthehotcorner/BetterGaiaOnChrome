@@ -13,17 +13,17 @@
     <header>
         <h1>Settings</h1>
         <menu>
-            <a href="#" class="features current">Home</a>
-            <a href="#stylingpage" class="styling">Personalize</a>
-            <a href="#postformattingpage" class="postformatting">Post Formating</a>
-            <a href="#shortcutspage" class="shortcuts">Shortcuts</a>
-            <a href="#usertagspage" class="usertags">Tags</a>
-            <a href="#aboutpage" class="about">About</a>
+            <a page-name="home" href="#" class="current">Home</a>
+            <a page-name="personalize" href="#pz">Personalize</a>
+            <a page-name="formats" href="#pf">Post Formating</a>
+            <a page-name="shortcuts" href="#sc">Shortcuts</a>
+            <a page-name="usertags" href="#ut">Tags</a>
+            <a page-name="about" href="#ab">About</a>
         </menu>
     </header>
 
     <div id="pages">
-        <page class="features selected">
+        <page class="home selected">
             <section>
                 <h3>Features</h3>
 
@@ -76,7 +76,7 @@
             </section>
         </page> <!-- Features -->
 
-        <page class="styling">
+        <page class="personalize">
             <section id="preview" class="preview"><div>
                 <a class="toggle" title="Unpin"></a>
                 <div class="header"><div>
@@ -213,7 +213,7 @@
             </section>
         </page> <!-- Styling -->
 
-        <page class="postformatting">
+        <page class="formats">
             <bar>
                 <a class="disable" pref="format"></a>
                 <a class="save">Save</a>
