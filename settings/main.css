@@ -220,6 +220,8 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 #header aside > div:after {content: ''; display: table; clear: both;}
 #header aside a[data-name]:hover:before {position: absolute; content: attr(data-name); white-space: nowrap; -webkit-transform: translate(-50%, -5px); left: 50%; bottom: 100%; border: 2px solid #A6A6A6; background: #FFF; padding: 5px 10px; color: #222;}
 #header aside a {background-size: cover;}
+#header aside a:not([data-url="default"]):not(.customurl) {opacity: 0; visibility: hidden; transition: opacity 0.5s ease 0.5s;}
+#header aside a:not([data-url="default"]):not(.customurl)[style] {opacity:  1; visibility: visible;}
 #header aside a[data-url="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_barton_sprite.jpg);}
 	
 /* Logo */

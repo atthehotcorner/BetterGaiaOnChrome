@@ -92,6 +92,7 @@ body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A
 
 /* Username */
 body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
+@media (max-width: 1140px) {body #gaia_header .hud-account {right: 0; margin-right: 0; width: 100%;}}
 body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
 body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
 
@@ -223,7 +224,7 @@ body[id] #gaia_header .header_content .goldMessage:not(:hover) .goldMessageText 
 body[id] #gaia_header .header_content .goldMessage:hover .goldMessageText {transition-delay: .5s;}
 
 /* Navigation */
-body #gaia_menu_bar, #nav > li.selected, #nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {height: 27px; background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15)); box-shadow: rgba(255,255,255,0.35) 0 -1px 0px inset, rgba(0,0,0,0.4) 0 1px 0 inset, rgba(0,0,0,0.4) 0 1px 2px; background-position: 0;}
+body #gaia_menu_bar, body .colorswitcher-color #gaia_menu_bar, #nav > li.selected, #nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {height: 27px; background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15)); box-shadow: rgba(255,255,255,0.35) 0 -1px 0px inset, rgba(0,0,0,0.4) 0 1px 0 inset, rgba(0,0,0,0.4) 0 1px 2px; background-position: 0;}
 body #gaia_menu_bar #newmenu {width: 1140px; margin: 0 auto; position: relative;}
 body #gaia_menu_bar #newmenu #nav {}
 #nav > li {width: auto; position: relative; background-image: none; padding: 0; margin: 0; height: 27px;}
@@ -231,6 +232,7 @@ body #gaia_menu_bar #newmenu #nav {}
 #nav > li.selected {background-color: #93F2FF;}
 #nav > li#home_menu {padding-left: 15px;}
 #nav > li#home_menu .home-icon {position: static; margin: -20px 0 0 -8px; display: block;}
+#nav > li#color_menu:after {content: 'Please disable Color Switcher in Gaia Labs.'; background: #FFF; display: block; position: absolute; width: 100px; padding: 10px; text-align: center; border: 2px solid #222;}
 #nav li.megamenu-divider, #nav li .lt_selector, #nav li .rt_selector {display: none;}
 #nav > li > a {box-sizing: border-box; height: 27px; margin: 0; padding: 3px 10px; background: none; text-decoration: none;}
 #nav > li .main_panel_container {position: absolute; margin: 0; top: 27px; margin: 0; background: rgba(255,255,255,0.98); padding: 0 0 10px; border-radius: 0 0 7px 7px; box-shadow: 0 0 5px -1px #000;}

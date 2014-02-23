@@ -207,8 +207,18 @@ Settings.page.personalize = function() {
                 if (url[0] != 'default' && url[0].substring(0,7) != 'http://' && url[0].substring(0,19) != 'chrome-extension://') url[0] = host + url[0];
                 if (url[1] != 'default' && url[1].substring(0,7) != 'http://' && url[1].substring(0,19) != 'chrome-extension://') url[1] = host + url[1];
 
-                if (url[0] == 'default') $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
-                else $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '" style="background-image: url(' + url[0] + ');"></a>');
+                //if (url[0] == 'default') $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
+                //else style="background-image: url(' + url[0] + ');
+                $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
+            });
+
+            $(window).scroll(function() {
+                if ($('#header aside .h' + key).offset().top < $(window).scrollTop() + $(window).height() - 75) {
+                    $('#header aside .h' + key + ' a[data-url]').each(function() {
+                        var dataUrl = $(this).attr('data-url');
+                        if (dataUrl != 'default') $(this).css('background-image', 'url(' + dataUrl + ')');
+                    });
+                }
             });
         });
     })
@@ -233,6 +243,12 @@ Settings.page.personalize = function() {
     $('#logo a[data-url]:not([data-url="default"])').each(function(){
         $(this).css({'background-image': 'url(' + $(this).attr('data-url') + ')'});
     });
+
+    /*$(window).scroll(function() {
+        if ($('#logo').offset().top < $(window).scrollTop() + $(window).height() - 85) {
+            $('#logo a[data-url]:not([data-url="default"])').css('background-image', 'url(' + $(this).attr('data-url') + ')');
+        }
+    });*/
     // END logos 
 
     // nav color reset
