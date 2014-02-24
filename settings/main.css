@@ -318,6 +318,10 @@ page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 #usertags usertag a.delete {font-weight: normal;}
 #usertags usertag a.delete:before {font-size: 15px; font-family: 'Glyphicons Halflings'; margin-right: 5px; content: '\e020';}
 
+/* About */
+page.about .changelog aside {max-height: 250px; overflow: auto;}
+page.about .changelog aside strong {display: block; padding: 0 0 10px;}
+
 /* Welcome */
 page.welcome {}
 page.welcome .icons {text-align: center;}
