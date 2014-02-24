@@ -58,6 +58,7 @@ var prefs = {
     'forum.externalLinks': true,
     'forum.previewThreads': true,
     'forum.constrain': true,
+    'forum.post.background': true,
 
     'forum.threadHeader': '#BF7F40',
     'forum.postHeader': '#CFE6F9',
