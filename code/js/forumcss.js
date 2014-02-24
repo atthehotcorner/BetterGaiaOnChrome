@@ -9,7 +9,7 @@ var css = '';
 
 // Full page forum width
 if (prefs['forum.constrain'] == false)
-css += 'body.forums #content #content-padding, body.forums #gaia_content.grid_dizzie_gillespie, body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main {width: 97%;}';
+css += 'body.forum div#content, body.forums #content #content-padding, body.app-page_forum div#content, body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main {width: calc(100% - 25px);}';
 
 // Thread Header Color
 if (prefs['forum.threadHeader'] != '#BF7F40')
