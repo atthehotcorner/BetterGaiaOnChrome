@@ -21,7 +21,7 @@ css += 'body.forums #content #post_container .post .postcontent .user_info_wrapp
 
 // Add background to posts
 if (prefs['forum.post.background'] == false)
-css += 'body.forums #content #post_container .post .postcontent {border-radius: 4px 10px 0 0; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)); background-color: ' + prefs['forum.postHeader'] + ';}';
+css += 'body.forums #content #post_container .post > .postcontent {border-radius: 4px 10px 0 0; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)); background-color: ' + prefs['forum.postHeader'] + ';}';
 
 // Put post options on top
 if (prefs['forum.post.optionsBottom'] == false)
