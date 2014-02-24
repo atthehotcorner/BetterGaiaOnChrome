@@ -410,11 +410,11 @@ Settings.page.formats = function() {
             'data-poststyle': $('#editformat select').val()
         });
 
-        $('page.formats.editing, #postformatting format.editing').removeClass('editing');    
+        $('page.formats.editing, #postformating format.editing').removeClass('editing');    
     });
 
     $('#editformat .clear .cancel').on('click', function(){
-        $('page.formats.editing, #postformatting format.editing').removeClass('editing');       
+        $('page.formats.editing, #postformating format.editing').removeClass('editing');       
     });
 
 		$('#editformat textarea').bind('input propertychange', function(){
