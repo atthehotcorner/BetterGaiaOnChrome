@@ -120,6 +120,7 @@ page bar a {display: inline-block; text-align: center; line-height: 10px; paddin
 page bar a:hover:before {background: rgba(0,0,0,0.1);}
 page bar a:active:before {background: #222; color: #FFF;}
 page bar a:before {content: '\e159'; font-size: 20px; font-family: 'Glyphicons Halflings'; line-height: 37px; display: block; height: 40px; width: 40px; border: 2px solid #222; text-align: center; border-radius: 40px; margin-bottom: 10px;}
+page bar a.save {display: none;}
 page bar a.save:before {content: '\e172';}
 page bar a.disable:before {content: '\e017';}
 page bar a.disable:after {content: 'On';}

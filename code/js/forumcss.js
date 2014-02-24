@@ -13,7 +13,7 @@ css += 'body.forums #content #content-padding, body.forums #gaia_content.grid_di
 
 // Thread Header Color
 if (prefs['forum.threadHeader'] != '#BF7F40')
-css += 'body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist, body.forums #gaia_content #forum_ft_content, body.forums #content #content-padding > .linklist, body.forums #content #content-padding > #topic_header_container .detail-navlinks, body.forums #content #content-padding > #navlinks_pag .forum_detail_pagination {background-color: ' + prefs['forum.threadHeader'] + ';} body.forums #gaia_content:not(.grid_billie_holiday) #forum-header + .subforums {box-shadow: 0 1px 3px rgba(0,0,0,0.4), rgba(0,0,0,0.14) 0 -3px 0, 0 -3px 0 ' + prefs['forum.threadHeader'] + ';}';
+css += 'body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist, body.forums #gaia_content #forum_ft_content, body.forums #content #content-padding > .linklist, body.forums #content #content-padding > #topic_header_container .detail-navlinks, body.forums #content #content-padding > #navlinks_pag .forum_detail_pagination, body.forums #content #content-padding > #navlinks_pag .forum_detail_pagination::before {background-color: ' + prefs['forum.threadHeader'] + ';} body.forums #gaia_content:not(.grid_billie_holiday) #forum-header + .subforums {box-shadow: 0 1px 3px rgba(0,0,0,0.4), rgba(0,0,0,0.14) 0 -3px 0, 0 -3px 0 ' + prefs['forum.threadHeader'] + ';}';
 
 // Post Theme
 if (prefs['forum.postHeader'] != '#CFE6F9')

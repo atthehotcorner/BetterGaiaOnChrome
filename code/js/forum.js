@@ -113,6 +113,12 @@ if (prefs['forum.externalLinks'] == true) {
 
 // Add User Tagging
 if (prefs['usertags'] == true) {
+    // check if local prefs exist
+    if (typeof(localPrefs['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
+        prefs['usertags.list'] = localPrefs['usertags.list'];
+        console.warn('Your tags are currently saved locally.');
+    }
+
     // Get userid and add tag links
     $('body.forums .post .user_info_wrapper .user_info .user_name').each(function() {
         var userid = '', avibox = $(this).closest('.postcontent').find('.avatar_wrapper .avi_box');
@@ -195,9 +201,29 @@ if (prefs['usertags'] == true) {
 
             // Save
             chrome.storage.sync.set({'usertags.list': prefs['usertags.list']}, function(){
-                $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
-                tag.closest('.post').removeClass('bgut_loaded bgut_open');
-                tag.closest('div').remove();
+                function saved() {
+                    $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
+                    tag.closest('.post').removeClass('bgut_loaded bgut_open');
+                    tag.closest('div').remove();
+                }
+
+                if (typeof(chrome.runtime.lastError) == 'object') {
+                    console.warn('Error when setting tags: ' + chrome.runtime.lastError['message']);
+
+                    // save to local
+                    if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
+                        chrome.storage.local.set({'usertags.list': prefs['usertags.list']}, function(){
+                            console.log('tags saved locally.');
+                            chrome.storage.sync.set({'usertags.list': {}});
+                            saved();
+                        });
+                    }
+                }
+                else {
+                    console.log('tags saved to sync.');
+                    chrome.storage.local.remove('usertags.list');
+                    saved();
+                }
             });
         }
     });

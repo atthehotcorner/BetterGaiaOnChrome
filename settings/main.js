@@ -353,6 +353,10 @@ Settings.page.formats = function() {
     this.init('formats');
     var pageName = 'page.formats';
 
+    function showSave() {
+        $('bar .save', pageName).css('display', 'inline-block');
+    }
+
     // Insert formats
     // if local prefs are set
     if (typeof(prefs.local['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
@@ -368,8 +372,8 @@ Settings.page.formats = function() {
 
     // Enable format sorting
     $('#postformating aside').sortable({items: 'format:not(.add)'}).on('sortupdate', function(){
-        //Triggered when the user stopped sorting and the DOM position has changed.
         console.log('done dragging!');
+        showSave();
     });
     
     $('#postformating aside format.add').on('click', function(){
@@ -381,6 +385,7 @@ Settings.page.formats = function() {
 
         // re-enable sorting
         $('#postformating aside').sortable('destroy').sortable({items: 'format:not(.add)'});
+        showSave();
     });
 
     $('#postformating aside').on('click', 'format .clear a.edit', function(){
@@ -393,6 +398,7 @@ Settings.page.formats = function() {
         
         $(this).closest('format').addClass('editing');
         $('page.formats').addClass('editing');
+        showSave();
     });
 
     function bbcodePreview(data) {var search=new Array(/\[b\]([\s\S]*?)\[\/b\]/ig,/\[i\]([\s\S]*?)\[\/i\]/ig,/\[u\]([\s\S]*?)\[\/u\]/ig,/\[strike\](.*?)\[\/strike\]/ig,/\[img\](.*?)\[\/img\]/ig,/\[img(left|right)\](.*?)\[\/img(left|right)\]/ig,/\[imgmap\](.*?)\[\/imgmap\]/ig,/\[url\="?(.*?)"?\](.*?)\[\/url\]/ig,/\[url\](.*?)\[\/url\]/ig,/\[code\]([\s\S]*?)\[\/code\]/ig,/\[quote\]([\s\S]*?)\[\/quote\]/ig,/\[quote\="?(.*?)"?\]([\s\S]*?)\[\/quote\]/ig,/\[color\=(.*?)\]([\s\S]*?)\[\/color\]/ig,/\[size\="?(.*?)"?\]([\s\S]*?)\[\/size\]/gi,/\[align\="?(right|left|center)"?\]([\s\S]*?)\[\/align\]/ig,/\[align\=(.*?)\]([\s\S]*?)\[\/align\]/ig,/\[list\="?(.*?)"?\]([\s\S]*?)\[\/list\]/gi,/\[list\]/gi,/\[\/list\]/gi,/\[\*\]\s?(.*?)\n/ig,/\n\n/ig,/\[center\]([\s\S]*?)\[\/center\]/ig,/\[left\]([\s\S]*?)\[\/left\]/ig,/\[right\]([\s\S]*?)\[\/right\]/ig);var replace=new Array("<strong>$1</strong>","<em>$1</em>",'<span style="text-decoration: underline">$1</span>','<span style="text-decoration: line-through">$1</span>','<img src="$1" alt="User Image" />','<img src="$2" style="float:$1;" alt="User Image" />','<img src="$1" ismap="ismap" alt="User Image" />','<a href="$1">$2</a>','<a href="$1">$1</a>','<div class="code">test</div>','<div class="quote"><div class="cite">Quote:</div><div class="quoted">$1<div class="clear"></div></div></div>','<div class="quote"><div class="cite">$1</div><div class="quoted">$2<div class="clear"></div></div></div>','<span style="color:$1">$2</span>','<span style="font-size: $1px">$2</span>','<div class="postcontent-align-$1" style="text-align: $1">$2</div>',"$1","<ol>$2</ol>","<ul>","</ul>","<li>$1</li>","<br />",'<div class="postcontent-align-center" style="text-align: center">$1</div>','<div class="postcontent-align-left" style="text-align: left">$1</div>','<div class="postcontent-align-right" style="text-align: right">$1</div>');var t;for(var i=0;i<search.length;i++){var n=false;while(n===false){data=data.replace(search[i],replace[i]);t=data.match(search[i]);if(t===null){n=true;}}}return data;}
@@ -417,6 +423,7 @@ Settings.page.formats = function() {
 
     $('#postformating aside').on('click', 'format .clear a.delete', function(){
         $(this).closest('format').remove();
+        showSave();
     });
 
     // Save formats
@@ -439,6 +446,7 @@ Settings.page.formats = function() {
                         console.log('formats saved locally.');
                         $('page.formats .localonly').show();
                         chrome.storage.sync.set({'format.list': {}});
+                        $('bar .save', pageName).hide();
                     });
                 }
             }
@@ -446,6 +454,7 @@ Settings.page.formats = function() {
                 console.log('formats saved to sync.');
                 $('page.formats .localonly').hide();
                 chrome.storage.local.remove('format.list');
+                $('bar .save', pageName).hide();
             }
         });
     });
@@ -453,6 +462,11 @@ Settings.page.formats = function() {
 
 Settings.page.shortcuts = function() {
     this.init('shortcuts');
+    var pageName = 'page.shortcuts';
+
+    function showSave() {
+        $('bar .save', pageName).css('display', 'inline-block');
+    }
 
     // Insert shortcuts
     // if local prefs are set
@@ -472,8 +486,8 @@ Settings.page.shortcuts = function() {
 
     // Enable link sorting
     $('#shortcuts aside').sortable({items: 'slink:not(.add)'}).on('sortupdate', function(){
-        //Triggered when the user stopped sorting and the DOM position has changed.
         console.log('done dragging!');
+        showSave();
     });
     
     $('#shortcuts aside slink.add').on('click', function(){
@@ -483,10 +497,16 @@ Settings.page.shortcuts = function() {
             <div class="clear"><a class="delete">Delete</a></div>\
         </slink>');
         $('#shortcuts aside').sortable('destroy').sortable({items: 'slink:not(.add)'});
+        showSave();
     });
 
     $('#shortcuts aside').on('click', 'slink .clear a.delete', function(){
         $(this).closest('slink').remove();
+        showSave();
+    });
+
+    $('#shortcuts aside').on('focusout', 'slink input', function(){
+        showSave();
     });
 
     // Save shortcuts
@@ -506,6 +526,7 @@ Settings.page.shortcuts = function() {
                         console.log('shortcuts saved locally.');
                         $('page.shortcuts .localonly').show();
                         chrome.storage.sync.set({'header.shortcuts.list': {}});
+                        $('bar .save', pageName).hide();
                     });
                 }
             }
@@ -513,6 +534,7 @@ Settings.page.shortcuts = function() {
                 console.log('shortcuts saved to sync.');
                 $('page.shortcuts .localonly').hide();
                 chrome.storage.local.remove('header.shortcuts.list');
+                $('bar .save', pageName).hide();
             }
         });
     });
@@ -520,10 +542,22 @@ Settings.page.shortcuts = function() {
 
 Settings.page.usertags = function() {
     this.init('usertags');
+    var pageName = 'page.usertags';
+
+    function showSave() {
+        $('bar .save', pageName).css('display', 'inline-block');
+    }
 
     // Insert usertags
+    // if local prefs are set
+    if (typeof(prefs.local['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
+        prefs['usertags.list'] = prefs.local['usertags.list'];
+        console.warn('Your tags are currently saved locally.');
+        $('.localonly', pageName).show();
+    }
+
     $.each(prefs['usertags.list'], function(id, data) {
-        $('#usertags aside').append('<usertag data-id="' + id + '">\
+        $('#usertags aside').append('<usertag data-tag="' + encodeURI(JSON.stringify([id, data])) + '">\
             <div class="username">' + data[0] + '</div>\
             <div class="tag">' + data[1] + '</div>\
             <div class="url">' + data[2] + '</div>\
@@ -533,12 +567,38 @@ Settings.page.usertags = function() {
     });
 
     $('#usertags aside a.delete').on('click', function(){
-        var id = $(this).closest('usertag').attr('data-id');
-        chrome.storage.sync.get('usertags.list', function(data){
-            delete data['usertags.list'][id];
-            chrome.storage.sync.set({'usertags.list': data['usertags.list']}, function(){
-                $('#usertags usertag[data-id="' + id + '"]').remove();
-            });
+        $(this).parent().remove();
+        showSave();
+    });
+
+    // Save shortcuts
+    $('page.usertags bar a.save').on('click', function(){
+        var tags = {};
+        $('#usertags usertag:not(.add)').each(function() {
+            var tag = JSON.parse(decodeURI($(this).closest('usertag').attr('data-tag')));
+            tags[tag[0]] = tag[1];
+        });
+
+        chrome.storage.sync.set({'usertags.list': tags}, function(){
+            if (typeof(chrome.runtime.lastError) == 'object') {
+                console.warn('Error when setting shortcuts: ' + chrome.runtime.lastError['message']);
+                
+                // save to local
+                if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
+                    chrome.storage.local.set({'usertags.list': tags}, function(){
+                        console.log('tags saved locally.');
+                        $('.localonly', pageName).show();
+                        chrome.storage.sync.set({'usertags.list': {}});
+                        $('bar .save', pageName).hide();
+                    });
+                }
+            }
+            else {
+                console.log('tags saved to sync.');
+                $('.localonly', pageName).hide();
+                chrome.storage.local.remove('usertags.list');
+                $('bar .save', pageName).hide();
+            }
         });
     });
 };
