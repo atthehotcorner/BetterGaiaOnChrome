@@ -17,11 +17,15 @@ css += 'body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linkl
 
 // Post Theme
 if (prefs['forum.postHeader'] != '#CFE6F9')
-css += 'body.forums #content #post_container .post .postcontent .user_info_wrapper, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options, body.forums #content #post_container .post .postcontent .post-signature  {background-color: ' + prefs['forum.postHeader'] + ';}';
+css += 'body.forums #content #post_container .post .postcontent .user_info_wrapper, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options, body.forums #content #post_container .post .postcontent .post-signature {background-color: ' + prefs['forum.postHeader'] + ';}';
 
 // Add background to posts
 if (prefs['forum.post.background'] == false)
 css += 'body.forums #content #post_container .post .postcontent {border-radius: 4px 10px 0 0; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)); background-color: ' + prefs['forum.postHeader'] + ';}';
+
+// Put post options on top
+if (prefs['forum.post.optionsBottom'] == false)
+css += 'body.forums #content #post_container .post .postcontent .message .messagecontent {padding: 30px 0 0;} body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {top: 0; bottom: auto; border-top: 0;}';
 
 // Add CSS
 var head = document.getElementsByTagName('head');
