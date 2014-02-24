@@ -59,6 +59,7 @@ var prefs = {
     'forum.previewThreads': true,
     'forum.constrain': true,
     'forum.post.background': true,
+    'forum.post.optionsBottom': true,
 
     'forum.threadHeader': '#BF7F40',
     'forum.postHeader': '#CFE6F9',
