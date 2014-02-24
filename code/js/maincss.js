@@ -33,7 +33,7 @@ css += '}';
 
 // If Background is Gaia Town
 if (prefs['background.image'] == 'http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg') 
-css += '.time-day, .time-dawn, .time-night, .time-dusk {background-position: bottom left !important; background-repeat: no-repeat !important; background-color: #12403d !important;}';
+css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block, body[style] {background-position: bottom left !important; background-repeat: no-repeat !important; background-color: #12403d !important;}';
 
 // Header Background
 if (prefs['header.background'] != 'default')
@@ -45,7 +45,7 @@ css += 'body #gaia_header {background: url(' + prefs['header.background.base'] +
 
 // Header Background Stretch
 if (prefs['header.background.stretch'] == false)
-css += 'body div#gaia_header {width: 1140px;}';
+css += 'body #gaia_header {width: 1140px;}';
 
 // Logo
 if (prefs['header.logo'] != 'default') 

@@ -44,7 +44,15 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
 
 // Widgets
 $('#gaia_header .userName').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
+if (typeof(localPrefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
 $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
+    // Show welcome screen if new
+    if ($(this).parent().hasClass('bgwelcome') && typeof(localPrefs['welcome']) == 'undefined') {
+        chrome.extension.sendMessage({elements: 'settings'});
+        $(this).parent().removeClass('bgwelcome');
+        return;
+    }
+
     // BetterGaia Settings
     if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
         $(this).parent().addClass('bgloading');

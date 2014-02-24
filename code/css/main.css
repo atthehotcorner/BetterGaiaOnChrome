@@ -6,7 +6,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 html[xmlns\:og], html[xmlns\:fb] {background-color: transparent;}
 html, body {height: auto !important; min-height: 100%;}
-body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg) center top repeat #666;}
+body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block, body[style] {background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg) center top repeat #666;}
 
 /* Glyphicons */
 @font-face {
@@ -135,6 +135,12 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     #bg_widgets li > a {height: 25px; color: #FFF; display: block; padding: 0 10px; line-height: 22px; cursor: pointer;}
         #bg_widgets li:first-of-type > a {padding-left: 15px;}
         #bg_widgets li:last-of-type > a {padding-right: 20px;}
+        @-webkit-keyframes zoom {
+            0% {-webkit-transform: scale(1); opacity: 0;}
+            25% {opacity: 1;}
+            100% {-webkit-transform: scale(3.5); opacity: 0;}
+        }
+        #bg_widgets li.bgsettings.bgwelcome:before {content: ''; display: block; border: 2px solid gold; position: absolute; top: 3px; right: 19px; border-radius: 20px; width: 15px; height: 15px; pointer-events: none; -webkit-animation: zoom 1.5s ease 0 infinite forwards; -webkit-filter: blur(1px);}
     #bg_widgets li:hover > a {font-size: 13px;}
     #bg_widgets li > a:hover {text-decoration: none !important;}
     #bg_widgets li > a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
