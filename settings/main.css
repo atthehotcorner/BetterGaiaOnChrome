@@ -266,7 +266,7 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 #postformating format .clear a.delete:before {content: '\e020';}
 
 /* Edit format popup */
-page.postformatting.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
+page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 
 #editformat {width: 600px; top: 60px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #222; display: none;}
 .editing #editformat {display: block;}
