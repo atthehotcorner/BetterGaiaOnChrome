@@ -605,7 +605,13 @@ Settings.page.usertags = function() {
 
 Settings.page.about = function() {
     this.init('about');
-        
+    var pageName = 'page.about';
+
+    // Load change log
+    $.get('../code/html/changelog.html', function(data) {
+        $('.credits', pageName).after('<section class="changelog"><h4>Change Log</h4><aside>' + data + '</aside></section>');
+    });
+
     // Set sync usage
     chrome.storage.sync.getBytesInUse(function(data){
         $('page.about strong.inuse').text(data);
