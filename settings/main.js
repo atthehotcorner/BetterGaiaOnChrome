@@ -27,7 +27,7 @@ var Preview = {
         color: function(pref) {
             var dict = {
                 'background.color': '#preview > div, #preview2',
-                'header.nav': '#preview .navigation',
+                'header.nav': '#preview .navigation, #preview .header .username item',
                 'header.nav.hover': '#preview .navigation .hover',
                 'header.nav.current': '#preview .navigation .current',
                 'forum.threadHeader': '#preview2 .thread_header .linklist',
