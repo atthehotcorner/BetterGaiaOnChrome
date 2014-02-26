@@ -60,6 +60,8 @@ var prefs = {
     'forum.constrain': true,
     'forum.post.background': true,
     'forum.post.optionsBottom': true,
+    'forum.pollHide': false,
+    'forum.postOffWhite': false,
 
     'forum.threadHeader': '#BF7F40',
     'forum.postHeader': '#CFE6F9',

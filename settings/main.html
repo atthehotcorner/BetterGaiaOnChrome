@@ -74,6 +74,8 @@
                     <li>Use thread preview in thread listings <input pref="forum.previewThreads" type="checkbox"></li>
                     <li>Show avatars outside of posts <input pref="forum.post.background" type="checkbox"></li>
                     <li>Show post options at bottom of posts <input pref="forum.post.optionsBottom" type="checkbox"></li>
+                    <li>Show polls collapsed in threads <input pref="forum.pollHide" type="checkbox"></li>
+                    <li>Show posts with a off-white background <input pref="forum.postOffWhite" type="checkbox"></li>
                 </aside>
             </section>
         </page> <!-- Features -->
@@ -206,7 +208,7 @@
 
             <section id="thread_header">
                 <h3>Forums <button class="reset right">Reset</button></h3>
-                <p>Choose a background color for the header.</p>
+                <p>Choose the colors for threads and posts.</p>
 
                 <aside>
                     <li>Background <input pref="forum.threadHeader" type='text' class="color" value="#BF7F40"></li>
@@ -224,7 +226,7 @@
             <section id="postformating">
                 <h3>Post Formats</h3>
                 <p>Style your forum posts. Your first format will be inserted automatically.</p>
-                <p class="localonly">You are currently over your storage limit for your formats. Your formats will be saved locally instead.</p>
+                <p class="localonly">Oh no! You went over your storage limit for formats that sync when logged into your Google account. Don't worry though, they'll be saved locally instead.</p>
 
                 <aside>
                     <format class="add"></format>
@@ -298,7 +300,7 @@
             <section id="shortcuts">
 				<h3>Shortcuts</h3>
        	        <p>Edit the links that are shown next by your username.</p>
-                <p class="localonly">You are currently over your storage limit for your links. Your links will be saved locally instead.</p>
+                <p class="localonly">Oh no! You went over your storage limit for shortcuts that sync when logged into your Google account. Don't worry though, they'll be saved locally instead.</p>
 
                 <aside>
                     <slink class="add"></slink>
@@ -315,7 +317,7 @@
             <section id="usertags">
 				<h3>User Tags</h3>
        	        <p>Manage your tags shown next to users' names.</p>
-                <p class="localonly">You are currently over your storage limit for your tags. Your user tags will be saved locally instead.</p>
+                <p class="localonly">Oh no! You went over your storage limit for user tags that sync when logged into your Google account. Don't worry though, they'll be saved locally instead.</p>
                 
                 <aside></aside>
             </section>
@@ -342,24 +344,26 @@
                 </aside>
             </section>
 
-            <section class="credits">
-                <h4>Credits</h4>
-                <p>BetterGaia would like to thank:</p>
+            <section class="transferSection">
+                <h4>Transfer and recover settings</h4>
 
                 <aside>
-                    <li>jQuery</li>
-                    <li>Google Chrome&trade;</li>
-                    <li>Design language formally known as Metro</li>
-                    <li>Inspiration, ideas from Reddit Enhancement Suite</li>
-                    <li>Backgrounds designed by Evan Eckard - dinpattern.com</li>
-                    <li>Gaia Online&trade;</li>
-                    <li>Our beta testers</li>
-                    <li>And of course the regulars</li>
-                </aside>
+                    <p>We've found settings that may have not transfer over when BetterGaia was updated. BetterGaia can try and recover these older settings. <a class="viewTransfer">View recovered settings.</a></p>
+                    <li>I acknowledge my current preferences might be lost. <input class="agreeTransfer" type="checkbox"></li>
+                    <li><button class="transfer">Transfer Settings</button></li>
+				</aside>
+            </section>
+
+            <section id="viewTransfer">
+                <h3>Recovered settings</h3>
+                <div class="list"></div>
+                <div class="clear">
+                    <button class="close">Close</button>
+                </div>
             </section>
 
             <section>
-                <h4>Instant Update</h4>
+                <h4>Instant update</h4>
 
                 <aside>
                     <li>Update and fix user experience breaking issues in between regular updates. <input pref="instantUpdating" type="checkbox"></li>
@@ -373,6 +377,22 @@
                     <p>Is BetterGaia not functioning? Like to reset all of BetterGaia's settings?</p>
                     <li>I acknowledge my preferences will be lost. <input class="agreeReset" type="checkbox"></li>
                     <li><button class="reset">Reset BetterGaia</button></li>
+                </aside>
+            </section>
+
+            <section class="credits">
+                <h4>Credits</h4>
+                <p>BetterGaia would like to thank:</p>
+
+                <aside>
+                    <li>jQuery</li>
+                    <li>Google Chrome&trade;</li>
+                    <li>Design language formally known as Metro</li>
+                    <li>Inspiration, ideas from Reddit Enhancement Suite</li>
+                    <li>Backgrounds designed by Evan Eckard - dinpattern.com</li>
+                    <li>Gaia Online&trade;</li>
+                    <li>Our beta testers</li>
+                    <li>And of course the regulars</li>
                 </aside>
             </section>
         </page> <!-- About -->

@@ -45,7 +45,7 @@ css += 'body #gaia_header {background: url(' + prefs['header.background.base'] +
 
 // Header Background Stretch
 if (prefs['header.background.stretch'] == false)
-css += 'body #gaia_header {width: 1140px;}';
+css += 'body div#gaia_header {width: 1140px;}';
 
 // Logo
 if (prefs['header.logo'] != 'default') 

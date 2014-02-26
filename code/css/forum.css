@@ -304,6 +304,15 @@ body.forums #content #post_container .post .postcontent {}
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta span.date {margin: 1px 0 0; font-size: 0;}
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta span.date > abbr {border: 0; font-size: 13px;}
 
+		/* BG toggle post */
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse {float: right; height: 32px; width: 30px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.3)); border-radius: 0 4px 4px 0; margin: -6px -10px -1px 10px; position: relative; cursor: pointer; border-left: 1px solid rgba(255,255,255,0.3);}
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover {background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0.5));}
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:active {background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0.6));}
+
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:after {content: "\25B2"; color: rgba(0,0,0,0.35); display: block; position: absolute; top: 10px; right: 7px; text-align: center; line-height: 12px; font-size: 17px; box-sizing: border-box;}
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover:after {color: rgba(0,0,0,0.7);}
+		body.forums #content #post_container .post.bgpc_hidden .postcontent .user_info_wrapper .user_info .bg_postcollapse:after {content: "\25BC";}
+
 	/* Avatar */
 	body.forums #content #post_container .post .postcontent .avatar_wrapper {clear: none !important; height: auto !important; width: 120px; float: left; margin: -33px 0 0;}
 	body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box {display: block;}
@@ -459,6 +468,18 @@ body.forums #content #post_container .post .postcontent {}
 
 	/* Signature */
 	body.forums #content #post_container .post .postcontent .post-signature {clear: both; float: none; width: auto; margin: 0 0 0 130px; border-top: 1px solid rgba(0,0,0,0.125); background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)); padding: 10px;}
+
+	/* Adds Styles for Post Collapses */
+	body.forums #content #post_container .post.bgpc_hidden {margin: 0 0 20px; min-height: 0;}
+	body.forums #content #post_container .post.bgpc_hidden .postcontent > div, body.forums #content #post_container .post.bgpc_hidden .postcontent > h2 {display: none;}
+	body.forums #content #post_container .post.bgpc_hidden .postcontent > div.user_info_wrapper {display: block; border-radius: 4px;}
+    body.forums #content #post_container .post.bgpc_hidden .postcontent > div.avatar_wrapper {display: block;}
+    body.forums #content #post_container .post.bgpc_hidden .postcontent > div.avatar_wrapper * {display: none;}
+body.forums #content #post_container .post.bgpc_hidden .postcontent > div.avatar_wrapper .fav_stats, body.forums #content #post_container .post.bgpc_hidden .postcontent > div.avatar_wrapper .fav_stats .forum_userstatus {display: block;}
+body.forums #content #post_container .post.bgpc_hidden .postcontent > div.avatar_wrapper .fav_stats .forum_userstatus {margin: 6px 0 0;}
+body.forums #content #post_container .post.bgpc_hidden .postcontent > div.avatar_wrapper .fav_stats .forum_userstatus * {display: inherit;}
+	body.forums #content #post_container .post.bgpc_hidden h2 ~ div.user_info_wrapper {border-radius: 4px;}
+	body.forums #content #post_container .post.bgpc_hidden .post-signature {box-shadow: 0 0 0; border-radius: 4px 4px 0 0; border: 0;}
 
 /* Styles Thread Page while loading */
 body.forums #pjax-overlay {position: static !important; height: auto !important; width: auto !important;}

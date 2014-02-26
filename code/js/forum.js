@@ -30,6 +30,53 @@ if (prefs['forum.previewThreads'] == true) {
 	});
 }
 
+// Adds Post Options on Thread Page
+$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options").append('<div class="bg_postoptions">\
+<a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off> Sigs</a></div>');
+
+// Adds Functions to Post Options
+$("body.forums #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").on("click", function(){
+	if ( $(this).hasClass("bgpo_on") ) {
+		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").removeClass("bgpo_on");
+		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").parent().parent().find(".bgpo_sigs").removeClass("bgpo_on");
+		$("body.forums #post_container .post .post-signature").show();
+		$("body.forums #post_container .post").removeClass("bgpc_hidden");
+	}
+	else {
+		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
+		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").parent().parent().find(".bgpo_sigs").addClass("bgpo_on");
+		$("body.forums #post_container .post .post-signature").hide();
+		$("body.forums #post_container .post").addClass("bgpc_hidden");
+	}
+});
+
+$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs").on("click", function(){
+	if ( $("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs").hasClass("bgpo_on") ) {
+		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs").removeClass("bgpo_on");
+		$("body.forums #post_container .post .post-signature").show();
+	}
+	else {
+		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs").addClass("bgpo_on");
+		$("body.forums #post_container .post .post-signature").hide();
+	}
+});
+
+// Adds Toggle Signiture Button
+$("body.forums .post .post-signature").each(function () { 
+	$(this).parent().find(".message .messagecontent > .post-options > ul > li.post-meta").before('<li><a class="bg_togglesig"><span>Hide Sig</span></a></li>');
+});
+
+$('body.forums .post .message .messagecontent a.bg_togglesig').click(function() { 
+	$(this).closest('.postcontent').find(".post-signature").toggle();
+});
+
+// Toggles Each Post by Clicking Button
+$("body.forums .post .user_info_wrapper .user_info").append('<div class="bg_postcollapse" title="Collapse/Expand Post"></div>');
+
+$('body.forums .post .user_info_wrapper .user_info .bg_postcollapse').click(function() {
+	$(this).closest('.post').toggleClass('bgpc_hidden');
+});
+
 // Adds Instants
 $('body.forums .post .message .messagecontent .post-options ul').each(function () {
 	if ($(this).find('a.post-quote').length > 0 || $(this).find('a.post-edit').length > 0) 

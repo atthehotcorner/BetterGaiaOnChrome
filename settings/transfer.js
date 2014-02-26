@@ -174,13 +174,13 @@ var Transfer = {
                 if (typeof(chrome.runtime.lastError) == 'object') console.warn('Error when transfering: ' + chrome.runtime.lastError['message']);
                 else {
                     console.log('Done transfering.');
-                    localStorage.clear();
+                    delete localStorage['version'];
                 }
             });
         }
         else {
             console.log('Done transfering.');
-            localStorage.clear();
+            delete localStorage['version'];
         }
     }
 };

@@ -417,9 +417,9 @@ Settings.page.formats = function() {
         $('page.formats.editing, #postformating format.editing').removeClass('editing');       
     });
 
-		$('#editformat textarea').bind('input propertychange', function(){
+    $('#editformat textarea').bind('input propertychange', function(){
         $('#editformat .right').html(bbcodePreview($(this).val()));
-		});
+    });
 
     $('#postformating aside').on('click', 'format .clear a.delete', function(){
         $(this).closest('format').remove();
@@ -609,7 +609,7 @@ Settings.page.about = function() {
 
     // Load change log
     $.get('../code/html/changelog.html', function(data) {
-        $('.credits', pageName).after('<section class="changelog"><h4>Change Log</h4><aside>' + data + '</aside></section>');
+        $('.credits', pageName).after('<section class="changelog"><h4>Change log</h4><aside>' + data + '</aside></section>');
     });
 
     // Set sync usage
@@ -617,6 +617,38 @@ Settings.page.about = function() {
         $('page.about strong.inuse').text(data);
         $('page.about strong.outof').text(chrome.storage.sync.QUOTA_BYTES);
 		$('page.about strong.pereach').text(chrome.storage.sync.QUOTA_BYTES_PER_ITEM);
+    });
+
+	// Transfer
+    if (localStorage.length > 0) $('page.about .transferSection').show();
+
+	$('page.about .viewTransfer').on('click', function(){
+        $('page.about').addClass('showModule');
+
+        if (!$('#viewTransfer').hasClass('loaded')) {
+            var html = '';
+            for (var i=0; i < localStorage.length; i++) {
+                html += '<li><strong>' + localStorage.key(i) + '</strong><p>' + localStorage.getItem(localStorage.key(i)) + '</p></li>';
+            }
+            $('#viewTransfer').addClass('loaded');
+            $('#viewTransfer .list').html(html);
+        }
+    });
+
+    $('#viewTransfer .clear .close').on('click', function(){
+        $('page.about').removeClass('showModule');     
+    });
+
+	$('page.about input.agreeTransfer').on('click', function(){
+        if($(this).prop('checked')) {
+            $("page.about button.transfer").show();
+            $(this).prop("disabled", true);
+        }
+	});
+
+	$('page.about button.transfer').on('click', function(){
+        Transfer.init();
+        window.location.reload();
     });
 
 	// Reset
@@ -649,7 +681,6 @@ Settings.page.welcome = function() {
         if (typeof(localStorage['version']) == 'string' && prefs.local['version'] != '2014.10') Transfer.init();
         chrome.storage.local.set({'welcome': true}, function(){
             console.log('welcome set locally.');
-            window.location.reload();
         });
     });
 };
