@@ -321,14 +321,15 @@ page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 page.about .changelog aside {max-height: 250px; overflow: auto;}
 page.about .changelog aside strong {display: block; padding: 0 0 10px;}
 page.about button.transfer, page.about button.reset {display: none;}
-page.about .transferSection, #viewTransfer {display: none;}
+page.about .transferSection .yes, #viewTransfer {display: none;}
 
 /* View transfer popup */
 page.about.showModule > *:not(#viewTransfer) {opacity: 0.5; pointer-events: none;}
 
-#viewTransfer {width: 600px; top: 60px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #222; display: none;}
+#viewTransfer {width: 600px; top: 200px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #222; display: none;}
 .showModule #viewTransfer {display: block;}
 #viewTransfer .list {max-height: 400px; overflow: auto; margin-bottom: 15px;}
+#viewTransfer .list:empty:before {content: 'No preferences to display.';}
 #viewTransfer .list * {word-wrap: break-word;}
 #viewTransfer .clear {text-align: right;}
 

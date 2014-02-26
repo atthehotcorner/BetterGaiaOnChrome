@@ -620,7 +620,10 @@ Settings.page.about = function() {
     });
 
 	// Transfer
-    if (localStorage.length > 0) $('page.about .transferSection').show();
+    if (localStorage.length > 0) {
+        $('page.about .transferSection .yes').show();
+        $('page.about .transferSection .no').hide();
+    }
 
 	$('page.about .viewTransfer').on('click', function(){
         $('page.about').addClass('showModule');
@@ -648,6 +651,7 @@ Settings.page.about = function() {
 
 	$('page.about button.transfer').on('click', function(){
         Transfer.init();
+        window.location.hash = '';
         window.location.reload();
     });
 
