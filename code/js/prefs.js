@@ -9,6 +9,7 @@ var prefs = {
     'adsHide': true,
     'instantUpdating': true,
     'notifications': '15',
+    'announcementReader': true,
 
     // Background
     'background.image': 'default',

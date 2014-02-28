@@ -3,20 +3,31 @@ CSS JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: true, window: false, document: false, Format: false, CssJs: false, ForumCss: false, MainJs: false, ForumJs: false */
+/*jshint sub:true */
+/*jshint multistr:true */
 
 function MainCss() {
+
+// Inject CSS
+var link = document.createElement('link');
+    link.href = chrome.extension.getURL('code/css/main.css');
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+document.documentElement.insertBefore(link);
+
 var css = '';
 
 // Hide Ads
-if (prefs['adsHide'] == true)
+if (prefs['adsHide'] === true)
 css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}';
 
 // Float Username
-if (prefs['header.float'] == false)
+if (prefs['header.float'] === false)
 css += 'body #gaia_header .hud-account {position: absolute;}';
 
 // Show Suggested Content
-if (prefs['mygaia.suggested'] == false)
+if (prefs['mygaia.suggested'] === false)
 css += 'body.mygaia #gaia_content #bd .mg_content.suggested {display: block;}';
 
 // Background
@@ -27,8 +38,8 @@ css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.w
 css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {';
     css += 'background-color: ' + prefs['background.color'] + ';'; // Color
     css += 'background-position: ' + prefs['background.position'] + ';'; // Position
-    if (prefs['background.repeat'] == false) css += 'background-repeat: no-repeat;'; // Repeat
-    if (prefs['background.float'] == true) css += 'background-attachment: fixed;'; // Float
+    if (prefs['background.repeat'] === false) css += 'background-repeat: no-repeat;'; // Repeat
+    if (prefs['background.float'] === true) css += 'background-attachment: fixed;'; // Float
 css += '}';
 
 // If Background is Gaia Town
@@ -44,7 +55,7 @@ if (prefs['header.background.base'] != 'default')
 css += 'body #gaia_header {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
 
 // Header Background Stretch
-if (prefs['header.background.stretch'] == false)
+if (prefs['header.background.stretch'] === false)
 css += 'body div#gaia_header {width: 1140px;}';
 
 // Logo
@@ -72,6 +83,7 @@ css += '#nav > li.selected {background-color: ' + prefs['header.nav.current'] + 
 
 // Add CSS
 var head = document.getElementsByTagName('head');
+
 if (head.length > 0) {
     var style = document.createElement('style');
     style.type = 'text/css';
@@ -81,52 +93,50 @@ if (head.length > 0) {
 }
 
 // Instant CSS Updating
-if (prefs['instantUpdating'] == true) {
-    if (typeof(localPrefs['css']) == 'string') {
-        var head = document.getElementsByTagName('head');
-        if (head.length > 0) {
-            var style = document.createElement('style');
-            style.type = 'text/css';
-            style.setAttribute('bg-updatedcss', '');
-            style.appendChild(document.createTextNode(localPrefs['css']));
-            head[0].appendChild(style);
-        }
+if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') {
+    //var head = document.getElementsByTagName('head');
+    if (head.length > 0) {
+        var style2 = document.createElement('style');
+        style2.type = 'text/css';
+        style2.setAttribute('bg-updatedcss', '');
+        style2.appendChild(document.createTextNode(localPrefs['css']));
+        head[0].appendChild(style2);
     }
 }
 
 } // ---
 
 // Get Storage and Fire
-if (prefs['appliedUserPrefs'] != true)
+if (prefs['appliedUserPrefs'] !== true)
 chrome.storage.sync.get(null, function(response) {
   chrome.storage.local.get(null, function(response2) {
     localPrefs = response2;
 
     for (var key in response) {
         try {prefs[key] = response[key];}
-        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.')}
+        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
     }
 
     prefs['appliedUserPrefs'] = true;
     
     // Could use some code reuse
-    if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] == false) {
+    if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] === false) {
         MainCss();
         prefs['appliedMainCss'] = true;
     }
-    if (typeof(MainJs) == 'function' && prefs['appliedMainJs'] == false) {
+    if (typeof(MainJs) == 'function' && prefs['appliedMainJs'] === false) {
         MainJs();
         prefs['appliedMainJs'] = true;
     }
-    if (typeof(ForumCss) == 'function' && prefs['appliedForumCss'] == false) {
+    if (typeof(ForumCss) == 'function' && prefs['appliedForumCss'] === false) {
         ForumCss();
         prefs['appliedForumCss'] = true;
     }
-    if (typeof(ForumJs) == 'function' && prefs['appliedForumJs'] == false) {console.log('ss')
+    if (typeof(ForumJs) == 'function' && prefs['appliedForumJs'] === false) {
         ForumJs();
         prefs['appliedForumJs'] = true;
     }
-    if (typeof(Format) == 'function' && prefs['appliedFormat'] == false) {
+    if (typeof(Format) == 'function' && prefs['appliedFormat'] === false) {
         Format();
         prefs['appliedFormat'] = true;
     }

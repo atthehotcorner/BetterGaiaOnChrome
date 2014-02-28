@@ -3,11 +3,14 @@ Main JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*jshint sub:true */
+/*jshint multistr:true */
 
 function MainJs() {
 
 // Remove Ads
-if (prefs['adsHide'] == true)
+if (prefs['adsHide'] === true)
 $('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove();
 
 // Credits
@@ -20,7 +23,7 @@ $('body > #gaia_footer > p').append('<span id="bg_credits">\
 </span>');
 
 // Gaia Logo
-if (prefs['header.float'] == true) {
+if (prefs['header.float'] === true) {
     $('#gaia_header .userName').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
 
     $(window).scroll(function() {
@@ -78,7 +81,7 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     $(this).parent().toggleClass('bgopen');
 });
 
-if (prefs['header.widgets'] == true) {
+if (prefs['header.widgets'] === true) {
     $('#bg_widgets > li.bgsettings').before('\
         <li class="bgfriends"><a></a><div></div></li>\
         <li class="bgmessages"><a></a><div></div></li>\
@@ -101,7 +104,7 @@ if (prefs['header.widgets'] == true) {
                 .done(function(data) {
                     if (data['message'] == 'success') 
                         $.each(data['friendList'], function(i, value) {
-                            var online = (data['friendList'][i]['fid'] == '')? 'offline' : 'online';
+                            var online = (data['friendList'][i]['fid'] === '')? 'offline' : 'online';
                             $('#bg_widgets .bgfriends div').append("<a href='/profiles/" + data['friendList'][i]['uid'] + "/' target='_black' class='" + online + "'>\
                                 <img src='/gaia/members/" + data['friendList'][i]['hs'] + "' />\
                                 <span>" + data['friendList'][i]['un'] + "</span>\
@@ -124,7 +127,7 @@ if (prefs['header.widgets'] == true) {
                 $.get('/profile/privmsg.php', 'html')
                 .done(function(data) {
                     var mail = $('#gaia_content #pm_content table td > img[title="Unread Message"]', data).parent().parent();
-                    if (mail.length == 0) $('#bg_widgets .bgmessages div').append('<p>You have no unread messages.</p>');
+                    if (mail.length === 0) $('#bg_widgets .bgmessages div').append('<p>You have no unread messages.</p>');
                     else {
                         $(mail).each(function() {
                             var link = $('<li></li>').append("<a href='" + $(mail).find("td span.topictitle > a.topictitle").attr("href") + "'><strong>" + $(mail).find("td span.topictitle > a.topictitle").attr("title") + "</strong> from " + $(mail).find("span.name a").html() + "</a>");
@@ -147,7 +150,7 @@ if (prefs['header.widgets'] == true) {
                 $.get('/forum/subscription/', 'html')
                 .done(function(data) {
                     var posts = $('#gaia_content #upe-unsubscribe table.forum-list tbody td.topic-new div > a.goto-new-posts', data);
-                    if (posts.length == 0) $('#bg_widgets .bgthreads div').append('<p>There are no updates in your subscribed threads.</p>');
+                    if (posts.length === 0) $('#bg_widgets .bgthreads div').append('<p>There are no updates in your subscribed threads.</p>');
                     else {
                         $(posts).each(function() {
                             var title = $(this).prop('title').slice(0, -13);
@@ -205,7 +208,7 @@ if (prefs['header.widgets'] == true) {
     $("body #editor #format_controls .format-elements").append("<li><a class='bg_spoiler' onclick='function wrapText(elementID, openTag, closeTag) {var textarea = document.getElementById(elementID); var len = textarea.value.length; var start = textarea.selectionStart; var end = textarea.selectionEnd; var selectedText = textarea.value.substring(start, end); var replacement = openTag + selectedText + closeTag; textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end, len);} wrapText(\"message\", \"[spoiler]\", \"[/spoiler]\");' title='Add Spoiler - [spoiler][/spoiler]'>Add Spoiler Tag</a></li>");
     
 // Shortcuts
-if (prefs['header.shortcuts'] == true) {
+if (prefs['header.shortcuts'] === true) {
     // check if local prefs exist
     if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
         prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
@@ -222,7 +225,7 @@ if (prefs['header.shortcuts'] == true) {
 }
 
 // Draw All
-if (prefs['header.drawAll'] == true && ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/"].indexOf(document.location.pathname) > -1) {
+if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/"].indexOf(document.location.pathname) > -1) {
 	// Add Sign
 	if ($("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").length > 0) {
 		$("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").after("<a class='bg_drawall' title='BetterGaia&rsquo;s Draw All Daily Chances'>draw <em>all</em></a>");
@@ -280,7 +283,7 @@ if (prefs['header.drawAll'] == true && ["/", "/mygaia/", "/market/", "/forum/", 
 }
 
 // Private Messages
-if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg.php') > -1) {
+if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privmsg.php') > -1) {
 	// Private message selectors
 	$('body.mail #pm_content table tr[height="20"] td[align]').after("<div class='bg_selecttypes'><span><a class='all'>All</a><a class='read'>Read</a><a  class='unread'>Unread</a><a class='replied'>Replied</a><a class='none'>None</a></span></div>");	
 	$('body.mail #pm_content table tr[bgcolor][height="42"] > td:nth-of-type(2) img').each(function(index, element) {
@@ -306,7 +309,7 @@ if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg
 			$.get("/profiles?mode=lookup&avatar_username=" + $(this).closest('tr[bgcolor][height="42"]').find('span.name').text(), function(data){
 				var i = document.createElement('img');
 				$(i).load(function(){
-       		$('tr[bgcolor][height="42"][userid="'+userid+'"] span.topictitle a').css({'background-image': 'url(/dress-up/avatar/' + $(data).find('response').attr('avatarPath') + ')', 'background-position': 'right -35px'});
+                    $('tr[bgcolor][height="42"][userid="'+userid+'"] span.topictitle a').css({'background-image': 'url(/dress-up/avatar/' + $(data).find('response').attr('avatarPath') + ')', 'background-position': 'right -35px'});
 				});
 				i.src = 'http://www.gaiaonline.com/dress-up/avatar/' + $(data).find('response').attr('avatarPath');
 			});
@@ -327,7 +330,7 @@ if (prefs['pms'] == true && document.location.pathname.indexOf('/profile/privmsg
 }
 
 // Enable Instant CSS updating
-if (prefs['instantUpdating'] == true) {
+if (prefs['instantUpdating'] === true) {
     $.ajax({
         url: '/guilds/viewtopic.php?t=24076833',
         cache: false,
@@ -336,7 +339,7 @@ if (prefs['instantUpdating'] == true) {
     })
     .done(function(html) {
         if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
-            var version = parseInt(localPrefs['version'].replace(/\./g,''));
+            var version = parseInt(localPrefs['version'].replace(/\./g,''), 10);
             html = $('.postcontent:eq(1) .postbody', html);
 
             // look for new code
@@ -357,7 +360,7 @@ if (prefs['instantUpdating'] == true) {
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] == true && prefs['appliedMainJs'] == false) {
+if (prefs['appliedUserPrefs'] === true && prefs['appliedMainJs'] === false) {
 	MainJs();
 	prefs['appliedMainJs'] = true;
 }

@@ -3,14 +3,58 @@ Forum JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*jshint sub:true */
+/*jshint multistr:true */
 
 function ForumJs() {
 
+// Fetch all announcements
+if (prefs['announcementReader'] === true && document.location.pathname == '/news/' && $('#gaia_header #notifyItemList .notify_announcements .notify_icon_announcement').length == 1) {
+    // Get number of remaining announcements
+    var remaining = parseInt($('#gaia_header #notifyItemList .notify_announcements .notify_icon_announcement').text().replace(/\D/g, ''), 10);
+    if (remaining > 10) remaining = 10;
+
+    // Add button
+    var s = (remaining == 1)? '':'s';
+    $('#content').prepend('<a id="bgFetchAnnouncements">You still have ' + remaining + ' announcement' + s + ' to open. Would you like to open the rest on this page?</a>');
+
+    // Fetch
+    $('#bgFetchAnnouncements').on('click', function() {
+        console.log('click');
+        function apply(remaining) {
+            console.log('apply');
+            $.ajax({
+                url: '/news/',
+                cache: false,
+                dataType: 'html',
+                headers: {'X-PJAX': true}
+            })
+            .done(function(html, remaining) {
+                console.log(html);
+                if ($('#content #content-padding #topic_header_container #thread_header', html).length == 1) {
+                    $('#content').prepend($('#content #content-padding', html));
+                }
+                else remaining = 0;
+                console.log(remaining);
+                // Keep loading
+                if (remaining > 0) {
+                    remaining--;
+                    apply();
+                }
+            });
+        }
+
+        $(this).remove();
+        apply();
+    });
+}
+
 // Add thread preview
-if (prefs['forum.previewThreads'] == true) {
+if (prefs['forum.previewThreads'] === true) {
 	$("body.forums #gaia_content table.forum-list tr td.title .one-line-title .topic-icon").after('<a class="bgThreadPreview" title="View the first post of this thread">[+]</a>');
 	$("body.forums #gaia_content table.forum-list tr td.title .one-line-title a.bgThreadPreview").on("click", function(){
-		if ($(this).closest('tr.rowon, tr.rowoff').next('tr.bgThreadPreviewBox').length == 0) {
+		if ($(this).closest('tr.rowon, tr.rowoff').next('tr.bgThreadPreviewBox').length === 0) {
 			$(this).closest('tr.rowon, tr.rowoff').after('<tr class="bgThreadPreviewBox loading"><td colspan="6"><div>Test</div></td></tr>');
 			var box = $(this).closest('tr.rowon, tr.rowoff').next('tr.bgThreadPreviewBox');
 			$.ajax({
@@ -93,7 +137,7 @@ $('body.forums .post .message .messagecontent .post-options ul').each(function (
 $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote").click(function() {
 	var bubbleThis = $(this).closest('.messagecontent');
 	
-	if (bubbleThis.find(".bg_instantbox.quote").length == 0) {
+	if (bubbleThis.find(".bg_instantbox.quote").length === 0) {
 		bubbleThis.find(".post-bubble").after("<div class='bg_instantbox quote loading'></div>");
 		
 		//get url
@@ -111,7 +155,7 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 $("body.forums .post .message .messagecontent .post-options ul a.bg_instantedit").click( function() {
 	var bubbleThis = $(this).closest('.messagecontent');
 	
-	if (bubbleThis.find(".bg_instantbox.edit").length == 0) {
+	if (bubbleThis.find(".bg_instantbox.edit").length === 0) {
 		bubbleThis.find(".post-bubble").after("<div class='bg_instantbox edit loading'></div>");
 		
 		//get url
@@ -126,7 +170,7 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantedit"
 });
         
 // Enable redirects on same page
-if (prefs['forum.externalLinks'] == true) {
+if (prefs['forum.externalLinks'] === true) {
 	$("body.forums .post a[href^='http://www.gaiaonline.com/gaia/redirect.php?r=']").on("click", function(e){
 		if ($(this).prop("href").match(/gaiaonline/g).length > 1 || e.ctrlKey || e.which == 2) {
 			return true;
@@ -159,7 +203,7 @@ if (prefs['forum.externalLinks'] == true) {
 }
 
 // Add User Tagging
-if (prefs['usertags'] == true) {
+if (prefs['usertags'] === true) {
     // check if local prefs exist
     if (typeof(localPrefs['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
         prefs['usertags.list'] = localPrefs['usertags.list'];
@@ -169,7 +213,7 @@ if (prefs['usertags'] == true) {
     // Get userid and add tag links
     $('body.forums .post .user_info_wrapper .user_info .user_name').each(function() {
         var userid = '', avibox = $(this).closest('.postcontent').find('.avatar_wrapper .avi_box');
-        if (avibox.find('a.avatar').length == 0) userid = avibox.find('#animated_item > object').attr('onmousedown').replace("window.location='", '').split("/")[5];
+        if (avibox.find('a.avatar').length === 0) userid = avibox.find('#animated_item > object').attr('onmousedown').replace("window.location='", '').split("/")[5];
         else userid = avibox.find('a.avatar').attr('href').split('/')[5];
         $(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span></span></div>');
     });
@@ -240,7 +284,7 @@ if (prefs['usertags'] == true) {
         else $(this).siblings('label[for="bgut_idtag"].bgerror').removeClass('bgerror');
 
         // Check
-        if ($(this).siblings('.bgerror').length == 0) letsSave = true;
+        if ($(this).siblings('.bgerror').length === 0) letsSave = true;
 
         // Save
         if (letsSave) {
@@ -284,7 +328,7 @@ $('body.forums .post .message .messagecontent > .post-options > ul > li.post-met
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] == true && prefs['appliedForumJs'] == false) {
+if (prefs['appliedUserPrefs'] === true && prefs['appliedForumJs'] === false) {
 	ForumJs();
 	prefs['appliedForumJs'] = true;
 }

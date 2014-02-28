@@ -29,6 +29,12 @@ body.forums #content #content-padding {width: 1140px; margin: 0 auto; padding: 1
 	/* Reset Subscriptions Page */
 	body.community.forums #content #gaia_content.grid_dave_davies_skyscraper {width: 1140px;}
 
+/* Announcement Reader */
+body.forums #bgFetchAnnouncements {display: block; clear: both; box-shadow: 0 0 0 2px rgba(0,0,0,0.35) inset; padding: 13px 15px 15px; text-align: center; margin: 15px 0 0; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25)) #209C2A; border-radius: 4px; cursor: pointer; color: #FFF; text-shadow: 0 1px 0 #000; box-sizing: border-box; line-height: 1;}
+body.forums #bgFetchAnnouncements:before {content: '\e171'; font-family: 'Glyphicons Halflings'; font-size: 15px; padding-right: 10px; position: relative; top: 2px;}
+body.forums #bgFetchAnnouncements:hover {background-image: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(0,0,0,0.15));}
+body.forums #bgFetchAnnouncements:active {background-image: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0)); text-shadow: 0 -1px 0 #000; padding: 14px 15px 14px; color: rgba(255,255,255,0.9);}
+
 /* Styles Index Page */
 body.forums #gaia_content.grid_billie_holiday {background: none; padding: 0;}
 body.forums #gaia_content.grid_billie_holiday #bd {margin: 20px auto 0; border-radius: 8px; width: 775px;}

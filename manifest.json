@@ -11,17 +11,15 @@
     },
     "content_scripts": [ {
         "matches": [ "*://*.gaiaonline.com/*" ],
-        "exclude_matches": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
-        "css": [ "code/css/main.css" ],
+        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
         "js": [ "code/js/prefs.js", "code/js/maincss.js" ],
         "run_at": "document_start"
     }, {
         "matches": [ "*://*.gaiaonline.com/*" ],
-        "exclude_matches": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
+        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
         "js": [ "code/js/jquery.min.js", "code/js/main.js" ]
     }, {
         "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
-        "css": [ "code/css/forum.css" ],
         "js": [ "code/js/forumcss.js" ],
         "run_at": "document_start"
     }, {
@@ -43,6 +41,6 @@
     "name": "BetterGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*" ],
-    "version": "2014.14",
-    "web_accessible_resources": [ "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
+    "version": "2014.15",
+    "web_accessible_resources": [ "code/css/main.css", "code/css/forum.css", "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
 }

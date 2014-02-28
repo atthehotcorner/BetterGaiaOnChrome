@@ -685,6 +685,7 @@ Settings.page.welcome = function() {
         if (typeof(localStorage['version']) == 'string' && prefs.local['version'] != '2014.10') Transfer.init();
         chrome.storage.local.set({'welcome': true}, function(){
             console.log('welcome set locally.');
+            window.location.reload();
         });
     });
 };
