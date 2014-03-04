@@ -14,7 +14,7 @@ var link = document.createElement('link');
     link.href = chrome.extension.getURL('code/css/main.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
-document.documentElement.insertBefore(link);
+document.getElementsByTagName('head')[0].appendChild(link);
 
 var css = '';
 
@@ -82,26 +82,19 @@ css += '#nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:act
 css += '#nav > li.selected {background-color: ' + prefs['header.nav.current'] + ';}';
 
 // Add CSS
-var head = document.getElementsByTagName('head');
-
-if (head.length > 0) {
-    var style = document.createElement('style');
+var style = document.createElement('style');
     style.type = 'text/css';
     style.setAttribute('bg-css', '');
     style.appendChild(document.createTextNode(css));
-    head[0].appendChild(style);
-}
+document.getElementsByTagName('head')[0].appendChild(style);
 
 // Instant CSS Updating
 if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') {
-    //var head = document.getElementsByTagName('head');
-    if (head.length > 0) {
-        var style2 = document.createElement('style');
+    var style2 = document.createElement('style');
         style2.type = 'text/css';
         style2.setAttribute('bg-updatedcss', '');
         style2.appendChild(document.createTextNode(localPrefs['css']));
-        head[0].appendChild(style2);
-    }
+    document.getElementsByTagName('head')[0].appendChild(style2);
 }
 
 } // ---

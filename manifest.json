@@ -11,12 +11,12 @@
     },
     "content_scripts": [ {
         "matches": [ "*://*.gaiaonline.com/*" ],
-        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
+        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
         "js": [ "code/js/prefs.js", "code/js/maincss.js" ],
         "run_at": "document_start"
     }, {
         "matches": [ "*://*.gaiaonline.com/*" ],
-        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/profiles/*/*/*", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
+        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
         "js": [ "code/js/jquery.min.js", "code/js/main.js" ]
     }, {
         "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],

@@ -59,8 +59,8 @@ var prefs = {
     'forum.externalLinks': true,
     'forum.previewThreads': true,
     'forum.constrain': true,
-    'forum.post.background': true,
     'forum.post.optionsBottom': true,
+    'forum.post.bgContainer': false,
     'forum.pollHide': false,
     'forum.postOffWhite': false,
 

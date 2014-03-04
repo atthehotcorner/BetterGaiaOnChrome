@@ -21,8 +21,9 @@ if (prefs['announcementReader'] === true && document.location.pathname == '/news
 
     // Fetch
     $('#bgFetchAnnouncements').on('click', function() {
-        console.log('click');
-        function apply(remaining) {
+        $('#bgFetchAnnouncements').after('<h3 class="bgFAh3">' + (remaining + 1) + ', Oldest</h3>');
+
+        function apply() {
             console.log('apply');
             $.ajax({
                 url: '/news/',
@@ -30,22 +31,30 @@ if (prefs['announcementReader'] === true && document.location.pathname == '/news
                 dataType: 'html',
                 headers: {'X-PJAX': true}
             })
-            .done(function(html, remaining) {
-                console.log(html);
-                if ($('#content #content-padding #topic_header_container #thread_header', html).length == 1) {
-                    $('#content').prepend($('#content #content-padding', html));
+            .done(function(html) {
+                if ($('#thread_header #thread_title', html).length == 1) {
+                    var text = (remaining == 1)? ', Newest':'';
+                    $('#bgFetchAnnouncements').after('<h3 class="bgFAh3">' + remaining + text + '</h3><div id="content-padding">' + html + '</div>');
                 }
-                else remaining = 0;
+                else {
+                    remaining = 0;
+                }
+
                 console.log(remaining);
                 // Keep loading
                 if (remaining > 0) {
                     remaining--;
                     apply();
                 }
+                // No more, end
+                else {
+                    $('#gaia_header #notifyItemList .notify_announcements, #bgFetchAnnouncements').remove();
+                    ForumJs();
+                }
             });
         }
 
-        $(this).remove();
+        $(this).off('click').addClass('loading').text('Fetching your announcements...');
         apply();
     });
 }
@@ -115,7 +124,9 @@ $('body.forums .post .message .messagecontent a.bg_togglesig').click(function() 
 });
 
 // Toggles Each Post by Clicking Button
-$("body.forums .post .user_info_wrapper .user_info").append('<div class="bg_postcollapse" title="Collapse/Expand Post"></div>');
+$("body.forums .post .user_info_wrapper .user_info").each(function(){ 
+    if ($(this).find('.bg_postcollapse').length === 0) $(this).append('<div class="bg_postcollapse" title="Collapse/Expand Post"></div>');
+});
 
 $('body.forums .post .user_info_wrapper .user_info .bg_postcollapse').click(function() {
 	$(this).closest('.post').toggleClass('bgpc_hidden');
@@ -212,10 +223,12 @@ if (prefs['usertags'] === true) {
 
     // Get userid and add tag links
     $('body.forums .post .user_info_wrapper .user_info .user_name').each(function() {
-        var userid = '', avibox = $(this).closest('.postcontent').find('.avatar_wrapper .avi_box');
-        if (avibox.find('a.avatar').length === 0) userid = avibox.find('#animated_item > object').attr('onmousedown').replace("window.location='", '').split("/")[5];
-        else userid = avibox.find('a.avatar').attr('href').split('/')[5];
-        $(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span></span></div>');
+        if ($(this).siblings('.bgUserTag').length === 0) {
+            var userid = '', avibox = $(this).closest('.postcontent').find('.avatar_wrapper .avi_box');
+            if (avibox.find('a.avatar').length === 0) userid = avibox.find('#animated_item > object').attr('onmousedown').replace("window.location='", '').split("/")[5];
+            else userid = avibox.find('a.avatar').attr('href').split('/')[5];
+            $(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span></span></div>');
+        }
     });
 	
     // Add stored tags

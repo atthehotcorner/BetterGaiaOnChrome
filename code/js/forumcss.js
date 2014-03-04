@@ -14,7 +14,7 @@ var link = document.createElement('link');
     link.href = chrome.extension.getURL('code/css/forum.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
-document.documentElement.insertBefore(link);
+document.getElementsByTagName('head')[0].appendChild(link);
 
 var css = '';
 
@@ -34,8 +34,8 @@ if (prefs['forum.postHeader'] != '#CFE6F9')
 css += 'body.forums #content #post_container .post .postcontent .user_info_wrapper, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options, body.forums #content #post_container .post .postcontent .post-signature {background-color: ' + prefs['forum.postHeader'] + ';}';
 
 // Add background to posts
-if (prefs['forum.post.background'] === false)
-css += 'body.forums #content #post_container .post > .postcontent {border-radius: 4px 10px 0 0; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)); background-color: ' + prefs['forum.postHeader'] + ';}';
+if (prefs['forum.post.bgContainer'] === true)
+css += 'body.forums #content #post_container .post > .postcontent {border-radius: 4px 10px 0 0; background-image: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.6)); background-color: ' + prefs['forum.postHeader'] + ';} body.forums #content #post_container .post.bgpc_hidden > .postcontent {border-radius: 4px;}';
 
 // Make posts off white
 if (prefs['forum.postOffWhite'] === true) {css += 'body.forums #content #post_container .post .postcontent .message .messagecontent {background-color: rgba(255,255,255,0.95);} body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble div.content, body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .avi-speech:not(.document) .avi-speech-bd {background-color: transparent;} body.forums #content #post_container .post .postcontent .message .messagecontent::before {border-right-color: rgba(255,255,255,0.95);}';}
@@ -45,14 +45,11 @@ if (prefs['forum.post.optionsBottom'] === false)
 css += 'body.forums #content #post_container .post .postcontent .message .messagecontent {padding: 30px 0 0;} body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {top: 0; bottom: auto; border-top: 0;}';
 
 // Add CSS
-var head = document.getElementsByTagName('head');
-if (head.length > 0) {
-    var style = document.createElement('style');
+var style = document.createElement('style');
     style.type = 'text/css';
     style.setAttribute('bg-forumcss', '');
     style.appendChild(document.createTextNode(css));
-    head[0].appendChild(style);
-}
+document.getElementsByTagName('head')[0].appendChild(style);
 
 } // ---
 
