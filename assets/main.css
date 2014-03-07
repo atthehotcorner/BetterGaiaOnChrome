@@ -1,5 +1,5 @@
 body {
-    background: rgb(240,240,240);
+    background: #FDFDFD;
     color: #000;
     font-family: 'Lato', sans-serif;
     min-width: 300px;
@@ -19,13 +19,15 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -1px;
     line-height: 1.15em;
 }
-h1 {font-size: 2.5em;}
+h1 {font-size: 3.05em;}
 h2 {font-size: 2em;}
 h3 {font-size: 1.5em;}
 h4 {font-size: 1em;}
 h5 {font-size: 0.75em;}
 h6 {font-size: 0.5em;}
 h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {color: #999; display: block;}
+
+hr {border: 0; height: 0; border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(255,255,255,0.25);}
 
 .align-left {text-align: left;}
 .align-center {text-align: center;}
@@ -53,7 +55,7 @@ h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {color: #999; display: bloc
     padding: 2em 0;
 }
 
-.clear:after, .wrapper:after, #pane:after {
+.clear:after, .wrapper:after, #more ul:after {
     display: table;
     content: '';
     clear: both;
@@ -68,16 +70,44 @@ header {
 }
 header h1 {margin: 0; letter-spacing: -2px; font-size: 3em; line-height: 0.9em; color: #9CD6E0;}
 
+section {border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(255,255,255,0.25);}
+section .wrapper > h1:first-of-type {margin-top: 0.25em;}
+
+#personalize {
+    background: url(img/design1.png), url(img/design2.png), url(img/design3.png);
+    box-shadow: 0 0 2.5em rgba(0,0,0,0.25) inset;
+}
+
+#more {}
+#more ul {margin: 0 0 2em; padding: 0;}
+#more ul li {width: 25%; float: left; list-style-type: square; list-style-position: inside;}
+
+@media only screen and (max-width: 599px) {
+    #more ul li {width: 50%;}
+}
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+    #more ul li {width: 33%;}
+}
+
 #download {}
 #download h2 {text-align: left;}
 #download div.left {width: 37%;}
 #download div.right {width: 26%;}
 #download div img {width: 25%; margin: 1em 1.5em 1em 0em;}
-#download div.left .button {margin: 0 5px;}
 #download div.right h2 {margin-bottom: -0.2em;}
+
+@-webkit-keyframes glint {
+    0% {background-position: -80px 0;}
+    50% {background-position: 80px 0;}
+    100% {background-position: 80px 0;}
+}
+
+#download div.left .button {margin: 0 5px; background-image: linear-gradient(-45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 70%); background-repeat: no-repeat; background-size: contain; background-position: -80px 0; -webkit-transition: background-position 0s ease 0.15s; -webkit-animation: 5s glint infinite 2.5s;}
+#download div.left .button:hover {background-position: 80px 0; -webkit-transition-duration: 0.75s;}
 
 @media only screen and (max-width: 599px) {
     #download div.left {width: auto; float: none; clear: both; text-align: center;}
+    #download div.left:nth-of-type(2) {margin-top: 3em;}
     #download div.left h2 {text-align: center;}
     #download div img {margin: 1em 1em 0; float: none;}
     #download div.right {width: auto; float: none; clear: both; padding-top: 2.5em;}
