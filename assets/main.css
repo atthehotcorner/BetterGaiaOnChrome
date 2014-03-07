@@ -6,7 +6,7 @@ body {
     font-size: 1em;
 }
 
-*, *:before, *:after {box-sizing: border-box; -moz-box-sizing: border-box;}
+*, *:before, *:after {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 
 a {color: #045164; text-decoration: none;}
 a:hover {color: #9CD6E0; text-decoration: underline;}
@@ -61,7 +61,10 @@ hr {border: 0; height: 0; border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 
 }
 
 header {
+    background: -webkit-linear-gradient(left top, #AFDDFD, #E9F3FA);
+    background: -moz-linear-gradient(left top, #AFDDFD, #E9F3FA);
     background: linear-gradient(to top right, #AFDDFD, #E9F3FA);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#E9F3FA', endColorstr='#AFDDFD');
     text-align: right;
 }
 header .wrapper {padding: 0;}
@@ -89,7 +92,10 @@ section .wrapper > p {line-height: 1.5em;}
 }
 
 #personalize {
+    background: -webkit-linear-gradient(top, #C8E8FF, #F4FAFF);
+    background: -moz-linear-gradient(top, #C8E8FF, #F4FAFF);
     background: linear-gradient(to bottom, #C8E8FF, #F4FAFF);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#C8E8FF', endColorstr='#F4FAFF');
     border-bottom: 0;
 }
 
@@ -106,7 +112,10 @@ section .wrapper > p {line-height: 1.5em;}
 }
 
 #download {
+    background: -webkit-linear-gradient(top, #C8E8FF, #F4FAFF);
+    background: -moz-linear-gradient(top, #C8E8FF, #F4FAFF);
     background: linear-gradient(to bottom, #C8E8FF, #F4FAFF);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#C8E8FF', endColorstr='#F4FAFF');
     border-bottom: 0;
 }
 #download h2 {}
@@ -120,9 +129,25 @@ section .wrapper > p {line-height: 1.5em;}
     50% {background-position: 80px 0;}
     100% {background-position: 80px 0;}
 }
+@keyframes glint {
+    0% {background-position: -80px 0;}
+    50% {background-position: 80px 0;}
+    100% {background-position: 80px 0;}
+}
 
-#download div.left .button {margin: 0 5px; background-image: linear-gradient(-45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 70%); background-repeat: no-repeat; background-size: contain; background-position: -80px 0; -webkit-transition: background-position 0s ease 0.15s; -webkit-animation: 5s glint infinite 2.5s;}
-#download div.left .button:hover {background-position: 80px 0; -webkit-transition-duration: 0.75s;}
+#download div.left .button {
+    margin: 0 5px; 
+    background-image: -webkit-linear-gradient(-45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 70%); 
+    background-image: -moz-linear-gradient(-45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 70%); 
+    background-image: linear-gradient(-45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.7) 45%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 70%); 
+    background-repeat: no-repeat; 
+    background-size: contain; 
+    background-position: -80px 0; 
+    -webkit-transition: background-position 0s ease 0.15s; 
+    -webkit-animation: 5s glint infinite 2.5s;
+    transition: background-position 0s ease 0.15s; 
+    animation: 5s glint infinite 2.5s;
+}
 
 @media only screen and (max-width: 599px) {
     #download div.left {width: auto; float: none; clear: both; text-align: center;}
