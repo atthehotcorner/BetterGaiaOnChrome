@@ -15,7 +15,6 @@ a:active, a:focus {color: #045164;}
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
-    text-align: center;
     letter-spacing: -1px;
     line-height: 1.15em;
 }
@@ -71,16 +70,27 @@ header {
 header h1 {margin: 0; letter-spacing: -2px; font-size: 3em; line-height: 0.9em; color: #9CD6E0;}
 
 section {border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(255,255,255,0.25);}
-section .wrapper > h1:first-of-type {margin-top: 0.25em;}
+section .wrapper > h1:first-of-type {margin-top: 0.2em;}
+section .wrapper > img.left, section .wrapper > img.right {margin: 1.25em 0;}
+section .wrapper > img.left {margin-right: 2.5em;}
+section .wrapper > img.right {margin-left: 2.5em;}
+section .wrapper > p {line-height: 1.5em;}
+
+@media only screen and (max-width: 599px) {
+    section, section h1, section h2 {text-align: center;}
+    section .wrapper > img.left, section .wrapper > img.right {float: none; max-width: 100%; margin: 0.5em 0;}
+}
 
 #personalize {
-    background: url(img/design1.png), url(img/design2.png), url(img/design3.png);
+    background: linear-gradient(to bottom, #AFDDFD, #E9F3FA);
     box-shadow: 0 0 2.5em rgba(0,0,0,0.25) inset;
+    border: 0;
 }
 
 #more {}
-#more ul {margin: 0 0 2em; padding: 0;}
-#more ul li {width: 25%; float: left; list-style-type: square; list-style-position: inside;}
+#more h1, #more h2 {text-align: center;}
+#more ul {margin: 0 0 2em; padding: 0; line-height: 1.5em;}
+#more ul li {width: 25%; float: left; list-style-type: square; list-style-position: inside; text-align: left;}
 
 @media only screen and (max-width: 599px) {
     #more ul li {width: 50%;}
@@ -90,7 +100,7 @@ section .wrapper > h1:first-of-type {margin-top: 0.25em;}
 }
 
 #download {}
-#download h2 {text-align: left;}
+#download h2 {}
 #download div.left {width: 37%;}
 #download div.right {width: 26%;}
 #download div img {width: 25%; margin: 1em 1.5em 1em 0em;}
@@ -107,10 +117,11 @@ section .wrapper > h1:first-of-type {margin-top: 0.25em;}
 
 @media only screen and (max-width: 599px) {
     #download div.left {width: auto; float: none; clear: both; text-align: center;}
-    #download div.left:nth-of-type(2) {margin-top: 3em;}
+    #download div.left:nth-of-type(2) {margin-top: 2.5em;}
     #download div.left h2 {text-align: center;}
     #download div img {margin: 1em 1em 0; float: none;}
-    #download div.right {width: auto; float: none; clear: both; padding-top: 2.5em;}
+    #download div.right {width: auto; float: none; clear: both; padding-top: 2.5em; text-align: center;}
+    #download div.right h2 {margin-top: 0;}
 }
 @media only screen and (min-width: 600px) and (max-width: 959px) {
     #download div.left {width: 50%;}
@@ -120,6 +131,7 @@ section .wrapper > h1:first-of-type {margin-top: 0.25em;}
 
 #copyright {
     text-align: center;
+    color: #777;
 }
 
 footer {
@@ -127,7 +139,7 @@ footer {
     color: #FFF;
     text-align: center;
 }
-footer .wrapper {background: url(img/circle-pattern.png) bottom center repeat; width: auto; max-width: none;}
+footer .wrapper {background: url(img/circle-pattern.png) fixed bottom center repeat; width: auto; max-width: none;}
 footer .align-left {display: inline-block;}
 footer p {margin: 0;}
 footer h2 {margin: 0; text-align: left;}
