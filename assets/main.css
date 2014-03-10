@@ -169,11 +169,15 @@ section .wrapper > p {line-height: 1.5em;}
 }
 
 footer {
-    background: #345768;
+    background-color: #345768;
+    background-image: -moz-radial-gradient(center center, circle cover, rgba(200,232,255,0), rgba(244,250,255,0.25));
+    background-image: -webkit-radial-gradient(center center, circle cover, rgba(200,232,255,0), rgba(244,250,255,0.25));
+    background-image: radial-gradient(center center, circle cover, rgba(200,232,255,0), rgba(244,250,255,0.25));
+    box-shadow: 0 1em 1em -1em rgba(0,0,0,0.25) inset;
     color: #FFF;
     text-align: center;
 }
-footer .wrapper {background: url(img/circle-pattern.png) fixed bottom center repeat; width: auto; max-width: none;}
+footer .wrapper {width: auto; max-width: none;}
 footer .align-left {display: inline-block;}
 footer p {margin: 0;}
 footer h2 {margin: 0; text-align: left;}
