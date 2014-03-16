@@ -3,7 +3,7 @@ Forum JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false, Format: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -155,7 +155,8 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 		var url = bubbleThis.find(".post-options a.post-quote").attr("href");
 		$.get(url).done(function(data) {
 			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html($(data).find("form#compose_entry"));
-			chrome.extension.sendMessage({elements: 'format'});
+            if (typeof(Format) === 'function') Format();
+            else chrome.extension.sendMessage({elements: 'format'});
 		});
 	}
 	else {

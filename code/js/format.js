@@ -104,8 +104,14 @@ if ((prefs['format'] === true) &&
             $(this).addClass('current');
 
             // set as last used
-            if ($(this).index() !== 0) chrome.storage.sync.set({'format.list.recent': $(this).text()});
-            else chrome.storage.sync.remove('format.list.recent');
+            if ($(this).index() !== 0) {
+                chrome.storage.sync.set({'format.list.recent': $(this).text()});
+                prefs['format.list.recent'] = $(this).text();
+            }
+            else {
+                chrome.storage.sync.remove('format.list.recent');
+                prefs['format.list.recent'] = 'default';
+            }
         }
 
         return false;
