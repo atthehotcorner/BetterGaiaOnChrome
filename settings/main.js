@@ -458,6 +458,13 @@ Settings.page.formats = function() {
             }
         });
     });
+
+    // Change text if most recent selected
+    if ($('page.formats input[pref="format.list.useRecent"]').prop('checked')) $('#postformating').addClass('useRecent');
+	$('page.formats input[pref="format.list.useRecent"]').on('change', function() {
+        if ($(this).prop('checked')) $('#postformating').addClass('useRecent');
+        else $('#postformating').removeClass('useRecent');
+	});
 };
 
 Settings.page.shortcuts = function() {
@@ -705,7 +712,9 @@ Settings.load = function() {
                 try {prefs[key] = response[key];}
                 catch(e) {console.warn('Missing pref \'' + e + '\'.');}
             }
-            Settings.init();
+
+            try {Settings.init();}
+            catch(e) {debugBro(e);}
         });
     });
 };
@@ -721,7 +730,9 @@ Settings.init = function() {
         $('#pages page.' + pageName).addClass('selected');
 
         if (!$(this).hasClass('init')) {
-            Settings.page[pageName]();
+            try {Settings.page[pageName]();}
+            catch(e) {debugBro(e);}
+
             $(this).addClass('init');
         }
         $('header menu a.current').removeClass('current');
@@ -734,8 +745,23 @@ Settings.init = function() {
 	});
 
     if (window.location.hash) $('header menu a[href="' + window.location.hash + '"]').click();
-    else Settings.page.home();
+    else {
+        try {Settings.page.home();}
+        catch(e) {debugBro(e);}
+    }
+
+    $(window).on('hashchange', function() {
+        if (window.location.hash === '') $('header menu a[href="#"]').click();
+        else $('header menu a[href="' + window.location.hash + '"]').click();
+    });
 };
 
+// Debug message
+function debugBro(error) {
+    window.prompt('There\'s a problem, bro. \nCan you pass this message over to our thread?', 
+                  'Runtime message: ' + error + ' Name: ' + error.name + ' Stack: ' + error.stack + ' Message: ' + error.message);
+}
+
 // Run
-Settings.load();
+try {Settings.load();}
+catch(e) {debugBro(e);}

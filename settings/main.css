@@ -105,8 +105,8 @@ menu a.current {background: #FFF; color: #222;}
 
 /* Pages */
 #pages {padding: 15px 30px; margin-left: 170px; min-width: 785px;}
-#pages page {visibility: hidden; position: relative; height: 0; opacity: 0; overflow: hidden; display: block;}
-#pages page.selected {visibility: visible; opacity: 1; overflow: visible; height: auto;}
+#pages page {position: relative; display: none;}
+#pages page.selected {display: block;}
 
 #pages page h3 + p {margin-top: -10px; padding-bottom: 10px;}
 
@@ -234,6 +234,9 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 #thread_header {}
 	
 /* Post Formating */
+#postformating.useRecent p span.useRecent {font-size: 0;}
+#postformating.useRecent p span.useRecent:after {font-size: 14px; content: 'most recently used';}
+
 #postformating format, #postformating .sortable-placeholder {display: block; min-height: 82px; border: 2px solid #E4E4E4; cursor: move; margin: 0 10px 10px 0; width: calc((100% / 3) - 10px); float: left; padding: 5px 10px;}
 #postformating .sortable-placeholder {border-style: dashed;}
 #postformating .sortable-dragging {background: #FFF;}
@@ -241,8 +244,8 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
     #postformating format, #postformating .sortable-placeholder {width: calc((100% / 4) - 10px);}
 }
 
-#postformating format:first-of-type:not(.sortable-dragging):not(.add) {position: relative; border-color: #4CA5FF; box-shadow: 0 0 0 1px #4CA5FF inset;}
-#postformating format:first-of-type:not(.sortable-dragging):not(.add):after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block;  text-align: center; top: 0px; right: 0px; position: absolute; font-size: 14px; line-height: 1.4;}
+#postformating:not(.useRecent) format:first-of-type:not(.sortable-dragging):not(.add) {position: relative; border-color: #4CA5FF; box-shadow: 0 0 0 1px #4CA5FF inset;}
+#postformating:not(.useRecent) format:first-of-type:not(.sortable-dragging):not(.add):after {content: '\2714'; background: #4CA5FF; height: 20px; width: 20px; color: #FFF; display: block; text-align: center; top: 0px; right: 0px; position: absolute; font-size: 14px; line-height: 1.4;}
 
 #postformating format.add {text-align: center; cursor: pointer;}
 #postformating format.add:before {content: '\2b'; font-size: 16px; font-family: 'Glyphicons Halflings'; line-height: 24px; display: inline-block; height: 30px; width: 30px; border: 3px solid #555; color: #555; text-align: left; border-radius: 35px; margin-top: 10px; text-indent: 5px;}

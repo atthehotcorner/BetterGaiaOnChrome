@@ -226,7 +226,7 @@
     
             <section id="postformating">
                 <h3>Post Formats</h3>
-                <p>Style your forum posts. Your first format will be inserted automatically.</p>
+                <p>Style your forum posts. Your <span class="useRecent">first</span> format will be inserted automatically.</p>
                 <p class="localonly">Oh no! You went over your storage limit for formats that sync when logged into your Google account. Don't worry though, they'll be saved locally instead.</p>
 
                 <aside>
@@ -257,7 +257,15 @@
             </section>
 
             <section>
-                <h4>Quotes</h4>
+                <h4>Apply</h4>
+
+                <aside class="column">
+                    <li>Set last used format as format automatically inserted <input pref="format.list.useRecent" type="checkbox"></li>
+                </aside>
+            </section>
+
+            <section>
+                <h4>Quoting</h4>
 
                 <aside class="column">
                     <li>Place format before the quote <input pref="format.quote.endOfFormat" type="checkbox"></li>
@@ -371,7 +379,7 @@
                 <h4>Instant update</h4>
 
                 <aside>
-                    <li>Update and fix user experience breaking issues in between regular updates. <input pref="instantUpdating" type="checkbox"></li>
+                    <li>Update and fix user interface experience issues in between updates. <input pref="instantUpdating" type="checkbox"></li>
 				</aside>
             </section>
 
