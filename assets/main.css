@@ -112,6 +112,20 @@ section .wrapper > p {line-height: 1.5em;}
     #more ul li {width: 33%;}
 }
 
+#reviews {}
+#reviews .wrapper > div {width: 25%; float: left; padding: 1em;}
+#reviews .wrapper > div strong {text-align: right; display: block;}
+#reviews .wrapper > div strong span {display: block; font-weight: normal;}
+#reviews .wrapper > div p {background: #FFF; border: 1px solid rgba(0,0,0,0.1); padding: 1em; margin: 1em 0;}
+#reviews .wrapper > div p span {display: block; font-size: 2em; padding: 0 0 0.5em; text-align: center; color: #FFE03F; text-shadow: 0 1px 0px rgba(0,0,0,0.5);}
+
+@media only screen and (max-width: 599px) {
+    #reviews .wrapper > div {width: auto; float: none;}
+}
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+    #reviews .wrapper > div {width: 50%;}
+}
+
 #download {
     background: -webkit-linear-gradient(top, #C8E8FF, #F4FAFF);
     background: -moz-linear-gradient(top, #C8E8FF, #F4FAFF);
