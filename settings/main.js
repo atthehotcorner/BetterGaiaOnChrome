@@ -161,26 +161,22 @@ Settings.page.personalize = function() {
 		type: 'GET',
 		url: 'data/backgrounds.json',
 		dataType: 'text json',
-		cache: false,
-		async: false
-	})
-	.done(function(data){
+		cache: false
+	}).done(function(data) {
 		$.each(data['Backgrounds'], function(index, url) {
             if (url == 'default') $('#background a.customurl').before('<a data-url="' + url + '"></a>');
             else $('#background a.customurl').before('<a data-url="' + url + '" style="background-image: url(' + url + ');"></a>');
         });
-    })
-	.fail(function(data){
-		console.warn('Couldn\'t insert background options.');
+        
+        // Set selected background
+        var bgurl = prefs['background.image'];
+        if ($('#background a[data-url="' + bgurl + '"]').length > 0) $('#background a[data-url="' + bgurl + '"]').addClass('selected');
+        else $('#background a.customurl').attr('data-url', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
+    }).fail(function() {
+		console.warn('Couldn\'t fetch backgrounds.');
+    }).always(function() {
+        Preview.set.background(prefs['background.image']);
     });
-   
-    var bgurl = prefs['background.image'];
-    if ($('#background a[data-url="' + bgurl + '"]').length > 0) $('#background a[data-url="' + bgurl + '"]').addClass('selected');
-    else {
-        $('#background a.customurl').attr('data-url', bgurl).addClass('selected').css({'background-image': 'url(' + bgurl + ')'});
-    }
-    
-    Preview.set.background(bgurl);
 	// END backgrounds
 
 	// -- Add headers
@@ -188,16 +184,14 @@ Settings.page.personalize = function() {
 		type: 'GET',
 		url: 'data/headers.json',
 		dataType: 'text json',
-		cache: false,
-		async: false
-	})
-	.done(function(data){
+		cache: false
+	}).done(function(data) {
         // get host prefix
         var host = data['info']['host'];
         delete data['info'];
 
         // add header options to page
-        $.each(data, function(key, headers){
+        $.each(data, function(key, headers) {
             // Add title
             $('#header aside').prepend('<div class="h' + key + '"><h4>' + key + '</h4></div>');
 
@@ -206,9 +200,6 @@ Settings.page.personalize = function() {
                 // check if url needs prefix
                 if (url[0] != 'default' && url[0].substring(0,7) != 'http://' && url[0].substring(0,19) != 'chrome-extension://') url[0] = host + url[0];
                 if (url[1] != 'default' && url[1].substring(0,7) != 'http://' && url[1].substring(0,19) != 'chrome-extension://') url[1] = host + url[1];
-
-                //if (url[0] == 'default') $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
-                //else style="background-image: url(' + url[0] + ');
                 $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
             });
 
@@ -216,22 +207,26 @@ Settings.page.personalize = function() {
                 if ($('#header aside .h' + key).offset().top < $(window).scrollTop() + $(window).height() - 75) {
                     $('#header aside .h' + key + ' a[data-url]').each(function() {
                         var dataUrl = $(this).attr('data-url');
-                        if (dataUrl != 'default') $(this).css('background-image', 'url(' + dataUrl + ')');
+                        // Parse into imgur thumbnail
+                        if (dataUrl.substring(0,19) == 'http://i.imgur.com/') {
+                            $(this).css('background-image', 'url(' + dataUrl.substr(0, dataUrl.lastIndexOf('.')) + 's.jpg' + ')');
+                        }
+                        else if (dataUrl != 'default') $(this).css('background-image', 'url(' + dataUrl + ')');
                     });
                 }
             });
         });
-    })
-	.fail(function(data){
-		console.warn('Couldn\'t insert header options.');
-    });
 
-    var value = [prefs['header.background'], prefs['header.background.base']];
-    if ($('#header a[data-url="' + value[0] + '"][data-base-url="' + value[1] + '"]').length > 0) $('#header a[data-url="' + value[0] + '"][data-base-url="' + value[1] + '"]').addClass('selected');
-    else if (value[0] == 'default') $('#header a.customurl').attr({'data-url': value[0], 'data-base-url': value[1]}).addClass('selected');
-    else $('#header a.customurl').attr({'data-url': value[0], 'data-base-url': value[1]}).addClass('selected').css({'background-image': 'url(' + value[0] + ')'});
-    
-    Preview.set.header(value[0], value[1]);
+        // set current header
+        var value = [prefs['header.background'], prefs['header.background.base']];
+        if ($('#header a[data-url="' + value[0] + '"][data-base-url="' + value[1] + '"]').length > 0) $('#header a[data-url="' + value[0] + '"][data-base-url="' + value[1] + '"]').addClass('selected');
+        else if (value[0] == 'default') $('#header a.customurl').attr({'data-url': value[0], 'data-base-url': value[1]}).addClass('selected');
+        else $('#header a.customurl').attr({'data-url': value[0], 'data-base-url': value[1]}).addClass('selected').css({'background-image': 'url(' + value[0] + ')'});
+    }).fail(function() {
+        console.warn('Couldn\'t fetch headers.');
+    }).always(function() {
+        Preview.set.header(prefs['header.background'], prefs['header.background.base']);
+    });
 	// -- END headers
 
     // -- Add logos
@@ -697,19 +692,20 @@ Settings.page.welcome = function() {
     });
 };
 
-Settings.load = function() {
+Settings.load = function() {    
     // Save a default
     prefs.default = JSON.parse(JSON.stringify(prefs));
     prefs.local = {};
 
     // Get settings
-    chrome.storage.sync.get(null, function(response) {
-        chrome.storage.local.get(null, function(response2) {
-            // save locals
-            prefs.local = response2;
+    chrome.storage.local.get(null, function(responseLocal) {
+        // save locals
+        prefs.local = JSON.parse(JSON.stringify(responseLocal));
 
-            for (var key in response) {
-                try {prefs[key] = response[key];}
+        chrome.storage.sync.get(null, function(responseSync) {
+            // parse syncs
+            for (var key in responseSync) {
+                try {prefs[key] = responseSync[key];}
                 catch(e) {console.warn('Missing pref \'' + e + '\'.');}
             }
 
@@ -721,7 +717,7 @@ Settings.load = function() {
 
 Settings.init = function() {
     // Show welcome screen if new
-    if (typeof(prefs.local['welcome']) == 'undefined') Settings.page.welcome();
+    if (typeof prefs.local['welcome'] == 'undefined') Settings.page.welcome();
 
     // Set up pages
     $('header menu').on('click', 'a:not(.current)', function(){

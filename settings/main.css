@@ -98,7 +98,15 @@ header.hidden:before {content: ''; height: 100%; background: url(../images/logo/
 
 menu {margin: 0 0 100px; overflow: hidden;}
 menu a {display: block; -webkit-transition: all 0.3s ease;}
-menu a {cursor: pointer; font-size: 14px; font-weight: normal; padding: 10px 30px 10px 200px; display: block; color: #444; float: right; width: 340px; clear: both;}
+menu a {cursor: pointer; font-size: 14px; font-weight: normal; padding: 10px 0 10px 200px; display: block; color: #444; float: right; width: 340px; clear: both;}
+menu a:before {font-size: 12px; font-family: 'Glyphicons Halflings'; margin-right: 5px;}
+menu a[page-name="home"]:before {content: '\e021';}
+menu a[page-name="personalize"]:before {content: '\e103';}
+menu a[page-name="formats"]:before {content: '\e111';}
+menu a[page-name="shortcuts"]:before {content: '\e056';}
+menu a[page-name="usertags"]:before {content: '\e042';}
+menu a[page-name="about"]:before {content: '\e019';}
+
 menu a:hover {color: #777; background: rgba(255,255,255,0.5);}
 menu a:active {}
 menu a.current {background: #FFF; color: #222;}
@@ -116,23 +124,18 @@ menu a.current {background: #FFF; color: #222;}
 /* Page bar */
 page bar {position: absolute; right: 0; top: 15px; display: block; z-index: 1;}
 page bar a {display: inline-block; text-align: center; line-height: 10px; padding: 0 10px; margin-left: 25px; color: #222;}
-page bar a:hover:before {background: rgba(0,0,0,0.1);}
-page bar a:active:before {background: #222; color: #FFF;}
 page bar a:before {content: '\e159'; font-size: 20px; font-family: 'Glyphicons Halflings'; line-height: 37px; display: block; height: 40px; width: 40px; border: 2px solid #222; text-align: center; border-radius: 40px; margin-bottom: 10px;}
-page bar a.save {display: none;}
-page bar a.save:before {content: '\e172';}
+page bar a.save {display: none; background: #61D151; padding: 10px; margin: -10px 0; border-radius: 50px/15px;}
+page bar a.save:before {content: '\e172'; background-color: #FFF;}
 page bar a.disable:before {content: '\e017';}
 page bar a.disable:after {content: 'On';}
 page bar a.disable[value='false']:after {content: 'Off';}
 page bar a.add:before {content: '\2b';}
-page.off > *:not(bar), page.off > bar > *:not(.disable) {pointer-events: none; opacity: 0.5;}
 
-@-webkit-keyframes glow {
-    0% {background: rgba(154,233,134,0);}
-    90% {background: rgba(154,233,134,0.8); border-color: #186618;}
-    100% {background: rgba(154,233,134,0);}
-}
-page bar a.save:before {-webkit-animation: glow 3s infinite;}
+page bar a:hover:before {background: rgba(0,0,0,0.1);}
+page bar a:active:before {background: #222; color: #FFF;}
+
+page.off > *:not(bar), page.off > bar > *:not(.disable) {pointer-events: none; opacity: 0.5;}
 
 /* Page sections */
 page section {position: relative; padding: 15px 0; clear: both;}
@@ -340,6 +343,6 @@ page.about.showModule > *:not(#viewTransfer) {opacity: 0.5; pointer-events: none
 page.welcome {}
 page.welcome .icons {text-align: center;}
 page.welcome .icons li {float: left; width: calc((100% / 3) - 30px); display: block; margin-right: 30px;}
-page.welcome .icons li:before {font-size: 200px; font-family: 'Glyphicons Halflings'; content: '\e198'; height: 240px; line-height: 210px; display: block;}
-page.welcome .icons li:nth-of-type(2):before {content: '\e005'; line-height: 245px;}
-page.welcome .icons li:nth-of-type(3):before {content: '\e104'; line-height: 250px;}
+page.welcome .icons li:before {font-size: 200px; font-family: 'Glyphicons Halflings'; content: '\e198'; height: 240px; line-height: 210px; display: block; background-image: linear-gradient(to bottom, #06C3C4, #2753C5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+page.welcome .icons li:nth-of-type(2):before {content: '\e005'; line-height: 245px; background-image: linear-gradient(to bottom, #FF9A6B, #EE022B); margin-left: -15px;}
+page.welcome .icons li:nth-of-type(3):before {content: '\e104'; line-height: 250px; background-image: linear-gradient(to bottom, #FFA500, #E72A2A);}

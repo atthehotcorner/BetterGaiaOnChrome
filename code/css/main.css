@@ -434,6 +434,9 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
     body.mygaia #bg_sidebar section ol {padding: 0 0 10px;}
     body.mygaia #bg_sidebar section ol li {margin: 2px 0 0 20px;}
 
+    /* Fix avatar dressup overflow */
+    body.mygaia.mystuff #gaia_content #bd, body.mygaia.mystuff #gaia_content #bd #yui-main .yui-g {overflow: visible;}
+
 /* Private messages */
 body.mail #bg_messages {display: block; box-sizing: border-box; clear: both; overflow: auto; width: 900px;}
 body.mail #bg_messages * {box-sizing: border-box;}
@@ -729,7 +732,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall ul > li.bgc_candy div h6 {font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif;}
 
 /* Footer */
-body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0 !important; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37);}
+body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0 !important; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37); border-radius: 5px 5px 0 0;}
 body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
 body #gaia_footer ul {font-size: 11px;}
 

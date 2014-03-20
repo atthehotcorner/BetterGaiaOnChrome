@@ -88,18 +88,30 @@ $("body.forums #content #content-padding #topic_header_container .detail-navlink
 <a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off> Sigs</a></div>');
 
 // Adds Functions to Post Options
-$("body.forums #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").on("click", function(){
+if (typeof localPrefs['forum.hidePosts'] == 'boolean' && localPrefs['forum.hidePosts'] === true) {
+    $('body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts, body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs').addClass('bgpo_on');
+	$('body.forums #post_container .post .post-signature').hide();
+    $('body.forums #post_container .post').addClass('bgpc_hidden');
+}
+
+$('body.forums #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts').on('click', function() {
 	if ( $(this).hasClass("bgpo_on") ) {
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").removeClass("bgpo_on");
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").parent().parent().find(".bgpo_sigs").removeClass("bgpo_on");
 		$("body.forums #post_container .post .post-signature").show();
 		$("body.forums #post_container .post").removeClass("bgpc_hidden");
+
+        // Disable persistance
+        chrome.storage.local.remove('forum.hidePosts', function() {delete localPrefs['forum.hidePosts'];});
 	}
 	else {
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").parent().parent().find(".bgpo_sigs").addClass("bgpo_on");
 		$("body.forums #post_container .post .post-signature").hide();
 		$("body.forums #post_container .post").addClass("bgpc_hidden");
+
+        // Enable persistance
+        chrome.storage.local.set({'forum.hidePosts': true}, function() {localPrefs['forum.hidePosts'] = true;});
 	}
 });
 
