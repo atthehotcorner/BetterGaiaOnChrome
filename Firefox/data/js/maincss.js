@@ -3,7 +3,7 @@ CSS JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: true, window: false, document: false, Format: false, CssJs: false, ForumCss: false, MainJs: false, ForumJs: false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: true, window: false, document: false, Format: false, CssJs: false, ForumCss: false, MainJs: false, ForumJs: false, self: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -11,7 +11,7 @@ function MainCss() {
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = chrome.extension.getURL('code/css/main.css');
+    link.href = self.options.mainCssUrl;
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.getElementsByTagName('head')[0].appendChild(link);
@@ -100,15 +100,15 @@ if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') 
 } // ---
 
 // Get Storage and Fire
-if (prefs['appliedUserPrefs'] !== true)
-chrome.storage.sync.get(null, function(response) {
-  chrome.storage.local.get(null, function(response2) {
-    localPrefs = response2;
+if (prefs['appliedUserPrefs'] !== true) {
+/*chrome.storage.sync.get(null, function(response) {
+  chrome.storage.local.get(null, function(response2) {*/
+    localPrefs = {};
 
-    for (var key in response) {
+    /*for (var key in response) {
         try {prefs[key] = response[key];}
         catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
-    }
+    }*/
 
     prefs['appliedUserPrefs'] = true;
     
@@ -133,6 +133,7 @@ chrome.storage.sync.get(null, function(response) {
         Format();
         prefs['appliedFormat'] = true;
     }
-  });
-});
+  //});
+//});
+}
 else CssJs();

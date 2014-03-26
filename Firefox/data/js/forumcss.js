@@ -3,7 +3,7 @@ Forum CSS JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false, self: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -11,7 +11,7 @@ function ForumCss() {
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = chrome.extension.getURL('code/css/forum.css');
+    link.href = self.options.forumCssUrl;
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.getElementsByTagName('head')[0].appendChild(link);

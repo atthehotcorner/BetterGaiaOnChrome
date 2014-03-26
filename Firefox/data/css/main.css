@@ -6,12 +6,12 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 html[xmlns\:og], html[xmlns\:fb] {background-color: transparent;}
 html, body {height: auto !important; min-height: 100%;}
-body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg) center top repeat #666;}
+body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/images/legacy.jpg) center top repeat #666;}
 
 /* Glyphicons */
 @font-face {
     font-family: 'Glyphicons Halflings';
-    src: url('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/css/glyphicons-halflings-regular.woff') format('woff');
+    src: url('glyphicons-halflings-regular.woff') format('woff');
 }
 
 @-webkit-keyframes loading {
@@ -31,13 +31,13 @@ body #gaia_content.grid_billie_holiday #menu_shadow {display: none;}
 body.app-page_legal #content, body.app-page_giftgiving.mygaia div#content, body.app-page_exchange.shopping #content, body.app-page_games_fishing #content, body.contribute.givetogaia.app-page_donate #content, body.orderhistory #content, body.community.app-page_community #gaia_content.grid_paul_mccartney {background: #FFF;}
 
 /* Home Page */
-body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; box-sizing: border-box; border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 0 0 10px rgba(0,0,0,0.25) inset; position: relative; margin: 0 10px 10px 0; background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/500.png); background-size: 100% 100%;}
+body.index #gaia_content.grid_madonna #madonna_container #bd-sub .yui-b .yui-u:not(.first):not(.last) {width: 300px; height: 300px; margin-left: -1px; -moz-box-sizing: border-box; box-sizing: border-box;  border: 1px solid #FFF; background: radial-gradient(farthest-side circle at bottom left, #81E4FF, #52B2C0); box-shadow: 0 0 10px rgba(0,0,0,0.25) inset; position: relative; margin: 0 10px 10px 0; background: url(resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/images/logo/500.png); background-size: 100% 100%;}
 body.index #gaia_content.grid_madonna #bd-div {min-height: 486px;}
 
 /* Editor Toolbar */
 body div#editor {z-index: 7;}
 body #editor {margin: 128px 0 0;}
-body #editor #format_controls {height: 33px; width: auto; padding: 4px 0; background: linear-gradient(to bottom, #FFF, #F8F8F8) #F8F8F8; border: 1px solid #DDD; border-radius: 5px 5px 0 0; box-sizing: border-box;}
+body #editor #format_controls {height: 33px; width: auto; padding: 4px 0; background: linear-gradient(to bottom, #FFF, #F8F8F8) #F8F8F8; border: 1px solid #DDD; border-radius: 5px 5px 0 0; -moz-box-sizing: border-box; box-sizing: border-box;}
 body #editor #format_controls br {display: none;}
 
 body #editor #format_controls ul {position: static; border-left: 1px solid #DDD; float: left; margin: 0 3px 0 0; padding: 0 0 0 4px; clear: none !important;}
@@ -48,7 +48,7 @@ body #editor #format_controls li {padding: 0; margin: 0 1px 0 0; cursor: pointer
 body #editor #format_controls li:hover {background-color: rgba(0,0,0,0.15); border-radius: 3px;}
 body #editor #format_controls li:active {background-color: #5AC8FA; border-radius: 3px;}
 
-body #editor #format_controls li a {width: 23px !important; height: 23px !important; padding: 0; border: 0; background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/editor.png);}
+body #editor #format_controls li a {width: 23px !important; height: 23px !important; padding: 0; border: 0; background-image: url(resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/images/editor.png);}
 
 body #editor #format_controls li a.bg_spoiler {background-position: -524px top; cursor: pointer;}
 body #editor #format_controls li a.bg_addemoji {background-position: -546px top; cursor: pointer;}
@@ -76,7 +76,7 @@ body #editor-textcolor #editor_palette_textcolor a {margin: 0;}
 body #editor-textcolor #editor_palette_textcolor a:hover {opacity: 0.5;}
 
 /* Post Formatting */
-body textarea ~ #bg_formatter * {box-sizing: border-box;}
+body textarea ~ #bg_formatter * {-moz-box-sizing: border-box; box-sizing: border-box; }
 body textarea ~ #bg_formatter {background: #F8F8F8; border: 1px solid #DDD; border-width: 0 1px 1px; padding: 5px 0 0 5px; overflow: hidden; height: auto;}
 body textarea ~ #bg_formatter > a {margin: 0 5px 5px 0; cursor: pointer; display: block; float: left; padding: 2px 5px; background: rgba(255,255,255,0.75); border-radius: 4px; color: #222 !important; font: normal 12px Arial, Helvetica, sans-serif; border: 2px solid rgba(0,0,0,0.15);}
 body textarea ~ #bg_formatter > a:not(.current):hover {background: rgba(0,0,0,0.15); border-color: transparent;}
@@ -91,9 +91,9 @@ body div#gaia_header .header_content {margin: 0 auto; min-width: 1140px; backgro
 body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A1;}
 
 /* Username */
-body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
+body #gaia_header .hud-account {-moz-box-sizing: border-box; box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
 @media (max-width: 1140px) {body #gaia_header .hud-account {right: 0; margin-right: 0; width: 100%;}}
-body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
+body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {-moz-box-sizing: border-box; box-sizing: border-box;}
 body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
 
     /* Logo */
@@ -230,7 +230,7 @@ body #gaia_menu_bar #newmenu #nav {}
 #nav > li#home_menu .home-icon {position: static; margin: -20px 0 0 -8px; display: block;}
 #nav > li#color_menu:after {content: 'Please disable Color Switcher in Gaia Labs.'; background: #FFF; display: block; position: absolute; width: 100px; padding: 10px; text-align: center; border: 2px solid #222;}
 #nav li.megamenu-divider, #nav li .lt_selector, #nav li .rt_selector {display: none;}
-#nav > li > a {box-sizing: border-box; height: 27px; margin: 0; padding: 3px 10px; background: none; text-decoration: none;}
+#nav > li > a {-moz-box-sizing: border-box; box-sizing: border-box; height: 27px; margin: 0; padding: 3px 10px; background: none; text-decoration: none;}
 #nav > li .main_panel_container {position: absolute; margin: 0; top: 27px; margin: 0; background: rgba(255,255,255,0.98); padding: 0 0 10px; border-radius: 0 0 7px 7px; box-shadow: 0 0 5px -1px #000;}
 #nav > li .main_panel_container .main_panel {margin: 0; padding: 0; background: none;}
 #nav > li .main_panel_container .main_panel .panel-left, #nav > li .main_panel_container .main_panel .panel-right {background: none;}
@@ -276,7 +276,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 
 	/* Status */
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status {margin: 0 0 15px;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding: 1px 0; box-sizing: border-box;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding: 1px 0; -moz-box-sizing: border-box; box-sizing: border-box;}
 	
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd {background: #F5F7FF; border: 1px solid #5BAAAD; border-radius: 3px; box-shadow: 0 0 7px -2px #5BAAAD inset; position: relative;}
 		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status {padding: 0; background: none; position: relative;}
@@ -328,7 +328,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 	
 	/* Feeds */
 	body.mygaia #gaia_content #bd .mg_content {margin: 0 0 15px;}
-	body.mygaia #gaia_content #bd .mg_content .mg_sprite.hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #517747; padding: 1px 0; box-sizing: border-box;}
+	body.mygaia #gaia_content #bd .mg_content .mg_sprite.hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #517747; padding: 1px 0; -moz-box-sizing: border-box; box-sizing: border-box;}
 
 	body.mygaia #gaia_content #bd .mg_content .bd {background: #FFF; border: 1px solid #90C085; border-radius: 3px; box-shadow: 0 0 7px -2px #90C085 inset; padding: 0; overflow: visible;}
 	body.mygaia #gaia_content #bd .mg_content .bd > p {padding: 10px 12px; margin: 0;}
@@ -382,12 +382,12 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 	/* Friends */
 	body.mygaia #gaia_content #bd #friends2.mg_content {margin: 0;}
 	body.mygaia #gaia_content #bd #friends2.mg_content .bd {padding: 5px 5px 0; max-height: none; background: #FFF; overflow: visible;}
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd * {box-sizing: border-box;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd * {-moz-box-sizing: border-box; box-sizing: border-box;}
 		
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd #find_friends_a {top: 5px; right: 0; z-index: 5;}
 		
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends {}
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 0 0 0 24px; margin: 0 0 5px; box-sizing: border-box; width: 210px; overflow: visible; height: 24px; border-radius: 0;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 0 0 0 24px; margin: 0 0 5px; -moz-box-sizing: border-box; box-sizing: border-box; width: 210px; overflow: visible; height: 24px; border-radius: 0;}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:nth-child(odd) {margin: 0 8px 5px 0;}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover {background: rgb(223,244,198);}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover .user_name a {}
@@ -412,7 +412,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear:empty:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 30px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
 	
     /* BetterGaia Sidebar */
-    body.mygaia #bg_sidebar * {box-sizing: border-box;}
+    body.mygaia #bg_sidebar * {-moz-box-sizing: border-box; box-sizing: border-box;}
     body.mygaia #bg_sidebar .bgversion {float: right; padding-top: 4px;}
     body.mygaia #bg_sidebar > * {border-bottom: 1px solid rgba(0,0,0,0.05); padding: 7px 9px;}
     body.mygaia #bg_sidebar p {font-size: 11px; margin: 0;}
@@ -428,8 +428,8 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
     body.mygaia.mystuff #gaia_content #bd, body.mygaia.mystuff #gaia_content #bd #yui-main .yui-g {overflow: visible;}
 
 /* Private messages */
-body.mail #bg_messages {display: block; box-sizing: border-box; clear: both; overflow: auto; width: 900px;}
-body.mail #bg_messages * {box-sizing: border-box;}
+body.mail #bg_messages {display: block; -moz-box-sizing: border-box; box-sizing: border-box; clear: both; overflow: auto; width: 900px;}
+body.mail #bg_messages * {-moz-box-sizing: border-box; box-sizing: border-box;}
 body.mail #bg_messages + table[style='clear:left;'] {display: none;}
 
 	/* PM list */
@@ -469,7 +469,7 @@ body.mail #bg_messages + table[style='clear:left;'] {display: none;}
 		body.mail #bg_messages .bgpm_list .bg_selecttypes form input.bgpm_search:focus {border-color: #BBB; box-shadow: 0 0 7px -2px #7EACC5 inset;}
 
 /* Styles PMs Pages (Without feature) */
-body.mail #gaia_content form[name="privmsg_list"] #pm_content {box-sizing: border-box; width: 920px; padding: 10px;}
+body.mail #gaia_content form[name="privmsg_list"] #pm_content {-moz-box-sizing: border-box; box-sizing: border-box; width: 920px; padding: 10px;}
 body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 
 	/* Inbox full scale */
@@ -501,7 +501,7 @@ body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 
 	/* List of PMs */
 	body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] {width: 100%; border-collapse: separate; border: 0; border-radius: 5px 5px 0 0; clear: both;}
-	body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] * {box-sizing: border-box;}
+	body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] * {-moz-box-sizing: border-box; box-sizing: border-box;}
 	body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] table {border: 0 !important;}
 	body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] tr, body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] tbody, body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] td[valign="top"] {display: block !important;}
 	body.mail #gaia_content #pm_content > table[width='740'][style^='clear:'][style$='left;'] td {display: inline-block;}
@@ -542,7 +542,7 @@ body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 	body.mail #gaia_content table table table table.forumline {width: 670px; margin: 10px auto 0 !important; position: relative; left: -10px;}
 	body.mail #gaia_content table.forumline .gen {display: block; clear: both; padding: 2px 0; font-size: 11px; padding: 0 1px 5px;}
 	body.mail #gaia_content table.forumline .gen strong {font-weight: normal;}
-	body.mail #gaia_content table.forumline #username, body.mail #gaia_content table.forumline td .subject {box-sizing: border-box; padding: 3px 5px; border: 1px solid #DDD; box-sizing: border-box; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; height: auto; background: #F6FBFC;}
+	body.mail #gaia_content table.forumline #username, body.mail #gaia_content table.forumline td .subject {-moz-box-sizing: border-box; box-sizing: border-box; padding: 3px 5px; border: 1px solid #DDD; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; height: auto; background: #F6FBFC;}
 	body.mail #gaia_content table.forumline #username {width: 560px !important;}
 	body.mail #gaia_content table.forumline td .subject {width: 670px !important;}
 	body.mail #gaia_content table.forumline #usernamecontainer {top: auto !important; left: auto !important; margin: 20px 0 0;}	
@@ -552,7 +552,7 @@ body.mail #gaia_content #pm_content table[width="740"] {width: 100%;}
 	body.mail #gaia_content table.forumline .submit_form * {float: right !important; margin: 0 0 0 10px !important;}
 
 	/* Message Textbox */
-	body.mail #gaia_content .message_box {width: 670px !important; border: 1px solid #DDD; border-width: 0 1px 1px; padding: 3px 7px; background: #F6FBFC; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; box-sizing: border-box; min-height: 300px;}
+	body.mail #gaia_content .message_box {width: 670px !important; border: 1px solid #DDD; border-width: 0 1px 1px; padding: 3px 7px; background: #F6FBFC; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; -moz-box-sizing: border-box; box-sizing: border-box; min-height: 300px;}
 		body.mail #gaia_content .message_box.bbcodable {margin-top: 36px !important;}
 
 /* Guilds */
@@ -615,7 +615,7 @@ body.guilds #content > #content-padding {background: #FFF; width: 930px; margin:
 	body.community.forums.app-page_posting #content > #content-padding {background: #FFF;}
 
 	/* Posting page toolbar */
-	body.community.forums.app-page_posting textarea#textInputArea {width: 670px !important; border: 1px solid #BBB !important; border-width: 0 1px 1px !important; padding: 3px 7px !important; background: #F6FBFC; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; box-sizing: border-box; min-height: 300px;}
+	body.community.forums.app-page_posting textarea#textInputArea {width: 670px !important; border: 1px solid #BBB !important; border-width: 0 1px 1px !important; padding: 3px 7px !important; background: #F6FBFC; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; -moz-box-sizing: border-box; box-sizing: border-box; min-height: 300px;}
 		body.community.forums.app-page_posting textarea#textInputArea.bbcodable {margin-top: 46px !important;}
 	body.community.forums.app-page_posting > #editor {margin-left: 0;}
 
@@ -635,7 +635,7 @@ body.guilds #content > #content-padding {background: #FFF; width: 930px; margin:
 	.bgredirect table.warn_block .bgclose:hover:after {background: #FFF; color: #000;}
 
 table.warn_block {display: table; position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #44352C;}
-table.warn_block * {box-sizing: border-box;}
+table.warn_block * {-moz-box-sizing: border-box; box-sizing: border-box;}
 table.warn_block td[valign="middle"] {display: table-cell; vertical-align: middle;}
 
 table.warn_block #warn_block {height: auto; width: 600px; position: relative; margin: -3% 0 0; border: 0; background: none; display: block; padding: 0 0 55px;}
@@ -652,7 +652,7 @@ table.warn_block #warn_block #warn_no_logout {background: #F3FAFF; padding: 0 15
 table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 10px 15px 15px;}
 
 /* Draw All */
-#dailyReward .bg_drawall {background: linear-gradient(to bottom right, #FF1B1B, #850019); border: 1px solid #C8CED2; position: absolute; right: -25px; bottom: 16px; cursor: pointer; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.5) inset, 0 1px 1px rgba(0,0,0,0.7); box-sizing: border-box; font: bold 9px/7px 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color: #FFCC00; text-transform: uppercase; padding: 4px 3px 5px 2px;}
+#dailyReward .bg_drawall {background: linear-gradient(to bottom right, #FF1B1B, #850019); border: 1px solid #C8CED2; position: absolute; right: -25px; bottom: 16px; cursor: pointer; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.5) inset, 0 1px 1px rgba(0,0,0,0.7); -moz-box-sizing: border-box; box-sizing: border-box; font: bold 9px/7px 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color: #FFCC00; text-transform: uppercase; padding: 4px 3px 5px 2px;}
 #dailyReward .bg_drawall em {font-weight: bold; float: right; text-transform: lowercase; margin-left: -7px; font-size: 13px;}
 #dailyReward .bg_drawall:before, #dailyReward .bg_drawall:after {content: ''; background: linear-gradient(to bottom, #C8CED2, #9CA0A4); width: 1px; height: 13px; display: block; position: absolute; bottom: -14px; left: 7px; box-shadow: 0 1px 0 rgba(0,0,0,0.5); border-right: 1px solid rgba(0,0,0,0.5);}
 #dailyReward .bg_drawall:after {right: 7px; left: auto;}
@@ -662,7 +662,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall.bgopen {height: auto; overflow: visible; opacity: 1; transition: opacity .7s ease .2s; visibility: visible;}
 #bg_drawall.bgopen + div.bettergaia.mask {display: block; z-index: 500; background: #000; opacity: 0.75;}
 	
-#bg_drawall * {box-sizing: border-box;}
+#bg_drawall * {-moz-box-sizing: border-box; box-sizing: border-box;}
 	
 #bg_drawall .bgda_header {padding: 15px 10px 10px; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); text-align: center; position: relative;}
 	#bg_drawall .bgda_header strong {display: block; color: #FFF;}
@@ -723,11 +723,11 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 
 /* Footer */
 body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0 !important; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37); border-radius: 5px 5px 0 0;}
-body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
+body div#gaia_footer, body #gaia_footer * {-moz-box-sizing: border-box; box-sizing: border-box;}
 body #gaia_footer ul {font-size: 11px;}
 
     /* Links */
-    body #gaia_footer > ul {padding: 5px 110px 5px 5px; margin: 0; border: 2px solid rgba(222,232,254,0.9); border-radius: 0; width: auto; float: none; background: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/logo/text.png) bottom right no-repeat, linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); background-size: contain;}
+    body #gaia_footer > ul {padding: 5px 110px 5px 5px; margin: 0; border: 2px solid rgba(222,232,254,0.9); border-radius: 0; width: auto; float: none; background: url(resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/images/logo/text.png) bottom right no-repeat, linear-gradient(to bottom, rgba(222,232,254,0.9), rgba(255,255,255,0.9)); background-size: contain;}
         body #gaia_footer > ul:after {content: ''; display: table; clear: both;}
         body #gaia_footer > ul li {border: 0; padding: 0; text-align: left; width: 100px; float: left; margin: 0 5px 0 0;}
     body #gaia_footer > ul li a {display: block; color: #333 !important; margin: 0 0 1px; padding: 2px 4px; border-radius: 2px; text-decoration: none !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
