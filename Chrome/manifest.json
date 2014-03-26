@@ -1,0 +1,46 @@
+{
+    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+3k5RD9NlHD1+UPzzgUwFo55V0GJgjbXEgvCXNK64ay+ecQOIkq1NThYJGsGUIJRauJBWciF2e4SJig/KDnWL85UQtF9Vad163nf4Sd55gRL5WOw8TrgGpkidVG2N7Xvzm4hXj2txfI6kAvvc4ymXbVXEvmgC5mnwOufFJFjfyQIDAQAB",
+    "background": {
+        "scripts": ["code/js/jquery.min.js", "code/background.js", "code/js/analytics.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_icon": "images/logo/48.png",
+        "default_popup": "code/popup/popup.html",
+        "default_title": "BetterGaia"
+    },
+    "content_scripts": [ {
+        "matches": [ "*://*.gaiaonline.com/*" ],
+        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
+        "js": [ "code/js/prefs.js", "code/js/maincss.js" ],
+        "run_at": "document_start"
+    }, {
+        "matches": [ "*://*.gaiaonline.com/*" ],
+        "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
+        "js": [ "code/js/jquery.min.js", "code/js/main.js" ]
+    }, {
+        "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
+        "js": [ "code/js/forumcss.js" ],
+        "run_at": "document_start"
+    }, {
+        "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
+        "js": [ "code/js/forum.js" ]
+    }, {
+        "matches": [ "*://*.gaiaonline.com/forum/compose/*", "*://*.gaiaonline.com/guilds/posting.php*", "*://*.gaiaonline.com/profile/privmsg.php*", "*://*.gaiaonline.com/profiles/*mode=addcomment*" ],
+        "js": [ "code/js/format.js" ]
+    }],
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
+    "description": "Change the way you experience Gaia.",
+    "homepage_url": "http://chrome.google.com/webstore/detail/lmgjagdflhhfjflolfalapokbplfldna",
+    "icons": {
+        "128": "images/logo/128.png",
+        "48": "images/logo/48.png"
+    },
+    "manifest_version": 2,
+    "minimum_chrome_version": "28",
+    "name": "BetterGaia",
+    "options_page": "settings/main.html",
+    "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*" ],
+    "version": "2014.18",
+    "web_accessible_resources": [ "code/css/main.css", "code/css/forum.css", "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
+}
