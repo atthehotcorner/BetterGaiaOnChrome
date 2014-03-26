@@ -1,0 +1,11 @@
+{
+    "name": "BetterGaia",
+    "title": "BetterGaia",
+    "id": "bettergaia@bowafishtech.co.cc",
+    "homepage": "http://bettergaia.com/",
+    "description": "Change the way you experience Gaia.",
+    "icon": "data/images/logo/48.png",
+    "author": "bowafishtech (http://bowafishtech.org/)",
+    "license": "BetterGaia License",
+    "version": "2014.1"
+}
