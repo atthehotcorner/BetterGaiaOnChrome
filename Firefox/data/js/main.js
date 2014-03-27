@@ -3,7 +3,7 @@ Main JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*global localStorage: false, console: false, $: false, unescape: false, prefs: false, prefs: false, window: false, document: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -15,7 +15,7 @@ $('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove()
 
 // Credits
 $('body > #gaia_footer > p').append('<span id="bg_credits">\
-    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ localPrefs['version'] +'</small></a> \
+    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ prefs['version'] +'</small></a> \
     by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
@@ -33,13 +33,13 @@ if (prefs['header.float'] === true) {
 
 // Add BG Siderbar to MyGaia
 if (document.location.pathname.indexOf('/mygaia/') > -1) {
-    $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', function(data){
+    $.get(self.options.mainCssUrl.slice(0,-12) + 'html/settings-widget.html', function(data){
         $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
-        $('body.mygaia .clear .bgversion').text('Ver ' + localPrefs['version']);
+        $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
 	
-        $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
+        $('#bg_sidebar a.bgopensettings').on('click', function(){self.port.emit('settings');});
         
-        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
+        $.get(self.options.mainCssUrl.slice(0,-12) + 'html/changelog.html', function(data){
             $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
         }, 'html');
     }, 'html');
@@ -47,11 +47,11 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
 
 // Widgets
 $('#gaia_header .userName').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
-if (typeof(localPrefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
+if (typeof(prefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
 $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // Show welcome screen if new
-    if ($(this).parent().hasClass('bgwelcome') && typeof(localPrefs['welcome']) == 'undefined') {
-        chrome.extension.sendMessage({elements: 'settings'});
+    if ($(this).parent().hasClass('bgwelcome') && typeof(prefs['welcome']) == 'undefined') {
+        self.port.emit('settings');
         $(this).parent().removeClass('bgwelcome');
         return;
     }
@@ -60,12 +60,12 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
         $(this).parent().addClass('bgloading');
     
-        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
+        $.get(self.options.mainCssUrl.slice(0,-12) + 'html/settings-widget.html', 'html')
         .done(function(data) {
             $('#bg_widgets .bgsettings div').html(data);
-            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + localPrefs['version']);
+            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
             $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
-                chrome.extension.sendMessage({elements: 'settings'});
+                self.port.emit('settings');
             });
         })
         .fail(function(data) {
@@ -210,8 +210,8 @@ if (prefs['header.widgets'] === true) {
 // Shortcuts
 if (prefs['header.shortcuts'] === true) {
     // check if local prefs exist
-    if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
-        prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
+    if (typeof(prefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
+        prefs['header.shortcuts.list'] = prefs['header.shortcuts.list'];
         console.warn('Your shortcuts are currently saved locally.');
     }
 
@@ -340,15 +340,15 @@ if (prefs['instantUpdating'] === true) {
         })
         .done(function(html) {
             if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
-                var version = parseInt(localPrefs['version'].replace(/\./g,''), 10);
+                var version = parseInt(prefs['version'].replace(/\./g,''), 10);
                 html = $('.postcontent:eq(1) .postbody', html);
 
                 // look for new code
                 if (version <= parseInt($('span[style="color:uptoversion"]', html).text().replace(/\./g,''))) {
                     if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
-                        chrome.storage.local.set({css: $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()});
+                        self.port.emit('set', ['css', $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()]);
                     }
-                    else chrome.storage.local.remove('css');
+                    else self.port.emit('remove', 'css');
                 }
                 if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
                     var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
@@ -362,7 +362,6 @@ if (prefs['instantUpdating'] === true) {
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] === true && prefs['appliedMainJs'] === false) {
-	MainJs();
-	prefs['appliedMainJs'] = true;
-}
+$(document).ready(function() {
+    MainJs();
+});

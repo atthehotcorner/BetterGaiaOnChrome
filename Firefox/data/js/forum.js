@@ -3,7 +3,7 @@ Forum JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false, Format: false */
+/*global localStorage: false, console: false, $: false, self: false, unescape: false, prefs: false, window: false, document: false, Format: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -88,7 +88,7 @@ $("body.forums #content #content-padding #topic_header_container .detail-navlink
 <a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off> Sigs</a></div>');
 
 // Adds Functions to Post Options
-if (typeof localPrefs['forum.hidePosts'] == 'boolean' && localPrefs['forum.hidePosts'] === true) {
+if (typeof prefs['forum.hidePosts'] == 'boolean' && prefs['forum.hidePosts'] === true) {
     $('body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts, body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs').addClass('bgpo_on');
 	$('body.forums #post_container .post .post-signature').hide();
     $('body.forums #post_container .post').addClass('bgpc_hidden');
@@ -102,7 +102,8 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").removeClass("bgpc_hidden");
 
         // Disable persistance
-        chrome.storage.local.remove('forum.hidePosts', function() {delete localPrefs['forum.hidePosts'];});
+        self.port.emit('remove', 'forum.hidePosts');
+        delete prefs['forum.hidePosts'];
 	}
 	else {
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
@@ -111,7 +112,8 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").addClass("bgpc_hidden");
 
         // Enable persistance
-        chrome.storage.local.set({'forum.hidePosts': true}, function() {localPrefs['forum.hidePosts'] = true;});
+        self.port.emit('set', ['forum.hidePosts', true]);
+        prefs['forum.hidePosts'] = true;
 	}
 });
 
@@ -168,7 +170,7 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 		$.get(url).done(function(data) {
 			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html($(data).find("form#compose_entry"));
             if (typeof(Format) === 'function') Format();
-            else chrome.extension.sendMessage({elements: 'format'});
+            else self.port.emit('format');
 		});
 	}
 	else {
@@ -227,10 +229,10 @@ if (prefs['forum.externalLinks'] === true) {
 }
 
 // Add User Tagging
-if (prefs['usertags'] === true) {
+/*if (prefs['usertags'] === true) {
     // check if local prefs exist
-    if (typeof(localPrefs['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
-        prefs['usertags.list'] = localPrefs['usertags.list'];
+    if (typeof(prefs['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
+        prefs['usertags.list'] = prefs['usertags.list'];
         console.warn('Your tags are currently saved locally.');
     }
 
@@ -344,7 +346,7 @@ if (prefs['usertags'] === true) {
             });
         }
     });
-}
+}*/
 
 // Moves timestamp
 $('body.forums .post .message .messagecontent > .post-options > ul > li.post-meta').each(function () { 
@@ -354,13 +356,12 @@ $('body.forums .post .message .messagecontent > .post-options > ul > li.post-met
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] === true && prefs['appliedForumJs'] === false) {
-	ForumJs();
-	prefs['appliedForumJs'] = true;
-}
+$(document).ready(function() {
+    ForumJs();
 
-// Ajax page load
-if ($('#topic_header_container #thread_header').length == 1) {
-    var observer = new window.MutationObserver(function(mutations) {ForumJs();});
-    observer.observe(document.getElementById('content-padding'), {attributes: false, childList: true, characterData: false});
-}
+   // Ajax page load
+    if ($('#topic_header_container #thread_header').length == 1) {
+        var observer = new window.MutationObserver(function(mutations) {ForumJs();});
+        observer.observe(document.getElementById('content-padding'), {attributes: false, childList: true, characterData: false});
+    } 
+});

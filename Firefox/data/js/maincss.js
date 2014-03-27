@@ -3,7 +3,7 @@ CSS JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: true, window: false, document: false, Format: false, CssJs: false, ForumCss: false, MainJs: false, ForumJs: false, self: false */
+/*global localStorage: false, console: false, $: false, unescape: false, prefs: false, localPrefs: true, window: false, document: false, Format: false, CssJs: false, ForumCss: false, MainJs: false, ForumJs: false, self: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -89,51 +89,15 @@ var style = document.createElement('style');
 document.getElementsByTagName('head')[0].appendChild(style);
 
 // Instant CSS Updating
-if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') {
+if (prefs['instantUpdating'] === true && typeof(prefs['css']) == 'string') {
     var style2 = document.createElement('style');
         style2.type = 'text/css';
         style2.setAttribute('bg-updatedcss', '');
-        style2.appendChild(document.createTextNode(localPrefs['css']));
+        style2.appendChild(document.createTextNode(prefs['css']));
     document.getElementsByTagName('head')[0].appendChild(style2);
 }
 
 } // ---
 
 // Get Storage and Fire
-if (prefs['appliedUserPrefs'] !== true) {
-/*chrome.storage.sync.get(null, function(response) {
-  chrome.storage.local.get(null, function(response2) {*/
-    localPrefs = {};
-
-    /*for (var key in response) {
-        try {prefs[key] = response[key];}
-        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
-    }*/
-
-    prefs['appliedUserPrefs'] = true;
-    
-    // Could use some code reuse
-    if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] === false) {
-        MainCss();
-        prefs['appliedMainCss'] = true;
-    }
-    if (typeof(MainJs) == 'function' && prefs['appliedMainJs'] === false) {
-        MainJs();
-        prefs['appliedMainJs'] = true;
-    }
-    if (typeof(ForumCss) == 'function' && prefs['appliedForumCss'] === false) {
-        ForumCss();
-        prefs['appliedForumCss'] = true;
-    }
-    if (typeof(ForumJs) == 'function' && prefs['appliedForumJs'] === false) {
-        ForumJs();
-        prefs['appliedForumJs'] = true;
-    }
-    if (typeof(Format) == 'function' && prefs['appliedFormat'] === false) {
-        Format();
-        prefs['appliedFormat'] = true;
-    }
-  //});
-//});
-}
-else CssJs();
+MainCss();

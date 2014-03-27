@@ -135,4 +135,4 @@ chrome.storage.sync.get(null, function(response) {
     }
   });
 });
-else CssJs();
+else MainCss();

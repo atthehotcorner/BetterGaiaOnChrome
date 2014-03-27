@@ -3,7 +3,7 @@ Forum CSS JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false, self: false */
+/*global localStorage: false, console: false, $: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false, self: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -54,7 +54,4 @@ document.getElementsByTagName('head')[0].appendChild(style);
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] === true && prefs['appliedForumCss'] === false) {
-	ForumCss();
-	prefs['appliedForumCss'] = true;
-}
+ForumCss();

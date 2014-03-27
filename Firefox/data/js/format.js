@@ -3,20 +3,13 @@ Post Format JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*global localStorage: false, console: false, $: false, self: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
 function Format() {
+    function repeat(s, n) {var a = []; while(a.length < n) {a.push(s);} return a.join('');} // for adding new lines
 
-function repeat(s, n) {var a = []; while(a.length < n) {a.push(s);} return a.join('');} // for adding new lines
-
-if ((prefs['format'] === true) && 
-    ((document.location.pathname.indexOf('/forum/') > -1 && prefs['format.forums'] === true) ||
-    (document.location.pathname.indexOf('/guilds/posting.php') > -1 && prefs['format.guildForums'] === true) || 
-    (document.location.pathname.indexOf('/profile/privmsg.php') > -1 && prefs['format.pms'] === true) ||
-    (document.location.search.indexOf('mode=addcomment') > -1 && prefs['format.profileComments'] === true))
-) {
     // Run formatter
     $('textarea[name="message"]:not([identity]), textarea[name="comment"]:not([identity])').each(function() {
         var identity = Date.now();
@@ -27,12 +20,6 @@ if ((prefs['format'] === true) &&
 
         // Adds formatting bar
         var formattingbar = '';
-
-        // check if local prefs exist
-        if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
-            prefs['format.list'] = localPrefs['format.list'];
-            console.warn('Your formats are currently saved locally.');
-        }
         
         // check if recent is set
         var defaultFormatSet = false;
@@ -105,23 +92,24 @@ if ((prefs['format'] === true) &&
 
             // set as last used
             if ($(this).index() !== 0) {
-                chrome.storage.sync.set({'format.list.recent': $(this).text()});
+                self.port.emit('set', ['format.list.recent', $(this).text()]);
                 prefs['format.list.recent'] = $(this).text();
             }
             else {
-                chrome.storage.sync.remove('format.list.recent');
+                self.port.emit('remove', 'format.list.recent');
                 prefs['format.list.recent'] = 'default';
             }
         }
 
         return false;
     });
-}
 
 } // ---
 
 // Check Storage and Fire
-if (prefs['appliedUserPrefs'] === true && prefs['appliedFormat'] === false) {
-	Format();
-	prefs['appliedFormat'] = true;
-}
+if ((prefs['format'] === true) && 
+    ((document.location.pathname.indexOf('/forum/') > -1 && prefs['format.forums'] === true) ||
+    (document.location.pathname.indexOf('/guilds/posting.php') > -1 && prefs['format.guildForums'] === true) || 
+    (document.location.pathname.indexOf('/profile/privmsg.php') > -1 && prefs['format.pms'] === true) ||
+    (document.location.search.indexOf('mode=addcomment') > -1 && prefs['format.profileComments'] === true))
+) Format();
