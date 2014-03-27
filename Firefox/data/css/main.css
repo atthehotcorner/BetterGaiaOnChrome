@@ -8,12 +8,6 @@ html[xmlns\:og], html[xmlns\:fb] {background-color: transparent;}
 html, body {height: auto !important; min-height: 100%;}
 body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background: url(resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/images/legacy.jpg) center top repeat #666;}
 
-/* Glyphicons */
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/css/glyphicons-halflings-regular.woff') format('woff');
-}
-
 @keyframes loading {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
@@ -94,18 +88,18 @@ body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A
 body #gaia_header .hud-account {-moz-box-sizing: border-box; box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
 @media (max-width: 1140px) {body #gaia_header .hud-account {right: 0; margin-right: 0; width: 100%;}}
 body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {-moz-box-sizing: border-box; box-sizing: border-box;}
-body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
+body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/0 0 0 75px; padding: 0; margin-left: -10px; position: relative;}
 
     /* Logo */
     body #gaia_header .hud-account ul#bg_logo {float: left; margin-left: 0; border-radius: 0 0 30px 0/0 0 75px 0; overflow: hidden; display: none;}
     body #gaia_header .hud-account ul#bg_logo a {padding: 0 15px; color: #FFF; display: block; height: 25px; font-size: 19px; line-height: 28px; text-decoration: none; padding: 0 5px 0 15px;}
 
 		body #gaia_header .hud-account ul#bg_logo.bgscrolling {display: block;}
-		body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0, -webkit-filter: 0 ease 0;}
-		body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -500px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s; -webkit-filter: blur(1px);}
-		body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; -webkit-filter: blur(0); transition: opacity 0 ease 0, -webkit-filter 0 ease 0;}
+		body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0;}
+		body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -500px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s;}
+		body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; transition: opacity 0s ease 0s;}
 		body #gaia_header .header_content .notificationChanges.bgscrolling h3 {transform: scaleY(-1);}
-		body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position-y: -4px;}
+		body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position: 0 -4px;}
 
     /* Name */
     body #gaia_header .hud-account .hud-item-list-new {padding: 0 20px 0 15px;}
@@ -132,7 +126,7 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
             25% {opacity: 1;}
             100% {transform: scale(3.5); opacity: 0;}
         }
-        #bg_widgets li.bgsettings.bgwelcome:before {content: ''; display: block; border: 2px solid gold; position: absolute; top: 3px; right: 19px; border-radius: 20px; width: 15px; height: 15px; pointer-events: none; animation: zoom 1.5s ease 0 infinite forwards; -webkit-filter: blur(1px);}
+        #bg_widgets li.bgsettings.bgwelcome:before {content: ''; display: block; border: 2px solid gold; position: absolute; top: 3px; right: 19px; border-radius: 20px; width: 15px; height: 15px; pointer-events: none; animation: zoom 1.5s ease 0s infinite forwards;}
     #bg_widgets li:hover > a {font-size: 13px;}
     #bg_widgets li > a:hover {text-decoration: none !important;}
     #bg_widgets li > a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
@@ -299,24 +293,6 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 			body.mygaia #gaia_content .mg_status .friend_statuses .status div.lead {left: -8px; top: 15px;}
 			body.mygaia #gaia_content .mg_status .friend_statuses .status .timestamp {position: absolute; right: 0; top: -17px;}
 
-		/* Scrollbar */
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar {width: 8px; height: 8px;}
-
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:start {display: none;}
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end {display: block; background: rgba(0,0,0,0.4);}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement, body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment {box-shadow: 0 0 5px rgba(0,0,0,0.2); border-radius: 3px; border: 1px solid rgba(0,0,0,0.4); height: 14px; width: 14px; display: block; background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement:hover, body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment:hover {background-color: rgba(0,0,0,0.17)}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:active, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:active {background-color: rgba(0,0,0,0.3)}
-
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement {border-bottom: 0; border-radius: 3px 3px 0 0;}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment {border-radius: 0 0 3px 3px;}
-
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-track {margin: 10px 0;}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-track-piece {border-radius: 7px 0 0 7px; box-shadow: 0 0 5px rgba(0,0,0,0.2) inset; background: rgba(0,0,0,0.05);}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb {border-radius: 7px 0 0 7px; border: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 5px rgba(0,0,0,0.2); background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-				body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,0.17)}
-				body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb:active {background-color: rgba(0,0,0,0.3)}
-
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status #mygaia_see_more_status {position: absolute; right: 0;}
 		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status #mygaia_see_more_status a {font-weight: normal; background: url(http://s.cdn.gaiaonline.com/images/gaia_global/body/arrows/ic_hyperlink_arrow_15x15.png) no-repeat; padding: 0 0 0 18px; display: block; height: 15px;}
 	
@@ -340,24 +316,6 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 		
 		body.mygaia #gaia_content #bd .mg_content .bd ul li .content {width: 270px;}
 		body.mygaia #gaia_content #bd .mg_content .bd ul li .controls {padding: 2px 0 0;}
-		
-		/* Scrollbar */
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar {width: 8px; height: 8px;}
-
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:start {display: none;}
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end {display: block; background: rgba(0,0,0,0.4);}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment {box-shadow: 0 0 5px rgba(0,0,0,0.2); border-radius: 3px; border: 1px solid rgba(0,0,0,0.4); height: 14px; width: 14px; display: block; background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:hover, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:hover {background-color: rgba(0,0,0,0.17)}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:active, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:active {background-color: rgba(0,0,0,0.3)}
-
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement {border-bottom: 0; border-radius: 3px 3px 0 0;}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment {border-radius: 0 0 3px 3px;}
-
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-track {margin: 10px 0;}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-track-piece {border-radius: 7px 0 0 7px; box-shadow: 0 0 5px rgba(0,0,0,0.2) inset; background: rgba(0,0,0,0.05);}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb {border-radius: 7px 0 0 7px; border: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-				body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,0.17)}
-				body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb:active {background-color: rgba(0,0,0,0.3)}
 
 	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds {padding: 0;}
 	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds > p {padding: 10px 12px; margin: 0;}
@@ -642,7 +600,7 @@ table.warn_block #warn_block {height: auto; width: 600px; position: relative; ma
 table.warn_block #warn_block div {width: 600px; height: auto; font: normal 12px/18px Arial, Helvetica, sans-serif; border: 0; text-align: left; margin: 0;}
 table.warn_block #warn_block u {text-decoration: none; font-weight: bold;}
 
-table.warn_block #warn_block #warn_head {padding: 15px 10px 10px; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(241,191,105,0)); color: #FFF; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); text-align: center; position: relative;}
+table.warn_block #warn_block #warn_head {padding: 15px 10px 10px; background: radial-gradient(ellipse farthest-side at center bottom, #C27D25, rgba(241,191,105,0)); color: #FFF; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); text-align: center; position: relative;}
 table.warn_block #warn_block #warn_body {padding: 15px 15px 10px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border-top: 3px solid #3C3C3C;}
 table.warn_block #warn_block #link_display {padding: 10px 10px 10px 15px; background: #FFF; border-bottom: 3px solid #3C3C3C; position: absolute; bottom: 0; line-height: 2.5; border-top: 2px solid #DEE8FE; height: 55px;}
 	table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline-block; line-height: 1; max-width: 490px; float: right; padding: 8px 10px; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.1)); text-overflow: ellipsis; overflow: hidden; font-weight: bold; text-decoration: none;}
@@ -653,7 +611,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 
 /* Draw All */
 #dailyReward .bg_drawall {background: linear-gradient(to bottom right, #FF1B1B, #850019); border: 1px solid #C8CED2; position: absolute; right: -25px; bottom: 16px; cursor: pointer; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.5) inset, 0 1px 1px rgba(0,0,0,0.7); -moz-box-sizing: border-box; box-sizing: border-box; font: bold 9px/7px 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color: #FFCC00; text-transform: uppercase; padding: 4px 3px 5px 2px;}
-#dailyReward .bg_drawall em {font-weight: bold; float: right; text-transform: lowercase; margin-left: -7px; font-size: 13px;}
+#dailyReward .bg_drawall em {font-weight: bold; float: right; text-transform: lowercase; margin: 7px 0 1px -7px; font-size: 13px;}
 #dailyReward .bg_drawall:before, #dailyReward .bg_drawall:after {content: ''; background: linear-gradient(to bottom, #C8CED2, #9CA0A4); width: 1px; height: 13px; display: block; position: absolute; bottom: -14px; left: 7px; box-shadow: 0 1px 0 rgba(0,0,0,0.5); border-right: 1px solid rgba(0,0,0,0.5);}
 #dailyReward .bg_drawall:after {right: 7px; left: auto;}
 #dailyReward .bg_drawall:hover {opacity: 0.7;}
@@ -664,7 +622,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 	
 #bg_drawall * {-moz-box-sizing: border-box; box-sizing: border-box;}
 	
-#bg_drawall .bgda_header {padding: 15px 10px 10px; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); text-align: center; position: relative;}
+#bg_drawall .bgda_header {padding: 15px 10px 10px; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: radial-gradient(ellipse farthest-side at center bottom, #0092C0, rgba(85,146,141,0)); text-align: center; position: relative;}
 	#bg_drawall .bgda_header strong {display: block; color: #FFF;}
 
 	#bg_drawall .bgda_header .bonus {color: #FFF; text-shadow: 0 1px 0 rgba(0,0,0,0.4); border-radius: 20px; background: rgba(0,0,0,0.4); font-size: 11px; padding: 2px 6px; margin: 0; display: inline-block;}
@@ -676,7 +634,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 	
 #bg_drawall ul {border: 3px solid #3C3C3C; border-width: 3px 0;}
 #bg_drawall ul:after {content: ""; display: table; clear: both;}
-#bg_drawall ul > li {float: left; width: 125px; height: 130px; margin: 0; background: -webkit-radial-gradient(bottom, circle, #FFF 0%, #ABABAB 100%); text-align: center; border-left: 1px solid #999; position: relative; list-style: none;}
+#bg_drawall ul > li {float: left; width: 125px; height: 130px; margin: 0; background: radial-gradient(circle at bottom, #FFF, #ABABAB); text-align: center; border-left: 1px solid #999; position: relative; list-style: none;}
 
 @keyframes flipInX {
     0% {transform: perspective(400px) rotateX(90deg); transform-origin: center top; opacity: 0;}

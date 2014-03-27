@@ -39,7 +39,7 @@ body.forums #bgFetchAnnouncements:hover {background-image: linear-gradient(to bo
 body.forums #bgFetchAnnouncements:active {background-image: linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0)); text-shadow: 0 -1px 0 #000; padding: 14px 15px 14px; color: rgba(255,255,255,0.9);}
 
 body.forums #bgFetchAnnouncements.loading {cursor: default; background-image: none;}
-body.forums #bgFetchAnnouncements.loading:before {content: '\e030'; font-family: 'Glyphicons Halflings'; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
+body.forums #bgFetchAnnouncements.loading:before {content: '\e030'; font-family: 'Glyphicons Halflings'; animation: loading 1s infinite; transform-origin: center center;}
 
 body.forums h3.bgFAh3 {display: block; clear: both; font-size: 17px; padding: 10px; text-align: center; background: #864B86; color: #FFF; box-shadow: 0 0 0 2px rgba(0,0,0,0.35) inset; border-radius: 4px; margin: 15px 0 0;}
 
@@ -144,7 +144,7 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox > td > div {display: block; clear: both; padding: 10px; position: relative; background: #316589; border: 3px solid rgba(0,0,0,0.2); border-width: 3px 0; overflow: hidden;}
 	
     body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div {background: #316589; font-size: 0; height: 125px;}
-    body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
+    body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; animation: loading 1s infinite; transform-origin: center center;}
 
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox .bgavi {width: 120px; float: left; clear: none;}
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox .bgavi .achievement_share {display: none;}
@@ -210,7 +210,7 @@ body.forums #content #content-padding {}
         body.forums #content #content-padding .detail-navlinks .thread_options a.bbcode-swap-blocked-link {text-transform: capitalize; margin-right: 8px;}
 
 		/* BG Post options */
-		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions {display: block; float: left; -webkit-user-select: none;}
+		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions {display: block; float: left; -moz-user-select: none;}
         body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_toggle {cursor: pointer; margin: 0 5px;}
         body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_toggle:hover {text-decoration: underline;}
 
@@ -279,7 +279,7 @@ body.forums #content #post_container .post .postcontent {}
 	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_title .user_title_hint {float: right; margin: 0 0 0 5px;}
 	
 		/* User Tags */
-		body .bgUserTag {float: left; margin: -1px 10px 0 0px; -webkit-user-select: none;}
+		body .bgUserTag {float: left; margin: -1px 10px 0 0px; -moz-user-select: none;}
 		body .bgUserTag > a {font-size: 11px; background: #FFF; padding: 4px 7px 0; border-radius: 20px 0 0 20px; text-decoration: none; height: 20px;}
 			body .bgUserTag > a[href]:hover {text-decoration: underline; cursor: pointer;}
 			body .bgUserTag > a[href]:active {background: rgba(255,255,255,0.5);}
@@ -309,7 +309,7 @@ body.forums #content #post_container .post .postcontent {}
 				body .bgUserTag div form .bgut_save:active {background: #FFF; border-color: rgba(0,0,0,0.5);}
 		body .post.bgut_open .bgUserTag div {display: block;}
 		body .post.bgut_open.bgpc_hidden .bgUserTag div {display: none;}
-		body .post.bgut_open .postcontent .message, body .post.bgut_open .postcontent .post-signature {/*-webkit-filter: blur(2px);*/ opacity: 0.9; transition: opacity 1s; pointer-events: none; -webkit-user-select: none;}
+		body .post.bgut_open .postcontent .message, body .post.bgut_open .postcontent .post-signature {opacity: 0.9; transition: opacity 1s; pointer-events: none; -moz-user-select: none;}
 
 		/* Timestamp */
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta {position: relative; float: right; display: block;}
@@ -322,8 +322,8 @@ body.forums #content #post_container .post .postcontent {}
 
 		/* BG toggle post */
 		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse {float: right; height: 32px; width: 30px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), rgba(255,255,255,0.3)); border-radius: 0 4px 0 0; margin: -6px -10px -1px 10px; position: relative; cursor: pointer; border-left: 1px solid rgba(255,255,255,0.3);}
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover {background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.8), rgba(255,255,255,0.5));}
-		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:active {background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.3), rgba(255,255,255,0.6));}
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover {background-image: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.5));}
+		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:active {background-image: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.6));}
 
 		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:after {content: "\25B2"; color: rgba(0,0,0,0.35); display: block; position: absolute; top: 10px; right: 7px; text-align: center; line-height: 12px; font-size: 17px; -moz-box-sizing: border-box; box-sizing: border-box;}
 		body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .bg_postcollapse:hover:after {color: rgba(0,0,0,0.7);}
@@ -338,7 +338,7 @@ body.forums #content #post_container .post .postcontent {}
 
     	/* Flip avatar on even posts */
 	    body.forums #content #post_container .post .postcontent .avatar_wrapper .avi_box #animated_item {cursor: pointer;}
-	    body forums #content #post_container .post.postEven .postcontent div.avatar .avi_box a.avatar, body.forums #content #post_container .post.postEven .postcontent div.avatar .avi_box #animated_item {-webkit-transform: scaleX(-1);}
+	    body forums #content #post_container .post.postEven .postcontent div.avatar .avi_box a.avatar, body.forums #content #post_container .post.postEven .postcontent div.avatar .avi_box #animated_item {transform: scaleX(-1);}
 
 		/* Achivements box */
 		body.forums #content #post_container .post .postcontent .avatar_wrapper .achievement_share {width: 120px; margin: 0 0 15px; padding: 0; overflow: visible; border-radius: 3px; background: #F7F3D2; box-shadow: 0 0 10px #C19547 inset;}
@@ -369,7 +369,7 @@ body.forums #content #post_container .post .postcontent {}
 
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul {margin: 0; padding: 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li {display: inline; height: 29px; margin: 0; float: none; line-height: 29px;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a {background: none; text-indent: 0; text-decoration: none; margin: 0; height: 29px; width: auto; padding: 7px; cursor: pointer; float: left; display: block; -webkit-user-select: none; font-size: 12px; color: rgba(0,0,0,0.6); transition: color 0.5s ease;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a {background: none; text-indent: 0; text-decoration: none; margin: 0; height: 29px; width: auto; padding: 7px; cursor: pointer; float: left; display: block; -moz-user-select: none; font-size: 12px; color: rgba(0,0,0,0.6); transition: color 0.5s ease;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-options:hover ul li a {color: #000; transition: none;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a span {background: none; display: inline; height: auto; line-height: 14px; padding: 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li a:hover {color: #3987DF;}
@@ -409,7 +409,7 @@ body.forums #content #post_container .post .postcontent {}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox {display: block; clear: both; padding: 10px; position: relative; background: #316589; color: #FFF; border-top: 3px solid rgba(0,0,0,0.2);}
     body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox *[class^="rc_"] {display: none;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading {background: #316589; font-size: 0; height: 150px;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; animation: loading 1s infinite; transform-origin: center center;}
 		
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-main {float: left; width: 75%;}
 			body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-main .hd .form_buttons  {display: none;}
@@ -501,7 +501,7 @@ body.forums #content #post_container .post .postcontent {}
 /* Styles Thread Page while loading */
 body.forums #pjax-overlay {position: static !important; height: auto !important; width: auto !important;}
 body.forums #pjax-overlay h3:nth-of-type(1) {position: fixed; font-size: 0 !important; left: 50%; top: 50%; margin: -70px 0 0 -60px; z-index: 1000; background: #316589; padding: 0 40px 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.25);}
-body.forums #pjax-overlay h3:nth-of-type(1):before {content: '\e030'; color: #FFF; font-size: 45px !important; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center; text-shadow: none;}
+body.forums #pjax-overlay h3:nth-of-type(1):before {content: '\e030'; color: #FFF; font-size: 45px !important; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; animation: loading 1s infinite; transform-origin: center center; text-shadow: none;}
 
 /* Styles Posting Page */
 body.forums #gaia_content.grid_dizzie_gillespie {padding: 15px 0 5px; width: 1140px !important; margin: 0 auto;}
