@@ -19,7 +19,6 @@ $('body > #gaia_footer > p').append('<span id="bg_credits">\
     by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
-    <iframe sandbox="allow-top-navigation" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://bowafishtech.org/bgsidebar/data/"></iframe>\
 </span>');
 
 // Gaia Logo
@@ -33,7 +32,19 @@ if (prefs['header.float'] === true) {
 
 // Add BG Siderbar to MyGaia
 if (document.location.pathname.indexOf('/mygaia/') > -1) {
-    $.get(self.options.mainCssUrl.slice(0,-12) + 'html/settings-widget.html', function(data){
+    self.port.once('html/settings-widget.html', function(data) {
+        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
+        $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
+        $('#bg_sidebar a.bgopensettings').on('click', function() {self.port.emit('settings');});
+
+        self.port.once('html/changelog.html', function(data) {
+            $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
+        });
+        self.port.emit('getHtml', 'html/changelog.html');
+    });
+    self.port.emit('getHtml', 'html/settings-widget.html');
+    
+    /*$.get(self.options.mainCssUrl.slice(0,-12) + 'html/settings-widget.html', function(data){
         $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
         $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
 	
@@ -42,7 +53,7 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
         $.get(self.options.mainCssUrl.slice(0,-12) + 'html/changelog.html', function(data){
             $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
         }, 'html');
-    }, 'html');
+    }, 'html');*/
 }
 
 // Widgets
@@ -59,8 +70,18 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // BetterGaia Settings
     if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
         $(this).parent().addClass('bgloading');
-    
-        $.get(self.options.mainCssUrl.slice(0,-12) + 'html/settings-widget.html', 'html')
+
+        self.port.once('html/settings-widget.html', function(data) {
+            $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
+            $('#bg_widgets .bgsettings div').html(data);
+            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
+            $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
+                self.port.emit('settings');
+            });
+        });
+        self.port.emit('getHtml', 'html/settings-widget.html');
+
+        /*$.get(self.options.mainCssUrl.slice(0,-12) + , 'html')
         .done(function(data) {
             $('#bg_widgets .bgsettings div').html(data);
             $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
@@ -73,7 +94,7 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
         })
         .always(function(data) {
             $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
-        });
+        });*/
     }
 
     // Open

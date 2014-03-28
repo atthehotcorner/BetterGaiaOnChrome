@@ -6,13 +6,40 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 /*global require: false, console: false */
 /*jshint sub:true */
 
+// /code is /data
+// /images is /data/images
+
 // Import APIs
 var pageMod = require('sdk/page-mod');
+var Request = require('sdk/request').Request;
 var self = require('sdk/self');
 var ss = require('sdk/simple-storage');
 var tabs = require('sdk/tabs');
 
-// Create page mod
+// Check if new install, update
+if (self.loadReason === 'install' || self.loadReason === 'upgrade') {
+    ss.storage.version = self.version;
+}
+
+// Analytics - will create privacy policy
+// https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
+// http://stackoverflow.com/questions/7715878/unique-identifier-for-each-addon-user
+// https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/util_uuid
+if (!ss.storage.hasOwnProperty('userid')) ss.storage.userid = require('sdk/util/uuid').uuid()['number'];
+Request({
+    url: 'https://ssl.google-analytics.com/collect',
+    content: {
+        'an': 'BetterGaia for Firefox',
+        'av': self.version,
+        'v': 1,
+        'tid': 'UA-32843062-4',
+        'cid': ss.storage.userid,
+        't': 'appview'
+    }
+    //onComplete: function(response) {}
+}).post();
+
+// Create page mod for main site, forums and formatting
 pageMod.PageMod({
     include: '*.gaiaonline.com',
     contentScriptWhen: 'start',
@@ -31,6 +58,9 @@ pageMod.PageMod({
         });
         worker.port.on('settings', function() {
             tabs.open(self.data.url('settings/main.html'));
+        });
+        worker.port.on('getHtml', function(url) {
+            worker.port.emit(url, self.data.load(url));
         });
     }
 });

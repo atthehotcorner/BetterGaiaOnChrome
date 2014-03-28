@@ -377,7 +377,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
     body.mygaia #bg_sidebar a {display: block; cursor: pointer;}
     body.mygaia #bg_sidebar > a:first-of-type {font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding-top: 0; cursor: default;}
 
-    body.mygaia #bg_sidebar section {height: 150px; font-size: 11px; overflow: auto;}
+    body.mygaia #bg_sidebar section {max-height: 150px; font-size: 11px; overflow: auto;}
     body.mygaia #bg_sidebar section strong {border-bottom: 1px solid rgba(0,0,0,0.05); display: block; padding: 0 5px 5px;}
     body.mygaia #bg_sidebar section ol {padding: 0 0 10px;}
     body.mygaia #bg_sidebar section ol li {margin: 2px 0 0 20px;}

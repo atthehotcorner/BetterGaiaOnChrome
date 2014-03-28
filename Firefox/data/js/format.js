@@ -8,6 +8,12 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 /*jshint multistr:true */
 
 function Format() {
+    // overwrite default prefs with any userset
+    for (var key in self.options.prefs) {
+        try {prefs[key] = self.options.prefs[key];}
+        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
+    }
+
     function repeat(s, n) {var a = []; while(a.length < n) {a.push(s);} return a.join('');} // for adding new lines
 
     // Run formatter

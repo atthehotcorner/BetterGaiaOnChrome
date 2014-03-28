@@ -1,2 +1,0 @@
-/code is /data
-/images is /data/images
