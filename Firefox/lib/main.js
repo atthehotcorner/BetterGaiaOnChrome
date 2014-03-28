@@ -104,3 +104,21 @@ pageMod.PageMod({
         });
     }
 });
+
+pageMod.PageMod({
+    include: [self.data.url('settings/main.html')],
+    contentScriptWhen: 'ready',
+    attachTo: ['top'],
+    contentScriptFile: [self.data.url('js/jquery.min.js'), self.data.url('js/prefs.js'), self.data.url('settings/jquery.sortable.min.js'), self.data.url('settings/minicolors/jquery.minicolors.min.js'), self.data.url('settings/moment.min.js'), self.data.url('settings/main.js')],
+    contentScriptOptions: {
+        prefs: ss.storage,
+    },
+    onAttach: function(worker) {
+        worker.port.on('set', function(data) {
+            ss.storage[data[0]] = data[1];
+        });
+        worker.port.on('remove', function(key) {
+            delete ss.storage[key];
+        });
+    }
+});

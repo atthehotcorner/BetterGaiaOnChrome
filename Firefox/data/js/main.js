@@ -3,15 +3,18 @@ Main JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, unescape: false, prefs: false, prefs: false, window: false, document: false */
+/*global localStorage: false, console: false, $: false, unescape: false, prefs: false, self: false, window: false, document: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
 function MainJs() {
 
 // Remove Ads
-if (prefs['adsHide'] === true)
-$('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove();
+if (prefs['adsHide'] === true) {
+    $(window).load(function() {
+        $('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove();
+    });
+}
 
 // Credits
 $('body > #gaia_footer > p').append('<span id="bg_credits">\
@@ -43,22 +46,12 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
         self.port.emit('getHtml', 'html/changelog.html');
     });
     self.port.emit('getHtml', 'html/settings-widget.html');
-    
-    /*$.get(self.options.mainCssUrl.slice(0,-12) + 'html/settings-widget.html', function(data){
-        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
-        $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
-	
-        $('#bg_sidebar a.bgopensettings').on('click', function(){self.port.emit('settings');});
-        
-        $.get(self.options.mainCssUrl.slice(0,-12) + 'html/changelog.html', function(data){
-            $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
-        }, 'html');
-    }, 'html');*/
 }
 
 // Widgets
 $('#gaia_header .userName').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
-if (typeof(prefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
+//if (typeof(prefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
+if (typeof(prefs['welcomeAlpha']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
 $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // Show welcome screen if new
     if ($(this).parent().hasClass('bgwelcome') && typeof(prefs['welcome']) == 'undefined') {
@@ -80,21 +73,6 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
             });
         });
         self.port.emit('getHtml', 'html/settings-widget.html');
-
-        /*$.get(self.options.mainCssUrl.slice(0,-12) + , 'html')
-        .done(function(data) {
-            $('#bg_widgets .bgsettings div').html(data);
-            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
-            $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
-                self.port.emit('settings');
-            });
-        })
-        .fail(function(data) {
-            $('#bg_widgets .bgsettings div').html("<p>There was a problem loading your BetterGaia's settings.</p>");
-        })
-        .always(function(data) {
-            $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
-        });*/
     }
 
     // Open
@@ -222,13 +200,14 @@ if (prefs['header.widgets'] === true) {
 }
     
 // Editor Toolbar
+$(window).load(function() {
     // --Add emoji button
-	console.log('cat');
     $("body #editor #format_controls .format-text").append("<li><a class='bg_addemoji' onclick='var el = document.getElementById(\"emoticons\"); el.style.display = (el.style.display != \"block\" ? \"block\" : \"\" ); var el2 = document.getElementById(\"emote_select\"); el2.style.display = (el2.style.display != \"block\" ? \"block\" : \"\" );' title='Add Emoticons'>Add Emoticons</a></li>");
-console.log('dog');
+
     // --Add spoiler button
     $("body #editor #format_controls .format-elements").append("<li><a class='bg_spoiler' onclick='function wrapText(elementID, openTag, closeTag) {var textarea = document.getElementById(elementID); var len = textarea.value.length; var start = textarea.selectionStart; var end = textarea.selectionEnd; var selectedText = textarea.value.substring(start, end); var replacement = openTag + selectedText + closeTag; textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end, len);} wrapText(\"message\", \"[spoiler]\", \"[/spoiler]\");' title='Add Spoiler - [spoiler][/spoiler]'>Add Spoiler Tag</a></li>");
-    
+});
+
 // Shortcuts
 if (prefs['header.shortcuts'] === true) {
     // check if empty
@@ -358,16 +337,12 @@ if (prefs['instantUpdating'] === true) {
             if ($('.postcontent:eq(1) .postbody span[style="color:enabled"]', html).length == 1) {
                 var version = prefs['version'].replace(/\./g,'');
                 html = $('.postcontent:eq(1) .postbody', html);
-console.log('=====================inside=====================');
+
                 // look for new code
                 if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
                     self.port.emit('set', ['css', $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()]);
-					console.log('=====================yes=====================');
                 }
-                else {
-					self.port.emit('remove', 'css');
-					console.log('=====================no=====================');
-				}
+                else self.port.emit('remove', 'css');
 
                 if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
                     var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');

@@ -680,15 +680,12 @@ Settings.page.welcome = function() {
     $('page.welcome').addClass('selected');
     $('header').addClass('hidden');
 
-    if (typeof(localStorage['version']) == 'string' && prefs.local['version'] != '2014.10')
-    $('page.welcome .ready').text($('page.welcome .ready').text() + ' We\'ll also transfer your current settings.');
-
     $('page.welcome button').on('click', function(){
-        if (typeof(localStorage['version']) == 'string' && prefs.local['version'] != '2014.10') Transfer.init();
-        chrome.storage.local.set({'welcome': true}, function(){
+        self.port.emit('set', ['welcomeAlpha', true]);
+        /*chrome.storage.local.set({'welcome': true}, function(){
             console.log('welcome set locally.');
             window.location.reload();
-        });
+        });*/
     });
 };
 
@@ -759,5 +756,6 @@ function debugBro(error) {
 }
 
 // Run
-try {Settings.load();}
+//try {Settings.load();}
+try {Settings.page.welcome();}
 catch(e) {debugBro(e);}

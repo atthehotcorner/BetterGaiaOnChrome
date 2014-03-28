@@ -9,12 +9,6 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 html {background: linear-gradient(to right, #9BDCE9, #9BDCE9) #FFF; background-size: 170px 100%; background-repeat: no-repeat; min-height: 100%;}
 body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #222; min-width: 960px; max-width: 1500px; height: 100%;}
 
-/* Glyphicons */
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/css/glyphicons-halflings-regular.woff') format('woff');
-}
-
 a {color: #004A7F; text-decoration: none; cursor: pointer;}
 a:hover {color: #5D8DAF; text-decoration: none;}
 a:active {color: #004A7F;}
