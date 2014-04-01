@@ -18,13 +18,13 @@ html {overflow-x: hidden;}
 .chat .post .post-message.deleted ~ .deleted {display: none;}
 
 .aside {top: 25px; position: absolute; left: 0; right: 0; z-index: 98; opacity: 0; pointer-events: none;
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  -o-transform: scale(0.9);
-  transform: scale(0.9);
+  -webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  -ms-transform: scale(0.75);
+  -o-transform: scale(0.75);
+  transform: scale(0.75);
 }
-.showPanel .aside {left: 0; right: 0; height: 100%;
+.showPanel .aside {left: 0; right: 0; height: 100%; opacity: 1; pointer-events: all;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -ms-transform: scale(1);
