@@ -51,6 +51,7 @@ var prefs = {
 
     // MyGaia
     'mygaia.suggested': true,
+    'mygaia.bgchat': true,
 
     // PMs
     'pms': true,

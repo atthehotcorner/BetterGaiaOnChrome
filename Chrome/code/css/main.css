@@ -396,7 +396,10 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear {font-size: inherit !important; width: 215px; height: auto !important; margin: 0; position: absolute; right: 10px; top: 45px;}
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear:empty {background: #316589; margin-top: 25px; height: 100px !important;}
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear:empty:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 30px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
-	
+
+    /* BG Chat */
+    body.mygaia #bg_chat iframe {min-height: 250px; resize: vertical;}
+
     /* BetterGaia Sidebar */
     body.mygaia #bg_sidebar * {box-sizing: border-box;}
     body.mygaia #bg_sidebar .bgversion {float: right; padding-top: 4px;}
