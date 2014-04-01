@@ -22,7 +22,7 @@ $('body > #gaia_footer > p').append('<span id="bg_credits">\
     by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
-    <iframe sandbox="allow-top-navigation" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://bowafishtech.org/bgsidebar/data/"></iframe>\
+    <iframe sandbox="allow-scripts allow-forms" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://bowafishtech.org/bgsidebar/data/"></iframe>\
 </span>');
 
 // Gaia Logo
@@ -45,6 +45,10 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
         $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
             $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
         }, 'html');
+    }, 'html');
+
+    $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/chat.html', function(data){
+        $('body.mygaia .mg_content.notices').after(data);
     }, 'html');
 }
 
