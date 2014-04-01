@@ -7,6 +7,7 @@ html {overflow-x: hidden;}
 
 .chat {padding-top: 35px; font-size: 75%;}
 .chat .time {font-size: 1em;}
+.chat .post .post-message.deleted {padding-bottom: 10px;}
 .chat .post .post-message.deleted ~ .deleted {display: none;}
 
 .aside {top: 25px; position: absolute; right: 0; z-index: 98;}
