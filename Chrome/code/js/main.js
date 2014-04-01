@@ -43,15 +43,14 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
         $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
         
         $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
+            // BG Chat
+            if (prefs['mygaia.bgchat'] === true) {
+                $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" height="100%" frameborder="0" style="" src="http://www.bettergaia.com/public/chat/"></iframe>');
+            }
+
             $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
         }, 'html');
     }, 'html');
-
-    if (prefs['mygaia.bgchat'] === true) {
-        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/chat.html', function(data){
-            $('body.mygaia .mg_content.notices').after(data);
-        }, 'html');
-    }
 }
 
 // Widgets
