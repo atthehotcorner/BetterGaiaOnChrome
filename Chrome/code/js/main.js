@@ -22,7 +22,7 @@ $('body > #gaia_footer > p').append('<span id="bg_credits">\
     by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
-    <iframe sandbox="allow-scripts allow-forms" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://bowafishtech.org/bgsidebar/data/"></iframe>\
+    <iframe sandbox="allow-scripts allow-forms" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://www.bettergaia.com/public/update/"></iframe>\
 </span>');
 
 // Gaia Logo
