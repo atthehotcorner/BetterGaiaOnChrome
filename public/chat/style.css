@@ -30,7 +30,7 @@ html {overflow-x: hidden;}
 .chat .post .post-message.deleted {padding-bottom: 10px;}
 .chat .post .post-message.deleted ~ .deleted {display: none;}
 
-.aside {top: 25px; position: absolute; left: 0; right: 0; z-index: 98; opacity: 0; pointer-events: none;
+.aside {height: 225px; padding: 10px; top: 25px; left: 0; right: 0; opacity: 0; pointer-events: none;
   -webkit-transform: scale(0.75);
   -moz-transform: scale(0.75);
   -ms-transform: scale(0.75);
@@ -44,6 +44,13 @@ html {overflow-x: hidden;}
   -o-transform: scale(1);
   transform: scale(1);
 }
+.aside .menu-item {width: 25px; height: 25px;}
+.aside .menu-item .menu-item-icon {top: -3px; left: -3px; width: 30px; height: 30px;}
+.aside .tooltip {padding: 5px;}
+.aside .tooltip.show {top: 0; z-index: 2;}
+.aside .participants {margin-top: 10px; padding: 5px;}
+.aside .participants .participant-list {height: 40px;}
+.aside .participants .participant-list .participant-list-item {display: inline-block;}
 #theme-picker {display: none;}
 
 .panel-menu {}
