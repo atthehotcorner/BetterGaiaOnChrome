@@ -29,14 +29,16 @@ if (!ss.storage.hasOwnProperty('userid')) ss.storage.userid = require('sdk/util/
 Request({
     url: 'https://ssl.google-analytics.com/collect',
     content: {
-        'an': 'BetterGaia for Firefox',
-        'av': self.version,
         'v': 1,
         'tid': 'UA-32843062-4',
-        'cid': ss.storage.userid,
-        't': 'appview'
+        'cid': '35009a79-1a05-49d7-b876-2b884d0f825b', //ss.storage.userid,
+        't': 'pageview',
+        'an': 'BetterGaia for Firefox',
+        'av': self.version
+    },
+    onComplete: function(response) {
+        console.log(response);
     }
-    //onComplete: function(response) {}
 }).post();
 
 // Create page mod for main site, forums and formatting

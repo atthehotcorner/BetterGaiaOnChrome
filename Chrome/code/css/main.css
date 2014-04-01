@@ -19,6 +19,26 @@ body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_bloc
     100% {-webkit-transform: rotate(360deg);}
 }
 
+@font-face {
+    font-family: 'TeXGyreAdventorRegular';
+    src: url(http://s.cdn.gaiaonline.com/src/fonts/texgyreadventor-regular.eot?v=1);
+    src: local('☺'), 
+        url(http://s.cdn.gaiaonline.com/src/fonts/texgyreadventor-regular.woff?v=1) format('woff'),
+        url(http://s.cdn.gaiaonline.com/src/fonts/texgyreadventor-regular.ttf?v=1) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TeXGyreAdventorBold';
+    src: url(http://s.cdn.gaiaonline.com/src/fonts/texgyreadventor-bold.eot?v=1);
+    src: local('☺'), 
+        url(http://s.cdn.gaiaonline.com/src/fonts/texgyreadventor-bold.woff?v=1) format('woff'),
+        url(http://s.cdn.gaiaonline.com/src/fonts/texgyreadventor-bold.ttf?v=1) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Hide Ads *
 #bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}*/
 
@@ -241,7 +261,7 @@ body #gaia_menu_bar #newmenu #nav {}
 /* Styles MyGaia Page */
 body.mygaia #mygaia_tabs > span {display: none;}
 
-body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g {position: relative;}
+body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g {position: relative; background: #F8FAFC;}
 body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left {float: right; margin: 10px 219px 0 0; width: 440px;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #req_bird,
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #my_choc,
@@ -250,6 +270,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft,
 	body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .clear, 
 	body.mygaia #gaia_content #bd #friends2.mg_content .bg, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right > div + br {display: none;}
+body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg {-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); -webkit-filter: saturate(0.75);}
 body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right {float: left; margin: 10px 0 0 10px; width: 230px;}
 body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both;}
 
@@ -265,7 +286,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 		body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft div.see_all #notice_settings:only-child {border-width: 0;}
 
 	/* Add text to headers */
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g .mg_sprite.hd:before {background: none; color: #538947; padding: 5px 0 7px 0;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g .mg_sprite.hd:before {background: none; padding: 5px 0 7px 0;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .suggested .hd:before {content: "Suggested";}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd:before {content: "Status"; box-shadow: 0 4px 0 #5BAAAD;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .hd:before {content: "My Stats";}
@@ -274,94 +295,59 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 	body.mygaia #bd .mg_content.mystuff .mg_sprite.hd:before {content: "Notices";}
 	body.mygaia #bd .mg_content.notices .mg_sprite.hd:before {content: "My Friend's Stuff";}
 
-	/* Status */
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status {margin: 0 0 15px;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding: 1px 0; box-sizing: border-box;}
-	
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd {background: #F5F7FF; border: 1px solid #5BAAAD; border-radius: 3px; box-shadow: 0 0 7px -2px #5BAAAD inset; position: relative;}
-		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status {padding: 0; background: none; position: relative;}
-		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status:after {position: absolute; content: ''; bottom: -5px; left: 5px; right: 5px; height: 5px; display: block; background: -webkit-linear-gradient(top, rgba(245,247,255,1), rgba(245,247,255,0)); z-index: 2;}
-			body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status div.avatar {box-shadow: 0 0 2px rgba(0,0,0,0.5); background: #FFF; border: 0; margin: 5px;}
-			body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status {border: 1px solid #A3B4C8; border-radius: 6px; background: #FFF; float: right; padding: 5px 7px; width: 140px; margin: 5px; overflow: visible; box-shadow: 0 0 10px -2px #B5C8DD inset;}
-			body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status.ing .status {border-color: #3E53A2;}
-				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status p {background: none; padding: 0; margin: 0;}
-				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status div.lead {left: -8px; top: 15px;}
-
-				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status div:not([class]) {background: none; margin: 0; padding: 0;}
-				body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .bd .status_wrapper .my_status .status div:not([class]) .plenty {position: static; float: right; margin: 0;}
-	
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .friend_statuses {padding: 0; max-height: 150px; overflow: auto; border: 0; margin: 0;}
-		body.mygaia #gaia_content .mg_status .friend_statuses div.avatar {float: left; margin: 0 0 0 5px; border-radius: 2px; background: #FFF;}
-		body.mygaia #gaia_content .mg_status .friend_statuses h4 {margin: 2px 0 2px 5px; display: block; clear: both;}
-		body.mygaia #gaia_content .mg_status .friend_statuses .clear {height: 7px !important;}
-		body.mygaia #gaia_content .mg_status .friend_statuses .status {border: 1px solid #A3B4C8; border-radius: 6px; background: #FFF; float: right; padding: 5px 7px; width: 65%; margin: 5px; overflow: visible; box-shadow: 0 0 10px -2px #B5C8DD inset; z-index: 1;}
-			body.mygaia #gaia_content .mg_status .friend_statuses .status p {background: none; padding: 0; margin: 0;}
-			body.mygaia #gaia_content .mg_status .friend_statuses .status div.lead {left: -8px; top: 15px;}
-			body.mygaia #gaia_content .mg_status .friend_statuses .status .timestamp {position: absolute; right: 0; top: -17px;}
-
-		/* Scrollbar */
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar {width: 8px; height: 8px;}
-
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:start {display: none;}
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end {display: block; background: rgba(0,0,0,0.4);}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement, body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment {box-shadow: 0 0 5px rgba(0,0,0,0.2); border-radius: 3px; border: 1px solid rgba(0,0,0,0.4); height: 14px; width: 14px; display: block; background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement:hover, body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment:hover {background-color: rgba(0,0,0,0.17)}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:active, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:active {background-color: rgba(0,0,0,0.3)}
-
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:decrement {border-bottom: 0; border-radius: 3px 3px 0 0;}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-button:end:increment {border-radius: 0 0 3px 3px;}
-
-		body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-track {margin: 10px 0;}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-track-piece {border-radius: 7px 0 0 7px; box-shadow: 0 0 5px rgba(0,0,0,0.2) inset; background: rgba(0,0,0,0.05);}
-			body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb {border-radius: 7px 0 0 7px; border: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 5px rgba(0,0,0,0.2); background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-				body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,0.17)}
-				body.mygaia #gaia_content .mg_status .friend_statuses::-webkit-scrollbar-thumb:active {background-color: rgba(0,0,0,0.3)}
-
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status #mygaia_see_more_status {position: absolute; right: 0;}
-		body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status #mygaia_see_more_status a {font-weight: normal; background: url(http://s.cdn.gaiaonline.com/images/gaia_global/body/arrows/ic_hyperlink_arrow_15x15.png) no-repeat; padding: 0 0 0 18px; display: block; height: 15px;}
-	
 	/* My Stats */
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats {height: auto;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd {padding: 5px;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd h3.activity {margin: 5px 0 0;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd ul li {padding: 3px 0;}
 	
-	/* Feeds */
-	body.mygaia #gaia_content #bd .mg_content {margin: 0 0 15px;}
-	body.mygaia #gaia_content #bd .mg_content .mg_sprite.hd {margin: 0; background: none; height: 25px !important; width: auto; font: bold 17px "Century Gothic", Arial, sans-serif; color: #517747; padding: 1px 0; box-sizing: border-box;}
+	/* Feeds, Status */
+	body.mygaia #gaia_content #bd .mg_content, body.mygaia #gaia_content #bd .mg_status {margin: 0 0 15px;}
+	body.mygaia #gaia_content #bd .mg_content .mg_sprite.hd, body.mygaia #gaia_content #bd .mg_status .mg_sprite.hd {margin: 0; background: none; height: 25px !important; width: auto; font: normal 27px "Century Gothic", "TeXGyreAdventorRegular", Arial, sans-serif; color: #4B9438; padding: 0 5px; box-sizing: border-box; overflow: hidden;}
 
-	body.mygaia #gaia_content #bd .mg_content .bd {background: #FFF; border: 1px solid #90C085; border-radius: 3px; box-shadow: 0 0 7px -2px #90C085 inset; padding: 0; overflow: visible;}
+	body.mygaia #gaia_content #bd .mg_content .bd, body.mygaia #gaia_content #bd .mg_status .bd {background: #FFF; border: 1px solid #B6E2AD; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 0; overflow: visible;}
+	body.mygaia #gaia_content #bd .mg_content .bd:after, body.mygaia #gaia_content #bd .mg_status .bd:after {display: table; content: ''; clear: both;}
 	body.mygaia #gaia_content #bd .mg_content .bd > p {padding: 10px 12px; margin: 0;}
 	body.mygaia #gaia_content #bd .mg_content .bd ul {margin: 0; /*max-height: 220px; overflow: auto;*/}
 	body.mygaia #gaia_content #bd .mg_content .bd ul li {display: block; padding: 6px 10px; width: auto; height: auto; margin: 0;}
+	body.mygaia #gaia_content #bd .mg_content .bd ul li:hover {background-color: #E1F0DD;}
 		body.mygaia #gaia_content #bd .mg_content .bd ul li:first-child {border-radius: 3px 3px 0 0; padding-top: 10px;}
 		body.mygaia #gaia_content #bd .mg_content .bd ul li:last-child {border-radius: 0 0 3px 3px; padding-bottom: 10px;}
 		body.mygaia #gaia_content #bd .mg_content .bd ul li:only-child {border-radius: 3px; padding: 10px;}
 		
 		body.mygaia #gaia_content #bd .mg_content .bd ul li .content {width: 270px;}
 		body.mygaia #gaia_content #bd .mg_content .bd ul li .controls {padding: 2px 0 0;}
-		
-		/* Scrollbar */
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar {width: 8px; height: 8px;}
-
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:start {display: none;}
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end {display: block; background: rgba(0,0,0,0.4);}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment {box-shadow: 0 0 5px rgba(0,0,0,0.2); border-radius: 3px; border: 1px solid rgba(0,0,0,0.4); height: 14px; width: 14px; display: block; background: rgba(255,255,255,0.5) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:hover, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:hover {background-color: rgba(0,0,0,0.17)}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement:active, body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment:active {background-color: rgba(0,0,0,0.3)}
-
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:decrement {border-bottom: 0; border-radius: 3px 3px 0 0;}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-button:end:increment {border-radius: 0 0 3px 3px;}
-
-		body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-track {margin: 10px 0;}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-track-piece {border-radius: 7px 0 0 7px; box-shadow: 0 0 5px rgba(0,0,0,0.2) inset; background: rgba(0,0,0,0.05);}
-			body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb {border-radius: 7px 0 0 7px; border: 1px solid rgba(0,0,0,0.4); box-shadow: 0 0 5px rgba(0,0,0,0.2); background: rgba(0,0,0,0) -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4));}
-				body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb:hover {background-color: rgba(0,0,0,0.17)}
-				body.mygaia #gaia_content #bd .mg_content .bd ul::-webkit-scrollbar-thumb:active {background-color: rgba(0,0,0,0.3)}
 
 	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds {padding: 0;}
 	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds > p {padding: 10px 12px; margin: 0;}
 	body.mygaia #gaia_content #bd .mg_content .bd .datafeeds ul li div.message {width: auto; float: none;}
+
+    /* Status */
+    body.mygaia #gaia_content #bd .mg_status {position: relative;}
+
+    body.mygaia #gaia_content #bd .mg_status .my_status {background: none; padding: 5px 5px 0;}
+    body.mygaia #gaia_content #bd .mg_status .my_status:after {display: table; content: ''; clear: both;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .avatar {margin: 0 0 5px 0; border: 0;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .status {width: calc(100% - 48px - 5px); margin: 0; float: right; background: none; padding: 0; overflow: visible;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .status .lead {margin: 0; display: none;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .status p, body.mygaia #gaia_content #bd .mg_status .my_status .status p + div {margin: 0; display: block; background: none; padding: 3px 2px 2px; font-size: 85%;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .status p a, body.mygaia #gaia_content #bd .mg_status .my_status .status p + div a {text-transform: capitalize; margin: 5px 0 0; display: inline-block;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .status p + div textarea {margin: 0; border: 1px solid #DDD;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .status p + div label {display: inline; float: right; position: static; margin: 5px 0 0;}
+    body.mygaia #gaia_content #bd .mg_status .my_status .clear {display: none;}
+    body.mygaia #gaia_content #bd .mg_status .my_status > form {clear: none; float: right; width: calc(100% - 58px);}
+    body.mygaia #gaia_content #bd .mg_status .my_status > form fieldset {margin: 0;}
+    
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses {margin: 0; border-color: #DFF4C6; padding: 5px; max-height: 150px; overflow: auto;}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses h4 {margin: 0; padding: 0 0 5px; float: right; width: calc(100% - 35px);}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses .avatar {border: 0;}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses .status {width: calc(100% - 35px); float: right; padding: 0; overflow: visible; background: none; margin: 0; clear: none;}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses .status .lead {display: none;}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses .status p {display: block; margin: 0; padding: 0; background: none;}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses .clear {height: 10px !important;}
+    body.mygaia #gaia_content #bd .mg_status .friend_statuses .clear:last-of-type {display: none;}
+    
+    body.mygaia #gaia_content #bd .mg_status #mygaia_see_more_status {padding: 0; position: absolute; font-weight: normal; display: inline; bottom: -1.75em; right: 0;}
 
 	/* Suggested Content */
 	body.mygaia #gaia_content #bd .mg_content.suggested {display: none;}
@@ -417,7 +403,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
     body.mygaia #bg_sidebar > * {border-bottom: 1px solid rgba(0,0,0,0.05); padding: 7px 9px;}
     body.mygaia #bg_sidebar p {font-size: 11px; margin: 0;}
     body.mygaia #bg_sidebar a {display: block; cursor: pointer;}
-    body.mygaia #bg_sidebar > a:first-of-type {font: bold 17px "Century Gothic", Arial, sans-serif; color: #456286; padding-top: 0; cursor: default;}
+    body.mygaia #bg_sidebar > a:first-of-type {font: bold 17px "Century Gothic", "TeXGyreAdventorBold", Arial, sans-serif; color: #456286; padding-top: 0; cursor: default;}
 
     body.mygaia #bg_sidebar section {height: 150px; font-size: 11px; overflow: auto;}
     body.mygaia #bg_sidebar section strong {border-bottom: 1px solid rgba(0,0,0,0.05); display: block; padding: 0 5px 5px;}
@@ -642,7 +628,7 @@ table.warn_block #warn_block {height: auto; width: 600px; position: relative; ma
 table.warn_block #warn_block div {width: 600px; height: auto; font: normal 12px/18px Arial, Helvetica, sans-serif; border: 0; text-align: left; margin: 0;}
 table.warn_block #warn_block u {text-decoration: none; font-weight: bold;}
 
-table.warn_block #warn_block #warn_head {padding: 15px 10px 10px; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(241,191,105,0)); color: #FFF; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); text-align: center; position: relative;}
+table.warn_block #warn_block #warn_head {padding: 15px 10px 10px; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(241,191,105,0)); color: #FFF; font: bold 17px/normal "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); text-align: center; position: relative;}
 table.warn_block #warn_block #warn_body {padding: 15px 15px 10px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border-top: 3px solid #3C3C3C;}
 table.warn_block #warn_block #link_display {padding: 10px 10px 10px 15px; background: #FFF; border-bottom: 3px solid #3C3C3C; position: absolute; bottom: 0; line-height: 2.5; border-top: 2px solid #DEE8FE; height: 55px;}
 	table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline-block; line-height: 1; max-width: 490px; float: right; padding: 8px 10px; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.1)); text-overflow: ellipsis; overflow: hidden; font-weight: bold; text-decoration: none;}
@@ -664,7 +650,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 	
 #bg_drawall * {box-sizing: border-box;}
 	
-#bg_drawall .bgda_header {padding: 15px 10px 10px; font: bold 17px/normal "Century Gothic", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); text-align: center; position: relative;}
+#bg_drawall .bgda_header {padding: 15px 10px 10px; font: bold 17px/normal "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); text-align: center; position: relative;}
 	#bg_drawall .bgda_header strong {display: block; color: #FFF;}
 
 	#bg_drawall .bgda_header .bonus {color: #FFF; text-shadow: 0 1px 0 rgba(0,0,0,0.4); border-radius: 20px; background: rgba(0,0,0,0.4); font-size: 11px; padding: 2px 6px; margin: 0; display: inline-block;}
@@ -700,7 +686,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall ul > li div span:active {background-color: #C17B00; box-shadow: 0 -1px 0 rgba(255,255,255,0.5) inset, 0 -2px 0px rgba(0,0,0,0.5); margin-top: 18px;}
 #bg_drawall ul > li div span a {display: block; pointer-events: none; height: 100%; line-height: 38px; background-repeat: no-repeat; background-image: linear-gradient(to bottom right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 37%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0.0) 50%); background-position: -100px -100px, 0 0; background-size: 250% 250%, 100% 100%; transition: background-position 0s ease;}
 #bg_drawall ul > li div span:hover a {background-position: 0 0, 0 0; transition-duration: 0.5s;}
-#bg_drawall ul > li h5 {height: 30px; font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif; margin: 0; display: block;}
+#bg_drawall ul > li h5 {height: 30px; font: bold 14px/15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; margin: 0; display: block;}
 
 #bg_drawall ul > li.bgc_loading {background: #316589;}
 #bg_drawall ul > li.bgc_loading:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 30px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
@@ -719,7 +705,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall ul > li.bgc_candy div info:before {content: 'i'; border-radius: 7px; background: rgba(0,0,0,0.5); color: #FFF; display: block; font: italic bold 10px Georgia, "Times New Roman", Times, serif; height: 14px; padding: 1px 0 0; text-align: center; width: 14px;}
 #bg_drawall ul > li.bgc_candy div info message {background: #FFF; visibility: hidden; padding: 5px; font-size: 10px; position: absolute; display: block; z-index: 2; width: 110px; margin-left: -55px; left: 50%; top: 75px; border: 2px solid #C9A900; box-shadow: 0 1px 3px rgba(177,153,29,0.9); transition: opacity ease 0.4s, margin-top ease 0.5s; opacity: 0; margin-top: 10px; border-radius: 2px;}
 #bg_drawall ul > li.bgc_candy div info:hover message {opacity: 1; visibility: visible; margin-top: 0;}
-#bg_drawall ul > li.bgc_candy div h6 {font: bold 14px/15px "Century Gothic", Arial, Tahoma, Verdana, sans-serif;}
+#bg_drawall ul > li.bgc_candy div h6 {font: bold 14px/15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif;}
 
 /* Footer */
 body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 27px 0 0 !important; font: normal 13px Tahoma, Arial, Helvetica, sans-serif; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.37); border-radius: 5px 5px 0 0;}
