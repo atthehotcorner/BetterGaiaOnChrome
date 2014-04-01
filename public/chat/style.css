@@ -5,7 +5,7 @@ html {overflow-x: hidden;}
 .header-bar .header-channel {height: 25px; margin: 0 32px; text-align: left; font-size: 0; line-height: 24px; color: #FFF;}
 .header-bar .header-channel:after {content: 'BetterGaia Chat'; font-size: 15px;}
 
-.chat {padding-top: 35px; padding-left: 1px; font-size: 75%;}
+.chat {padding-top: 35px; padding-left: 1px; font-size: 75%; overflow: visible;}
 .showPanel .chat {
   -webkit-transform: none;
   -moz-transform: none;
@@ -67,9 +67,9 @@ body .chat .post {background: #FFF; border-color: #ADDAE2; box-shadow: 0 1px 3px
 }
 .panel-menu .panel-counter {top: 0; right: 25px; height: 25px; border-radius: 0; box-shadow: none; padding: 0 5px; line-height: 25px;}
 
-.button-down {width: 100%; height: 25px; left: 0; bottom: 0; border-radius: 0; box-shadow: none; border-top: 1px solid rgba(0,0,0,0.075);}
-.theme--day .button-down {background-color: rgba(237,236,233,0.7);}
-.button-down .button-down-icon {height: 25px; width: 20px; top: 0; left: 50%; margin: 0 0 0 -10px;}
+.button-down {width: 35; height: 30px; left: 0; bottom: 0; border-radius: 0; box-shadow: none; border: 1px solid rgba(0,0,0,0.075);}
+.theme--day .button-down {background-color: rgba(237,236,233,0.85);}
+.button-down .button-down-icon {height: 25px; width: 26px; top: 0; left: 50%; margin: 2px 0 0 -13px;}
 
 .footer {margin-top: 5px;}
 .showPanel .footer {
