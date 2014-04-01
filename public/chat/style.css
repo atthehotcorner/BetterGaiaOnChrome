@@ -6,12 +6,31 @@ html {overflow-x: hidden;}
 .header-bar .header-channel:after {content: 'BetterGaia Chat'; font-size: 15px;}
 
 .chat {padding-top: 35px; font-size: 75%;}
+.showPanel .chat {
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  transform: scale(0.95);
+}
 .chat .time {font-size: 1em;}
 .chat .post .post-message.deleted {padding-bottom: 10px;}
 .chat .post .post-message.deleted ~ .deleted {display: none;}
 
-.aside {top: 25px; position: absolute; right: 0; z-index: 98;}
-.showPanel .aside {left: 0; right: 0; height: 100%;}
+.aside {top: 25px; position: absolute; right: 0; z-index: 98;
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  transform: scale(0.95);
+}
+.showPanel .aside {left: 0; right: 0; height: 100%;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
 #theme-picker {display: none;}
 
 .panel-menu {}
