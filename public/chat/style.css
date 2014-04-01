@@ -26,6 +26,6 @@ html {overflow-x: hidden;}
 .theme--day .button-down {background-color: rgba(237,236,233,0.7);}
 .button-down .button-down-icon {height: 25px; width: 20px; top: 0; left: 50%; margin: 0 0 0 -10px;}
 
-.isTroll .footer-wrapper {padding: 10px;}
-.isTroll .message-input {padding: 5px 10px; font-size: 15px;}
+.isTroll .footer-wrapper {padding: 5px 10px 10px;}
+.isTroll .message-input {padding: 0px 7px; font-size: 15px;}
 .message-button--submit {top: 6px; right: 6px; font-size: 11px;}
