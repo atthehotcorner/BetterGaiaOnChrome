@@ -7,14 +7,14 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 /*jshint sub:true */
 /*jshint multistr:true */
 
-function MainCss() {
-
 // Inject CSS
 var link = document.createElement('link');
     link.href = chrome.extension.getURL('code/css/main.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
-document.getElementsByTagName('head')[0].appendChild(link);
+document.documentElement.appendChild(link);
+
+function MainCss() {
 
 var css = '';
 
@@ -86,7 +86,7 @@ var style = document.createElement('style');
     style.type = 'text/css';
     style.setAttribute('bg-css', '');
     style.appendChild(document.createTextNode(css));
-document.getElementsByTagName('head')[0].appendChild(style);
+document.documentElement.appendChild(style);
 
 // Instant CSS Updating
 if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') {
@@ -94,7 +94,7 @@ if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') 
         style2.type = 'text/css';
         style2.setAttribute('bg-updatedcss', '');
         style2.appendChild(document.createTextNode(localPrefs['css']));
-    document.getElementsByTagName('head')[0].appendChild(style2);
+    document.documentElement.appendChild(style2);
 }
 
 } // ---

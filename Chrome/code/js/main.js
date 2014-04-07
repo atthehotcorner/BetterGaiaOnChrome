@@ -37,18 +37,20 @@ if (prefs['header.float'] === true) {
 // Add BG Siderbar to MyGaia
 if (document.location.pathname.indexOf('/mygaia/') > -1) {
     $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', function(data){
-        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
-        $('body.mygaia .clear .bgversion').text('Ver ' + localPrefs['version']);
+        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').before('<div id="bg_sidebar">' + data + '</div>');
+        $('#bg_sidebar .bgversion').text('Ver ' + localPrefs['version']);
 	
         $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
         
         $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
+            $('#bg_sidebar').addClass('go');
+
             // BG Chat
             if (prefs['mygaia.bgchat'] === true) {
-                $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" height="100%" frameborder="0" style="" src="http://www.bettergaia.com/public/chat/"></iframe>');
+                $('#bg_sidebar').append('<div class="bgiframe"><iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" height="100%" frameborder="0" style="" src="http://www.bettergaia.com/public/chat/"></iframe></div>');
             }
 
-            $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
+            $('#bg_sidebar').append('<section>' + data + '</section>');
         }, 'html');
     }, 'html');
 }

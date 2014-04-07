@@ -7,20 +7,14 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 /*jshint sub:true */
 /*jshint multistr:true */
 
-// overwrite default prefs with any userset
-for (var key in self.options.prefs) {
-    try {prefs[key] = self.options.prefs[key];}
-    catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
-}
-
-function ForumCss() {
-
 // Inject CSS
 var link = document.createElement('link');
     link.href = chrome.extension.getURL('code/css/forum.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
-document.getElementsByTagName('head')[0].appendChild(link);
+document.documentElement.appendChild(link);
+
+function ForumCss() {
 
 var css = '';
 
@@ -55,7 +49,7 @@ var style = document.createElement('style');
     style.type = 'text/css';
     style.setAttribute('bg-forumcss', '');
     style.appendChild(document.createTextNode(css));
-document.getElementsByTagName('head')[0].appendChild(style);
+document.documentElement.appendChild(style);
 
 } // ---
 

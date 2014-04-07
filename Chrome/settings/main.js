@@ -717,7 +717,7 @@ Settings.load = function() {
 
 Settings.init = function() {
     // Show welcome screen if new
-    if (typeof prefs.local['welcome'] == 'undefined') Settings.page.welcome();
+    if (typeof prefs.local['welcome'] != 'boolean') Settings.page.welcome();
 
     // Set up pages
     $('header menu').on('click', 'a:not(.current)', function(){

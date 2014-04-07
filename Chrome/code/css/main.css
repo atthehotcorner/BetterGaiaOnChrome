@@ -269,27 +269,63 @@ body.mygaia #mygaia_tabs > span {display: none;}
 
 body.mygaia.app-page_mygaia #gaia_content.grid_ray_davies #bd {width: auto; overflow: visible;}
 body.mygaia.app-page_mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g {position: relative; background: #F8FAFC;}
-body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab {border: 0; height: 35px;}
+
+body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab {border: 0; height: 35px; background: #FFF;}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.link {-webkit-filter: contrast(1.23); height: 35px;}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.link.mygaia-tab-overview {-webkit-filter: contrast(1.07);}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.yuimenu_trigger {-webkit-filter: contrast(1.23); height: 35px;}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > .yuimenu {margin: 35px 0 0 -1px;}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab_end {border: 0; width: 100px; background: linear-gradient(to right, #FFF, rgba(0,0,0,0));}
+body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .gaia_tab_orphans li.clear {display: none;}
 
-body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left {float: right; margin: 10px 260px 0 0; width: 565px;}
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #req_bird,
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #my_choc,
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] #feed_goldguy,
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .rc,
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft,
 	body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .clear, 
-	body.mygaia #gaia_content #bd #friends2.mg_content .bg, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right > div + br {display: none;}
-body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg {-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); -webkit-filter: saturate(0.75); background-repeat: repeat-x; background-position-x: center;}
-body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right {float: left; margin: 10px 0 0 10px; width: 250px;}
-body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both; background-repeat: repeat-x; background-position-x: center; -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));}
+	body.mygaia #gaia_content #bd #friends2.mg_content .bg, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right > div + br {display: none;}
+
+    /* Top image */
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg {-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); -webkit-filter: saturate(0.75); background-repeat: repeat-x; background-position-x: center;}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both; background-repeat: repeat-x; background-position-x: center; -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));}
+
+    /* Left, Right */
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right, body.mygaia #bg_sidebar {position: relative; z-index: 1; margin: 10px 15px; box-sizing: border-box;}
+
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left {float: right; width: calc(100% - 590px);}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left {margin-right: 295px;}
+
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right {float: left; width: 250px;}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right > div + br {display: none;}
+
+    /* BetterGaia Sidebar */
+    body.mygaia #bg_sidebar {box-sizing: border-box; width: 250px; float: right; opacity: 0; -webkit-transform: scale(0.8); -webkit-transform-origin: top; transition: -webkit-transform 0.5s ease, opacity 0.5s ease;}
+    body.mygaia #bg_sidebar.go {-webkit-transform: scale(1); opacity: 1;}
+    body.mygaia #bg_sidebar * {box-sizing: border-box;}
+    body.mygaia #bg_sidebar .bgversion {float: right; padding-top: 4px;}
+    body.mygaia #bg_sidebar > * {border-bottom: 1px solid rgba(0,0,0,0.05); padding: 7px 9px;}
+    body.mygaia #bg_sidebar p {font-size: 11px; margin: 0;}
+    body.mygaia #bg_sidebar a {display: block; cursor: pointer;}
+    body.mygaia #bg_sidebar > a:first-of-type {font: bold 17px "Century Gothic", "TeXGyreAdventorBold", Arial, sans-serif; color: #456286; padding-top: 0; cursor: default;}
+
+    body.mygaia #bg_sidebar > div {padding: 0;}
+    body.mygaia #bg_sidebar > div:after {display: table; content: ''; clear: both;}
+    body.mygaia #bg_sidebar > div a {width: 25%; float: left; box-sizing: border-box; padding: 7px 5px; font-size: 11px; text-align: center;}
+    body.mygaia #bg_sidebar > div a:first-of-type {padding-left: 9px;}
+    body.mygaia #bg_sidebar > div a:last-of-type {padding-right: 9px;}
+    body.mygaia #bg_sidebar > div a:hover {background: rgba(0,0,0,0.05);}
+
+    body.mygaia #bg_sidebar .bgiframe {margin: 15px 0 0; padding: 0; min-height: 150px; resize: vertical;}
+    body.mygaia #bg_sidebar .bgiframe iframe {margin: 0; padding: 0;}
+
+    body.mygaia #bg_sidebar section {height: 150px; font-size: 11px; overflow: auto; margin: 15px 0 0; padding-left: 0;}
+    body.mygaia #bg_sidebar section strong {border-bottom: 1px solid rgba(0,0,0,0.05); display: block; padding: 0 5px 5px;}
+    body.mygaia #bg_sidebar section ol {padding: 0 0 10px;}
+    body.mygaia #bg_sidebar section ol li {margin: 2px 0 0 20px;}
 
 	/* Fix ad */
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right #grid_ad {overflow: hidden; width: 250px;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right #grid_ad {overflow: hidden; width: 250px;}
 
 	/* Module footers */
 	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft {background: none; border: 0;}
@@ -301,19 +337,19 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 
 	/* Add text to headers */
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g .mg_sprite.hd:before {background: none; padding: 5px 0 7px 0;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .suggested .hd:before {content: "Suggested";}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mg_status .hd:before {content: "Status"; box-shadow: 0 4px 0 #5BAAAD;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .hd:before {content: "My Stats";}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .suggested .hd:before {content: "Suggested";}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mg_status .hd:before {content: "Status"; box-shadow: 0 4px 0 #5BAAAD;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mystats .hd:before {content: "My Stats";}
 	body.mygaia #bd .mg_content.req .mg_sprite.hd:before {content: "Requests";}
 	body.mygaia #bd .mg_content.friends .mg_sprite.hd:before {content: "Friends";}
 	body.mygaia #bd .mg_content.mystuff .mg_sprite.hd:before {content: "Notices";}
 	body.mygaia #bd .mg_content.notices .mg_sprite.hd:before {content: "My Friend's Stuff";}
 
 	/* My Stats */
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats {height: auto;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd {padding: 5px;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd h3.activity {margin: 5px 0 0;}
-	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left + .right .mystats .bd ul li {padding: 3px 0;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mystats {height: auto;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mystats .bd {padding: 5px;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mystats .bd h3.activity {margin: 5px 0 0;}
+	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mystats .bd ul li {padding: 3px 0;}
 	
 	/* Feeds, Status */
 	body.mygaia #gaia_content #bd .mg_content, body.mygaia #gaia_content #bd .mg_status {margin: 0 0 15px;}
@@ -387,8 +423,7 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd #find_friends_a {top: 5px; right: 0; z-index: 5;}
 		
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends {}
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 0 0 0 24px; margin: 0 0 5px; box-sizing: border-box; width: 272px; overflow: visible; height: 24px; border-radius: 0;}
-			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:nth-child(odd) {margin: 0 8px 5px 0;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 0 0 0 24px; margin: 0; box-sizing: border-box; width: 50%; overflow: visible; height: 24px; border-radius: 0;}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover {background: rgb(223,244,198);}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover .user_name a {}
 		
@@ -405,33 +440,6 @@ body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_
 		
 		body.mygaia #gaia_content #bd #friends2.mg_content .ft.see_all {border: 0 none; display: block !important; margin: 5px 0 0; height: 15px; background: none;}
 			body.mygaia #gaia_content #bd #friends2.mg_content .ft.see_all .see_all {background: none; padding: 0; float: right;}
-
-    /* Clear DIV */
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear {font-size: inherit !important; width: 250px; height: auto !important; margin: 0; position: absolute; right: 10px; top: 45px; z-index: 1;}
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear:empty {background: #316589; margin-top: 25px; height: 100px !important;}
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear:empty:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 30px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
-
-    /* BetterGaia Sidebar */
-    body.mygaia #bg_sidebar * {box-sizing: border-box;}
-    body.mygaia #bg_sidebar .bgversion {float: right; padding-top: 4px;}
-    body.mygaia #bg_sidebar > * {border-bottom: 1px solid rgba(0,0,0,0.05); padding: 7px 9px;}
-    body.mygaia #bg_sidebar p {font-size: 11px; margin: 0;}
-    body.mygaia #bg_sidebar a {display: block; cursor: pointer;}
-    body.mygaia #bg_sidebar > a:first-of-type {font: bold 17px "Century Gothic", "TeXGyreAdventorBold", Arial, sans-serif; color: #456286; padding-top: 0; cursor: default;}
-
-    body.mygaia #bg_sidebar > div {padding: 0;}
-    body.mygaia #bg_sidebar > div:after {display: table; content: ''; clear: both;}
-    body.mygaia #bg_sidebar > div a {width: 25%; float: left; box-sizing: border-box; padding: 7px 5px; font-size: 11px; text-align: center;}
-    body.mygaia #bg_sidebar > div a:first-of-type {padding-left: 9px;}
-    body.mygaia #bg_sidebar > div a:last-of-type {padding-right: 9px;}
-    body.mygaia #bg_sidebar > div a:hover {background: rgba(0,0,0,0.05);}
-
-    body.mygaia #bg_sidebar section {height: 150px; font-size: 11px; overflow: auto; margin: 15px 0 0; padding-left: 0;}
-    body.mygaia #bg_sidebar section strong {border-bottom: 1px solid rgba(0,0,0,0.05); display: block; padding: 0 5px 5px;}
-    body.mygaia #bg_sidebar section ol {padding: 0 0 10px;}
-    body.mygaia #bg_sidebar section ol li {margin: 2px 0 0 20px;}
-
-    body.mygaia #bg_sidebar iframe {margin: 15px 0 0; padding: 0; min-height: 150px; resize: vertical;}
 
     /* Fix avatar dressup overflow */
     body.mygaia.mystuff #gaia_content #bd, body.mygaia.mystuff #gaia_content #bd #yui-main .yui-g {overflow: visible;}
