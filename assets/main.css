@@ -62,15 +62,15 @@ hr {border: 0; height: 0; border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 
 }
 
 header {
-    background: -webkit-linear-gradient(left top, #AFDDFD, #E9F3FA);
-    background: -moz-linear-gradient(left top, #AFDDFD, #E9F3FA);
-    background: linear-gradient(to top right, #AFDDFD, #E9F3FA);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#E9F3FA', endColorstr='#AFDDFD');
+    background: -webkit-linear-gradient(left top, #B5DDFF, #FFFFFF);
+    background: -moz-linear-gradient(left top, #B5DDFF, #FFFFFF);
+    background: linear-gradient(to top right, #B5DDFF, #FFFFFF);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#B5DDFF', endColorstr='#FFFFFF');
     text-align: right;
 }
 header .wrapper {padding: 0;}
 header .left {height: 8em; width: 10em; background: url(img/logotext.png) no-repeat bottom left; background-size: contain;}
-header h1 {margin: 0; letter-spacing: -2px; font-size: 3em; line-height: 0.6em; color: #05A6C2; padding-top: 0.8em;}
+header h1 {margin: 0; letter-spacing: -2px; font-size: 3em; line-height: 0.6em; color: #0086AD; padding-top: 0.8em;}
 
 @media only screen and (max-width: 599px) {
     header {text-align: center; padding-bottom: 0.8em;}
