@@ -166,7 +166,10 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 		//get url
 		var url = bubbleThis.find(".post-options a.post-quote").attr("href");
 		$.get(url).done(function(data) {
-			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html($(data).find("form#compose_entry"));
+            var pageHtml = $('<div>').html(data);
+            pageHtml.find('script').remove();
+
+			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html(pageHtml.find("form#compose_entry")[0].outerHTML);
             if (typeof(Format) === 'function') Format();
             else chrome.extension.sendMessage({elements: 'format'});
 		});
@@ -185,7 +188,10 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantedit"
 		//get url
 		var url = bubbleThis.find(".post-options a.post-edit").attr("href");
 		$.get(url).done(function(data) {
-			bubbleThis.find(".bg_instantbox.edit").removeClass("loading").html($(data).find("form#compose_entry"));
+            var pageHtml = $('<div>').html(data);
+            pageHtml.find('script').remove();
+
+			bubbleThis.find(".bg_instantbox.edit").removeClass("loading").html(pageHtml.find("form#compose_entry")[0].outerHTML);
 		});
 	}
 	else {
@@ -208,7 +214,10 @@ if (prefs['forum.externalLinks'] === true) {
 
 			$.ajax({type: "GET", url: thisurl, dataType: "html",
 				success: function(data) {
-					$(".bgredirect").html($('<div>' + data + '</div>').html());
+                    var pageHtml = $('<div>').html(data);
+                    pageHtml.find('script').remove();
+                    
+					$(".bgredirect").html($('<div>' + pageHtml + '</div>').html());
 					$(".bgredirect table.warn_block #warn_block #warn_head").append("<a class='bgclose' title='close'></a>");
 					$(".bgredirect a").attr("target", "_blank");
 					$(".bgredirect a.link_display, .bgredirect a.bgclose").on("click", function(){

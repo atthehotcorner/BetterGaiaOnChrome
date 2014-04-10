@@ -24,7 +24,7 @@ css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_
 
 // Float Username
 if (prefs['header.float'] === false)
-css += 'body #gaia_header .hud-account {position: absolute;}';
+css += 'body #gaia_header #user_header_wrap > #user_account, body #gaia_header #bg_userbar {position: absolute;}';
 
 // Show Suggested Content
 if (prefs['mygaia.suggested'] === false)
@@ -44,7 +44,7 @@ css += '}';
 
 // If Background is Gaia Town
 if (prefs['background.image'] == 'http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg') 
-css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block, body[style] {background-position: bottom left !important; background-repeat: no-repeat !important; background-color: #12403d !important;}';
+css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background-position: bottom left !important; background-repeat: no-repeat !important; background-color: #12403d !important;}';
 
 // Header Background
 if (prefs['header.background'] != 'default')
@@ -63,7 +63,7 @@ if (prefs['header.logo'] != 'default')
 css += 'body #gaia_header .header_content .gaiaLogo a, body #gaia_header .header_content .gaiaLogo a:hover {background-image: url(' + prefs['header.logo'] + ');}';
 
 // Navigation and HUD
-css += 'body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: ' + prefs['header.nav'] + ';}';
+css += 'body #gaia_header .hud-account > ul, body #gaia_menu_bar {background-color: ' + prefs['header.nav'] + ';}';
 
 function hexToRgb(hex) {
     var bigint = parseInt(hex, 16);

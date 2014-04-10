@@ -108,13 +108,13 @@ body div#gaia_header {border: none; width: auto; margin: 0 auto;}
 body div#gaia_header .header_content {margin: 0 auto; min-width: 1140px; background-repeat: repeat-y;}
 
 /* Theme color */
-body #gaia_header .hud-account ul, body #gaia_menu_bar {background-color: #5A80A1;}
+body #gaia_header .hud-account > ul, body #gaia_menu_bar {background-color: #5A80A1;}
 
 /* Username */
-body #gaia_header .hud-account {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
-@media (max-width: 1140px) {body #gaia_header .hud-account {right: 0; margin-right: 0; width: 100%;}}
+body #gaia_header #user_header_wrap > #user_account, body #gaia_header #bg_userbar {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
+@media (max-width: 1140px) {body #gaia_header #user_header_wrap > #user_account, body #gaia_header #bg_userbar {right: 0; margin-right: 0; width: 100%;}}
 body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
-body #gaia_header .hud-account ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
+body #gaia_header .hud-account > ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
 
     /* Logo */
     body #gaia_header .hud-account ul#bg_logo {float: left; margin-left: 0; border-radius: 0 0 30px 0/0 0 75px 0; overflow: hidden; display: none;}
@@ -128,6 +128,8 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
 		body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position-y: -4px;}
 
     /* Name */
+    body #gaia_header .header_content #user_account.hud-account.hud-sprite-new {padding: 0; margin: 0; border-radius: 0 0 0 30px/75px; background: none; overflow: visible; position: relative;}
+
     body #gaia_header .hud-account .hud-item-list-new {padding: 0 20px 0 15px;}
     body #gaia_header .hud-account .hud-item-list-new .hud-item-new.avatarName {padding: 0; min-width: 0; font-size: 0; line-height: 0;}
     body #gaia_header .hud-account .hud-item-list-new .hud-item-new.avatarName span {font-weight: normal !important; display: block; overflow: hidden; font-size: 13px; line-height: 25px; height: 25px; text-shadow: 0 1px 0 rgba(0,0,0,0.25); width: calc(100% - 3px);}
@@ -139,7 +141,8 @@ body #gaia_header .hud-account ul {display: block; float: right; overflow: visib
     body #gaia_header .hud-account .hud-item-list-new .hud-item-new:not(.avatarName) span.user-dropdown-arrow-mouseover:after {content: '\e160';}
     
     /* Logout menu */
-    body #gaia_header #user_dropdown_menu {position: fixed; right: 50%; top: 50%; margin: -65px -115px 0 0; z-index: 600; box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 0 15px 5px #FFF; border: 2px solid #FFF; padding: 1em 5em 1em 1em;}
+    body #gaia_header #user_dropdown_menu {right: 0; top: 27px; margin: 0; height: auto; padding: 5px 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.5); border-radius: 3px;}
+    body #gaia_header #user_dropdown_menu ul {padding: 0;}
 
     /* Widgets */
     body #gaia_header .hud-account ul#bg_widgets {z-index: 2;}

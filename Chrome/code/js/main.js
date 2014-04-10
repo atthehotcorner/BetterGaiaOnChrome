@@ -25,9 +25,14 @@ $('body > #gaia_footer > p').append('<span id="bg_credits">\
     <iframe sandbox="allow-scripts allow-forms allow-same-origin" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://www.bettergaia.com/public/update/"></iframe>\
 </span>');
 
+// Wrap username and move logout menu inside
+$('#gaia_header #user_header_wrap').prepend('<div id="bg_userbar" class="hud-account"></div>');
+$('#gaia_header #user_header_wrap #user_account').appendTo('#gaia_header #bg_userbar');
+$('#gaia_header #user_dropdown_menu').appendTo('#gaia_header #bg_userbar #user_account');
+
 // Gaia Logo
 if (prefs['header.float'] === true) {
-    $('#gaia_header .userName').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
+    $('#gaia_header #bg_userbar').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
 
     $(window).scroll(function() {
         $('#bg_logo, #gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
@@ -56,7 +61,8 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
 }
 
 // Widgets
-$('#gaia_header .userName').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
+$('#gaia_header #bg_userbar').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
+
 if (typeof(localPrefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
 $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // Show welcome screen if new
@@ -229,7 +235,7 @@ if (prefs['header.shortcuts'] === true) {
 
     // check if empty
     if (!$.isEmptyObject(prefs['header.shortcuts.list'])) {
-        $('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
+        $('#gaia_header #bg_userbar').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
         $(prefs['header.shortcuts.list']).each(function(index, data){
             $('#bg_shortcuts div').append('<a href="' + data[1] + '">' + data[0] + '</a>');
         });
