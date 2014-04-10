@@ -6,7 +6,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 /* Page Reset */
 *, *:before, *:after {margin: 0; padding: 0; outline: none; border: 0; list-style: none; box-sizing: border-box;}
-html {background: linear-gradient(to right, #9BDCE9, #9BDCE9) #FFF; background-size: 170px 100%; background-repeat: no-repeat; min-height: 100%;}
+html {background: linear-gradient(to right, #E5F3FF, #B5DDFF) #FFF; background-size: 170px 100%; background-repeat: no-repeat; min-height: 100%;}
 body {font: normal 14px/1.5 "Segoe UI", "Segoe", "Lucida Grande", "Tahoma", "Verdana", "Arial", "sans-serif"; color: #222; min-width: 960px; max-width: 1500px; height: 100%;}
 
 /* Glyphicons */
@@ -21,7 +21,7 @@ a:active {color: #004A7F;}
 
 p {margin-bottom: 10px;}
 
-h1, h2, h3, h4, h5, h6 {font-weight: normal; padding: 0 0 15px; color: #4CA5FF;}
+h1, h2, h3, h4, h5, h6 {font-weight: normal; padding: 0 0 15px; color: #0086AD;}
 h1 {font-size: 35px;}
 h2 {font-size: 30px;}
 h3 {font-size: 25px;}
@@ -88,7 +88,7 @@ input[type='checkbox']:disabled:after {background: #A6A6A6;}
 
 /* Header */
 header {width: 170px; position: absolute; top: 0; bottom: 0; left: 0;}
-header h1 {margin: 39px 30px 25px 30px; height: 25px; background: url(../images/logo/text.png) left top no-repeat; background-size: contain; font-size: 10px; display: block; line-height: 24px; color: #FFF; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; padding: 0 0 0 45px;}
+header h1 {margin: 39px 30px 25px 30px; height: 25px; background: url(../images/logo/text.png) left top no-repeat; background-size: contain; font-size: 10px; display: block; line-height: 24px; color: #444; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; padding: 0 0 0 45px;}
 @media (min-height: 440px) and (min-width: 960px) {
     header {position: fixed;}
 }
