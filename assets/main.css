@@ -79,6 +79,9 @@ header h1 {margin: 0; letter-spacing: -2px; font-size: 3em; line-height: 0.6em; 
     header .left {float: none; margin: 0 auto;}
 }
 
+menu {text-align: center;}
+menu a {display: inline-block; padding: 0.5em; margin: 0 0.5em;}
+
 section {border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(255,255,255,0.25);}
 section.colored {
     background: -webkit-linear-gradient(top, #C8E8FF, #F4FAFF);
@@ -115,7 +118,7 @@ section .wrapper > p {line-height: 1.5em;}
 #more {}
 #more h1, #more h2 {text-align: center;}
 #more ul {margin: 0 0 2em; padding: 0; line-height: 1.5em;}
-#more ul li {width: 25%; float: left; list-style-type: square; list-style-position: inside; text-align: left;}
+#more ul li {width: 25%; float: left; list-style-type: square; list-style-position: inside; text-align: left; margin: 0;}
 
 @media only screen and (max-width: 599px) {
     #more ul li {width: 50%;}
