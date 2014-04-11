@@ -61,6 +61,8 @@ hr {border: 0; height: 0; border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 
     clear: both;
 }
 
+li {margin: 0.5em 0;}
+
 header {
     background: -webkit-linear-gradient(left top, #B5DDFF, #FFFFFF);
     background: -moz-linear-gradient(left top, #B5DDFF, #FFFFFF);
