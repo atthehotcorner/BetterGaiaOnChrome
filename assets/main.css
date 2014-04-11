@@ -93,6 +93,9 @@ section .wrapper > p {line-height: 1.5em;}
 @media only screen and (min-width: 600px) and (max-width: 959px) {
     section .wrapper > img.left, section .wrapper > img.right {max-width: 50%;}
 }
+@media only screen and (min-width: 1000px) {
+    section .wrapper.constrain {width: 50%;}
+}
 
 #personalize {
     background: -webkit-linear-gradient(top, #C8E8FF, #F4FAFF);

@@ -1,5 +1,5 @@
 ---
-title: Donate - BetterGaia
+title: Donate
 layout: default
 ---
 
@@ -18,7 +18,7 @@ layout: default
 </section>
 
 <section>
-<div class="wrapper">
+<div class="wrapper constrain">
 ## Why Donate?
 * BetterGaia is free and always will be, absolutely without any ads or anything else that can make money.
 * We aren't a huge corporation, but acually only one guy, nearing his 20s, in college.
@@ -29,7 +29,7 @@ layout: default
 </section>
 
 <section>
-<div class="wrapper">
+<div class="wrapper constrain">
 ## Can't Donate?
 <p>You can still help. Spead the word about BetterGaia, and I'll be grateful.</p>
 </div>
