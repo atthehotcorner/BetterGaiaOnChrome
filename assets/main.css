@@ -80,6 +80,13 @@ header h1 {margin: 0; letter-spacing: -2px; font-size: 3em; line-height: 0.6em; 
 }
 
 section {border-top: 1px solid rgba(0,0,0,0.1); border-bottom: 1px solid rgba(255,255,255,0.25);}
+section.colored {
+    background: -webkit-linear-gradient(top, #C8E8FF, #F4FAFF);
+    background: -moz-linear-gradient(top, #C8E8FF, #F4FAFF);
+    background: linear-gradient(to bottom, #C8E8FF, #F4FAFF);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#C8E8FF', endColorstr='#F4FAFF');
+    border-bottom: 0;
+}
 section .wrapper > h1:first-of-type, section .wrapper > h3:first-of-type {margin-top: 0.2em;}
 section .wrapper > img.left, section .wrapper > img.right {margin: 1.25em 0;}
 section .wrapper > img.left {margin-right: 2.5em;}

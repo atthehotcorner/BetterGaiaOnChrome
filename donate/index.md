@@ -9,7 +9,7 @@ layout: default
 </div>
 </section>
 
-<section>
+<section class="colored">
 <div class="wrapper align-center">
 <p>Since 2008, we've been changing the way you experience Gaia. Now we need your help to keep BetterGaia alive well into the future.</p>
 <p>You can donate using PayPal, which is fast, free and secure.</p>
@@ -35,7 +35,7 @@ layout: default
 </div>
 </section>
 
-<section>
+<section class="colored">
 <div class="wrapper align-center">
 # "Supporters, we thank you."
 <p>—The BetterGaia team.</p>
