@@ -31,8 +31,8 @@ body .chat .post {background: #FFF; border-color: #ADDAE2; box-shadow: 0 1px 3px
 .chat .post .post-message.deleted {padding-bottom: 10px; font-style: normal;}
 .chat .post .post-message.deleted:after {content: ' by user';}
 .chat .post .post-message.deleted ~ .deleted {display: none;}
-.chat .post .post-img.expanded {display: none;}
-.chat .post .post-img.expanded + a[data-type="image"]:after {content: ' Right-click to view, use caution';}
+.chat .post .post-img {display: none;}
+.chat .post .post-img + a[data-type="image"]:after {content: ' Right-click to view, use caution';}
 
 .aside {height: 225px; padding: 10px; top: 25px; left: 0; right: 0; opacity: 0; pointer-events: none;
   -webkit-transform: scale(0.75);
