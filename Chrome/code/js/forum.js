@@ -217,7 +217,7 @@ if (prefs['forum.externalLinks'] === true) {
                     var pageHtml = $('<div>').html(data);
                     pageHtml.find('script').remove();
                     
-					$(".bgredirect").html($('<div>' + pageHtml + '</div>').html());
+					$(".bgredirect").html($('<div>' + pageHtml.html() + '</div>').html());
 					$(".bgredirect table.warn_block #warn_block #warn_head").append("<a class='bgclose' title='close'></a>");
 					$(".bgredirect a").attr("target", "_blank");
 					$(".bgredirect a.link_display, .bgredirect a.bgclose").on("click", function(){

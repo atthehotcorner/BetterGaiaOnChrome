@@ -41,6 +41,6 @@
     "name": "BetterGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*", "*://*.bettergaia.com/*" ],
-    "version": "2014.20",
+    "version": "2014.21",
     "web_accessible_resources": [ "code/css/main.css", "code/css/forum.css", "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
 }
