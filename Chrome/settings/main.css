@@ -94,7 +94,7 @@ header h1 {margin: 39px 30px 25px 30px; height: 25px; background: url(../images/
 }
 
 header.hidden > * {display: none;}
-header.hidden:before {content: ''; height: 100%; background: url(../images/logo/text.png) center 45% no-repeat; display: block;}
+header.hidden:before {content: ''; height: 100%; background: url(../images/logo/text.png) center 45% no-repeat; background-size: 125px; display: block;}
 
 menu {margin: 0 0 100px; overflow: hidden;}
 menu a {display: block; -webkit-transition: all 0.3s ease;}

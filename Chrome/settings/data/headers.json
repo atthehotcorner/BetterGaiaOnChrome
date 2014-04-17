@@ -113,6 +113,7 @@
     "Rising Concerto": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/c91fb0d9cfc5.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/39889ef5c42d.jpg"],
     "April Fools": ["http://s.cdn.gaiaonline.com/images/event/aprilfool2014/april2k14_takeover_header.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_barton_tile_sprite.jpg"],
     "Vivid Harmony CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/d18e5e4355e7.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/2745826a0148.jpg"],
+    "Easter": ["http://s.cdn.gaiaonline.com/images/event/easter2014/header/easter2k14_header.jpg", "http://s.cdn.gaiaonline.com/images/event/easter2014/header/easter2k14_header_tile.jpg"]
   },
 	"Towns": {
 		"Barton & Current Events": ["default", "default"],

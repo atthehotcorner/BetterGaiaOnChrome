@@ -48,11 +48,11 @@ css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.w
 
 // Header Background
 if (prefs['header.background'] != 'default')
-css += 'body #gaia_header .header_content {background-image: url(' + prefs['header.background'] + ');}';
+css += '.time-day div.town-barton .header_content, .time-dawn div.town-barton .header_content, .time-dusk div.town-barton .header_content {background-image: url(' + prefs['header.background'] + ');}';
 
 // Header Background Base
 if (prefs['header.background.base'] != 'default')
-css += 'body #gaia_header {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
+css += '.time-day div.town-barton, .time-dawn div.town-barton, .time-dusk div.town-barton {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
 
 // Header Background Stretch
 if (prefs['header.background.stretch'] === false)
