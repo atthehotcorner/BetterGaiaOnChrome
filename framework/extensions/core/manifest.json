@@ -8,5 +8,5 @@
     "script": false,
     "css": true,
     "urlMatch": ["*"],
-    "urlExclude": ["/forum/"]
+    "urlExclude": ["/profiles/"]
 }

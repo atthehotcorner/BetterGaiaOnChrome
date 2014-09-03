@@ -1,0 +1,12 @@
+{
+    "id": "coreForums",
+    "title": "BetterGaia Forums Core",
+    "version": 1,
+    "beta": true,
+    "details": "The foundation of BetterGaia's forums.",
+    "author": "BetterGaia Team",
+    "script": false,
+    "css": true,
+    "urlMatch": ["/forum/"],
+    "urlExclude": ["/ads/"]
+}
