@@ -2,7 +2,7 @@ html {overflow-x: hidden;}
 #header {display: block !important;}
 .header-bar .header-avatar {display: none;}
 .header-bar .header-channel {font-size: 0; margin-left: 10px; text-align: left;}
-.header-bar .header-channel {content: 'BetterGaia Chat'; font-size: 20px;}
+.header-bar .header-channel:after {content: 'BetterGaia Chat'; font-size: 20px;}
 
 /*
 .header-bar {height: 25px; background-color: rgba(26,167,202,0.7) !important; box-shadow: 0 1px 1px rgba(0,0,0,.15);}

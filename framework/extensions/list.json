@@ -1,0 +1,16 @@
+{
+    "core": {
+        "title": "BetterGaia Core",
+        "description": "The foundation of all that is BetterGaia.",
+        "author": "BetterGaia Team",
+        "version": 1,
+        "beta": true        
+    },
+    "coreForums": {
+        "title": "BetterGaia Forums Core",
+        "description": "The foundation of all that is BetterGaia.",
+        "author": "BetterGaia Team",
+        "version": 1,
+        "beta": true
+    }
+}
