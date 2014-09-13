@@ -1,18 +1,32 @@
 {
-    "core": {
+    "enabled": true,
+    "extensions": [{
         "title": "BetterGaia Core",
         "description": "The foundation of all that is BetterGaia.",
         "author": "BetterGaia Team",
         "version": 1,
         "beta": true,
         "id": "core"
-    },
-    "coreForums": {
+    }, {
         "title": "BetterGaia Forums Core",
         "description": "The foundation of all that is BetterGaia.",
         "author": "BetterGaia Team",
         "version": 1,
         "beta": true,
         "id": "coreForums"
-    }
+    }, {
+        "title": "Test",
+        "description": "The foundation of all that is BetterGaia.",
+        "author": "BetterGaia Team",
+        "version": 1,
+        "beta": false,
+        "id": "test1"
+    }, {
+        "title": "Test 2",
+        "description": "The foundation of all that is BetterGaia.",
+        "author": "BetterGaia Team",
+        "version": 1,
+        "beta": false,
+        "id": "test2"
+    }]
 }
