@@ -4,13 +4,15 @@
         "description": "The foundation of all that is BetterGaia.",
         "author": "BetterGaia Team",
         "version": 1,
-        "beta": true        
+        "beta": true,
+        "id": "core"
     },
     "coreForums": {
         "title": "BetterGaia Forums Core",
         "description": "The foundation of all that is BetterGaia.",
         "author": "BetterGaia Team",
         "version": 1,
-        "beta": true
+        "beta": true,
+        "id": "coreForums"
     }
 }
