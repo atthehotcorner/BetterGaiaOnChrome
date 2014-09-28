@@ -1,5 +1,5 @@
 /*
-Main JS 
+Main JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
@@ -44,9 +44,9 @@ if (document.location.pathname.indexOf('/mygaia/') > -1) {
     $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', function(data){
         $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').before('<div id="bg_sidebar">' + data + '</div>');
         $('#bg_sidebar .bgversion').text('Ver ' + localPrefs['version']);
-	
+
         $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
-        
+
         $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
             $('#bg_sidebar').addClass('go');
 
@@ -75,7 +75,7 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // BetterGaia Settings
     if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
         $(this).parent().addClass('bgloading');
-    
+
         $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
         .done(function(data) {
             $('#bg_widgets .bgsettings div').html(data);
@@ -103,7 +103,7 @@ if (prefs['header.widgets'] === true) {
         <li class="bgmessages"><a></a><div></div></li>\
         <li class="bgthreads"><a></a><div></div></li>\
     <li class="bgwatchlist"><a></a><div></div></li>');
-    
+
     $('#bg_widgets > li a').on('click', function() {
         if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
             // Friends
@@ -118,7 +118,7 @@ if (prefs['header.widgets'] === true) {
                     cache: false
                 })
                 .done(function(data) {
-                    if (data['message'] == 'success') 
+                    if (data['message'] == 'success')
                         $.each(data['friendList'], function(i, value) {
                             var online = (data['friendList'][i]['fid'] === '')? 'offline' : 'online';
                             $('#bg_widgets .bgfriends div').append("<a href='/profiles/" + data['friendList'][i]['uid'] + "/' target='_black' class='" + online + "'>\
@@ -135,11 +135,11 @@ if (prefs['header.widgets'] === true) {
                     $('#bg_widgets .bgfriends').removeClass('bgloading').addClass('bgloaded');
                 });
             }
-            
+
             // PMs
             else if ($(this).parent().hasClass('bgmessages')) {
                 $(this).parent().addClass('bgloading');
-                
+
                 $.get('/profile/privmsg.php', 'html')
                 .done(function(data) {
                     var mail = $('#gaia_content #pm_content table td > img[title="Unread Message"]', data).parent().parent();
@@ -158,11 +158,11 @@ if (prefs['header.widgets'] === true) {
                     $('#bg_widgets .bgmessages').removeClass('bgloading').addClass('bgloaded');
                 });
             }
-            
+
             // Sub Threads
             else if ($(this).parent().hasClass('bgthreads')) {
                 $(this).parent().addClass('bgloading');
-                
+
                 $.get('/forum/subscription/', 'html')
                 .done(function(data) {
                     var posts = $('#gaia_content #upe-unsubscribe table.forum-list tbody td.topic-new div > a.goto-new-posts', data);
@@ -182,11 +182,11 @@ if (prefs['header.widgets'] === true) {
                     $('#bg_widgets .bgthreads').removeClass('bgloading').addClass('bgloaded');
                 });
             }
-            
+
             // Watchlist
             else if ($(this).parent().hasClass('bgwatchlist')) {
                 $(this).parent().addClass('bgloading');
-                
+
                 $.get('/marketplace/watchlist/', 'html')
                 .done(function(data) {
                     if ($("#watchlist_wrapper #watchlist .watchlist_rows > tbody > tr > td span.nolistings", data).length > 0) $('#bg_widgets .bgwatchlist div').append('<p>There are no items in your watchlist.</p>');
@@ -204,10 +204,10 @@ if (prefs['header.widgets'] === true) {
                 })
                 .always(function(data) {
                     $('#bg_widgets .bgwatchlist').removeClass('bgloading').addClass('bgloaded');
-                });            
+                });
             }
         }
-        
+
         // Open
         if (!$(this).parent().hasClass('bgsettings')) {
             $(this).parent().siblings('li').removeClass('bgopen');
@@ -215,7 +215,7 @@ if (prefs['header.widgets'] === true) {
         }
     });
 }
-    
+
 // Editor Toolbar
 $(window).load(function() {
     // --Add emoji button
@@ -224,7 +224,7 @@ $(window).load(function() {
     // --Add spoiler button
     $("body #editor #format_controls .format-elements").append("<li><a class='bg_spoiler' onclick='function wrapText(elementID, openTag, closeTag) {var textarea = document.getElementById(elementID); var len = textarea.value.length; var start = textarea.selectionStart; var end = textarea.selectionEnd; var selectedText = textarea.value.substring(start, end); var replacement = openTag + selectedText + closeTag; textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end, len);} wrapText(\"message\", \"[spoiler]\", \"[/spoiler]\");' title='Add Spoiler - [spoiler][/spoiler]'>Add Spoiler Tag</a></li>");
 });
-    
+
 // Shortcuts
 if (prefs['header.shortcuts'] === true) {
     // check if local prefs exist
@@ -243,7 +243,7 @@ if (prefs['header.shortcuts'] === true) {
 }
 
 // Draw All
-if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/"].indexOf(document.location.pathname) > -1) {
+if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/", "/payments/", "/gofusion/"].indexOf(document.location.pathname) > -1) {
 	// Add Sign
 	if ($("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").length > 0) {
 		$("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").after("<a class='bg_drawall' title='BetterGaia&rsquo;s Draw All Daily Chances'>draw <em>all</em></a>");
@@ -256,7 +256,9 @@ if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/",
 			<ul> \
 				<li><div><span candy="1"><a>Collect</a></span></div><h5>Home</h5></li> \
 				<li><div><span candy="2"><a>Collect</a></span></div><h5>MyGaia</h5></li> \
+                <li><div><span candy="1279"><a>Collect</a></span></div><h5>Gaia Cash</h5></li> \
 				<li><div><span candy="8"><a>Collect</a></span></div><h5>Shops</h5></li> \
+                <li><div><span candy="1271"><a>Collect</a></span></div><h5>GoFusion</h5></li> \
 				<li><div><span candy="3"><a>Collect</a></span></div><h5>Forums</h5></li> \
 				<li><div><span candy="5"><a>Collect</a></span></div><h5>World</h5></li> \
 				<li><div><span candy="4"><a>Collect</a></span></div><h5>Games</h5></li> \
@@ -268,7 +270,7 @@ if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/",
 	// Main screen
 	$("#gaia_header .header_content #dailyReward a.bg_drawall").on("click", function(){
 		$("body > #bg_drawall").addClass("bgopen");
-	});	
+	});
 	$("#bg_drawall #bg_candyclose").on("click", function(){
 		$("body > #bg_drawall").removeClass("bgopen");
 	});
@@ -291,7 +293,7 @@ if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/",
 			else if (data['status'] == "fail") {
 				thisDiv.parent().addClass("bgc_error");
 				thisDiv.html("<info>" + data['error']['message'] + "</info>");
-			}		
+			}
 			else {
 				thisDiv.parent().addClass("bgc_error");
 				thisDiv.html("<info>There was a problem getting your Daily Chance.</info>");
@@ -303,7 +305,7 @@ if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/",
 // Private Messages
 if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privmsg.php') > -1) {
 	// Private message selectors
-	$('body.mail #pm_content table tr[height="20"] td[align]').after("<div class='bg_selecttypes'><span><a class='all'>All</a><a class='read'>Read</a><a  class='unread'>Unread</a><a class='replied'>Replied</a><a class='none'>None</a></span></div>");	
+	$('body.mail #pm_content table tr[height="20"] td[align]').after("<div class='bg_selecttypes'><span><a class='all'>All</a><a class='read'>Read</a><a  class='unread'>Unread</a><a class='replied'>Replied</a><a class='none'>None</a></span></div>");
 	$('body.mail #pm_content table tr[bgcolor][height="42"] > td:nth-of-type(2) img').each(function(index, element) {
 		$(this).closest('tr[bgcolor][height="42"]').attr('status', $(this).attr('title'));
   });
