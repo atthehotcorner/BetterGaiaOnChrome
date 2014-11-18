@@ -5,3 +5,5 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 body #gaia_header .wrap {width: 1140px; position: fixed;}
+body #gaia_header #user_account a.bgsettings {float: left; display: block; color: #fff; padding: 5px; background: blue;}
+#user_header_wrap > .hud-stats {}
