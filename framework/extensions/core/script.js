@@ -5,4 +5,6 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 
-$('#gaia_header #user_account').wrap('<div class="wrap"></div>');
+$(document).ready(function() {
+    $('#gaia_header #user_account').wrap('<div class="wrap"></div>');
+});
