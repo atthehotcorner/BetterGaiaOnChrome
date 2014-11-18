@@ -3,3 +3,5 @@ Main CSS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
+
+body #gaia_header #user_account .wrap {width: 1140px; position: fixed;}

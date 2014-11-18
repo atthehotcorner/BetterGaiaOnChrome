@@ -1,11 +1,11 @@
 {
     "id": "core",
     "title": "BetterGaia Core",
-    "version": 1,
+    "version": 0.1,
     "beta": true,
     "details": "The foundation of all that is BetterGaia.",
     "author": "BetterGaia Team",
-    "script": false,
+    "script": true,
     "css": true,
     "urlMatch": ["*"],
     "urlExclude": ["/profiles/"]
