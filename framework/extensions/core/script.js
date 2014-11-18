@@ -6,5 +6,6 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 
 $(document).ready(function() {
-    $('#gaia_header #user_account').wrap('<div class="wrap"></div>');
+    $('#user_account').wrap('<div class="wrap"></div>');
+    $('#user_header_wrap > .hud-stats').css('margin-right', ($('#user_account').width() + 10) + 'px')
 });
