@@ -1,0 +1,12 @@
+{
+    "id": "drawAll",
+    "title": "Draw All",
+    "version": 0.1,
+    "beta": true,
+    "details": "Collect your daily chance in a snap.",
+    "author": "BetterGaia Team",
+    "script": false,
+    "css": true,
+    "urlMatch": ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/", "/payments/"],
+    "urlExclude": ["/ads/"]
+}
