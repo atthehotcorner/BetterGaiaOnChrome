@@ -20,40 +20,51 @@ $(document).ready(function() {
 				<li><div><span candy="12"><a>Collect</a></span></div><h5>Mobile App</h5></li> \
 			</ul> \
 		</div><div class="bettergaia mask"></div>');
-	}
 
-	// Main screen
-	$("#gaia_header .header_content #dailyReward a.bg_drawall").on("click", function(){
-		$("body > #bg_drawall").addClass("bgopen");
-	});
-	$("#bg_drawall #bg_candyclose").on("click", function(){
-		$("body > #bg_drawall").removeClass("bgopen");
-	});
+		// Main screen
+		$("#gaia_header .header_content #dailyReward a.bg_drawall").on("click", function(){
+			$("body > #bg_drawall").addClass("bgopen");
+		});
+		$("#bg_drawall #bg_candyclose").on("click", function(){
+			$("body > #bg_drawall").removeClass("bgopen");
+		});
 
-	$("#bg_drawall > ul > li:not([class]) > div > span").on("click", function(){
-		$(this).parent().parent().addClass("bgc_loading");
-		var thisDiv = $(this).parent();
-console.log('post');
-		$.post("/dailycandy/pretty/", {action: "issue", list_id: $(this).attr("candy"), _view: "json"}, function(data) {
-			console.log('done');
-			thisDiv.parent().removeClass("bgc_loading");
+		$("#bg_drawall > ul > li:not([class]) > div > span").on("click", function(){
+			$(this).parent().parent().addClass("bgc_loading");
+			var thisDiv = $(this).parent();
 
-			if (data['status'] == "ok") {
-				thisDiv.parent().addClass("bgc_candy");
-				$(thisDiv).html("<img src='http://s.cdn.gaiaonline.com/images/" + data['data']['reward']['thumb'] + "' /> \
-					<h6>" + data['data']['reward']['name'] + "\
-					<info><message>" + data['data']['reward']['descrip'] + "</message></info>\
-					</h6>");
-				$("#bg_drawall .bgda_header p.bonus").text(data['data']['tier_desc']);
-			}
-			else if (data['status'] == "fail") {
-				thisDiv.parent().addClass("bgc_error");
-				thisDiv.html("<info>" + data['error']['message'] + "</info>");
-			}
-			else {
+			$.ajax({
+				type: 'POST',
+				url: '/dailycandy/pretty/',
+				dataType: 'json',
+				data: {
+					action: 'issue',
+					list_id: $(this).attr('candy'),
+					_view: 'json'
+				}
+			}).done(function(data) {
+				if (data.status == "ok") {
+					thisDiv.parent().addClass("bgc_candy");
+					$(thisDiv).html("<img src='http://s.cdn.gaiaonline.com/images/" + data['data']['reward']['thumb'] + "' /> \
+						<h6>" + data['data']['reward']['name'] + "\
+						<info><message>" + data['data']['reward']['descrip'] + "</message></info>\
+						</h6>");
+					$("#bg_drawall .bgda_header p.bonus").text(data['data']['tier_desc']);
+				}
+				else if (data.status == "fail") {
+					thisDiv.parent().addClass("bgc_error");
+					thisDiv.html("<info>" + data.error.message + "</info>");
+				}
+				else {
+					thisDiv.parent().addClass("bgc_error");
+					thisDiv.html("<info>There was a problem getting your Daily Chance.</info>");
+				}
+			}).fail(function() {
 				thisDiv.parent().addClass("bgc_error");
 				thisDiv.html("<info>There was a problem getting your Daily Chance.</info>");
-			}
-		}, "json");
-	});
+			}).always(function() {
+				thisDiv.parent().removeClass("bgc_loading");
+			});
+		});
+	}
 });
