@@ -37,7 +37,7 @@ $(document).ready(function() {
 				type: 'POST',
 				url: '/dailycandy/pretty/',
 				dataType: 'json',
-				crossDomain: false,
+				crossDomain: true,
 				data: {
 					action: 'issue',
 					list_id: $(this).attr('candy'),
