@@ -33,8 +33,9 @@ $(document).ready(function() {
 	$("#bg_drawall > ul > li:not([class]) > div > span").on("click", function(){
 		$(this).parent().parent().addClass("bgc_loading");
 		var thisDiv = $(this).parent();
-
+console.log('post');
 		$.post("/dailycandy/pretty/", {action: "issue", list_id: $(this).attr("candy"), _view: "json"}, function(data) {
+			console.log('done');
 			thisDiv.parent().removeClass("bgc_loading");
 
 			if (data['status'] == "ok") {
