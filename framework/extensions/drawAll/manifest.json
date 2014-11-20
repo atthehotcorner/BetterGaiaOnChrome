@@ -5,7 +5,7 @@
     "beta": true,
     "details": "Collect your daily chance in a snap.",
     "author": "BetterGaia Team",
-    "script": false,
+    "script": true,
     "css": true,
     "urlMatch": ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/", "/payments/"],
     "urlExclude": ["/ads/"]
