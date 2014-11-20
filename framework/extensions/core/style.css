@@ -4,7 +4,9 @@ Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
-body #gaia_header .wrap {width: 1140px; position: fixed; z-index: 9999;}
-body #gaia_header #user_account a.bgsettings {float: left; display: block; color: #fff; padding: 5px; background: blue;}
+body #gaia_header .wrap {width: 1140px; position: fixed;}
+body #gaia_header #user_account {position: relative; z-index: 9999; border-radius: 0 0 7px 20px/0 0 7px 40px; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); background-position: 0 0;}
+body #gaia_header #user_account a.bgsettings {float: left; display: block; color: #fff; padding: 5px 5px 0 7px; height: 29px; background: linear-gradient(to bottom, rgba(0,183,255,1), rgba(255,255,255,1)); font-weight: bold; font-size: 14px; letter-spacing: -1px; cursor: pointer;}
 #user_header_wrap > .hud-stats {}
 #user_account > ul {float: right;}
+#gaia_header .hud-account .user-dropdown-arrow {margin-right: -10px;}
