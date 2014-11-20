@@ -1,4 +1,4 @@
-// Draw All
+$(document).ready(function() {
 	// Add Sign
 	if ($("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").length > 0) {
 		$("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").after("<a class='bg_drawall' title='BetterGaia&rsquo;s Draw All Daily Chances'>draw <em>all</em></a>");
@@ -55,3 +55,4 @@
 			}
 		}, "json");
 	});
+}
