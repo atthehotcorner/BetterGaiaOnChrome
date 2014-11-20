@@ -22,7 +22,7 @@ $(document).ready(function() {
 		</div><div class="bettergaia mask"></div>');
 	}
 
-	// Main screen
+	/* Main screen
 	$("#gaia_header .header_content #dailyReward a.bg_drawall").on("click", function(){
 		$("body > #bg_drawall").addClass("bgopen");
 	});
@@ -54,5 +54,5 @@ $(document).ready(function() {
 				thisDiv.html("<info>There was a problem getting your Daily Chance.</info>");
 			}
 		}, "json");
-	});
+	});*/
 }
