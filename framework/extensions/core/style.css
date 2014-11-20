@@ -4,6 +4,7 @@ Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
-body #gaia_header .wrap {width: 1140px; position: fixed;}
+body #gaia_header .wrap {width: 1140px; position: fixed; z-index: 9999;}
 body #gaia_header #user_account a.bgsettings {float: left; display: block; color: #fff; padding: 5px; background: blue;}
 #user_header_wrap > .hud-stats {}
+#user_account > ul {float: right;}
