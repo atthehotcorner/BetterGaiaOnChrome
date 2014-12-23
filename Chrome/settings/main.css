@@ -217,8 +217,8 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 
 /* Backgrounds */
 #background .left a {background-size: 50px 50px;}
-#background .left a[data-url="default"] {background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/legacy.jpg);}
-	
+#background .left a[data-url="default"] {background-image: url(http://gaiaonline.com/images/global_bg/bg2.jpg);}
+
 /* Headers */
 #header aside > div:after {content: ''; display: table; clear: both;}
 #header aside a[data-name]:hover:before {position: absolute; content: attr(data-name); white-space: nowrap; -webkit-transform: translate(-50%, -5px); left: 50%; bottom: 100%; border: 2px solid #A6A6A6; background: #FFF; padding: 5px 10px; color: #222;}
@@ -226,7 +226,7 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 #header aside a:not([data-url="default"]):not(.customurl) {opacity: 0; visibility: hidden; transition: opacity 0.5s ease 0.25s;}
 #header aside a:not([data-url="default"]):not(.customurl)[style] {opacity:  1; visibility: visible;}
 #header aside a[data-url="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_barton_sprite.jpg);}
-	
+
 /* Logo */
 #logo a {background-size: 75px;}
 #logo a[data-url="default"] {background-image: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/br_gaia_logo_header.png);}
@@ -235,7 +235,7 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 #logo, #navigation, #thread_header {}
 #navigation {}
 #thread_header {}
-	
+
 /* Post Formating */
 #postformating.useRecent p span.useRecent {font-size: 0;}
 #postformating.useRecent p span.useRecent:after {font-size: 14px; content: 'most recently used';}
@@ -317,7 +317,7 @@ page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 #usertags usertag > * {display: table-cell; vertical-align: middle;}
 #usertags usertag div.username {width: 25%; padding-right: 5px; font-weight: bold}
 #usertags usertag div.tag {width: 25%; padding-right: 5px;}
-#usertags usertag div.url {width: 35%; padding-right: 5px;}	
+#usertags usertag div.url {width: 35%; padding-right: 5px;}
 #usertags usertag div.url:empty:after {content: '(No URL)'; color: #BBB; font-style: italic;}
 #usertags usertag div.createdon {width: 15%; padding-right: 5px;}
 #usertags usertag a.delete {font-weight: normal;}

@@ -17,7 +17,7 @@
     }, {
         "matches": [ "*://*.gaiaonline.com/*" ],
         "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
-        "js": [ "code/js/jquery.min.js", "code/js/main.js" ]
+        "js": [ "code/js/jquery.min.js", "code/js/handlebars.js", "code/js/main.js" ]
     }, {
         "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
         "js": [ "code/js/forumcss.js" ],
@@ -40,6 +40,6 @@
     "name": "BetterGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*", "*://*.bettergaia.com/*" ],
-    "version": "2014.23",
-    "web_accessible_resources": [ "code/css/main.css", "code/css/forum.css", "code/html/changelog.html", "code/html/settings-widget.html", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
+    "version": "2015.1",
+    "web_accessible_resources": [ "code/css/pure-min.css", "code/css/main.css", "code/css/forum.css", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
 }

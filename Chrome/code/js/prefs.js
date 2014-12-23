@@ -1,5 +1,5 @@
 /*
-Preferences JS 
+Preferences JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
@@ -13,7 +13,7 @@ var prefs = {
 
     // Background
     'background.image': 'default',
-    'background.color': '#666666',
+    'background.color': '#12403d',
     'background.repeat': true,
     'background.position': 'top center',
     'background.float': false,
@@ -38,13 +38,13 @@ var prefs = {
         ['Top of Page', '#'],
         ['Bottom of Page', '#bg_bottomofpage']
     ],
-    
+
     'header.background': 'default',
     'header.background.base': 'default',
     'header.background.stretch': true,
-    
+
     'header.logo': 'default',
-    
+
     'header.nav': '#5A80A1',
     'header.nav.hover': '#396C7C',
     'header.nav.current': '#93F2FF',
@@ -55,7 +55,7 @@ var prefs = {
 
     // PMs
     'pms': true,
-    
+
     // Forum
     'forum.externalLinks': true,
     'forum.previewThreads': true,
@@ -87,7 +87,7 @@ var prefs = {
     'format.quote.spoilerWrap': false,
     'format.quote.endOfFormat': false,
     'format.quote.rangeNumber': '2',
-    
+
     // Usertags
     'usertags': true,
     'usertags.list': {

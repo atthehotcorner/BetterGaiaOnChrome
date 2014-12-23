@@ -1,11 +1,12 @@
 /*
-Forums CSS 
+Forums CSS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 
 /* Background */
-body.forum div#content, body.app-page_forum div#content {background: none; width: 1140px; margin: 0 auto;}
+body.forums {background: #12403d url(http://gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left;}
+body.forums div#content, body.app-page_forum div#content {background: none; width: 1140px; margin: 0 auto;}
 
 /* Main Page */
 body #gaia_content.grid_billie_holiday #bd {width: 750px; padding: 10px 15px 0 10px; border-radius: 8px;}
@@ -16,7 +17,7 @@ body.forums > #content {width: auto;}
 body.forums #content #content-padding {width: 1140px; margin: 0 auto; padding: 15px 0; background: none;}
 
     /* Fixes Ads */
-	body.forums #content #content-padding > #thread_mrec_ad {position: static;}
+	body.forums #content #content-padding > #thread_mrec_ad {position: static; display: none;}
 	body.forums #content #content-padding > #thread_leaderboard_ad {background: none; padding: 0; margin: 0;}
 
 	/* Fixes Pages, Background */
@@ -25,7 +26,7 @@ body.forums #content #content-padding {width: 1140px; margin: 0 auto; padding: 1
 		body.forums > #content > #gaia_content.grid_john_lennon #bd {width: auto;}
 		body.forums > #content > #gaia_content.grid_john_lennon #bd .yui-b {padding: 0; width: auto; margin: 0 15px;}
 		body.forums > #content > #gaia_content.grid_john_lennon #forum-header {padding: 0;}
-	
+
 	/* Reset Subscriptions Page */
 	body.community.forums #content #gaia_content.grid_dave_davies_skyscraper {width: 1140px;}
 
@@ -60,7 +61,7 @@ body.forums #gaia_content.grid_billie_holiday > #bd .balloonCallout {display: no
 body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight {padding: 15px 0;}
 body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main {float: none; margin: 0 auto; width: 1140px;}
 body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {margin: 0; padding: 0; position: relative;}
-	
+
 	/* Forum Header */
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header {width: auto; padding: 0 0 0 38px; margin: 0; height: auto; background: none;}
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header * {box-sizing: border-box;}
@@ -101,7 +102,7 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 	body.forums #gaia_content #forum_ft_content {margin: 0 0 35px 38px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; box-shadow: 0 1px 3px rgba(0,0,0,0.4); padding: 0 10px 2px; line-height: 28px;}
     body.forums #gaia_content #forum_ft_content:after {content: ''; display: table; clear: both;}
 	body.forums #gaia_content #forum_ft_content * {box-sizing: border-box;}
-	
+
 	body.forums #gaia_content #forum_ft_content .forum-list-header {margin: 0; display: inline;}
 	body.forums #gaia_content #forum_ft_content .forum-list-header .clear {display: none;}
 	body.forums #gaia_content #forum_ft_content .forum-list-header #pulse_show_wrapper {display: inline;}
@@ -142,7 +143,7 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox {padding: 0;}
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox > td {padding: 0;}
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox > td > div {display: block; clear: both; padding: 10px; position: relative; background: #316589; border: 3px solid rgba(0,0,0,0.2); border-width: 3px 0; overflow: hidden;}
-	
+
     body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div {background: #316589; font-size: 0; height: 125px;}
     body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
 
@@ -153,18 +154,18 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 
 /* Styles Threads */
 body.forums #content #content-padding {}
-	
+
 	/* Breadcrumb */
 	body.forums #content #content-padding > .linklist {height: 30px; line-height: 30px; display: block; padding: 0; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25)) #BF7F40; border-radius: 4px 4px 0 0; color: transparent; box-shadow: 0 0 3px rgba(0,0,0,0.4); position: relative; z-index: 1; margin: 0 0 0 80px;}
 	body.forums #content #content-padding > .linklist * {box-sizing: border-box;}
 	body.forums #content #content-padding > .linklist .bg_plate {display: block; background: none; padding: 0; border-radius: 0;}
-	
+
 	body.forums #content #content-padding > .linklist a {display: block; float: left; position: relative; padding: 0 10px; transition: color 0.7s; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1)); margin: 0 15px 0 0; color: rgba(255,255,255,0.5); text-decoration: none;}
 	body.forums #content #content-padding > .linklist a:after {border-color: transparent transparent transparent rgba(0,0,0,0.1); border-style: solid; border-width: 15px 0 15px 15px; content: ''; height: 0; position: absolute; right: -15px; top: 0; width: 0;}
     body.forums #content #content-padding > .linklist a:hover {color: #FFF; background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.25) 90%); transition-duration: 0;}
     body.forums #content #content-padding > .linklist a:hover:after {border-color: transparent transparent transparent rgba(0,0,0,0.25);}
 	body.forums #content #content-padding > .linklist a:active {color: rgba(255,255,255,0.75);}
-		
+
 	/* Messagebox */
 	body.forums #content #content-padding > #messagebox {margin: 0 auto 15px !important; width: auto !important; float: none !important;}
 
@@ -181,7 +182,7 @@ body.forums #content #content-padding {}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like {position: absolute; left: -80px; top: -30px; margin: 0;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like #like_count {box-shadow: 0 1px 3px rgba(0,0,0,0.4); margin-bottom: 4px;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like .cta_like_dislike {width: 35px;}
-        body.forums #content #content-padding > #topic_header_container #thread_header #thread_like.metered {opacity: 0.5; pointer-events: none; display: block;}	
+        body.forums #content #content-padding > #topic_header_container #thread_header #thread_like.metered {opacity: 0.5; pointer-events: none; display: block;}
 
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_title {margin: 0; font-family: "Century Gothic", "TeXGyreAdventorRegular", Arial, Helvetica, sans-serif; padding: 0; background: none;}
 
@@ -258,7 +259,7 @@ body.forums #content #post_container .post .postcontent {}
     /* Theme */
     body.forums #content #post_container .post .postcontent .user_info_wrapper, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options, body.forums #content #post_container .post .postcontent .post-signature {background-color: #CFE6F9;}
 
-	/* Styles Post Dice, Number, ect. */ 
+	/* Styles Post Dice, Number, ect. */
 	body.forums #content #post_container .post .postcontent h2.rollDice, body.forums #content #post_container .post .postcontent h2.genRandomNumber {position: static; border-radius: 3px 3px 0 0; font-size: 11px; margin: 0 0 0 130px; border: 0; font-size: 11px; padding: 5px 5px 5px 130px; height: auto; min-height: 38px; border: 1px solid #EEE; z-index: 1; position: relative;}
 	body.forums #content #post_container .post .postcontent h2 + .user_info_wrapper {border-radius: 0;}
 
@@ -277,7 +278,7 @@ body.forums #content #post_container .post .postcontent {}
 
 	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_title {font-size: 11px; padding: 0; padding: 3px 0 0; float: left; display: block;}
 	body.forums #content #post_container .post .postcontent .user_info_wrapper .user_info .user_title .user_title_hint {float: right; margin: 0 0 0 5px;}
-	
+
 		/* User Tags */
 		body .bgUserTag {float: left; margin: -1px 10px 0 0px; -webkit-user-select: none;}
 		body .bgUserTag > a {font-size: 11px; background: #FFF; padding: 4px 7px 0; border-radius: 20px 0 0 20px; text-decoration: none; height: 20px;}
@@ -381,7 +382,7 @@ body.forums #content #post_container .post .postcontent {}
         body.forums .post-options ul li a.tipbox_button > span:before {content: '\e102';}
         body.forums .post-options ul li > a.post-report > span:before {content: '\e101';}
         body.forums .post-options ul li > a.post-delete > span:before {content: '\e020';}
-			
+
 			/* Tipping links */
 			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li > .tipbox {display: block; float: left; height: 30px; width: auto; position: relative;}
 			body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li .tipbox .tipbox_chrome {background: #FFF; display: none; position: absolute; top: 30px; width: 100px; box-shadow: 0 0 3px rgba(0,0,0,0.3); opacity: 0; z-index: 100; font-size: 0; left: 0;}
@@ -391,11 +392,11 @@ body.forums #content #post_container .post .postcontent {}
 		/* Timestamp */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta {width: auto;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta .post-directlink {font-size: 0; display: inline;}
-    body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta .post-directlink a {width: 25px; padding-top: 0;}    
+    body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta .post-directlink a {width: 25px; padding-top: 0;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta .post-directlink a:before {font-family: 'Glyphicons Halflings'; content: '\e023'; font-size: 14px; display: block;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta .date {padding-left: 3px; font-size: 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul li.post-meta .date abbr {border: 0; font-size: 13px;}
-			
+
 		/* Instant Quote, Instant Edit */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul .bg_instant {float: left; border-right: 10px solid rgba(0,0,0,0.1); margin-right: 5px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options ul .bg_instant:empty {display: none;}
@@ -404,13 +405,13 @@ body.forums #content #post_container .post .postcontent {}
     body.forums .post-options ul li > a.bg_instanttext > span:before {content: '\e162';}
     body.forums .post-options ul li > a.bg_instantquote > span:before {content: '\e111';}
     body.forums .post-options ul li > a.bg_instantedit > span:before {content: '\270f';}
-			
+
 		/* Instants boxes */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox {display: block; clear: both; padding: 10px; position: relative; background: #316589; color: #FFF; border-top: 3px solid rgba(0,0,0,0.2);}
     body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox *[class^="rc_"] {display: none;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading {background: #316589; font-size: 0; height: 150px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
-		
+
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-main {float: left; width: 75%;}
 			body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-main .hd .form_buttons  {display: none;}
 			body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-main .bd label {display: none;}
@@ -420,24 +421,24 @@ body.forums #content #post_container .post .postcontent {}
 			body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-b select {width: 100%;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox #post_poll .bd {display: none;}
 			body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox #post_poll .ft:before {content: 'To make changes to your poll, edit your post.';}
-		
+
 
 		/* Post bubble */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble {margin: 0; padding: 0; overflow: auto;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble {margin: 10px; padding: 0; min-height: 150px; display: block; height: auto; overflow-x: auto; padding: 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble .tail {display: none;}
-	
+
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.say {margin: 10px 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.say > div:not(.content) {display: none;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.say > div.content {margin: 0 10px; padding: 0; border: 0;}
 
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble:not(.say) > .content {min-height: 115px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.shout {margin: 0 10px;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.ornate {margin: 5px 10px; overflow-y: hidden;} 
+		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.ornate {margin: 5px 10px; overflow-y: hidden;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.think {overflow: visible;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.think .content {min-height: 70px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble.whisper .content {min-height: 80px;}
-	
+
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble .top-left {border-radius: 7px 0 0 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble .top-right {border-radius: 0 7px 0 0;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .speech_bubble .bottom-left {border-radius: 0 0 7px 0;}
@@ -473,12 +474,12 @@ body.forums #content #post_container .post .postcontent {}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote {padding: 0; margin: 10px 0;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote + br + .quote {margin-top: 0;}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .quote {margin: 0;}
-    body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .cite {padding: 3px 5px; display: inline-block; background: rgba(0,0,0,0.05);}		
+    body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .cite {padding: 3px 5px; display: inline-block; background: rgba(0,0,0,0.05);}
     body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .quote .quoted {background: rgba(0,50,83,0.025); border: 1px solid rgba(0,0,0,0.05); padding: 10px;}
-		
+
 		/* Show Block Images Link */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .showpostimages {right: 10px; top: 5px;}
-		
+
 		/* Fixes Friends, Inventory Box */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble > .inventory {top: 5px; right: 5px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble > .friends {position: static; border-width: 1px 0; width: auto; background-color: #FFF;}
@@ -527,7 +528,7 @@ body.forums #gaia_content.grid_dizzie_gillespie > #bd #yui-main {margin: 0;}
 	/* Div Containers */
 	body.forums #content > #gaia_content #yui-main .gaia-info {box-sizing: border-box; border: 0; border-radius: 4px 4px 0 0; box-shadow: 0 0 3px rgba(0,0,0,0.4);}
 	body.forums #content > #gaia_content #yui-main .gaia-info .rc_top_left, body.forums #content > #gaia_content #yui-main .gaia-info .rc_top_right, body.forums #content > #gaia_content #yui-main .gaia-info .rc_bottom_left, body.forums #content > #gaia_content #yui-main .gaia-info .rc_bottom_right {display: none;}
-	
+
 	/* Compose Div */
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry .yui-main .yui-b {margin: 0 20px 0 0; width: 840px;}
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose .form_buttons {position: static; padding: 0; margin: 0; float: right;}
@@ -536,20 +537,20 @@ body.forums #gaia_content.grid_dizzie_gillespie > #bd #yui-main {margin: 0;}
 
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose .hd {box-sizing: border-box; height: auto; line-height: 30px; display: block; padding: 0 5px 0 10px; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25)) #409BBF; border-radius: 4px 4px 0 0;}
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose .hd h3 {color: #FFF; text-shadow: 0 1px 0 rgba(0,0,0,0.2); font-size: 14px; padding: 0; float: left;}
-	
+
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose fieldset {margin: 0;}
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose fieldset.topiclike {margin: 10px 0 5px;}
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose fieldset.topiclike input {float: none; width: auto;}
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose fieldset.topiclike label {float: none;}
-		
+
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose .ft {box-sizing: border-box; height: auto; line-height: 30px; display: block; padding: 0 5px; background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.25)) #409BBF;}
-		
+
     /* Forms */
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose fieldset label {float: left; min-width: 85px; margin: 0; padding: 7px 7px 0;}
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose fieldset label[for="message"] {display: none;}
-		
+
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose input {width: 726px; float: right; box-sizing: border-box; padding: 3px 7px; border: 1px solid #DDD; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif; height: auto; background: #FFF; margin: 0 0 5px;}
-		
+
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose textarea {float: none; border: 1px solid #DDD; border-width: 0 1px 1px; width: 830px; max-width: 830px; height: 370px; box-sizing: border-box; padding: 3px 7px; background: #F6FBFC; font: normal 13px/1.7 "Lucida Grande", "Lucida Sans Unicode", Arial, Verdana, sans-serif;}
 	body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose textarea.bbcodable {margin-top: 36px !important;}
     body.forums #content > #gaia_content #yui-main .yui-b #compose_entry #compose textarea:focus {outline: none;}

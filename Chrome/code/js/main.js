@@ -9,17 +9,10 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 function MainJs() {
 
-// Remove Ads
-if (prefs['adsHide'] === true) {
-    $(window).load(function() {
-        $('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove();
-    });
-}
-
 // Credits
 $('body > #gaia_footer > p').append('<span id="bg_credits">\
     <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ localPrefs['version'] +'</small></a> \
-    by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
+    by <a href="http://bettergaia.com/" target="_blank">The BetterGaia Team</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
     <iframe sandbox="allow-scripts allow-forms allow-same-origin" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://www.bettergaia.com/public/update/"></iframe>\
@@ -40,24 +33,13 @@ if (prefs['header.float'] === true) {
 }
 
 // Add BG Siderbar to MyGaia
-if (document.location.pathname.indexOf('/mygaia/') > -1) {
-    $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', function(data){
-        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').before('<div id="bg_sidebar">' + data + '</div>');
-        $('#bg_sidebar .bgversion').text('Ver ' + localPrefs['version']);
-
-        $('#bg_sidebar a.bgopensettings').on('click', function(){chrome.extension.sendMessage({elements: 'settings'});});
-
-        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/changelog.html', function(data){
-            $('#bg_sidebar').addClass('go');
-
-            // BG Chat
-            if (prefs['mygaia.bgchat'] === true) {
-                $('#bg_sidebar').append('<div class="bgiframe"><iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" height="100%" frameborder="0" style="" src="http://www.bettergaia.com/public/chat/"></iframe></div>');
-            }
-
-            $('#bg_sidebar').append('<section>' + data + '</section>');
-        }, 'html');
-    }, 'html');
+if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'] === true) {
+    $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').prepend('<div id="bg_sidebar" class="mg_content">\
+        <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + localPrefs['version'] + '</small></div>\
+        <div class="bd">\
+            <iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" height="221" frameborder="0" style="" src="http://www.bettergaia.com/sidebar/"></iframe>\
+        </div>\
+    </div>');
 }
 
 // Widgets
@@ -243,63 +225,73 @@ if (prefs['header.shortcuts'] === true) {
 }
 
 // Draw All
-if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/", "/payments/", "/gofusion/"].indexOf(document.location.pathname) > -1) {
+if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/', '/world/', '/games/', '/payments/', '/gofusion/'].indexOf(document.location.pathname) > -1 && $('#dailyChance_clawMachine').length == 1) {
 	// Add Sign
-	if ($("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").length > 0) {
-		$("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").after("<a class='bg_drawall' title='BetterGaia&rsquo;s Draw All Daily Chances'>draw <em>all</em></a>");
-		$("body").append('<div id="bg_drawall"> \
-			<div class="bgda_header"> \
-				<strong>Draw All</strong> \
-				<p class="bonus"></p> \
-				<a id="bg_candyclose" title="Close"></a> \
-			</div> \
-			<ul> \
-				<li><div><span candy="1"><a>Collect</a></span></div><h5>Home</h5></li> \
-				<li><div><span candy="2"><a>Collect</a></span></div><h5>MyGaia</h5></li> \
-                <li><div><span candy="1279"><a>Collect</a></span></div><h5>Gaia Cash</h5></li> \
-				<li><div><span candy="8"><a>Collect</a></span></div><h5>Shops</h5></li> \
-                <li><div><span candy="1271"><a>Collect</a></span></div><h5>GoFusion</h5></li> \
-				<li><div><span candy="3"><a>Collect</a></span></div><h5>Forums</h5></li> \
-				<li><div><span candy="5"><a>Collect</a></span></div><h5>World</h5></li> \
-				<li><div><span candy="4"><a>Collect</a></span></div><h5>Games</h5></li> \
-				<li><div><span candy="12"><a>Collect</a></span></div><h5>Mobile App</h5></li> \
-			</ul> \
-		</div><div class="bettergaia mask"></div>');
-	}
+	$('#dailyChance_clawMachine').after('<a class="bg_drawall" title="BetterGaia&rsquo;s Draw All Daily Chances">draw <em>all</em></a>');
 
-	// Main screen
-	$("#gaia_header .header_content #dailyReward a.bg_drawall").on("click", function(){
-		$("body > #bg_drawall").addClass("bgopen");
-	});
-	$("#bg_drawall #bg_candyclose").on("click", function(){
-		$("body > #bg_drawall").removeClass("bgopen");
-	});
+    // Open model
+    $('#dailyReward .bg_drawall').on('click', function() {
+        if ($('#bg_drawall').length < 1) {
+            var template = Handlebars.compile('<div id="bg_drawall">\
+                <h1>Draw All <a class="close" title="Close"></a></h1>\
+                <ul>\
+                    {{#each this}}\
+                    <li class="pure-g">\
+                        <div class="pure-u-1-5">{{name}}</div>\
+                        <div class="pure-u-4-5"><a class="pure-button" data-candy="{{id}}">Collect</a></div>\
+                    </li>\
+                    {{/each}}\
+                </ul>\
+            </div>\
+            <div class="bettergaia mask"></div>');
 
-	$("#bg_drawall > ul > li:not([class]) > div > span").on("click", function(){
-		$(this).parent().parent().addClass("bgc_loading");
-		var thisDiv = $(this).parent();
+            var candy = [{id: 1, name: 'Home'}, {id: 2, name: 'MyGaia'}, {id: 1279, name: 'Gaia Cash'}, {id: 8, name: 'Shops'}, {id: 1271, name: 'GoFusion'}, {id: 3, name: 'Forums'}, {id: 5, name: 'World'}, {id: 4, name: 'Games'}, {id: 12, name: 'Mobile App'}];
+            $('body').append(template(candy));
 
-		$.post("/dailycandy/pretty/", {action: "issue", list_id: $(this).attr("candy"), _view: "json"}, function(data) {
-			thisDiv.parent().removeClass("bgc_loading");
+            $('#bg_drawall h1 .close').on('click', function() {
+                $('#bg_drawall').removeClass('bgopen');
+            });
 
-			if (data['status'] == "ok") {
-				thisDiv.parent().addClass("bgc_candy");
-				$(thisDiv).html("<img src='http://s.cdn.gaiaonline.com/images/" + data['data']['reward']['thumb'] + "' /> \
-					<h6>" + data['data']['reward']['name'] + "\
-					<info><message>" + data['data']['reward']['descrip'] + "</message></info>\
-					</h6>");
-				$("#bg_drawall .bgda_header p.bonus").text(data['data']['tier_desc']);
-			}
-			else if (data['status'] == "fail") {
-				thisDiv.parent().addClass("bgc_error");
-				thisDiv.html("<info>" + data['error']['message'] + "</info>");
-			}
-			else {
-				thisDiv.parent().addClass("bgc_error");
-				thisDiv.html("<info>There was a problem getting your Daily Chance.</info>");
-			}
-		}, "json");
-	});
+            $('#bg_drawall .pure-button').on('click', function() {
+                var thisCandy = $(this).closest('li');
+                thisCandy.addClass('loading');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/dailycandy/pretty/',
+                    data: {
+                        action: 'issue',
+                        list_id: $(this).attr('data-candy'),
+                        _view: 'json'
+                    },
+                    dataType: 'json'
+                }).done(function(data) {
+                    if (data['status'] == 'ok') {
+                        var template2 = Handlebars.compile('<span>\
+                            <img src="http://gaiaonline.com/images/{{data.reward.thumb}}"><br>\
+                            <strong>{{data.reward.name}}</strong>\
+                        </span>\
+                        <p>\
+                            {{#if data.tier_desc}}\
+                            {{data.tier_desc}}<br><br>\
+                            {{/if}}\
+                            {{{data.reward.descrip}}}\
+                        </p>');
+
+                        thisCandy.children('.pure-u-4-5').html(template2(data));
+                    }
+                    else if (data['status'] == 'fail') thisCandy.children('.pure-u-4-5').html('<p>' + data['error']['message'] + '</p>');
+                    else thisCandy.children('.pure-u-4-5').html('<p>There was a problem getting your Daily Chance.</p>');
+                }).fail(function() {
+                    thisCandy.children('.pure-u-4-5').html('<p>There was a problem getting your Daily Chance.</p>');
+                }).always(function() {
+                    thisCandy.removeClass('loading').addClass('loaded');
+                });
+            });
+        }
+
+        $('#bg_drawall').addClass('bgopen');
+    });
 }
 
 // Private Messages
@@ -337,7 +329,7 @@ if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privms
 	});
 
 	// Instant Search
-	$('body.mail #pm_content table tr[height="20"]').append('<input type="text" class="bgpm_search" placeholder="Search" value="" />');
+	$('body.mail #pm_content table tr[height="20"]').append('<input type="text" class="bgpm_search" placeholder="Search this page" value="" />');
 	$.extend($.expr[":"], {"Contains": function(elem, i, match, array) {return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;}});
 	$('body.mail #pm_content table tr[height="20"] .bgpm_search').keyup(function() {
 		var value = $(this).val();

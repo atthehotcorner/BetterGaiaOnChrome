@@ -9,18 +9,20 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = chrome.extension.getURL('code/css/main.css');
+    link.href = chrome.extension.getURL('code/css/pure-min.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.documentElement.appendChild(link);
 
+var link2 = document.createElement('link');
+    link2.href = chrome.extension.getURL('code/css/main.css');
+    link2.type = 'text/css';
+    link2.rel = 'stylesheet';
+document.documentElement.appendChild(link2);
+
 function MainCss() {
 
 var css = '';
-
-// Hide Ads
-if (prefs['adsHide'] === true)
-css += '#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}';
 
 // Float Username
 if (prefs['header.float'] === false)
@@ -35,15 +37,19 @@ if (prefs['background.image'] != 'default')
 css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
 
 // Background Options
-css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {';
-    css += 'background-color: ' + prefs['background.color'] + ';'; // Color
-    css += 'background-position: ' + prefs['background.position'] + ';'; // Position
-    if (prefs['background.repeat'] === false) css += 'background-repeat: no-repeat;'; // Repeat
-    if (prefs['background.float'] === true) css += 'background-attachment: fixed;'; // Float
-css += '}';
+if (prefs['background.image'] != 'default') {
+    css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {';
+        css += 'background-color: ' + prefs['background.color'] + ';'; // Color
+        css += 'background-position: ' + prefs['background.position'] + ';'; // Position
+        if (prefs['background.repeat'] === false) css += 'background-repeat: no-repeat;'; // Repeat
+        else css += 'background-repeat: repeat;'; // Repeat
+        if (prefs['background.float'] === true) css += 'background-attachment: fixed;'; // Float
+        else css += 'background-attachment: scroll;'; // Float
+    css += '}';
+}
 
 // If Background is Gaia Town
-if (prefs['background.image'] == 'http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg') 
+if (prefs['background.image'] == 'http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg')
 css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background-position: bottom left !important; background-repeat: no-repeat !important; background-color: #12403d !important;}';
 
 // Header Background
@@ -59,7 +65,7 @@ if (prefs['header.background.stretch'] === false)
 css += 'body div#gaia_header {width: 1140px;}';
 
 // Logo
-if (prefs['header.logo'] != 'default') 
+if (prefs['header.logo'] != 'default')
 css += 'body #gaia_header .header_content .gaiaLogo a, body #gaia_header .header_content .gaiaLogo a:hover {background-image: url(' + prefs['header.logo'] + ');}';
 
 // Navigation and HUD
@@ -111,7 +117,7 @@ chrome.storage.sync.get(null, function(response) {
     }
 
     prefs['appliedUserPrefs'] = true;
-    
+
     // Could use some code reuse
     if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] === false) {
         MainCss();
