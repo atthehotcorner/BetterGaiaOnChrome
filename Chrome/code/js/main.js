@@ -55,28 +55,10 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     }
 
     // BetterGaia Settings
-    if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
-        $(this).parent().addClass('bgloading');
-
-        $.get('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/html/settings-widget.html', 'html')
-        .done(function(data) {
-            $('#bg_widgets .bgsettings div').html(data);
-            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + localPrefs['version']);
-            $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
-                chrome.extension.sendMessage({elements: 'settings'});
-            });
-        })
-        .fail(function(data) {
-            $('#bg_widgets .bgsettings div').html("<p>There was a problem loading your BetterGaia's settings.</p>");
-        })
-        .always(function(data) {
-            $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
-        });
-    }
+    chrome.extension.sendMessage({elements: 'settings'});
 
     // Open
     $(this).parent().siblings('li').removeClass('bgopen');
-    $(this).parent().toggleClass('bgopen');
 });
 
 if (prefs['header.widgets'] === true) {
