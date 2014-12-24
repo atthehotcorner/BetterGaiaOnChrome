@@ -14,7 +14,7 @@ body #gaia_content.grid_billie_holiday #bd {width: 750px; padding: 10px 15px 0 1
 /* Changes Main Page Layout */
 body.forums #content, html body.app-page_forum #content {background: none;}
 body.forums > #content {width: auto;}
-body.forums #content #content-padding {width: 1140px; margin: 0 auto; padding: 15px 0; background: none;}
+body.forums #content #content-padding {width: 1140px; margin: 0 auto; padding: 1em 0; background: none;}
 
     /* Fixes Ads */
 	body.forums #content #content-padding > #thread_mrec_ad {position: static; display: none;}
@@ -156,30 +156,30 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 body.forums #content #content-padding {}
 
 	/* Breadcrumb */
-	body.forums #content #content-padding > .linklist {height: 30px; line-height: 30px; display: block; padding: 0; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25)) #BF7F40; border-radius: 4px 4px 0 0; color: transparent; box-shadow: 0 0 3px rgba(0,0,0,0.4); position: relative; z-index: 1; margin: 0 0 0 80px;}
+	body.forums #content #content-padding > .linklist {display: block; padding: 0; background: #A16B36; border-radius: 5px 5px 0 0; color: transparent; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); margin: 0 0 0 80px; line-height: 15px; font-size: 13px;}
 	body.forums #content #content-padding > .linklist * {box-sizing: border-box;}
 	body.forums #content #content-padding > .linklist .bg_plate {display: block; background: none; padding: 0; border-radius: 0;}
 
-	body.forums #content #content-padding > .linklist a {display: block; float: left; position: relative; padding: 0 10px; transition: color 0.7s; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1)); margin: 0 15px 0 0; color: rgba(255,255,255,0.5); text-decoration: none;}
-	body.forums #content #content-padding > .linklist a:after {border-color: transparent transparent transparent rgba(0,0,0,0.1); border-style: solid; border-width: 15px 0 15px 15px; content: ''; height: 0; position: absolute; right: -15px; top: 0; width: 0;}
+	body.forums #content #content-padding > .linklist a {display: inline-block; position: relative; padding: 1em; transition: color 0.7s; background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1)); margin: 0 0.5em 0 0; color: rgba(255,255,255,0.5); text-decoration: none;}
+	body.forums #content #content-padding > .linklist a:after {border-color: transparent transparent transparent rgba(0,0,0,0.1); border-style: solid; border-width: 20px 0 21px 21px; content: ''; height: 0; position: absolute; right: -21px; top: 0; width: 0;}
     body.forums #content #content-padding > .linklist a:hover {color: #FFF; background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.25) 90%); transition-duration: 0;}
     body.forums #content #content-padding > .linklist a:hover:after {border-color: transparent transparent transparent rgba(0,0,0,0.25);}
 	body.forums #content #content-padding > .linklist a:active {color: rgba(255,255,255,0.75);}
 
 	/* Messagebox */
-	body.forums #content #content-padding > #messagebox {margin: 0 auto 15px !important; width: auto !important; float: none !important;}
+	body.forums #content #content-padding > #messagebox {margin: 1em auto 3em !important; width: auto !important; float: none !important;}
 
     /* Quick Reply */
-	body.forums #content #content-padding > #qr_container {left: auto !important; right: 0; border-radius: 5px;}
+	body.forums #content #content-padding > #qr_container {left: auto !important; right: 0.5em;}
 
 	/* Thread Header Container */
-	body.forums #content #content-padding > #topic_header_container {margin: 0 0 35px 80px; position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.4);}
+	body.forums #content #content-padding > #topic_header_container {margin: 0 0 3em 80px; position: relative; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 	body.forums #content #content-padding > #topic_header_container * {box-sizing: border-box;}
 
 		/* Thread Header */
-		body.forums #content #content-padding > #topic_header_container #thread_header {background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; border-bottom: 0; position: static; margin: 0; padding: 8px 10px; height: auto; min-height: 0;}
+		body.forums #content #content-padding > #topic_header_container #thread_header {background: rgba(255,255,255,0.9); position: static; margin: 0; padding: 1em; border: 0;}
 
-        body.forums #content #content-padding > #topic_header_container #thread_header #thread_like {position: absolute; left: -80px; top: -30px; margin: 0;}
+        body.forums #content #content-padding > #topic_header_container #thread_header #thread_like {position: absolute; left: -80px; top: -41px; margin: 0;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like #like_count {box-shadow: 0 1px 3px rgba(0,0,0,0.4); margin-bottom: 4px;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like .cta_like_dislike {width: 35px;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like.metered {opacity: 0.5; pointer-events: none; display: block;}
@@ -187,8 +187,8 @@ body.forums #content #content-padding {}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_title {margin: 0; font-family: "Century Gothic", "TeXGyreAdventorRegular", Arial, Helvetica, sans-serif; padding: 0; background: none;}
 
 		/* Poll */
-		body.forums #content #content-padding > #topic_header_container #thread_poll {margin: 0; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; position: relative;}
-		body.forums #content #content-padding > #topic_header_container #thread_poll #poll {padding: 10px;}
+		body.forums #content #content-padding > #topic_header_container #thread_poll {background: rgba(255,255,255,0.9); margin: 1px 0 0; position: relative;}
+		body.forums #content #content-padding > #topic_header_container #thread_poll #poll {padding: 1em;}
 		body.forums #content #content-padding > #topic_header_container #thread_poll #poll h3:before {content: 'Poll: '; font-weight: normal; font-size: 13px;}
 		body.forums #content #content-padding > #topic_header_container #thread_poll #poll .poll-results {margin: 0 auto;}
 
@@ -199,8 +199,8 @@ body.forums #content #content-padding {}
 		body.forums #content #content-padding > #topic_header_container #thread_poll:hover:after {color: rgba(0,0,0,0.7); content: '\25B2';}
 
 		/* Subscribe Bar, New Post */
-		body.forums #content #content-padding > #topic_header_container .detail-navlinks {margin: 0; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; height: auto; padding: 0 10px 2px; width: auto; border-radius: 0;}
-		body.forums #content #content-padding > #topic_header_container .detail-navlinks .cta-dropdown {position: absolute; top: -27px; right: 0; margin: 0; z-index: 5;}
+		body.forums #content #content-padding > #topic_header_container .detail-navlinks {margin: 1px 0 0; background: rgba(255,255,255,0.9); height: auto; padding: 0.75em 1em; width: auto;}
+		body.forums #content #content-padding > #topic_header_container .detail-navlinks .cta-dropdown {position: absolute; top: calc(-0.5em - 27px); right: 0.5em; margin: 0; z-index: 5;}
 
 		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options {}
         body.forums #content #content-padding .detail-navlinks .thread_options #hdr_report_links {font-size: 13px;}
@@ -211,7 +211,7 @@ body.forums #content #content-padding {}
         body.forums #content #content-padding .detail-navlinks .thread_options a.bbcode-swap-blocked-link {text-transform: capitalize; margin-right: 8px;}
 
 		/* BG Post options */
-		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions {display: block; float: left; -webkit-user-select: none;}
+		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions {display: block; float: left; margin: 0 0 0 10px;}
         body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_toggle {cursor: pointer; margin: 0 5px;}
         body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_toggle:hover {text-decoration: underline;}
 
@@ -221,7 +221,7 @@ body.forums #content #content-padding {}
 		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_on off {display: inline;}
 
 		/* Pagination */
-		body.forums #content #content-padding > #topic_header_container .forum_detail_pagination {float: right; position: relative; top: -30px; right: 10px; margin: 0; background: none; padding: 0;}
+		body.forums #content #content-padding > #topic_header_container .forum_detail_pagination {float: right; position: relative; top: -3.25em; right: 1em; margin: 0; background: none; padding: 0;}
 
 		body.forums #content #content-padding .forum_detail_pagination a {color: #222; background-color: #FFF; display: inline-block; border-radius: 0; padding: 5px; text-decoration: none; font-size: 12px; margin: 0 -1px 0 -2px; height: 24px; line-height: 14px; border: 0; box-shadow: 0px 1px 1px rgba(0,0,0,0.25) inset; min-width: 22px; text-align: center;}
         body.forums #content #content-padding .forum_detail_pagination a:hover {background: #EEE;}
@@ -235,23 +235,23 @@ body.forums #content #content-padding {}
 		body.forums #content #content-padding .forum_detail_pagination input[title="Jump to page"] {height: 24px; width: 31px; border: 0; display: inline-block; border-radius: 3px; margin: 0 0 0 5px; font-size: 12px; box-shadow: 0 1px 1px rgba(0,0,0,0.25) inset;}
 
 	/* Subscribe bar - end of page */
-	body.forums #content #content-padding > #navlinks_pag {float: none; position: relative; margin: -34px 0 0; top: 99px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; width: auto; padding: 0 10px 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.4);}
+	body.forums #content #content-padding > #navlinks_pag {float: none; position: relative; margin: 0; background: rgba(255,255,255,0.9); width: auto; padding: 0.75em 1em; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); border-radius: 5px 5px 0 0; border: 0;}
     body.forums #content #content-padding > #navlinks_pag:after {display: table; clear: both; content: '';}
 	body.forums #content #content-padding > #navlinks_pag * {box-sizing: border-box;}
 
-	body.forums #content #content-padding > #navlinks_pag .detail-navlinks {width: auto; float: left; width: 45%; margin: 0; background: none; padding: 0;}
-    body.forums #content #content-padding > #navlinks_pag .detail-navlinks .cta-dropdown {position: absolute; top: -29px; right: -2px; margin: 0; z-index: 5;}
+	body.forums #content #content-padding > #navlinks_pag .detail-navlinks {float: left; width: 45%; margin: 0; background: none; padding: 0;}
+    body.forums #content #content-padding > #navlinks_pag .detail-navlinks .cta-dropdown {position: absolute; top: calc(100% + 0.5em); right: 0.5em; margin: 0; z-index: 5;}
 	body.forums #content #content-padding > #navlinks_pag .detail-navlinks .thread_options {}
 
 	body.forums #content #content-padding > #navlinks_pag .forum_detail_pagination {margin: 0; float: right; background: none; padding: 0;}
 
 	/* Breadcrumb - end of page */
-	body.forums #content #content-padding > .linklist_last {margin: 35px 0; border-radius: 4px;}
-    body.forums #content #content-padding > #navlinks_pag + .linklist_last {border-radius: 4px 4px 0 0;}
+	body.forums #content #content-padding > .linklist_last {margin: 0 0 -1em; border-radius: 0;}
+    body.forums #content #content-padding > #navlinks_pag + .linklist_last {}
 
 /* Styles Individual Posts - Post Container */
 body.forums #content #post_container {padding: 0; border: 0; margin: 0 0 30px;}
-body.forums #content #post_container .post {margin: 0 0 30px; padding: 0; border: 0; width: auto; clear: both; display: block; min-height: 200px;}
+body.forums #content #post_container .post {margin: 0 0 3em; padding: 0; border: 0; width: auto; clear: both; display: block; min-height: 200px;}
 body.forums #content #post_container .post.achievement_badges {}
 body.forums #content #post_container .post * {box-sizing: border-box;}
 body.forums #content #post_container .post .postcontent {}
