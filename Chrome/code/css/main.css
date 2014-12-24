@@ -290,18 +290,22 @@ body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .gaia_tab_orphans li.clea
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both; background-repeat: repeat-x; background-position-x: center; -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));}
 
     /* Left, Right */
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right, body.mygaia #bg_sidebar {position: relative; z-index: 1; margin: 2em; box-sizing: border-box;}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right {position: relative; z-index: 1; margin: 1em; box-sizing: border-box;}
 
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left {float: right; width: calc(100% - 380px);}
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg + .left {margin-left: 0;}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left {float: right; width: calc(100% - 350px); margin-left: 0; padding: 0 300px 0 0; transition: padding ease .5s;}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left.bgexpanded {padding: 450px 0 0;}
 
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right {float: left; width: 300px;}
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right > div + br {display: none;}
 
     /* BetterGaia Sidebar */
-    body.mygaia #bg_sidebar .bd {min-height: 221px;}
-    body.mygaia #bg_sidebar .bd:before {content: loading;}
-    body.mygaia #bg_sidebar.go .bd {min-height: 221px;}
+    body.mygaia #bg_sidebar {width: 275px; position: absolute; right: 0; top: 0; transition: all ease .6s;}
+    body.mygaia #bg_sidebar .pure-button {font-size: 13px; font-family: 'Glyphicons Halflings'; float: right;}
+    body.mygaia #bg_sidebar .pure-button:before {content: '\e096';}
+    body.mygaia #bg_sidebar .bd iframe {height: 350px;}
+    body.mygaia .bgexpanded #bg_sidebar {width: 790px;}
+    body.mygaia .bgexpanded #bg_sidebar .bd iframe {height: 400px;}
+    body.mygaia .bgexpanded #bg_sidebar .pure-button:before {content: '\e097';}
 
 	/* Module footers */
 	body.mygaia #gaia_content #bd #yui-main .yui-g > .mg_sprite.top_bg ~ div[class] .mg_content .ft {background: none; border: 0;}
@@ -328,7 +332,7 @@ body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .gaia_tab_orphans li.clea
 	body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right .mystats .bd ul li {padding: 3px 0;}
 
 	/* Feeds, Status */
-	body.mygaia #gaia_content #bd .mg_content, body.mygaia #gaia_content #bd .mg_status {margin: 0 0 2em;}
+	body.mygaia #gaia_content #bd .mg_content, body.mygaia #gaia_content #bd .mg_status {margin: 0 0 1.25em;}
 	body.mygaia #gaia_content #bd .mg_content .mg_sprite.hd, body.mygaia #gaia_content #bd .mg_status .mg_sprite.hd {margin: 0; background: none;  width: auto; height: auto !important; font: normal 24px "Century Gothic", "TeXGyreAdventorRegular", Arial, sans-serif; color: #4B9438; padding: 0 1px .25em;}
 
 	body.mygaia #gaia_content #bd .mg_content .bd, body.mygaia #gaia_content #bd .mg_status .bd {background: #FFF; border: 1px solid #B6E2AD; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 0; overflow: visible;}
@@ -393,24 +397,24 @@ body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .gaia_tab_orphans li.clea
 
 	/* Friends */
 	body.mygaia #gaia_content #bd #friends2.mg_content {}
-	body.mygaia #gaia_content #bd #friends2.mg_content .bd {padding: 5px 5px 0; max-height: none; background: #FFF; overflow: visible;}
+	body.mygaia #gaia_content #bd #friends2.mg_content .bd {padding: 5px; min-height: 0;}
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd * {box-sizing: border-box;}
 
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd #find_friends_a {top: 5px; right: 0; z-index: 5;}
 
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends {}
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 5px; margin-right: 10px;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li {padding: 5px; width: 25%; float: left;}
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover {background: rgb(223,244,198); border-radius: 3px;}
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .user_name {padding: 0; display: block; font-size: 12px; height: 20px;}
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .user_name a {display: block; padding: 0 0 0.5em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 48px;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .user_name a {display: block; padding: 0 0 0.5em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
         body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover .user_name a {width: auto;position: absolute; left: 0; padding: 5px; background: rgb(223,244,198); top: 0; border-radius: 3px; z-index: 1;}
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .dropBox {width: auto; height: auto; margin: 0;}
 		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .dropBox img {width: 48px; height: 48px;}
 
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status {position: absolute; bottom: 4px; width: 48px; height: 5px; font-size: 0; background: rgb(130,208,47); opacity: 0.95;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status {position: absolute; bottom: 4px; width: 49px; height: 5px; font-size: 0; background: rgb(130,208,47);}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status a {font-size: 9px; top: 8px; right: -8px; width: 186px; padding: 0 0 0 8px; position: absolute;}
 			body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li:hover .online_status a {background: rgb(223,244,198);}
-		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status.offline {background: #EEE;}
+		body.mygaia #gaia_content #bd #friends2.mg_content .bd .bd_inner .friends_wrapper ul.mygaia-friends li .online_status.offline {background: #A6B09A;}
 
 		body.mygaia #gaia_content #bd #friends2.mg_content .ft.see_all {border: 0 none; display: block !important; margin: 5px 0 0; height: 15px; background: none;}
 			body.mygaia #gaia_content #bd #friends2.mg_content .ft.see_all .see_all {background: none; padding: 0; float: right;}
@@ -656,14 +660,18 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall.bgopen + div.bettergaia.mask {display: block; z-index: 500; background: #000; opacity: 0.75;}
 #bg_drawall * {box-sizing: border-box;}
 
-#bg_drawall h1 {padding: 0.7em 0.9em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); position: relative;}
-#bg_drawall ul li {margin-bottom: 1px;}
-#bg_drawall ul li .pure-u-1-5 {padding: 1.5em; font: bold 17px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #316589; color: #FFF; display: block; list-style: none;}
-#bg_drawall ul li .pure-u-4-5 {padding: 1.5em; background: #FFF; transition: all 0.6s ease; display: flex; align-items: center; justify-content: center;}
+#bg_drawall h1 {padding: 0.7em 0.75em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); position: relative;}
+#bg_drawall ul li {margin-bottom: 1px; overflow: hidden;}
+#bg_drawall ul li .pure-u-1-5 {padding: 1.5em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #316589; color: #FFF; display: block; list-style: none;}
+#bg_drawall ul li .pure-u-4-5 {padding: 1.5em; background: rgba(255,255,255,0.9); transition: all 0.6s ease; display: flex; align-items: center; justify-content: center;}
 #bg_drawall ul li .pure-u-4-5 p {margin: 0;}
-#bg_drawall ul li .pure-u-4-5 span {flex: 1; text-align: center; margin: 0 0.5em 0 -0.5em;}
-#bg_drawall ul li .pure-u-4-5 span + p {flex: 3;}
-#bg_drawall ul li .pure-u-4-5 .pure-button {background: #E2B84A; font-size: 125%; display: block; transition: all 0.5s ease; margin: -2px 0; width: 100%;}
+#bg_drawall ul li .pure-u-4-5 img {margin: -1em .5em -1em 0; height: 30px; width: 30px;}
+#bg_drawall ul li .pure-u-4-5 strong {flex: 1; margin: -1em .5em -1em 0;}
+#bg_drawall ul li .pure-u-4-5 strong + p {flex: 3; max-height: 24px; transition: all 0.5s ease;}
+#bg_drawall ul li .pure-u-4-5 strong + p:hover {max-height: 150px; transition-delay: .75s;}
+#bg_drawall ul li .pure-u-4-5 strong + p:after {display: block; content: '...'; background: #fff; position: absolute; bottom: 0; margin-left: 11em; left: 50%; border-radius: 25px 25px 0 0; box-shadow: 0 0 2px rgba(0,0,0,0.75); padding: 0 15px 3px; transition: all ease 2s;}
+#bg_drawall ul li .pure-u-4-5 strong + p:hover:after {bottom: -25px;}
+#bg_drawall ul li .pure-u-4-5 .pure-button {background: #E2B84A; font-size: 125%; display: block; transition: all 0.5s ease; margin: -1em 0; width: 100%; box-shadow: 0 0 1.5em #FFE5A3 inset; border: 1px solid #FFB800;}
 @-webkit-keyframes barberpole {
     from { background-position: 0 0; }
     to   { background-position: 0 100px; }
@@ -701,22 +709,22 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-delay: .9s; margin-bottom: 0;}
 
 /* Footer */
-body div#gaia_footer {width: 1140px; margin: 30px auto; padding: 0 !important; position: relative; font-size: 13px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+body div#gaia_footer {width: 1140px; margin: 3em auto; padding: 0 !important; position: relative; font-size: 13px;}
 body div#gaia_footer, body #gaia_footer * {box-sizing: border-box;}
 body #gaia_footer ul, body #gaia_footer p {font-size: 13px}
 
     /* Links */
-    body #gaia_footer ul {padding: 0.5em; margin: 0; border-radius: 5px 5px 0 0; width: auto; float: none; background: rgba(255,255,255,0.9);}
+    body #gaia_footer ul {padding: 0.5em; margin: 0; border-radius: 5px 5px 0 0; width: auto; float: none; background: rgba(255,255,255,0.9); box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
     body #gaia_footer ul:after {content: ''; display: table; clear: both;}
     body #gaia_footer ul li {border: 0; padding: 0; text-align: left; width: 20%; float: left; margin: 0;}
     body #gaia_footer ul li a {display: inline-block; color: #222 !important; padding: 0.5em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
     body #gaia_footer ul li a:hover {text-decoration: underline;}
 
     /* Copyright */
-    body #gaia_footer p {background: #864B86; margin: 0; padding: 1em; display: block; color: rgba(255,255,255,0.5); text-align: left; width: auto; border-radius: 0;}
+    body #gaia_footer p {background: #864B86; margin: 0; padding: 1em; display: block; color: rgba(255,255,255,0.5); text-align: left; width: auto; border-radius: 0; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 
     /* Credits */
-    body #gaia_footer #bg_credits {float: right; margin: -1px 0 0;}
+    body #gaia_footer #bg_credits {float: right; margin: -2px 0 0;}
     body #gaia_footer #bg_credits a {color: #FFF;}
     body #gaia_footer #bg_credits a:hover {text-decoration: underline;}
-    body #bg_credits .bgtopofpage {color: #FFF; cursor: pointer; background: rgba(0,0,0,0.25); display: inline-block; padding: 0.5em; margin: -0.5em -0.5em 0 0.5em;}
+    body #bg_credits .bgtopofpage {color: #FFF; cursor: pointer; background: rgba(0,0,0,0.25); display: inline-block; padding: 0.5em; margin: -5px -0.75em 0 0.5em;}

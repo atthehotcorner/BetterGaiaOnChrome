@@ -35,11 +35,17 @@ if (prefs['header.float'] === true) {
 // Add BG Siderbar to MyGaia
 if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'] === true) {
     $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').prepend('<div id="bg_sidebar" class="mg_content">\
-        <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + localPrefs['version'] + '</small></div>\
+        <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + localPrefs['version'] + '</small>\
+            <a class="pure-button"></a>\
+        </div>\
         <div class="bd">\
-            <iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" height="221" frameborder="0" style="" src="http://www.bettergaia.com/sidebar/"></iframe>\
+            <iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" frameborder="0" src="http://www.bettergaia.com/sidebar/"></iframe>\
         </div>\
     </div>');
+
+    $('#bg_sidebar .pure-button').on('click', function() {
+        $('#gaia_content .left').toggleClass('bgexpanded');
+    });
 }
 
 // Widgets
@@ -249,15 +255,19 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                     dataType: 'json'
                 }).done(function(data) {
                     if (data['status'] == 'ok') {
-                        var template2 = Handlebars.compile('<span>\
-                            <img src="http://gaiaonline.com/images/{{data.reward.thumb}}"><br>\
-                            <strong>{{data.reward.name}}</strong>\
-                        </span>\
+                        var template2 = Handlebars.compile('<img src="http://gaiaonline.com/images/{{data.reward.thumb}}">\
+                        <strong>{{data.reward.name}}</strong>\
                         <p>\
-                            {{#if data.tier_desc}}\
-                            {{data.tier_desc}}<br><br>\
+                            {{#if data.reward.descrip}}\
+                                {{{data.reward.descrip}}}\
+                                {{#if data.tier_desc}}\
+                                <br><br>{{data.tier_desc}}\
+                                {{/if}}\
+                            {{else}}\
+                                {{#if data.tier_desc}}\
+                                {{data.tier_desc}}\
+                                {{/if}}\
                             {{/if}}\
-                            {{{data.reward.descrip}}}\
                         </p>');
 
                         thisCandy.children('.pure-u-4-5').html(template2(data));
