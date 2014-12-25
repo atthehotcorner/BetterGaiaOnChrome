@@ -1,5 +1,5 @@
 /*
-Forum JS 
+Forum JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
@@ -24,7 +24,6 @@ if (prefs['announcementReader'] === true && document.location.pathname == '/news
         $('#bgFetchAnnouncements').after('<h3 class="bgFAh3">' + (remaining + 1) + ', Oldest</h3>');
 
         function apply() {
-            console.log('apply');
             $.ajax({
                 url: '/news/',
                 cache: false,
@@ -40,7 +39,6 @@ if (prefs['announcementReader'] === true && document.location.pathname == '/news
                     remaining = 0;
                 }
 
-                console.log(remaining);
                 // Keep loading
                 if (remaining > 0) {
                     remaining--;
@@ -85,7 +83,7 @@ if (prefs['forum.previewThreads'] === true) {
 
 // Adds Post Options on Thread Page
 $("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options").append('<div class="bg_postoptions">\
-<a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off> Sigs</a></div>');
+<a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off>  Signatures</a></div>');
 
 // Adds Functions to Post Options
 if (typeof localPrefs['forum.hidePosts'] == 'boolean' && localPrefs['forum.hidePosts'] === true) {
@@ -126,17 +124,17 @@ $("body.forums #content #content-padding #topic_header_container .detail-navlink
 	}
 });
 
-// Adds Toggle Signiture Button
-$("body.forums .post .post-signature").each(function () { 
-	$(this).parent().find(".message .messagecontent > .post-options > ul > li.post-meta").before('<li><a class="bg_togglesig"><span>Hide Sig</span></a></li>');
+// Adds Toggle Signature Button
+$("body.forums .post .post-signature").each(function () {
+	$(this).parent().find(".message .messagecontent > .post-options > ul > li.post-meta").before('<li class="bg_togglesig"><a><span>Hide Signature</span></a></li>');
 });
 
-$('body.forums .post .message .messagecontent a.bg_togglesig').click(function() { 
+$('body.forums .post .message .messagecontent .bg_togglesig').click(function() {
 	$(this).closest('.postcontent').find(".post-signature").toggle();
 });
 
 // Toggles Each Post by Clicking Button
-$("body.forums .post .user_info_wrapper .user_info").each(function(){ 
+$("body.forums .post .user_info_wrapper .user_info").each(function(){
     if ($(this).find('.bg_postcollapse').length === 0) $(this).append('<div class="bg_postcollapse" title="Collapse/Expand Post"></div>');
 });
 
@@ -146,7 +144,7 @@ $('body.forums .post .user_info_wrapper .user_info .bg_postcollapse').click(func
 
 // Adds Instants
 $('body.forums .post .message .messagecontent .post-options ul').each(function () {
-	if ($(this).find('a.post-quote').length > 0 || $(this).find('a.post-edit').length > 0) 
+	if ($(this).find('a.post-quote').length > 0 || $(this).find('a.post-edit').length > 0)
       $(this).prepend('<div class="bg_instant"><li><a class="bg_instanttext"><span>Instant</span></a></li></div>');
 
 	if ($(this).find('a.post-quote').length > 0) {
@@ -159,10 +157,10 @@ $('body.forums .post .message .messagecontent .post-options ul').each(function (
 
 $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote").click(function() {
 	var bubbleThis = $(this).closest('.messagecontent');
-	
+
 	if (bubbleThis.find(".bg_instantbox.quote").length === 0) {
 		bubbleThis.find(".post-bubble").after("<div class='bg_instantbox quote loading'></div>");
-		
+
 		//get url
 		var url = bubbleThis.find(".post-options a.post-quote").attr("href");
 		$.get(url).done(function(data) {
@@ -181,10 +179,10 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 
 $("body.forums .post .message .messagecontent .post-options ul a.bg_instantedit").click( function() {
 	var bubbleThis = $(this).closest('.messagecontent');
-	
+
 	if (bubbleThis.find(".bg_instantbox.edit").length === 0) {
 		bubbleThis.find(".post-bubble").after("<div class='bg_instantbox edit loading'></div>");
-		
+
 		//get url
 		var url = bubbleThis.find(".post-options a.post-edit").attr("href");
 		$.get(url).done(function(data) {
@@ -198,7 +196,7 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantedit"
 		$(this).closest('.messagecontent').find('.bg_instantbox.edit').slideToggle('slow');
 	}
 });
-        
+
 // Enable redirects on same page
 if (prefs['forum.externalLinks'] === true) {
 	$("body.forums .post a[href^='http://www.gaiaonline.com/gaia/redirect.php?r=']").on("click", function(e){
@@ -216,7 +214,7 @@ if (prefs['forum.externalLinks'] === true) {
 				success: function(data) {
                     var pageHtml = $('<div>').html(data);
                     pageHtml.find('script').remove();
-                    
+
 					$(".bgredirect").html($('<div>' + pageHtml.html() + '</div>').html());
 					$(".bgredirect table.warn_block #warn_block #warn_head").append("<a class='bgclose' title='close'></a>");
 					$(".bgredirect a").attr("target", "_blank");
@@ -252,7 +250,7 @@ if (prefs['usertags'] === true) {
             $(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span></span></div>');
         }
     });
-	
+
     // Add stored tags
     var tags = prefs['usertags.list'];
 
@@ -271,7 +269,7 @@ if (prefs['usertags'] === true) {
             }
         });
     }
-	
+
     $('body.forums .post .user_info_wrapper .user_info .bgUserTag > span').on('click', function(){
         if (!$(this).closest('.post').hasClass('bgut_loaded')) {
             var tagvalue = '', urlvalue = $(this).closest('.postcontent').find('.post-directlink a').attr('href');
@@ -280,7 +278,7 @@ if (prefs['usertags'] === true) {
                 tagvalue = $(this).siblings('a').text();
                 if ($(this).siblings('a').attr('href')) urlvalue = $(this).siblings('a').attr('href');
             }
-			
+
             $(this).after('<div><h2>Tag ' +    $(this).closest('.user_info').find('.user_name').text() + '<a class="bgclose"></a></h2><form>\
                 <label for="bgut_tagtag">Tag</label>\
                 <input type="text" id="bgut_tagtag" maxlength="50" placeholder="Notes and comments" value="' + tagvalue + '">\
@@ -302,14 +300,14 @@ if (prefs['usertags'] === true) {
     $('body.forums .post .user_info_wrapper .user_info').on('click', '.bgUserTag a.bgclose', function(){
         $(this).closest('.post').removeClass('bgut_open');
     });
-    
+
     $('body.forums .post .user_info_wrapper .user_info').on('click', '.bgUserTag a.bgut_save', function(){
         var letsSave = false,
         username = $(this).closest('.user_info').find('.user_name').text(),
         tag = $(this).siblings('#bgut_tagtag'),
         userid = $(this).siblings('#bgut_idtag'),
         url = $(this).siblings('#bgut_linktag');
-	
+
         // Tags
         if (!tag.val().match(/\S/) || tag.val().length < 1) tag.prev('label').addClass('bgerror');
         else $(this).siblings('label[for="bgut_tagtag"].bgerror').removeClass('bgerror');
@@ -356,7 +354,7 @@ if (prefs['usertags'] === true) {
 }
 
 // Moves timestamp
-$('body.forums .post .message .messagecontent > .post-options > ul > li.post-meta').each(function () { 
+$('body.forums .post .message .messagecontent > .post-options > ul > li.post-meta').each(function () {
     $(this).appendTo($(this).closest('.postcontent').find('.user_info_wrapper .user_info'));
 });
 

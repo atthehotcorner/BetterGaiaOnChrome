@@ -240,6 +240,10 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                 $('#bg_drawall').removeClass('bgopen');
             });
 
+            $('#bg_drawall ul').on('click', '.bgreward', function() {
+                $(this).parent().toggleClass('bgexpand');
+            });
+
             $('#bg_drawall .pure-button').on('click', function() {
                 var thisCandy = $(this).closest('li');
                 thisCandy.addClass('loading');
@@ -257,7 +261,7 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                     if (data['status'] == 'ok') {
                         var template2 = Handlebars.compile('<img src="http://gaiaonline.com/images/{{data.reward.thumb}}">\
                         <strong>{{data.reward.name}}</strong>\
-                        <p>\
+                        <p class="bgreward">\
                             {{#if data.reward.descrip}}\
                                 {{{data.reward.descrip}}}\
                                 {{#if data.tier_desc}}\
