@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#menu ul li a').on('click', function() {
         $('#menu ul li.active').removeClass('active');
         $(this).parent().addClass('active');
-        $('.pure-u-4-5').addClass('loading');
+        $('.pure-u-4-5').addClass('loading').attr('data-page', $(this).attr('href'));
 
         $.ajax({
             url: $(this).attr('href'),
@@ -18,4 +18,6 @@ $(document).ready(function() {
 
         return false;
     });
+
+    $('#menu a[href="home.html"]').click();
 });
