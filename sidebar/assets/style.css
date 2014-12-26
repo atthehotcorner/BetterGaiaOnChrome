@@ -1,12 +1,13 @@
-html {height: 100%;}
-body {
-    background: url(placeholder.jpg) center top;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    min-height: 100%;
-    height: 100%;
-}
-h1 + p {padding-left: 1em;}
+html, body {height: 100%;}
+
+.pure-g {height: 100%;}
+
+.pure-u-1-5 {background: rgb(37,42,58); color: #fff;}
+#menu {}
+#menu > a {padding: 1em 1em 0.75em; display: block; background: linear-gradient(to top right, #B5DDFF, #FFF);}
+#menu > a img {width: 50%; min-width: 50px;}
+#menu ul {list-style: none; padding: 0;}
+#menu ul li {display: block;}
+#menu ul a {display: block; padding: 0.5em 1em; color: #fff; text-decoration: none;}
+
+.pure-u-4-5 {padding: 1em; box-sizing: border-box;}
