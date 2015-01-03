@@ -113,7 +113,18 @@
     "Rising Concerto": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/c91fb0d9cfc5.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/39889ef5c42d.jpg"],
     "April Fools": ["http://s.cdn.gaiaonline.com/images/event/aprilfool2014/april2k14_takeover_header.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_barton_tile_sprite.jpg"],
     "Vivid Harmony CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/d18e5e4355e7.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/2745826a0148.jpg"],
-    "Easter": ["http://s.cdn.gaiaonline.com/images/event/easter2014/header/easter2k14_header.jpg", "http://s.cdn.gaiaonline.com/images/event/easter2014/header/easter2k14_header_tile.jpg"]
+    "Easter": ["http://s.cdn.gaiaonline.com/images/event/easter2014/header/easter2k14_header.jpg", "http://s.cdn.gaiaonline.com/images/event/easter2014/header/easter2k14_header_tile.jpg"],
+	"Peyo's Fables CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/7754274af669.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/37665aca2798.jpg"],
+	"Contagious CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/664c599d0f88.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/ef62adcdcdc4.jpg"],
+	"Summer Sale": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/4d3f7d793522.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/ad1759c8c566.jpg"],
+	"Rascal Rump CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/70d46372c8d1.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/131e76ab48a3.jpg"],
+	"Tailored Star CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/f5e7a0861835.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/5881ebcf4861.jpg"],
+	"Spirit of the Summer": ["http://s.cdn.gaiaonline.com/images/event/summer2014/header/summer2k14event_header.jpg", "http://s.cdn.gaiaonline.com/images/event/summer2014/header/summer2k14event_header_cut.jpg"],
+	"Enigma Institute CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/b7de6f51b3f4.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/325803ed79a4.jpg"],
+	"Luminous Void CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/4e3d6860f46d.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/426669570910.jpg"],
+	"Zephyr Strife CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/489096c25c0b.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/35a02500859b.jpg"],
+	"Frozen Repose CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/5fde46e9edcd.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/d4b2dbd23775.jpg"],
+	"Bitter Slumber": ["http://s.cdn.gaiaonline.com/images/event/xmas2014/201412_xmasheader.jpg", "http://s.cdn.gaiaonline.com/images/event/xmas2014/201412_xmasheader_cut.jpg"]
   },
 	"Towns": {
 		"Barton & Current Events": ["default", "default"],

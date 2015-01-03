@@ -24,7 +24,7 @@ css += 'body.forum div#content, body.forums #content #content-padding, body.app-
 
 // Thread Header Color
 if (prefs['forum.threadHeader'] != '#BF7F40')
-css += 'body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist, body.forums #gaia_content #forum_ft_content, body.forums #content #content-padding > .linklist {background-color: ' + prefs['forum.threadHeader'] + ';} body.forums #gaia_content:not(.grid_billie_holiday) .subforums {box-shadow: 0 -3px 3px rgba(0,0,0,0.4), 0 -3px 0 ' + prefs['forum.threadHeader'] + ';}';
+css += 'body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist, body.forums #content #content-padding > .linklist, body.forums #gaia_content .forum-list + #forum_ft_content:before {background-color: ' + prefs['forum.threadHeader'] + ';}';
 
 // Poll Drop Down
 if (prefs['forum.pollHide'] === true) {css += 'body.forums #content #content-padding > #topic_header_container #thread_poll {height: 40px; overflow: hidden;} body.forums #content #content-padding > #topic_header_container #thread_poll:hover {height: auto; overflow: visible;} body.forums #content #content-padding > #topic_header_container #thread_poll:after {content: "\\25BC"; color: rgba(0,0,0,0.35); display: block; position: absolute; top: 9px; right: 8px; font-size: 17px; text-shadow: 0 1px 1px #FFF;} body.forums #content #content-padding > #topic_header_container #thread_poll:hover:after {color: rgba(0,0,0,0.7); content: "\\25B2";}';}

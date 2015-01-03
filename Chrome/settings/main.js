@@ -1,5 +1,5 @@
 /*
-Settings JS 
+Settings JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
@@ -51,7 +51,7 @@ var Settings = {
     page: {}
 };
 
-Settings.page.init = function(pageName) {    
+Settings.page.init = function(pageName) {
     // Set nav link as init, check if init
     $('header menu a.init.' + pageName);
     $('header menu a.' + pageName).addClass('init');
@@ -167,7 +167,7 @@ Settings.page.personalize = function() {
             if (url == 'default') $('#background a.customurl').before('<a data-url="' + url + '"></a>');
             else $('#background a.customurl').before('<a data-url="' + url + '" style="background-image: url(' + url + ');"></a>');
         });
-        
+
         // Set selected background
         var bgurl = prefs['background.image'];
         if ($('#background a[data-url="' + bgurl + '"]').length > 0) $('#background a[data-url="' + bgurl + '"]').addClass('selected');
@@ -202,19 +202,6 @@ Settings.page.personalize = function() {
                 if (url[1] != 'default' && url[1].substring(0,7) != 'http://' && url[1].substring(0,19) != 'chrome-extension://') url[1] = host + url[1];
                 $('#header .h' + key).append('<a data-name="' + name + '" data-url="' + url[0] + '" data-base-url="' + url[1] + '"></a>');
             });
-
-            $(window).scroll(function() {
-                if ($('#header aside .h' + key).offset().top < $(window).scrollTop() + $(window).height() - 75) {
-                    $('#header aside .h' + key + ' a[data-url]').each(function() {
-                        var dataUrl = $(this).attr('data-url');
-                        // Parse into imgur thumbnail
-                        if (dataUrl.substring(0,19) == 'http://i.imgur.com/') {
-                            $(this).css('background-image', 'url(' + dataUrl.substr(0, dataUrl.lastIndexOf('.')) + 's.jpg' + ')');
-                        }
-                        else if (dataUrl != 'default') $(this).css('background-image', 'url(' + dataUrl + ')');
-                    });
-                }
-            });
         });
 
         // set current header
@@ -234,7 +221,7 @@ Settings.page.personalize = function() {
     if ($('#logo a[data-url="' + logourl + '"]').length > 0) $('#logo a[data-url="' + logourl + '"]').addClass('selected');
     else $('#logo a.customurl').attr('data-url', logourl).addClass('selected');
     Preview.set.logo(logourl);
-    
+
     $('#logo a[data-url]:not([data-url="default"])').each(function(){
         $(this).css({'background-image': 'url(' + $(this).attr('data-url') + ')'});
     });
@@ -244,7 +231,7 @@ Settings.page.personalize = function() {
             $('#logo a[data-url]:not([data-url="default"])').css('background-image', 'url(' + $(this).attr('data-url') + ')');
         }
     });*/
-    // END logos 
+    // END logos
 
     // nav color reset
     $('#navigation .reset').on('click', function(){
@@ -270,7 +257,7 @@ Settings.page.personalize = function() {
         }
 
         $('#background .left a[data-url].selected').removeClass('selected');
-        $(this).addClass('selected');        
+        $(this).addClass('selected');
         Preview.set.background(value);
     });
 
@@ -283,7 +270,7 @@ Settings.page.personalize = function() {
             send[pref[0]] = value[0];
             chrome.storage.sync.set(send, function(){console.log(pref[0] + ' saved.');});
         }
-        
+
         if (prefs.default[pref[1]] == value[1]) chrome.storage.sync.remove(pref[1], function(){console.log(pref[1] + ' removed.');});
         else {
             var send2 = {};
@@ -294,7 +281,7 @@ Settings.page.personalize = function() {
         $('#header aside a[data-url].selected').removeClass('selected');
         $(this).addClass('selected');
         Preview.set.header(value[0], value[1]);
-    });    
+    });
 
     // save logo
     $('#logo').on('click.default', 'a[data-url]:not(.selected)', function(){
@@ -338,7 +325,7 @@ Settings.page.personalize = function() {
             if ($(this).siblings('input.baseurl').length > 0) customurl.attr('data-base-url', $(this).siblings('input.baseurl').val());
             customurl.attr('data-url', $(this).siblings('input.url').val()).removeClass('selected').trigger('click.default');
         }
-		
+
         // Close Ask
         $(this).closest('aside').removeClass('editing');
 	});
@@ -370,7 +357,7 @@ Settings.page.formats = function() {
         console.log('done dragging!');
         showSave();
     });
-    
+
     $('#postformating aside format.add').on('click', function(){
         var bbcode = "%5Bcolor=#003040%5D%E2%96%8C%5B/color%5D%5Bb%5D%5Bsize=11%5D%5Bcolor=#777%5DA%20SHIP%20IS%20SAFE%20IN%20HARBOR,%5B/color%5D%5B/size%5D%5B/b%5D%0A%5Bcolor=#276B91%5D%E2%96%8C%5B/color%5D%5Bb%5D%5Bsize=11%5D%5Bcolor=#777%5DBUT%20THAT'S%20NOT%20WHAT%20SHIPS%20ARE%20FOR.%5B/color%5D%5B/size%5D%5B/b%5D%0A%0A%0A%0A%5Balign=right%5D%5Bb%5DWelcome%20to%20%5Burl=http://bettergaia.com/%5DBetterGaia%5B/url%5D.%5B/b%5D%0A%5Bi%5DNeed%20help?%20%5Burl=http://www.gaiaonline.com/forum/t.45053993/%5DSee%20our%20thread.%5B/url%5D%5B/i%5D%5B/align%5D",
 		name = ['Almost', 'Human', 'Grumpy Cat', 'Business Cat', 'Doge', 'Sophisticated Cat'];
@@ -390,7 +377,7 @@ Settings.page.formats = function() {
         $('#editformat select').val(format.attr('data-poststyle'));
 
         $('#editformat .right').html(bbcodePreview(decodeURI(format.attr('data-bbcode'))));
-        
+
         $(this).closest('format').addClass('editing');
         $('page.formats').addClass('editing');
         showSave();
@@ -401,15 +388,15 @@ Settings.page.formats = function() {
     $('#editformat .clear .done').on('click', function(){
         $('#postformating format.editing strong').text($('#editformat h3 input').val());
         $('#postformating format.editing').attr({
-            'data-bbcode': encodeURI($('#editformat textarea').val()), 
+            'data-bbcode': encodeURI($('#editformat textarea').val()),
             'data-poststyle': $('#editformat select').val()
         });
 
-        $('page.formats.editing, #postformating format.editing').removeClass('editing');    
+        $('page.formats.editing, #postformating format.editing').removeClass('editing');
     });
 
     $('#editformat .clear .cancel').on('click', function(){
-        $('page.formats.editing, #postformating format.editing').removeClass('editing');       
+        $('page.formats.editing, #postformating format.editing').removeClass('editing');
     });
 
     $('#editformat textarea').bind('input propertychange', function(){
@@ -434,7 +421,7 @@ Settings.page.formats = function() {
         chrome.storage.sync.set({'format.list': formats}, function(){
             if (typeof(chrome.runtime.lastError) == 'object') {
                 console.warn('Error when setting formats: ' + chrome.runtime.lastError['message']);
-                
+
                 // save to local
                 if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
                     chrome.storage.local.set({'format.list': formats}, function(){
@@ -491,7 +478,7 @@ Settings.page.shortcuts = function() {
         console.log('done dragging!');
         showSave();
     });
-    
+
     $('#shortcuts aside slink.add').on('click', function(){
         $(this).before('<slink>\
             <input type="text" class="name" placeholder="Name" value="Gaia Online">\
@@ -521,7 +508,7 @@ Settings.page.shortcuts = function() {
         chrome.storage.sync.set({'header.shortcuts.list': links}, function(){
             if (typeof(chrome.runtime.lastError) == 'object') {
                 console.warn('Error when setting shortcuts: ' + chrome.runtime.lastError['message']);
-                
+
                 // save to local
                 if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
                     chrome.storage.local.set({'header.shortcuts.list': links}, function(){
@@ -584,7 +571,7 @@ Settings.page.usertags = function() {
         chrome.storage.sync.set({'usertags.list': tags}, function(){
             if (typeof(chrome.runtime.lastError) == 'object') {
                 console.warn('Error when setting shortcuts: ' + chrome.runtime.lastError['message']);
-                
+
                 // save to local
                 if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
                     chrome.storage.local.set({'usertags.list': tags}, function(){
@@ -641,7 +628,7 @@ Settings.page.about = function() {
     });
 
     $('#viewTransfer .clear .close').on('click', function(){
-        $('page.about').removeClass('showModule');     
+        $('page.about').removeClass('showModule');
     });
 
 	$('page.about input.agreeTransfer').on('click', function(){
@@ -692,7 +679,7 @@ Settings.page.welcome = function() {
     });
 };
 
-Settings.load = function() {    
+Settings.load = function() {
     // Save a default
     prefs.default = JSON.parse(JSON.stringify(prefs));
     prefs.local = {};
@@ -754,7 +741,7 @@ Settings.init = function() {
 
 // Debug message
 function debugBro(error) {
-    window.prompt('There\'s a problem, bro. \nCan you pass this message over to our thread?', 
+    window.prompt('There\'s a problem, bro. \nCan you pass this message over to our thread?',
                   'Runtime message: ' + error + ' Name: ' + error.name + ' Stack: ' + error.stack + ' Message: ' + error.message);
 }
 

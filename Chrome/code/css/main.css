@@ -5,7 +5,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 html {height: auto !important;}
-body {height: 100% !important; min-height: 100% !important;}
+body {height: 100% !important; min-height: 100% !important; background: #12403D url(http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left;}
 
 /* Glyphicons */
 @font-face {
@@ -112,16 +112,12 @@ body #gaia_header #user_header_wrap > #user_account, body #gaia_header #bg_userb
 body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
 body #gaia_header .hud-account > ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
 
-    /* Logo */
-    body #gaia_header .hud-account ul#bg_logo {float: left; margin-left: 0; border-radius: 0 0 30px 0/0 0 75px 0; overflow: hidden; display: none;}
-    body #gaia_header .hud-account ul#bg_logo a {padding: 0 15px; color: #FFF; display: block; height: 25px; font-size: 19px; line-height: 28px; text-decoration: none; padding: 0 5px 0 15px;}
-
-		body #gaia_header .hud-account ul#bg_logo.bgscrolling {display: block;}
-		body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0, -webkit-filter: 0 ease 0;}
-		body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -500px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s; -webkit-filter: blur(1px);}
-		body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; -webkit-filter: blur(0); transition: opacity 0 ease 0, -webkit-filter 0 ease 0;}
-		body #gaia_header .header_content .notificationChanges.bgscrolling h3 {-webkit-transform: scaleY(-1);}
-		body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position-y: -4px;}
+    /* Notifications */
+    body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0, -webkit-filter: 0 ease 0;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -570px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s; -webkit-filter: blur(1px);}
+    body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; -webkit-filter: blur(0); transition: opacity 0 ease 0, -webkit-filter 0 ease 0;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling h3 {-webkit-transform: scaleY(-1); top: 7px;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position-y: -4px;}
 
     /* Name */
     body #gaia_header .header_content #user_account.hud-account.hud-sprite-new {padding: 0; margin: 0; border-radius: 0 0 0 30px/75px; background: none; overflow: visible; position: relative;}
@@ -230,36 +226,27 @@ body #gaia_header .hud-stats .hud-item-list-new {margin: 0;}
 body #gaia_header .hud-stats .hud-item-list-new #achievements-points {margin-right: 0;}
 
 /* Gold Message */
-body #gaia_header .header_content .goldMessage {height: 25px; right: 0; width: auto; z-index: 201; bottom: -26px; text-align: right; overflow: visible; background: linear-gradient(to right, rgba(147,242,255, 0), rgba(147,242,255,0.5), rgba(147,242,255,0)), radial-gradient(ellipse at center top, rgba(255,255,255,0.25), rgba(255,255,255,0) 50%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.25), rgba(0,0,0,0) 50%); line-height: 24px; padding: 0 25px 0 0; min-width: 167px;}
-
-body #gaia_header .header_content .goldCoin {position: absolute; left: auto; right: 0; top: -10px; bottom: 0; z-index: 2; text-decoration: none;}
-body #gaia_header .header_content .goldCoin:before {content: 'BetterGaia'; opacity: 0; pointer-events: none; display: inline-block; color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; position: absolute; right: 25px; bottom: 1px; transition: opacity 1s ease; text-shadow: 0 1px 0 rgba(0,0,0,0.1);}
-    body[id] #gaia_header .header_content .goldMessage:not(:hover) .goldCoin:before {opacity: 1; transition-delay: 2.5s;}
-    body[id] #gaia_header .header_content .goldMessage:hover .goldCoin:before {transition-delay: 0;}
-body #gaia_header .header_content .goldCoin:after {content: 'You\'re using'; opacity: 0; pointer-events: none; display: inline-block; color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; position: absolute; right: 75px; bottom: 1px; transition: opacity 0.75s ease, right 1s ease; text-shadow: 0 1px 0 rgba(0,0,0,0.1);}
-    body[id] #gaia_header .header_content .goldMessage:not(:hover) .goldCoin:after {opacity: 1; right: 125px; transition-delay: 3s;}
-    body[id] #gaia_header .header_content .goldMessage:hover .goldCoin:after {transition-delay: 0;}
-
-body #gaia_header .header_content .goldMessageText {margin: 0; float: right; text-shadow: 0 1px 0 rgba(0,0,0,0.5); display: block; overflow: hidden; position: relative; color: rgb(255,204,0); opacity: 1; max-width: 170px; transition: max-width 0.75s linear, opacity 1s ease;}
-body[id] #gaia_header .header_content .goldMessage:not(:hover) .goldMessageText {pointer-events: none; transition-delay: 2s; max-width: 0; opacity: 0;}
-body[id] #gaia_header .header_content .goldMessage:hover .goldMessageText {transition-delay: .5s;}
+body #gaia_header .header_content .goldMessage {height: auto; top: 102%; bottom: auto; right: 0; width: auto; line-height: 2em;}
+body #gaia_header .header_content .goldCoin {position: static; display: inline-block; float: right; margin: -10px 0 0 5px;}
+body #gaia_header .header_content .goldMessageText {margin: 0; display: inline-block; color: rgb(255,204,0);}
 
 /* Navigation */
-body #gaia_menu_bar, body .colorswitcher-color #gaia_menu_bar, #nav > li.selected, #nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {height: 27px; background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15)); box-shadow: rgba(255,255,255,0.35) 0 -1px 0px inset, rgba(0,0,0,0.4) 0 1px 0 inset, rgba(0,0,0,0.4) 0 1px 2px; background-position: 0;}
+body #gaia_menu_bar, body .colorswitcher-color #gaia_menu_bar {height: auto; background-image: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(0,0,0,0.15)); box-shadow: rgba(255,255,255,0.35) 0 -1px 0px inset, rgba(0,0,0,0.4) 0 1px 0 inset, rgba(0,0,0,0.4) 0 1px 2px; background-position: 0;}
+body #gaia_menu_bar {box-shadow: rgba(0,0,0,0.35) 0 -1px 0 inset, rgba(0,0,0,0.5) 0 1px 0 inset, rgba(255,255,255,0.25) 0 2px 0 inset, rgba(0,0,0,0.25) 0 0 0.25em;}
+body #gaia_menu_bar:after {display: table; content: ''; clear: both;}
 body #gaia_menu_bar #newmenu {width: 1140px; margin: 0 auto; position: relative;}
 body #gaia_menu_bar #newmenu #nav {}
-#nav > li {width: auto; position: relative; background-image: none; padding: 0; margin: 0; height: 27px;}
-#nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {background-color: #396C7C;}
-#nav > li.selected {background-color: #93F2FF;}
-#nav > li#home_menu {padding-left: 15px;}
-#nav > li#home_menu .home-icon {position: static; margin: -20px 0 0 -8px; display: block;}
+#nav > li {width: auto; position: relative; background-image: none; padding: 0; margin: 0; height: auto; transition: background-color 0.7s ease, box-shadow 0.25s ease;}
+#nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {transition: none; background: radial-gradient(ellipse at bottom center, #00FFFF, transparent 95%); background-position-y: -1px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+#nav > li.selected {background: radial-gradient(ellipse at bottom center, #00FFFF, transparent 95%); background-position-y: -1px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 #nav > li#color_menu:after {content: 'Please disable Color Switcher in Gaia Labs.'; background: #FFF; display: block; position: absolute; width: 100px; padding: 10px; text-align: center; border: 2px solid #222;}
+#nav > li#menu_search {padding: 0.3em 0 0;}
 #nav li.megamenu-divider, #nav li .lt_selector, #nav li .rt_selector {display: none;}
-#nav > li > a {box-sizing: border-box; height: 27px; margin: 0; padding: 3px 10px; background: none; text-decoration: none;}
-#nav > li .main_panel_container {position: absolute; margin: 0; top: 27px; margin: 0; background: rgba(255,255,255,0.98); padding: 0 0 10px; border-radius: 0 0 7px 7px; box-shadow: 0 0 5px -1px #000;}
+#nav > li > a {box-sizing: border-box; height: auto; margin: 0; padding: 0.5em 1em; background: none; text-decoration: none;}
+#nav > li .main_panel_container {position: absolute; margin: 0; top: 100%; margin: 0; background: rgba(255,255,255,0.98); padding: 0 0 1.25em; border-radius: 0 0 5px 5px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 #nav > li .main_panel_container .main_panel {margin: 0; padding: 0; background: none;}
-#nav > li .main_panel_container .main_panel .panel-left, #nav > li .main_panel_container .main_panel .panel-right {background: none;}
-#nav > li .main_panel_container .main_panel .panel-title {color: #3E53A2; font-weight: bold; height: auto; padding: 15px 10px;}
+#nav > li .main_panel_container .main_panel .panel-left, #nav > li .main_panel_container .main_panel .panel-right {background: none; margin: 0; width: 50%;}
+#nav > li .main_panel_container .main_panel .panel-title {color: #fff; height: auto; padding: 1em 0.85em; font: normal 14px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #5A80A1; margin: 0 0 0.75em;}
 #nav > li .main_panel_container .main_panel a {text-decoration: none;}
 #nav > li .main_panel_container .panel_bottom {display: none;}
 
@@ -661,7 +648,7 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
 #bg_drawall * {box-sizing: border-box;}
 
 #bg_drawall h1 {padding: 0.7em 0.75em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); position: relative;}
-#bg_drawall ul li {overflow: hidden;}
+#bg_drawall ul li {overflow: hidden; position: relative;}
 #bg_drawall ul li .pure-u-1-5 {padding: 1.5em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #316589; color: #FFF; display: block; list-style: none; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;}
 #bg_drawall ul li .pure-u-4-5 {padding: 1.5em; background: rgba(255,255,255,0.9); transition: all 0.6s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;}
 #bg_drawall ul li .pure-u-4-5 p {margin: 0;}
@@ -697,16 +684,10 @@ table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 1
     100% {-webkit-transform: perspective(0) rotateX(0deg); opacity: 1; -webkit-animation-fill-mode: none;}
 }
 
-#bg_drawall.bgopen ul li {-webkit-animation-duration: 0.9s; -webkit-animation-delay: .2s; -webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both; -webkit-backface-visibility: visible !important; -webkit-animation-name: flipInX;}
-#bg_drawall.bgopen ul li:nth-of-type(1) {-webkit-animation-delay: .1s;}
-#bg_drawall.bgopen ul li:nth-of-type(2) {-webkit-animation-delay: .2s;}
-#bg_drawall.bgopen ul li:nth-of-type(3) {-webkit-animation-delay: .3s;}
-#bg_drawall.bgopen ul li:nth-of-type(4) {-webkit-animation-delay: .4s;}
-#bg_drawall.bgopen ul li:nth-of-type(5) {-webkit-animation-delay: .5s;}
-#bg_drawall.bgopen ul li:nth-of-type(6) {-webkit-animation-delay: .6s;}
-#bg_drawall.bgopen ul li:nth-of-type(7) {-webkit-animation-delay: .7s;}
-#bg_drawall.bgopen ul li:nth-of-type(8) {-webkit-animation-delay: .8s;}
-#bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-delay: .9s; margin-bottom: 0;}
+#bg_drawall.bgopen ul li:nth-of-type(7), #bg_drawall.bgopen ul li:nth-of-type(8), #bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-duration: 0.9s; -webkit-animation-delay: .2s; -webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both; -webkit-backface-visibility: visible !important; -webkit-animation-name: flipInX;}
+#bg_drawall.bgopen ul li:nth-of-type(7) {-webkit-animation-delay: .1s;}
+#bg_drawall.bgopen ul li:nth-of-type(8) {-webkit-animation-delay: .2s;}
+#bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-delay: .3s; margin-bottom: 0;}
 
 /* Footer */
 body div#gaia_footer {width: 1140px; margin: 3em auto; padding: 0 !important; position: relative; font-size: 13px;}

@@ -34,11 +34,11 @@ css += 'body.mygaia #gaia_content #bd .mg_content.suggested {display: block;}';
 
 // Background
 if (prefs['background.image'] != 'default')
-css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
+css += 'body, body.forums, body table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
 
 // Background Options
 if (prefs['background.image'] != 'default') {
-    css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {';
+    css += 'body, body.forums, body table.warn_block {';
         css += 'background-color: ' + prefs['background.color'] + ';'; // Color
         css += 'background-position: ' + prefs['background.position'] + ';'; // Position
         if (prefs['background.repeat'] === false) css += 'background-repeat: no-repeat;'; // Repeat
@@ -54,11 +54,11 @@ css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.w
 
 // Header Background
 if (prefs['header.background'] != 'default')
-css += '.time-day div.town-barton .header_content, .time-dawn div.town-barton .header_content, .time-dusk div.town-barton .header_content {background-image: url(' + prefs['header.background'] + ');}';
+css += '.time-day div.town-barton .header_content, .time-dawn div.town-barton .header_content, .time-dusk div.town-barton .header_content, .time-night div.town-barton .header_content {background-image: url(' + prefs['header.background'] + ');}';
 
 // Header Background Base
 if (prefs['header.background.base'] != 'default')
-css += '.time-day div.town-barton, .time-dawn div.town-barton, .time-dusk div.town-barton {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
+css += '.time-day div.town-barton, .time-dawn div.town-barton, .time-dusk div.town-barton, .time-night div.town-barton {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
 
 // Header Background Stretch
 if (prefs['header.background.stretch'] === false)
@@ -69,23 +69,13 @@ if (prefs['header.logo'] != 'default')
 css += 'body #gaia_header .header_content .gaiaLogo a, body #gaia_header .header_content .gaiaLogo a:hover {background-image: url(' + prefs['header.logo'] + ');}';
 
 // Navigation and HUD
-css += 'body #gaia_header .hud-account > ul, body #gaia_menu_bar {background-color: ' + prefs['header.nav'] + ';}';
-
-function hexToRgb(hex) {
-    var bigint = parseInt(hex, 16);
-    var r = (bigint >> 16) & 255;
-    var g = (bigint >> 8) & 255;
-    var b = bigint & 255;
-    return r + "," + g + "," + b;
-}
-var rgb = hexToRgb(prefs['header.nav.current']);
-css += 'body #gaia_header .header_content .goldMessage {linear-gradient(to right, rgba(' + rgb + ', 0), rgba(' + rgb + ',0.5), rgba(' + rgb + ',0)), radial-gradient(ellipse at center top, rgba(255,255,255,0.25), rgba(255,255,255,0) 50%), radial-gradient(ellipse at center bottom, rgba(0,0,0,0.25), rgba(0,0,0,0) 50%);}';
+css += 'body #gaia_header .hud-account > ul, body #gaia_menu_bar, #nav > li .main_panel_container .main_panel .panel-title {background-color: ' + prefs['header.nav'] + ';}';
 
 // Nav Hover
-css += '#nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {background-color: ' + prefs['header.nav.hover'] + ';}';
+css += '#nav > li:not(#menu_search):hover, #nav > li:not(#menu_search):hover:active {background-image: radial-gradient(ellipse at bottom center, ' + prefs['header.nav.hover'] + ', transparent 95%);}';
 
 // Nav Current
-css += '#nav > li.selected {background-color: ' + prefs['header.nav.current'] + ';}';
+css += '#nav > li.selected {background-image: radial-gradient(ellipse at bottom center, ' + prefs['header.nav.current'] + ', transparent 95%);}';
 
 // Add CSS
 var style = document.createElement('style');

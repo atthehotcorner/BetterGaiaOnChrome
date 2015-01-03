@@ -18,7 +18,7 @@ body.forums #content #content-padding {width: 1140px; margin: 0 auto; padding: 1
 
     /* Fixes Ads */
 	body.forums #content #content-padding > #thread_mrec_ad {position: static; display: none;}
-	body.forums #content #content-padding > #thread_leaderboard_ad {background: none; padding: 0; margin: 0;}
+	body.forums #content #content-padding > #thread_leaderboard_ad {background: none; padding: 0; margin: 4em 0 0;}
 
 	/* Fixes Pages, Background */
 		/* Moderators */
@@ -50,7 +50,7 @@ body.forums #messagebox h2, body.forums #gaia_content #messagebox h2 {color: #5A
 
 /* Styles Index Page */
 body.forums #gaia_content.grid_billie_holiday {background: none; padding: 0;}
-body.forums #gaia_content.grid_billie_holiday #bd {margin: 20px auto 0; border-radius: 8px; width: 775px;}
+body.forums #gaia_content.grid_billie_holiday #bd {margin: 3em auto 0; border-radius: 5px; padding: 1em; background: rgba(255,255,255,0.9); width: 775px;}
 body.forums #gaia_content.grid_billie_holiday .yui-g .yui-u.last {display: none;}
 body.forums #gaia_content.grid_billie_holiday > #menu_shadow {display: none;}
 body.forums #gaia_content.grid_billie_holiday > #bd > .grid_rc_container_top, body.forums #gaia_content.grid_billie_holiday > #bd > .grid_rc_container_bottom {display: none;}
@@ -58,36 +58,36 @@ body.forums #gaia_content.grid_billie_holiday #forum-header {position: static; w
 body.forums #gaia_content.grid_billie_holiday > #bd .balloonCallout {display: none;}
 
 /* Styles Topic Browsing Pages */
-body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight {padding: 15px 0;}
+body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight {padding: 1em 0;}
 body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main {float: none; margin: 0 auto; width: 1140px;}
 body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {margin: 0; padding: 0; position: relative;}
 
 	/* Forum Header */
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header {width: auto; padding: 0 0 0 38px; margin: 0; height: auto; background: none;}
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header * {box-sizing: border-box;}
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .icon {background-position: -13px -13px; height: 30px; width: 30px; box-shadow: 0 1px 2px rgba(0,0,0,0.4);}
+	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .icon {background-position: -13px -13px; height: 30px; width: 30px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header h2 {display: none;}
 
 	/* Breadcrumb */
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist {height: 30px; line-height: 30px; display: block; padding: 0; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25)) #BF7F40; border-radius: 4px; color: transparent; box-shadow: 0 0 3px rgba(0,0,0,0.4); position: relative; z-index: 1; margin: 0;}
+	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist {display: block; padding: 0; background: #A16B36; border-radius: 5px 5px 0 0; color: transparent; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); margin: 0; line-height: 15px; font-size: 13px;}
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist * {box-sizing: border-box;}
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > br {display: none;}
 
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a {display: block; float: left; position: relative; padding: 0 10px; transition: color 0.7s; text-shadow: 0 1px 0 rgba(0,0,0,0.2); background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1)); margin: 0 15px 0 0; color: rgba(255,255,255,0.5); text-decoration: none;}
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:after {border-color: transparent transparent transparent rgba(0,0,0,0.1); border-style: solid; border-width: 15px 0 15px 15px; content: ''; height: 0; position: absolute; right: -15px; top: 0; width: 0;}
+	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a {display: inline-block; position: relative; padding: 1em; transition: color 0.7s; background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1)); margin: 0 0.5em 0 0; color: rgba(255,255,255,0.5); text-decoration: none;}
+	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:after {border-color: transparent transparent transparent rgba(0,0,0,0.1); border-style: solid; border-width: 20px 0 21px 21px; content: ''; height: 0; position: absolute; right: -21px; top: 0; width: 0;}
     body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:hover {color: #FFF; background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.25) 90%); transition-duration: 0;}
     body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:hover:after {border-color: transparent transparent transparent rgba(0,0,0,0.25);}
 	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:active {color: rgba(255,255,255,0.75);}
+
     body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:last-of-type {background: none; color: #FFF; margin-right: 0;}
     body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist > a:last-of-type:after {display: none;}
 
-    body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist div {margin: 0 !important; display: inline;}
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist div a.moderators {border-radius: 20px; margin: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4)); padding: 3px 10px; text-decoration: none; box-shadow: 0 0 0 1px rgba(0,0,0,0.2) inset; color: #61CE37;}
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist div a.moderators:hover {background-color: rgba(0,0,0,0.1);}
-	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist div a.moderators:active {background-color: rgba(0,0,0,0.25);}
+    body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist div {margin: 0 11.5em 0 0 !important; display: inline-block; float: right;}
+	body.forums #gaia_content:not(.grid_billie_holiday) #forum-header .linklist div a.moderators {margin: 0; padding: 1em; color: #fff; font-size: 13px; display: block;}
 
 	/* Subforums */
-	body.forums #gaia_content:not(.grid_billie_holiday) .subforums {margin: 0 0 0 38px; z-index: 0; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; box-shadow: 0 -3px 3px rgba(0,0,0,0.4), 0 -3px 0 #BF7F40; border-bottom: 0;}
+	body.forums #gaia_content:not(.grid_billie_holiday) .subforums {margin: 0 0 0 38px; background: rgba(255,255,255,0.9); padding: 1em; border: 0; height: auto; min-height: 0; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+	body.forums #gaia_content:not(.grid_billie_holiday) .subforums .hd h3 {top: 0; left: 1em;}
 	body.forums #gaia_content:not(.grid_billie_holiday) .subforums > div > div[class^="rc_"] {display: none;}
 
 	/* Restyles Forum Pluse */
@@ -99,7 +99,7 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 	body.forums #pulse_wrapper #pulse_footer {display: none !important;}
 
 	/* New topic Pagination bar */
-	body.forums #gaia_content #forum_ft_content {margin: 0 0 35px 38px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; box-shadow: 0 1px 3px rgba(0,0,0,0.4); padding: 0 10px 2px; line-height: 28px;}
+	body.forums #gaia_content #forum_ft_content {margin: 0 0 3em 38px; background: rgba(255,255,255,0.9); box-shadow: 0 0 0.25em rgba(0,0,0,0.25); padding: 1em;}
     body.forums #gaia_content #forum_ft_content:after {content: ''; display: table; clear: both;}
 	body.forums #gaia_content #forum_ft_content * {box-sizing: border-box;}
 
@@ -109,7 +109,7 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
     body.forums #gaia_content #forum_ft_content .forum-list-header #pulse_show_wrapper a {font-weight: normal; margin-right: 10px; background: none;}
 
 		/* New topic */
-		body.forums #gaia_content #forum_ft_content .forum-list-header .cta-button-md {box-sizing: content-box; position: absolute; top: 3px; right: 0; z-index: 1;}
+		body.forums #gaia_content #forum_ft_content .forum-list-header .cta-button-md {box-sizing: content-box; position: absolute; top: 0.4em; right: 0.5em; z-index: 1;}
 		body.forums #gaia_content #forum_ft_content .forum-list-header .cta-button-md * {box-sizing: content-box;}
 
 		/* Pagination */
@@ -117,7 +117,7 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 		body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination .forum_all_pagination {display: inline;}
 		body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination .forum_all_pagination .forum_hd_timetravel_title {display: inline; font-size: 13px;}
 
-        body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination #forum_hd_topic_pagelinks {margin: 0; display: inline-block; float: right;}
+        body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination #forum_hd_topic_pagelinks {margin: -0.4em 0 -1em; display: inline-block; float: right;}
 		body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination #forum_hd_topic_pagelinks a {color: #222; background-color: #FFF; display: inline-block; border-radius: 0; padding: 5px; text-decoration: none; font-size: 12px; margin: 0 -1px 0 -2px; height: 24px; line-height: 14px; border: 0; box-shadow: 0px 1px 1px rgba(0,0,0,0.25) inset; min-width: 22px; text-align: center;}
         body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination #forum_hd_topic_pagelinks a:hover {background: #EEE;}
 		body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination #forum_hd_topic_pagelinks a:active {}
@@ -128,15 +128,14 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 		body.forums #gaia_content #forum_ft_content .forum-list-header .forum-pagination #forum_hd_topic_pagelinks a:only-of-type {border-radius: 15px; margin: 0;}
 
     /* New topic Pagination bar - end of page */
-    body.forums #gaia_content .forum-list + #forum_ft_content:before {height: 30px; line-height: 30px; display: block; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.25)) #BF7F40; border-radius: 4px 4px 0 0; box-shadow: 0 0 3px rgba(0,0,0,0.4); content: ''; margin: -2px -12px 2px;}
-    body.forums #gaia_content .forum-list + #forum_ft_content {margin: 35px 0; position: relative; box-sizing: border-box; border-radius: 5px 5px 0 0;}
-    body.forums #gaia_content .forum-list + #forum_ft_content * {box-sizing: border-box;}
-    body.forums #gaia_content .forum-list + #forum_ft_content a.cta-button-md {top: 1px; right: -2px;}
+    body.forums #gaia_content .forum-list + #forum_ft_content:before {height: 41px; display: block; background: #BF7F40; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); content: ''; position: absolute; top: 100%; left: 0; width: 100%; z-index: 0;}
+    body.forums #gaia_content .forum-list + #forum_ft_content {margin: 3em 0; border-radius: 5px 5px 0 0;}
+    body.forums #gaia_content .forum-list + #forum_ft_content a.cta-button-md {top: calc(100% + 0.45em);}
 
 	/* Thread Type */
-	body.forums #gaia_content:not(.grid_billie_holiday) ul.threadtype {background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border: 2px solid #DEE8FE; box-shadow: 0 1px 3px rgba(0,0,0,0.4); overflow: hidden; width: auto; padding: 5px;}
-    body.forums #gaia_content:not(.grid_billie_holiday) #forum_ft_content + ul.threadtype {margin: -35px 0 0; z-index: 1; position: relative;}
-	body.forums #gaia_content:not(.grid_billie_holiday) ul.threadtype li {width: auto; padding: 0 15px 0 0; background: none;}
+	body.forums #gaia_content:not(.grid_billie_holiday) ul.threadtype {background: rgba(255,255,255,0.9); box-shadow: 0 0 0.25em rgba(0,0,0,0.25); overflow: hidden; width: auto; padding: 1em 0.75em; border-radius: 5px; font-size: 13px; margin: 3em 0;}
+    body.forums #gaia_content:not(.grid_billie_holiday) #forum_ft_content + ul.threadtype {margin: -3em 0 47px; border-radius: 0; position: relative; z-index: 1;}
+	body.forums #gaia_content:not(.grid_billie_holiday) ul.threadtype li {width: auto; padding: 0 1em 0 0; background: none;}
 
 	/* BetterGaia Preview */
 	body.forums #gaia_content table.forum-list tr td.title .one-line-title a.bgThreadPreview {cursor: pointer; font-size: 11px; font-weight: bold;}
@@ -180,7 +179,7 @@ body.forums #content #content-padding {}
 		body.forums #content #content-padding > #topic_header_container #thread_header {background: rgba(255,255,255,0.9); position: relative; z-index: 1; margin: 0; padding: 1em; border: 0; height: auto; min-height: 0; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like {position: absolute; left: -80px; top: -41px; margin: 0;}
-        body.forums #content #content-padding > #topic_header_container #thread_header #thread_like #like_count {box-shadow: 0 1px 3px rgba(0,0,0,0.4); margin-bottom: 4px;}
+        body.forums #content #content-padding > #topic_header_container #thread_header #thread_like #like_count {box-shadow: 0 0 0.25em rgba(0,0,0,0.25); margin-bottom: 4px;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like .cta_like_dislike {width: 35px;}
         body.forums #content #content-padding > #topic_header_container #thread_header #thread_like.metered {opacity: 0.5; pointer-events: none; display: block;}
 
@@ -200,7 +199,7 @@ body.forums #content #content-padding {}
 
 		/* Subscribe Bar, New Post */
 		body.forums #content #content-padding > #topic_header_container .detail-navlinks {margin: 0; background: rgba(255,255,255,0.9); height: auto; padding: 0.5em 1em; width: auto; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
-		body.forums #content #content-padding > #topic_header_container .detail-navlinks .cta-dropdown {position: absolute; top: calc(-0.5em - 27px); right: 0.5em; margin: 0; z-index: 5;}
+		body.forums #content #content-padding > #topic_header_container .detail-navlinks .cta-dropdown {position: absolute; top: calc(-0.5em - 29px); right: 0.5em; margin: 0; z-index: 5;}
 
 		body.forums #content #content-padding > #topic_header_container .detail-navlinks .thread_options {}
         body.forums #content #content-padding .detail-navlinks .thread_options #hdr_report_links {font-size: 13px;}
@@ -361,7 +360,7 @@ body.forums #content #post_container .post .postcontent {}
 	/* Message */
 	body.forums #content #post_container .post .postcontent .message {padding: 0; margin: 0 0 0 130px;}
 	body.forums #content #post_container .post .postcontent .message .messagecontent {position: relative; display: flex; flex-direction: column;}
-	body.forums #content #post_container .post .postcontent .message .messagecontent:before {content: ''; width: 0; height: 0; border-top: 1.5em solid transparent; border-bottom: 1.5em solid transparent; border-right: 1.5em solid #FFF; position: absolute; left: -1.45em; top: 0; z-index: 2;}
+	body.forums #content #post_container .post .postcontent .message .messagecontent:before {content: ''; width: 0; height: 0; border-top: 1.5em solid transparent; border-bottom: 1.5em solid transparent; border-right: 1.5em solid #FFF; position: absolute; right: calc(100% - 1px); top: 0; z-index: 2;}
 
 		/* Post options */
 		body.forums #content #post_container .post .postcontent .message .messagecontent .post-options {width: 100%; margin: 0; background: rgba(255,255,255,0.9); float: none; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); order: 3;}

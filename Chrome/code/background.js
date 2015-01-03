@@ -19,7 +19,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         chrome.tabs.query({url: optionsUrl}, function(tabs) {
             if (tabs.length) chrome.tabs.update(tabs[0].id, {active: true});
             else chrome.tabs.create({url: optionsUrl});
-        });	
+        });
     }
     else if (request.elements == 'reset') {sendResponse({'reset': true});}
 });
@@ -35,18 +35,18 @@ chrome.runtime.onStartup.addListener(function() {
 
 // Fire alarm
 chrome.alarms.onAlarm.addListener(function(alarm) {
-	if (alarm.name == 'gaia-notifications') {	
+	if (alarm.name == 'gaia-notifications') {
 		$.get('http://gaiaonline.com/supportal/header', function(data) {
 			var r = $('<div/>').html(data);
 
 			if (r.find('#notifyBubbleContainer').length == 1) {
 				var text = [], userimg = '';
-				
+
 				r.find('#notifyBubbleContainer #notifyItemList li a').each(function(index) {
 					var count = $(this).text().replace(/(^\d+)(.+$)/i,'$1');
 					text.push({title: count, message: $(this).text().substring(count.length + 1)});
 				});
-				
+
 				if (typeof r.find('#gaia_header .header_content .imgAvatar a img').attr('src') === 'string') {
 					userimg = r.find('#gaia_header .header_content .imgAvatar a img').attr('src');
 				}
@@ -55,17 +55,20 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				}
 
 				if (text.length > 0) {
-					chrome.notifications.create('gaia-notify', {   
-						type: 'list', 
-						iconUrl: userimg, 
-						title: 'Hey ' + r.find('#gaia_header .header_content .userName ul.hud-item-list li.avatarName span').text().slice(0,-1) + ', you got...',
+					chrome.notifications.create('gaia-notify', {
+						type: 'list',
+						iconUrl: userimg,
+						title: 'Hey ' + r.find('#gaia_header .avatarName span').text().slice(0,-1) + ', you got...',
 						message: '',
 						items: text,
-						buttons: [{title: 'Open Gaia', iconUrl: 'images/mailbox.png'}, {title: 'Hide these notifications for now', iconUrl: 'images/clock.png'}],
+						buttons: [{title: 'Go to Gaia'}, {title: 'Hide these notifications for now'}],
 						priority: 1
-					}, function() {}); 
-				}			
+					}, function() {});
+				}
 			}
+            else {
+                chrome.notifications.clear('gaia-notify', function(){});
+            }
 		}, 'html');
 	}
 });

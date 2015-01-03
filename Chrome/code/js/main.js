@@ -23,13 +23,20 @@ $('#gaia_header #user_header_wrap').prepend('<div id="bg_userbar" class="hud-acc
 $('#gaia_header #user_header_wrap #user_account').appendTo('#gaia_header #bg_userbar');
 $('#gaia_header #user_dropdown_menu').appendTo('#gaia_header #bg_userbar #user_account');
 
-// Gaia Logo
-if (prefs['header.float'] === true) {
-    $('#gaia_header #bg_userbar').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
+// Float notifications
+if (prefs['header.float'] === true && $('#gaia_header .header_content .notificationChanges').length === 1) {
+    didScroll = false;
 
     $(window).scroll(function() {
-        $('#bg_logo, #gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
+        didScroll = true;
     });
+
+    setInterval(function() {
+        if (didScroll) {
+            didScroll = false;
+            $('#gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
+        }
+    }, 500);
 }
 
 // Add BG Siderbar to MyGaia
@@ -39,7 +46,7 @@ if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'
             <a class="pure-button"></a>\
         </div>\
         <div class="bd">\
-            <iframe sandbox="allow-scripts allow-forms allow-same-origin" width="100%" frameborder="0" src="http://www.bettergaia.com/sidebar/"></iframe>\
+            <iframe sandbox="allow-scripts allow-forms allow-same-origin allow-popups" width="100%" frameborder="0" src="http://www.bettergaia.com/sidebar/"></iframe>\
         </div>\
     </div>');
 
