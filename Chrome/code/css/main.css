@@ -5,7 +5,8 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 */
 
 html {height: auto !important;}
-body {height: 100% !important; min-height: 100% !important; background: #12403D url(http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left;}
+body {height: 100% !important; min-height: 100% !important;}
+body.time-day, body.time-dawn, body.time-dusk, body.time-night, body table.warn_block {background: #12403D url(http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left;}
 
 /* Glyphicons */
 @font-face {
@@ -37,9 +38,6 @@ body {height: 100% !important; min-height: 100% !important; background: #12403D 
     font-weight: normal;
     font-style: normal;
 }
-
-/* Hide Ads *
-#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame, #cr_overlay {display: none !important;}*/
 
 /* Stretch Page, Remove BG */
 body > #content {width: 1140px; border: none; background: none; margin-left: auto; margin-right: auto;}
@@ -110,12 +108,12 @@ body #gaia_header .hud-account > ul, body #gaia_menu_bar {background-color: #5A8
 body #gaia_header #user_header_wrap > #user_account, body #gaia_header #bg_userbar {box-sizing: border-box; background: none; position: fixed; width: 1140px; right: 50%; margin-right: -570px; z-index: 500; height: 0; overflow: visible;}
 @media (max-width: 1140px) {body #gaia_header #user_header_wrap > #user_account, body #gaia_header #bg_userbar {right: 0; margin-right: 0; width: 100%;}}
 body #gaia_header .hud-account *, body #gaia_header .hud-account *:before, body #gaia_header .hud-account *:after {box-sizing: border-box;}
-body #gaia_header .hud-account > ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(255,255,255,0.2)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.4) inset, 0 -1px 7px rgba(255,255,255,0.5) inset, 0 1px 2px rgba(0,0,0,0.3); border-radius: 0 0 0 30px/75px; padding: 0; margin-left: -10px; position: relative;}
+body #gaia_header .hud-account > ul {display: block; float: right; overflow: visible; border: none; background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.15)); height: 25px; box-shadow: 0 -1px 0 rgba(255,255,255,0.75) inset, 0 0 0.25em rgba(0,0,0,0.25); border-radius: 0 0 10px 30px/0 0 10px 75px; padding: 0; margin-left: -10px; position: relative;}
 
     /* Notifications */
-    body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0, -webkit-filter: 0 ease 0;}
-    body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -570px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s; -webkit-filter: blur(1px);}
-    body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; -webkit-filter: blur(0); transition: opacity 0 ease 0, -webkit-filter 0 ease 0;}
+    body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -570px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; transition: opacity 0 ease 0;}
     body #gaia_header .header_content .notificationChanges.bgscrolling h3 {-webkit-transform: scaleY(-1); top: 7px;}
     body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position-y: -4px;}
 
@@ -242,7 +240,7 @@ body #gaia_menu_bar #newmenu #nav {}
 #nav > li#color_menu:after {content: 'Please disable Color Switcher in Gaia Labs.'; background: #FFF; display: block; position: absolute; width: 100px; padding: 10px; text-align: center; border: 2px solid #222;}
 #nav > li#menu_search {padding: 0.3em 0 0;}
 #nav li.megamenu-divider, #nav li .lt_selector, #nav li .rt_selector {display: none;}
-#nav > li > a {box-sizing: border-box; height: auto; margin: 0; padding: 0.5em 1em; background: none; text-decoration: none;}
+#nav > li > a {box-sizing: border-box; height: auto; margin: 0; padding: 0.5em 1em; background: none; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.25);}
 #nav > li .main_panel_container {position: absolute; margin: 0; top: 100%; margin: 0; background: rgba(255,255,255,0.98); padding: 0 0 1.25em; border-radius: 0 0 5px 5px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 #nav > li .main_panel_container .main_panel {margin: 0; padding: 0; background: none;}
 #nav > li .main_panel_container .main_panel .panel-left, #nav > li .main_panel_container .main_panel .panel-right {background: none; margin: 0; width: 50%;}
@@ -613,7 +611,7 @@ body.guilds #content > #content-padding {background: #FFF; width: 930px; margin:
 	100% {opacity: 1; -webkit-transform: scale(1);}
 }
 
-.bgredirect table.warn_block .bgclose {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 10px; bottom: 12px;}
+.bgredirect table.warn_block .bgclose {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 0.6em; bottom: 1em;}
 	.bgredirect table.warn_block .bgclose:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
 	.bgredirect table.warn_block .bgclose:hover:after {background: #FFF; color: #000;}
 
@@ -621,18 +619,17 @@ table.warn_block {display: table; position: absolute; top: 0; left: 0; height: 1
 table.warn_block * {box-sizing: border-box;}
 table.warn_block td[valign="middle"] {display: table-cell; vertical-align: middle;}
 
-table.warn_block #warn_block {height: auto; width: 600px; position: relative; margin: -3% 0 0; border: 0; background: none; display: block; padding: 0 0 55px;}
-table.warn_block #warn_block div {width: 600px; height: auto; font: normal 12px/18px Arial, Helvetica, sans-serif; border: 0; text-align: left; margin: 0;}
+table.warn_block #warn_block {height: auto; width: 600px; position: relative; margin: -3.5% 0 0; border: 0; background: none; display: block; padding: 0; background: rgba(255,255,255,0.9); border-top: 5px solid #3C3C3C; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+table.warn_block #warn_block > div {height: auto; border: 0; text-align: left; margin: 0; font: normal 13px/1.5 Arial, Helvetica, sans-serif;}
 table.warn_block #warn_block u {text-decoration: none; font-weight: bold;}
 
-table.warn_block #warn_block #warn_head {padding: 15px 10px 10px; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(241,191,105,0)); color: #FFF; font: bold 17px/normal "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); text-align: center; position: relative;}
-table.warn_block #warn_block #warn_body {padding: 15px 15px 10px; background: linear-gradient(to bottom, #DEE8FE, #F3FAFF); border-top: 3px solid #3C3C3C;}
-table.warn_block #warn_block #link_display {padding: 10px 10px 10px 15px; background: #FFF; border-bottom: 3px solid #3C3C3C; position: absolute; bottom: 0; line-height: 2.5; border-top: 2px solid #DEE8FE; height: 55px;}
-	table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline-block; line-height: 1; max-width: 490px; float: right; padding: 8px 10px; border: 1px solid rgba(0,0,0,0.2); border-radius: 3px; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.1)); text-overflow: ellipsis; overflow: hidden; font-weight: bold; text-decoration: none;}
-	table.warn_block #warn_block #link_display a.link_display:hover {color: #5682C4; background-color: #F7F7F7;}
-	table.warn_block #warn_block #link_display a.link_display:active {background-color: #DEDEDE;}
-table.warn_block #warn_block #warn_no_logout {background: #F3FAFF; padding: 0 15px;}
-table.warn_block #warn_block #notice_acct_prefs {background: #F3FAFF; padding: 10px 15px 15px;}
+table.warn_block #warn_block #warn_head {padding: 0.7em 0.5em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(194,125,37,0)); position: absolute; bottom: calc(100% + 5px); width: 100%;}
+table.warn_block #warn_block #warn_body {padding: 1em;}
+table.warn_block #warn_block #link_display {padding: 1em; position: absolute; top: 100%; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); width: 100%; border-bottom: 5px solid #3C3C3C; background: #fff;}
+table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline; line-height: 1.5; max-width: 490px; float: right; text-overflow: ellipsis; overflow: hidden; font-weight: bold;}
+table.warn_block #warn_block #link_display a.link_display:hover {color: #5682C4; text-decoration: underline;}
+table.warn_block #warn_block #warn_no_logout {padding: 0 1em;}
+table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 
 /* Draw All */
 #dailyReward {z-index: 1;}

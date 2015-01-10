@@ -210,23 +210,29 @@ if (prefs['forum.externalLinks'] === true) {
 				thisurl += "?" + e.offsetX + "," + e.offsetY;
 			}
 
-			$.ajax({type: "GET", url: thisurl, dataType: "html",
-				success: function(data) {
-                    var pageHtml = $('<div>').html(data);
-                    pageHtml.find('script').remove();
+            $.ajax({
+                type: 'GET',
+                url: thisurl,
+                dataType: 'html'
+            }).done(function(data) {
+                var pageHtml = $('<div>').html(data);
 
-					$(".bgredirect").html($('<div>' + pageHtml.html() + '</div>').html());
-					$(".bgredirect table.warn_block #warn_block #warn_head").append("<a class='bgclose' title='close'></a>");
-					$(".bgredirect a").attr("target", "_blank");
-					$(".bgredirect a.link_display, .bgredirect a.bgclose").on("click", function(){
-						$(".bgredirect").remove();
-					});
-				},
-				error: function() {
-					$(".bgredirect").remove();
-					window.open(thisurl);
-				}
-			});
+                if (pageHtml.find('.warn_block').length === 1) {
+                    $('.bgredirect').html(pageHtml.find('.warn_block')[0].outerHTML);
+                    $('.bgredirect table.warn_block #warn_block #warn_head').append('<a class="bgclose" title="close"></a>');
+                    $('.bgredirect a').attr('target', '_blank');
+                    $('.bgredirect a.link_display, .bgredirect a.bgclose').on('click', function(){
+                        $('.bgredirect').remove();
+                    });
+                }
+                else {
+                    $('.bgredirect').remove();
+                    window.open(thisurl);
+                }
+            }).fail(function() {
+                $('.bgredirect').remove();
+                window.open(thisurl);
+            });
 
 			return false;
 		}

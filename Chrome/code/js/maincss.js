@@ -34,7 +34,7 @@ css += 'body.mygaia #gaia_content #bd .mg_content.suggested {display: block;}';
 
 // Background
 if (prefs['background.image'] != 'default')
-css += 'body, body.forums, body table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
+css += 'body.time-day, body.time-dawn, body.time-dusk, body.time-night, body table.warn_block {background-image: url(' + prefs['background.image'] + ');}';
 
 // Background Options
 if (prefs['background.image'] != 'default') {
