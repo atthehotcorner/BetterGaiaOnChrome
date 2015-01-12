@@ -1,7 +1,7 @@
 License
 ==========
 
-Copyright © 2014 BetterGaia and Bowafishtech.
+Copyright © BetterGaia.
 
 Permission is hereby granted to any person obtaining a copy of this software and associated files, to use, adapt, and/or modify the software for personal use, subject to the following conditions:
 

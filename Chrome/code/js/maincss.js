@@ -38,7 +38,7 @@ css += 'body.time-day, body.time-dawn, body.time-dusk, body.time-night, body tab
 
 // Background Options
 if (prefs['background.image'] != 'default') {
-    css += 'body, body.forums, body table.warn_block {';
+    css += 'body.time-day, body.time-night, body.time-dawn, .time-dusk, body table.warn_block {';
         css += 'background-color: ' + prefs['background.color'] + ';'; // Color
         css += 'background-position: ' + prefs['background.position'] + ';'; // Position
         if (prefs['background.repeat'] === false) css += 'background-repeat: no-repeat;'; // Repeat
