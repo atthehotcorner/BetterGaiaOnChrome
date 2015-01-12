@@ -21,7 +21,7 @@ layout: default
 <div class="wrapper constrain">
 ## Why Donate?
 * BetterGaia is free and always will be, absolutely without any ads or anything else that can make money.
-* We aren't a huge corporation, but acually only one guy, nearing his 20s, in college.
+* We aren't a huge corporation, but acually only one guy in college.
 * Keeping track of Gaia and fixing changes takes time and stress.
 * I work on BetterGaia between college and work, and you'll help make ends meet.
 * A virtual hug from yours truly.
