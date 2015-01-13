@@ -2,10 +2,10 @@
     "name": "bettergaia",
     "title": "BetterGaia",
     "id": "bettergaia@bowafishtech.co.cc",
-    "homepage": "http://bettergaia.com/",
+    "homepage": "http://www.bettergaia.com/",
     "description": "Change the way you experience Gaia.",
-    "icon": "data/images/logo/48.png",
-    "author": "bowafishtech (http://bowafishtech.org/)",
+    "icon": "data/images/128.png",
+    "author": "BetterGaia (http://www.bettergaia.com/)",
     "license": "BetterGaia License",
-    "version": "2014.1a"
+    "version": "2015.6"
 }

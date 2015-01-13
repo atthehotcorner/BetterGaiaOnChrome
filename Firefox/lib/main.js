@@ -1,15 +1,10 @@
 /*
-BetterGaia by bowafishtech
-Copyright (c) BetterGaia and Bowafishtech
+BetterGaia
+Copyright (c) BetterGaia
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global require: false, console: false */
-/*jshint sub:true */
 
-// /code is /data
-// /images is /data/images
-
-// Import APIs
+// APIs
 var pageMod = require('sdk/page-mod');
 var Request = require('sdk/request').Request;
 var self = require('sdk/self');
@@ -21,7 +16,7 @@ if (self.loadReason === 'install' || self.loadReason === 'upgrade') {
     ss.storage.version = self.version;
 }
 
-// Analytics - will create privacy policy
+/* Analytics - will create privacy policy
 // https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
 // http://stackoverflow.com/questions/7715878/unique-identifier-for-each-addon-user
 // https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/util_uuid
@@ -39,14 +34,15 @@ Request({
     onComplete: function(response) {
         console.log(response);
     }
-}).post();
+}).post();*/
 
-// Create page mod for main site, forums and formatting
+// Attach Page Mod
 pageMod.PageMod({
     include: '*.gaiaonline.com',
+    //exclude: ['*.gaiaonline.com/profiles/*/*/', '*.gaiaonline.com/launch/*', '*.gaiaonline.com/tank/*'],
     contentScriptWhen: 'start',
-    attachTo: ['top'],
-    contentScriptFile: [self.data.url('js/jquery.min.js'), self.data.url('js/prefs.js'), self.data.url('js/maincss.js'), self.data.url('js/main.js')],
+    attachTo: 'top',
+    contentScriptFile: ['./js/jquery.min.js', './js/handlebars.js', './js/prefs.js', './js/maincss.js', './js/main.js'],
     contentScriptOptions: {
         prefs: ss.storage,
         mainCssUrl: self.data.url('css/main.css')
@@ -108,10 +104,10 @@ pageMod.PageMod({
 });
 
 pageMod.PageMod({
-    include: [self.data.url('settings/main.html')],
-    contentScriptWhen: 'ready',
-    attachTo: ['top'],
-    contentScriptFile: [self.data.url('js/jquery.min.js'), self.data.url('js/prefs.js'), self.data.url('settings/jquery.sortable.min.js'), self.data.url('settings/minicolors/jquery.minicolors.min.js'), self.data.url('settings/moment.min.js'), self.data.url('settings/main.js')],
+    include: self.data.url('settings/main.html'),
+    contentScriptWhen: 'start',
+    attachTo: 'top',
+    contentScriptFile: ['./js/jquery.min.js', './js/prefs.js', self.data.url('settings/jquery.sortable.min.js'), self.data.url('settings/minicolors/jquery.minicolors.min.js'), self.data.url('settings/moment.min.js'), self.data.url('settings/main.js')],
     contentScriptOptions: {
         prefs: ss.storage,
     },

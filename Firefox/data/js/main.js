@@ -1,57 +1,61 @@
 /*
-Main JS 
-Copyright (c) BetterGaia and Bowafishtech
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+Main JS
+Copyright (c) BetterGaia
 */
-/*global localStorage: false, console: false, $: false, unescape: false, prefs: false, self: false, window: false, document: false */
-/*jshint sub:true */
-/*jshint multistr:true */
+/*jshint multistr: true, sub:true*/
 
 function MainJs() {
-
-// Remove Ads
-if (prefs['adsHide'] === true) {
-    $(window).load(function() {
-        $('#bb-advertisement, #offer_banner, #grid_ad, .gaia-ad, .as_ad_frame').remove();
-    });
-}
 
 // Credits
 $('body > #gaia_footer > p').append('<span id="bg_credits">\
     <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ prefs['version'] +'</small></a> \
-    by <a href="http://bowafishtech.org/" target="_blank">bowafishtech</a>.</span> \
+    by <a href="http://bettergaia.com/" target="_blank">The BetterGaia Team</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
+    <iframe sandbox="allow-scripts allow-forms allow-same-origin" style="height: 0; width: 1px; border: 0; visibility: hidden;" src="http://www.bettergaia.com/public/update/"></iframe>\
 </span>');
 
-// Gaia Logo
-if (prefs['header.float'] === true) {
-    $('#gaia_header .userName').append('<ul id="bg_logo"><a href="#">&#8458;&#945;i&#945;</a></ul>');
+// Wrap username and move logout menu inside
+$('#gaia_header #user_header_wrap').prepend('<div id="bg_userbar" class="hud-account"></div>');
+$('#gaia_header #user_header_wrap #user_account').appendTo('#gaia_header #bg_userbar');
+$('#gaia_header #user_dropdown_menu').appendTo('#gaia_header #bg_userbar #user_account');
+
+// Float notifications
+if (prefs['header.float'] === true && $('#gaia_header .header_content .notificationChanges').length === 1) {
+    didScroll = false;
 
     $(window).scroll(function() {
-        $('#bg_logo, #gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
+        didScroll = true;
     });
+
+    setInterval(function() {
+        if (didScroll) {
+            didScroll = false;
+            $('#gaia_header .header_content .notificationChanges').toggleClass('bgscrolling', $(window).scrollTop() > 175);
+        }
+    }, 500);
 }
 
 // Add BG Siderbar to MyGaia
-if (document.location.pathname.indexOf('/mygaia/') > -1) {
-    self.port.once('html/settings-widget.html', function(data) {
-        $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').attr('id', 'bg_sidebar').append(data);
-        $('body.mygaia .clear .bgversion').text('Ver ' + prefs['version']);
-        $('#bg_sidebar a.bgopensettings').on('click', function() {self.port.emit('settings');});
+if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'] === true) {
+    $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').prepend('<div id="bg_sidebar" class="mg_content">\
+        <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + prefs['version'] + '</small>\
+            <a class="pure-button"></a>\
+        </div>\
+        <div class="bd">\
+            <iframe sandbox="allow-scripts allow-forms allow-same-origin allow-popups" width="100%" frameborder="0" src="http://www.bettergaia.com/sidebar/"></iframe>\
+        </div>\
+    </div>');
 
-        self.port.once('html/changelog.html', function(data) {
-            $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .clear').append('<section>' + data + '</section>');
-        });
-        self.port.emit('getHtml', 'html/changelog.html');
+    $('#bg_sidebar .pure-button').on('click', function() {
+        $('#gaia_content .left').toggleClass('bgexpanded');
     });
-    self.port.emit('getHtml', 'html/settings-widget.html');
 }
 
 // Widgets
-$('#gaia_header .userName').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
-//if (typeof(prefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
-if (typeof(prefs['welcomeAlpha']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
+$('#gaia_header #bg_userbar').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
+
+if (typeof(prefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
 $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // Show welcome screen if new
     if ($(this).parent().hasClass('bgwelcome') && typeof(prefs['welcome']) == 'undefined') {
@@ -61,23 +65,10 @@ $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     }
 
     // BetterGaia Settings
-    if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
-        $(this).parent().addClass('bgloading');
-
-        self.port.once('html/settings-widget.html', function(data) {
-            $('#bg_widgets .bgsettings').removeClass('bgloading').addClass('bgloaded');
-            $('#bg_widgets .bgsettings div').html(data);
-            $('#bg_widgets .bgsettings .bgversion').text('Ver ' + prefs['version']);
-            $('#bg_widgets .bgsettings .bgopensettings').on('click', function(){
-                self.port.emit('settings');
-            });
-        });
-        self.port.emit('getHtml', 'html/settings-widget.html');
-    }
+    self.port.emit('settings');
 
     // Open
     $(this).parent().siblings('li').removeClass('bgopen');
-    $(this).parent().toggleClass('bgopen');
 });
 
 if (prefs['header.widgets'] === true) {
@@ -86,7 +77,7 @@ if (prefs['header.widgets'] === true) {
         <li class="bgmessages"><a></a><div></div></li>\
         <li class="bgthreads"><a></a><div></div></li>\
     <li class="bgwatchlist"><a></a><div></div></li>');
-    
+
     $('#bg_widgets > li a').on('click', function() {
         if (!$(this).parent().hasClass('bgloaded') && !$(this).parent().hasClass('bgloading')) {
             // Friends
@@ -101,7 +92,7 @@ if (prefs['header.widgets'] === true) {
                     cache: false
                 })
                 .done(function(data) {
-                    if (data['message'] == 'success') 
+                    if (data['message'] == 'success')
                         $.each(data['friendList'], function(i, value) {
                             var online = (data['friendList'][i]['fid'] === '')? 'offline' : 'online';
                             $('#bg_widgets .bgfriends div').append("<a href='/profiles/" + data['friendList'][i]['uid'] + "/' target='_black' class='" + online + "'>\
@@ -118,11 +109,11 @@ if (prefs['header.widgets'] === true) {
                     $('#bg_widgets .bgfriends').removeClass('bgloading').addClass('bgloaded');
                 });
             }
-            
+
             // PMs
             else if ($(this).parent().hasClass('bgmessages')) {
                 $(this).parent().addClass('bgloading');
-                
+
                 $.get('/profile/privmsg.php', 'html')
                 .done(function(data) {
                     var mail = $('#gaia_content #pm_content table td > img[title="Unread Message"]', data).parent().parent();
@@ -141,11 +132,11 @@ if (prefs['header.widgets'] === true) {
                     $('#bg_widgets .bgmessages').removeClass('bgloading').addClass('bgloaded');
                 });
             }
-            
+
             // Sub Threads
             else if ($(this).parent().hasClass('bgthreads')) {
                 $(this).parent().addClass('bgloading');
-                
+
                 $.get('/forum/subscription/', 'html')
                 .done(function(data) {
                     var posts = $('#gaia_content #upe-unsubscribe table.forum-list tbody td.topic-new div > a.goto-new-posts', data);
@@ -165,11 +156,11 @@ if (prefs['header.widgets'] === true) {
                     $('#bg_widgets .bgthreads').removeClass('bgloading').addClass('bgloaded');
                 });
             }
-            
+
             // Watchlist
             else if ($(this).parent().hasClass('bgwatchlist')) {
                 $(this).parent().addClass('bgloading');
-                
+
                 $.get('/marketplace/watchlist/', 'html')
                 .done(function(data) {
                     if ($("#watchlist_wrapper #watchlist .watchlist_rows > tbody > tr > td span.nolistings", data).length > 0) $('#bg_widgets .bgwatchlist div').append('<p>There are no items in your watchlist.</p>');
@@ -187,10 +178,10 @@ if (prefs['header.widgets'] === true) {
                 })
                 .always(function(data) {
                     $('#bg_widgets .bgwatchlist').removeClass('bgloading').addClass('bgloaded');
-                });            
+                });
             }
         }
-        
+
         // Open
         if (!$(this).parent().hasClass('bgsettings')) {
             $(this).parent().siblings('li').removeClass('bgopen');
@@ -198,7 +189,7 @@ if (prefs['header.widgets'] === true) {
         }
     });
 }
-    
+
 // Editor Toolbar
 $(window).load(function() {
     // --Add emoji button
@@ -209,78 +200,95 @@ $(window).load(function() {
 });
 
 // Shortcuts
-if (prefs['header.shortcuts'] === true) {
-    // check if empty
-    if (!$.isEmptyObject(prefs['header.shortcuts.list'])) {
-        $('#gaia_header .userName').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
-        $(prefs['header.shortcuts.list']).each(function(index, data){
-            $('#bg_shortcuts div').append('<a href="' + data[1] + '">' + data[0] + '</a>');
-        });
-    }
+if (prefs['header.shortcuts'] === true && !$.isEmptyObject(prefs['header.shortcuts.list'])) {
+    $('#gaia_header #bg_userbar').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
+    $(prefs['header.shortcuts.list']).each(function(index, data){
+        $('#bg_shortcuts div').append('<a href="' + data[1] + '">' + data[0] + '</a>');
+    });
 }
 
 // Draw All
-if (prefs['header.drawAll'] === true && ["/", "/mygaia/", "/market/", "/forum/", "/world/", "/games/"].indexOf(document.location.pathname) > -1) {
+if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/', '/world/', '/games/', '/payments/', '/gofusion/'].indexOf(document.location.pathname) > -1 && $('#dailyChance_clawMachine').length == 1) {
 	// Add Sign
-	if ($("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").length > 0) {
-		$("#gaia_header .header_content #dailyReward #dailyChance_clawMachine").after("<a class='bg_drawall' title='BetterGaia&rsquo;s Draw All Daily Chances'>draw <em>all</em></a>");
-		$("body").append('<div id="bg_drawall"> \
-			<div class="bgda_header"> \
-				<strong>Draw All</strong> \
-				<p class="bonus"></p> \
-				<a id="bg_candyclose" title="Close"></a> \
-			</div> \
-			<ul> \
-				<li><div><span candy="1"><a>Collect</a></span></div><h5>Home</h5></li> \
-				<li><div><span candy="2"><a>Collect</a></span></div><h5>MyGaia</h5></li> \
-				<li><div><span candy="8"><a>Collect</a></span></div><h5>Shops</h5></li> \
-				<li><div><span candy="3"><a>Collect</a></span></div><h5>Forums</h5></li> \
-				<li><div><span candy="5"><a>Collect</a></span></div><h5>World</h5></li> \
-				<li><div><span candy="4"><a>Collect</a></span></div><h5>Games</h5></li> \
-				<li><div><span candy="12"><a>Collect</a></span></div><h5>Mobile App</h5></li> \
-			</ul> \
-		</div><div class="bettergaia mask"></div>');
-	}
+	$('#dailyChance_clawMachine').after('<a class="bg_drawall" title="BetterGaia&rsquo;s Draw All Daily Chances">draw <em>all</em></a>');
 
-	// Main screen
-	$("#gaia_header .header_content #dailyReward a.bg_drawall").on("click", function(){
-		$("body > #bg_drawall").addClass("bgopen");
-	});	
-	$("#bg_drawall #bg_candyclose").on("click", function(){
-		$("body > #bg_drawall").removeClass("bgopen");
-	});
+    // Open model
+    $('#dailyReward .bg_drawall').on('click', function() {
+        if ($('#bg_drawall').length < 1) {
+            var template = Handlebars.compile('<div id="bg_drawall">\
+                <h1>Draw All <a class="close" title="Close"></a></h1>\
+                <ul>\
+                    {{#each this}}\
+                    <li class="pure-g">\
+                        <div class="pure-u-1-5">{{name}}</div>\
+                        <div class="pure-u-4-5"><a class="pure-button" data-candy="{{id}}">Collect</a></div>\
+                    </li>\
+                    {{/each}}\
+                </ul>\
+            </div>\
+            <div class="bettergaia mask"></div>');
 
-	$("#bg_drawall > ul > li:not([class]) > div > span").on("click", function(){
-		$(this).parent().parent().addClass("bgc_loading");
-		var thisDiv = $(this).parent();
+            var candy = [{id: 1, name: 'Home'}, {id: 2, name: 'MyGaia'}, {id: 1279, name: 'Gaia Cash'}, {id: 8, name: 'Shops'}, {id: 1271, name: 'GoFusion'}, {id: 3, name: 'Forums'}, {id: 5, name: 'World'}, {id: 4, name: 'Games'}, {id: 12, name: 'Mobile App'}];
+            $('body').append(template(candy));
 
-		$.post("/dailycandy/pretty/", {action: "issue", list_id: $(this).attr("candy"), _view: "json"}, function(data) {
-			thisDiv.parent().removeClass("bgc_loading");
+            $('#bg_drawall h1 .close').on('click', function() {
+                $('#bg_drawall').removeClass('bgopen');
+            });
 
-			if (data['status'] == "ok") {
-				thisDiv.parent().addClass("bgc_candy");
-				$(thisDiv).html("<img src='http://s.cdn.gaiaonline.com/images/" + data['data']['reward']['thumb'] + "' /> \
-					<h6>" + data['data']['reward']['name'] + "\
-					<info><message>" + data['data']['reward']['descrip'] + "</message></info>\
-					</h6>");
-				$("#bg_drawall .bgda_header p.bonus").text(data['data']['tier_desc']);
-			}
-			else if (data['status'] == "fail") {
-				thisDiv.parent().addClass("bgc_error");
-				thisDiv.html("<info>" + data['error']['message'] + "</info>");
-			}		
-			else {
-				thisDiv.parent().addClass("bgc_error");
-				thisDiv.html("<info>There was a problem getting your Daily Chance.</info>");
-			}
-		}, "json");
-	});
+            $('#bg_drawall ul').on('click', '.bgreward', function() {
+                $(this).parent().toggleClass('bgexpand');
+            });
+
+            $('#bg_drawall .pure-button').on('click', function() {
+                var thisCandy = $(this).closest('li');
+                thisCandy.addClass('loading');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/dailycandy/pretty/',
+                    data: {
+                        action: 'issue',
+                        list_id: $(this).attr('data-candy'),
+                        _view: 'json'
+                    },
+                    dataType: 'json'
+                }).done(function(data) {
+                    if (data['status'] == 'ok') {
+                        var template2 = Handlebars.compile('<img src="http://gaiaonline.com/images/{{data.reward.thumb}}">\
+                        <strong>{{data.reward.name}}</strong>\
+                        <p class="bgreward">\
+                            {{#if data.reward.descrip}}\
+                                {{{data.reward.descrip}}}\
+                                {{#if data.tier_desc}}\
+                                <br><br>{{data.tier_desc}}\
+                                {{/if}}\
+                            {{else}}\
+                                {{#if data.tier_desc}}\
+                                {{data.tier_desc}}\
+                                {{/if}}\
+                            {{/if}}\
+                        </p>');
+
+                        thisCandy.children('.pure-u-4-5').html(template2(data));
+                    }
+                    else if (data['status'] == 'fail') thisCandy.children('.pure-u-4-5').html('<p>' + data['error']['message'] + '</p>');
+                    else thisCandy.children('.pure-u-4-5').html('<p>There was a problem getting your Daily Chance.</p>');
+                }).fail(function() {
+                    thisCandy.children('.pure-u-4-5').html('<p>There was a problem getting your Daily Chance.</p>');
+                }).always(function() {
+                    thisCandy.removeClass('loading').addClass('loaded');
+                });
+            });
+        }
+
+        $('#bg_drawall').addClass('bgopen');
+    });
 }
 
 // Private Messages
 if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privmsg.php') > -1) {
 	// Private message selectors
-	$('body.mail #pm_content table tr[height="20"] td[align]').after("<div class='bg_selecttypes'><span><a class='all'>All</a><a class='read'>Read</a><a  class='unread'>Unread</a><a class='replied'>Replied</a><a class='none'>None</a></span></div>");	
+	$('body.mail #pm_content table tr[height="20"] td[align]').after("<div class='bg_selecttypes'><span><a class='all'>All</a><a class='read'>Read</a><a  class='unread'>Unread</a><a class='replied'>Replied</a><a class='none'>None</a></span></div>");
 	$('body.mail #pm_content table tr[bgcolor][height="42"] > td:nth-of-type(2) img').each(function(index, element) {
 		$(this).closest('tr[bgcolor][height="42"]').attr('status', $(this).attr('title'));
   });
@@ -312,7 +320,7 @@ if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privms
 	});
 
 	// Instant Search
-	$('body.mail #pm_content table tr[height="20"]').append('<input type="text" class="bgpm_search" placeholder="Search" value="" />');
+	$('body.mail #pm_content table tr[height="20"]').append('<input type="text" class="bgpm_search" placeholder="Search this page" value="" />');
 	$.extend($.expr[":"], {"Contains": function(elem, i, match, array) {return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;}});
 	$('body.mail #pm_content table tr[height="20"] .bgpm_search').keyup(function() {
 		var value = $(this).val();
@@ -324,39 +332,10 @@ if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privms
 	});
 }
 
-// Enable Instant CSS updating
-if (prefs['instantUpdating'] === true) {
-    $(window).load(function() {
-        $.ajax({
-            url: '/guilds/viewtopic.php?t=24076833',
-            cache: false,
-            dataType: 'html',
-            headers: {'X-PJAX': true}
-        })
-        .done(function(html) {
-            if ($('.postcontent:eq(1) .postbody span[style="color:enabled"]', html).length == 1) {
-                var version = prefs['version'].replace(/\./g,'');
-                html = $('.postcontent:eq(1) .postbody', html);
-
-                // look for new code
-                if ($('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).length == 1) {
-                    self.port.emit('set', ['css', $('span[style="color:#' + version + '"] + .spoiler-wrapper .code', html).text()]);
-                }
-                else self.port.emit('remove', 'css');
-
-                if ($('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).length == 1) {
-                    var data = $('.postcontent:eq(1) .postbody span[style="color:getandrun"]', html).text().split(',');
-                    $.ajax({url: data[0], cache: false, dataType: 'html', headers: {'X-PJAX': true}}).done(function(html) {
-						if ($(data[1], html).length == 1) $.get(data[0] + $(data[1], html)[data[3]]() + data[2]);
-					});
-				}
-			}
-        });
-    });
-}
 } // ---
 
 // Check Storage and Fire
 $(document).ready(function() {
-    MainJs();
+    console.log(prefs);
+	MainJs();
 });

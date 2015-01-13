@@ -1,6 +1,6 @@
 /*
 Preferences JS
-Copyright (c) BetterGaia and Bowafishtech
+Copyright (c) BetterGaia
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
 

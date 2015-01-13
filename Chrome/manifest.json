@@ -5,7 +5,7 @@
         "persistent": false
     },
     "browser_action": {
-        "default_icon": "images/logo/128text.png",
+        "default_icon": "images/128.png",
         "default_popup": "code/popup/popup.html",
         "default_title": "BetterGaia"
     },
@@ -33,7 +33,7 @@
     "description": "Change the way you experience Gaia.",
     "homepage_url": "http://chrome.google.com/webstore/detail/lmgjagdflhhfjflolfalapokbplfldna",
     "icons": {
-        "128": "images/logo/128text.png"
+        "128": "images/128.png"
     },
     "manifest_version": 2,
     "minimum_chrome_version": "28",
@@ -41,5 +41,5 @@
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*", "*://*.bettergaia.com/*" ],
     "version": "2015.5",
-    "web_accessible_resources": [ "code/css/pure-min.css", "code/css/main.css", "code/css/forum.css", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "images/logo/128.png", "images/logo/500.png", "images/logo/text.png", "/images/editor.png" ]
+    "web_accessible_resources": [ "code/css/pure-min.css", "code/css/main.css", "code/css/forum.css", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "/images/editor.png" ]
 }

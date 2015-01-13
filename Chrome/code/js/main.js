@@ -1,11 +1,7 @@
 /*
 Main JS
-Copyright (c) BetterGaia and Bowafishtech
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+Copyright (c) BetterGaia
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
-/*jshint sub:true */
-/*jshint multistr:true */
 
 function MainJs() {
 
