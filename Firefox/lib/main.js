@@ -12,7 +12,7 @@ var ss = require('sdk/simple-storage');
 var tabs = require('sdk/tabs');
 
 // Check if new install, update
-if (self.loadReason === 'install' || self.loadReason === 'upgrade') {
+if (['install', 'upgrade', 'enable'].indexOf(self.loadReason) != -1) {
     ss.storage.version = self.version;
 }
 
@@ -45,9 +45,7 @@ pageMod.PageMod({
     contentScriptFile: ['./js/jquery.min.js', './js/handlebars.js', './js/prefs.js', './js/maincss.js', './js/main.js', './js/forumcss.js', './js/forum.js', './js/format.js'],
     contentScriptOptions: {
         prefs: ss.storage,
-        url: self.data.url(''),
-        mainCssUrl: self.data.url('css/main.css'),
-        forumCssUrl: self.data.url('css/forum.css')
+        baseUrl: self.data.url('')
     },
     onAttach: function(worker) {
         worker.port.on('set', function(data) {
@@ -57,38 +55,28 @@ pageMod.PageMod({
             delete ss.storage[key];
         });
         worker.port.on('settings', function() {
-            tabs.open(self.data.url('settings/main.html'));
+            var tabIndex = -1;
+            for (let tab of tabs) {
+                if (tab.url == 'resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/settings/main.html') {
+                    tabIndex = tab.index;
+                    break;
+                }
+            }
+            if (tabIndex > -1) tabs[tabIndex].activate();
+            else tabs.open(self.data.url('settings/main.html'));
         });
-        worker.port.on('getHtml', function(url) {
+        /*worker.port.on('getHtml', function(url) {
             worker.port.emit(url, self.data.load(url));
-        });
+        });*/
     }
 });
 
-/*pageMod.PageMod({
-    include: ['http://www.gaiaonline.com/forum/compose/*', 'http://www.gaiaonline.com/guilds/posting.php*', 'http://www.gaiaonline.com/profile/privmsg.php*', 'http://www.gaiaonline.com/profiles/*'],
-    contentScriptWhen: 'ready',
-    attachTo: ['top'],
-    contentScriptFile: [self.data.url('js/jquery.min.js'), self.data.url('js/prefs.js'), self.data.url('js/format.js')],
-    contentScriptOptions: {
-        prefs: ss.storage,
-    },
-    onAttach: function(worker) {
-        worker.port.on('set', function(data) {
-            ss.storage[data[0]] = data[1];
-        });
-        worker.port.on('remove', function(key) {
-            delete ss.storage[key];
-        });
-    }
-});*/
-
-// Settings pagemod
+// Settings Page Mod
 pageMod.PageMod({
     include: self.data.url('settings/main.html'),
     contentScriptWhen: 'start',
     attachTo: 'top',
-    contentScriptFile: ['./js/jquery.min.js', './js/prefs.js', self.data.url('settings/jquery.sortable.min.js'), self.data.url('settings/minicolors/jquery.minicolors.min.js'), self.data.url('settings/moment.min.js'), self.data.url('settings/main.js')],
+    contentScriptFile: ['./js/jquery.min.js', './js/prefs.js'],
     contentScriptOptions: {
         prefs: ss.storage,
     },

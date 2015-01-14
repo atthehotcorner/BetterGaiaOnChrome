@@ -5,7 +5,7 @@ Copyright (c) BetterGaia
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = self.options.forumCssUrl;
+    link.href = self.options.baseUrl + 'css/forum.css';
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.documentElement.appendChild(link);
@@ -51,6 +51,5 @@ document.documentElement.appendChild(style);
 
 // Check Storage and Fire
 if (document.location.pathname.substring(0,7) == '/forum/' || document.location.pathname.substring(0,6) == '/news/' || document.location.pathname == '/news') {
-    console.log('forum css running');
 	ForumCss();
 }

@@ -5,13 +5,13 @@ Copyright (c) BetterGaia
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = self.options.mainCssUrl.slice(0,-12) + 'css/font.css';
+    link.href = self.options.baseUrl + 'css/font.css';
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.getElementsByTagName('head')[0].appendChild(link);
 
 var link2 = document.createElement('link');
-    link2.href = self.options.mainCssUrl;
+    link2.href = self.options.baseUrl + 'css/main.css';
     link2.type = 'text/css';
     link2.rel = 'stylesheet';
 document.documentElement.appendChild(link2);

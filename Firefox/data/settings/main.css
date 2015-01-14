@@ -107,52 +107,52 @@ menu a.current {background: #FFF; color: #222;}
 
 /* Pages */
 #pages {padding: 15px 30px; margin-left: 170px; min-width: 785px;}
-#pages page {position: relative; display: none;}
-#pages page.selected {display: block;}
+#pages .page {position: relative; display: none;}
+#pages .page.selected {display: block;}
 
-#pages page h3 + p {margin-top: -10px; padding-bottom: 10px;}
+#pages .page h3 + p {margin-top: -10px; padding-bottom: 10px;}
 
 #pages .localonly {display: none;}
 #pages .localonly:before {font-family: 'Glyphicons Halflings'; content: '\e197'; margin-right: 5px; font-weight: normal;}
 
 /* Page bar */
-page bar {position: absolute; right: 0; top: 15px; display: block; z-index: 1;}
-page bar a {display: inline-block; text-align: center; line-height: 10px; padding: 0 10px; margin-left: 25px; color: #222;}
-page bar a:before {content: '\e159'; font-size: 20px; font-family: 'Glyphicons Halflings'; line-height: 37px; display: block; height: 40px; width: 40px; border: 2px solid #222; text-align: center; border-radius: 40px; margin-bottom: 10px;}
-page bar a.save {display: none; background: #61D151; padding: 10px; margin: -10px 0; border-radius: 50px/15px;}
-page bar a.save:before {content: '\e172'; background-color: #FFF;}
-page bar a.disable:before {content: '\e017';}
-page bar a.disable:after {content: 'On';}
-page bar a.disable[value='false']:after {content: 'Off';}
-page bar a.add:before {content: '\2b';}
+.page bar {position: absolute; right: 0; top: 15px; display: block; z-index: 1;}
+.page bar a {display: inline-block; text-align: center; line-height: 10px; padding: 0 10px; margin-left: 25px; color: #222;}
+.page bar a:before {content: '\e159'; font-size: 20px; font-family: 'Glyphicons Halflings'; line-height: 37px; display: block; height: 40px; width: 40px; border: 2px solid #222; text-align: center; border-radius: 40px; margin-bottom: 10px;}
+.page bar a.save {display: none; background: #61D151; padding: 10px; margin: -10px 0; border-radius: 50px/15px;}
+.page bar a.save:before {content: '\e172'; background-color: #FFF;}
+.page bar a.disable:before {content: '\e017';}
+.page bar a.disable:after {content: 'On';}
+.page bar a.disable[value='false']:after {content: 'Off';}
+.page bar a.add:before {content: '\2b';}
 
-page bar a:hover:before {background: rgba(0,0,0,0.1);}
-page bar a:active:before {background: #222; color: #FFF;}
+.page bar a:hover:before {background: rgba(0,0,0,0.1);}
+.page bar a:active:before {background: #222; color: #FFF;}
 
-page.off > *:not(bar), page.off > bar > *:not(.disable) {pointer-events: none; opacity: 0.5;}
+.page.off > *:not(bar), .page.off > bar > *:not(.disable) {pointer-events: none; opacity: 0.5;}
 
-/* Page sections */
-page section {position: relative; padding: 15px 0; clear: both;}
-page section:after {content: ''; display: table; clear: both;}
+/* .page sections */
+.page section {position: relative; padding: 15px 0; clear: both;}
+.page section:after {content: ''; display: table; clear: both;}
 
-page section aside {display: block;}
-page section aside:after {content: ''; display: table; clear: both;}
+.page section aside {display: block;}
+.page section aside:after {content: ''; display: table; clear: both;}
 
-page section li {padding: 0 0 10px; display: block;}
-page section aside.column li {min-height: 75px; float: left; width: 48%; padding-right: 10px;}
-page section aside li input, page section li select {display: block;}
+.page section li {padding: 0 0 10px; display: block;}
+.page section aside.column li {min-height: 75px; float: left; width: 48%; padding-right: 10px;}
+.page section aside li input, .page section li select {display: block;}
 
-page section aside.left {width: 50%; padding-right: 30px;}
-page section aside.left + aside.right {width: 50%;}
+.page section aside.left {width: 50%; padding-right: 30px;}
+.page section aside.left + aside.right {width: 50%;}
 
 /* Ask Popup */
-page aside.editing > *:not(.ask) {opacity: 0.5; pointer-events: none;}
+.page aside.editing > *:not(.ask) {opacity: 0.5; pointer-events: none;}
 
-page .ask {position: absolute; display: none; background: #FFF; width: 300px; bottom: 55px; left: 10px; z-index: 1; padding: 10px 15px 15px; border: 2px solid #222;}
-page aside.editing .ask {display: block;}
-page .ask input[type='text'], #pages .page .ask textarea {width: 100%; margin: 0 0 10px;}
+.page .ask {position: absolute; display: none; background: #FFF; width: 300px; bottom: 55px; left: 10px; z-index: 1; padding: 10px 15px 15px; border: 2px solid #222;}
+.page aside.editing .ask {display: block;}
+.page .ask input[type='text'], #pages .page .ask textarea {width: 100%; margin: 0 0 10px;}
 page .ask input[type='text']:focus {border-color: #4CA5FF;}
-page .ask h3 .close {float: right; cursor: pointer; color: #000;}
+.page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 
 /* Preview Display */
 #preview {padding: 0; height: 115px;}
@@ -265,7 +265,7 @@ page .ask h3 .close {float: right; cursor: pointer; color: #000;}
 #postformating format .clear a.delete:before {content: '\e020';}
 
 /* Edit format popup */
-page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
+.page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 
 #editformat {width: 600px; top: 60px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #222; display: none;}
 .editing #editformat {display: block;}
@@ -318,13 +318,13 @@ page.formats.editing > *:not(#editformat) {opacity: 0.5; pointer-events: none;}
 #usertags usertag a.delete:before {font-size: 15px; font-family: 'Glyphicons Halflings'; margin-right: 5px; content: '\e020';}
 
 /* About */
-page.about .changelog aside {max-height: 250px; overflow: auto;}
-page.about .changelog aside strong {display: block; padding: 0 0 10px;}
-page.about button.transfer, page.about button.reset {display: none;}
-page.about .transferSection .yes, #viewTransfer {display: none;}
+.page.about .changelog aside {max-height: 250px; overflow: auto;}
+.page.about .changelog aside strong {display: block; padding: 0 0 10px;}
+.page.about button.transfer, .page.about button.reset {display: none;}
+.page.about .transferSection .yes, #viewTransfer {display: none;}
 
 /* View transfer popup */
-page.about.showModule > *:not(#viewTransfer) {opacity: 0.5; pointer-events: none;}
+.page.about.showModule > *:not(#viewTransfer) {opacity: 0.5; pointer-events: none;}
 
 #viewTransfer {width: 600px; top: 200px; left: 50%; margin-left: -300px; position: absolute; z-index: 2; background: #FFF; padding: 15px; border: 2px solid #222; display: none;}
 .showModule #viewTransfer {display: block;}
@@ -334,9 +334,9 @@ page.about.showModule > *:not(#viewTransfer) {opacity: 0.5; pointer-events: none
 #viewTransfer .clear {text-align: right;}
 
 /* Welcome */
-page.welcome {}
-page.welcome .icons {text-align: center;}
-page.welcome .icons li {float: left; width: calc((100% / 3) - 30px); display: block; margin-right: 30px;}
-page.welcome .icons li:before {font-size: 200px; font-family: 'Glyphicons Halflings'; content: '\e198'; height: 240px; line-height: 210px; display: block; background-image: linear-gradient(to bottom, #06C3C4, #2753C5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
-page.welcome .icons li:nth-of-type(2):before {content: '\e005'; line-height: 245px; background-image: linear-gradient(to bottom, #FF9A6B, #EE022B); margin-left: -15px;}
-page.welcome .icons li:nth-of-type(3):before {content: '\e104'; line-height: 250px; background-image: linear-gradient(to bottom, #FFA500, #E72A2A);}
+.page.welcome {}
+.page.welcome .icons {text-align: center;}
+.page.welcome .icons li {float: left; width: calc((100% / 3) - 30px); display: block; margin-right: 30px;}
+.page.welcome .icons li:before {font-size: 200px; font-family: 'Glyphicons Halflings'; content: '\e198'; height: 240px; line-height: 210px; display: block; background-image: linear-gradient(to bottom, #06C3C4, #2753C5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.page.welcome .icons li:nth-of-type(2):before {content: '\e005'; line-height: 245px; background-image: linear-gradient(to bottom, #FF9A6B, #EE022B); margin-left: -15px;}
+.page.welcome .icons li:nth-of-type(3):before {content: '\e104'; line-height: 250px; background-image: linear-gradient(to bottom, #FFA500, #E72A2A);}

@@ -97,7 +97,7 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").removeClass("bgpc_hidden");
 
         // Disable persistance
-        chrome.storage.local.remove('forum.hidePosts', function() {delete prefs['forum.hidePosts'];});
+        //chrome.storage.local.remove('forum.hidePosts', function() {delete prefs['forum.hidePosts'];});
 	}
 	else {
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
@@ -106,7 +106,7 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").addClass("bgpc_hidden");
 
         // Enable persistance
-        chrome.storage.local.set({'forum.hidePosts': true}, function() {prefs['forum.hidePosts'] = true;});
+        //chrome.storage.local.set({'forum.hidePosts': true}, function() {prefs['forum.hidePosts'] = true;});
 	}
 });
 
@@ -166,7 +166,7 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 
 			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html(pageHtml.find("form#compose_entry")[0].outerHTML);
             if (typeof(Format) === 'function') Format();
-            else chrome.extension.sendMessage({elements: 'format'});
+            else Format(); //chrome.extension.sendMessage({elements: 'format'});
 		});
 	}
 	else {
@@ -366,7 +366,6 @@ $('body.forums .post .message .messagecontent > .post-options > ul > li.post-met
 // Check Storage and Fire
 $(document).ready(function() {
     if (document.location.pathname.substring(0,7) == '/forum/' || document.location.pathname.substring(0,6) == '/news/' || document.location.pathname == '/news') {
-        console.log('forum js running');
     	ForumJs();
 
         // Ajax page load
