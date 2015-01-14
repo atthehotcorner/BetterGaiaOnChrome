@@ -1,11 +1,8 @@
 /*
-Forum JS 
-Copyright (c) BetterGaia and Bowafishtech
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+Forum JS
+Copyright (c) BetterGaia
 */
-/*global localStorage: false, console: false, $: false, self: false, unescape: false, prefs: false, window: false, document: false, Format: false */
-/*jshint sub:true */
-/*jshint multistr:true */
+/*jshint sub:true,multistr:true */
 
 function ForumJs() {
 
@@ -24,7 +21,6 @@ if (prefs['announcementReader'] === true && document.location.pathname == '/news
         $('#bgFetchAnnouncements').after('<h3 class="bgFAh3">' + (remaining + 1) + ', Oldest</h3>');
 
         function apply() {
-            console.log('apply');
             $.ajax({
                 url: '/news/',
                 cache: false,
@@ -40,7 +36,6 @@ if (prefs['announcementReader'] === true && document.location.pathname == '/news
                     remaining = 0;
                 }
 
-                console.log(remaining);
                 // Keep loading
                 if (remaining > 0) {
                     remaining--;
@@ -85,7 +80,7 @@ if (prefs['forum.previewThreads'] === true) {
 
 // Adds Post Options on Thread Page
 $("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options").append('<div class="bg_postoptions">\
-<a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off> Sigs</a></div>');
+<a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off>  Signatures</a></div>');
 
 // Adds Functions to Post Options
 if (typeof prefs['forum.hidePosts'] == 'boolean' && prefs['forum.hidePosts'] === true) {
@@ -102,8 +97,7 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").removeClass("bgpc_hidden");
 
         // Disable persistance
-        self.port.emit('remove', 'forum.hidePosts');
-        delete prefs['forum.hidePosts'];
+        chrome.storage.local.remove('forum.hidePosts', function() {delete prefs['forum.hidePosts'];});
 	}
 	else {
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
@@ -112,8 +106,7 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").addClass("bgpc_hidden");
 
         // Enable persistance
-        self.port.emit('set', ['forum.hidePosts', true]);
-        prefs['forum.hidePosts'] = true;
+        chrome.storage.local.set({'forum.hidePosts': true}, function() {prefs['forum.hidePosts'] = true;});
 	}
 });
 
@@ -128,17 +121,17 @@ $("body.forums #content #content-padding #topic_header_container .detail-navlink
 	}
 });
 
-// Adds Toggle Signiture Button
-$("body.forums .post .post-signature").each(function () { 
-	$(this).parent().find(".message .messagecontent > .post-options > ul > li.post-meta").before('<li><a class="bg_togglesig"><span>Hide Sig</span></a></li>');
+// Adds Toggle Signature Button
+$("body.forums .post .post-signature").each(function () {
+	$(this).parent().find(".message .messagecontent > .post-options > ul > li.post-meta").before('<li class="bg_togglesig"><a><span>Hide Signature</span></a></li>');
 });
 
-$('body.forums .post .message .messagecontent a.bg_togglesig').click(function() { 
+$('body.forums .post .message .messagecontent .bg_togglesig').click(function() {
 	$(this).closest('.postcontent').find(".post-signature").toggle();
 });
 
 // Toggles Each Post by Clicking Button
-$("body.forums .post .user_info_wrapper .user_info").each(function(){ 
+$("body.forums .post .user_info_wrapper .user_info").each(function(){
     if ($(this).find('.bg_postcollapse').length === 0) $(this).append('<div class="bg_postcollapse" title="Collapse/Expand Post"></div>');
 });
 
@@ -148,7 +141,7 @@ $('body.forums .post .user_info_wrapper .user_info .bg_postcollapse').click(func
 
 // Adds Instants
 $('body.forums .post .message .messagecontent .post-options ul').each(function () {
-	if ($(this).find('a.post-quote').length > 0 || $(this).find('a.post-edit').length > 0) 
+	if ($(this).find('a.post-quote').length > 0 || $(this).find('a.post-edit').length > 0)
       $(this).prepend('<div class="bg_instant"><li><a class="bg_instanttext"><span>Instant</span></a></li></div>');
 
 	if ($(this).find('a.post-quote').length > 0) {
@@ -161,16 +154,19 @@ $('body.forums .post .message .messagecontent .post-options ul').each(function (
 
 $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote").click(function() {
 	var bubbleThis = $(this).closest('.messagecontent');
-	
+
 	if (bubbleThis.find(".bg_instantbox.quote").length === 0) {
 		bubbleThis.find(".post-bubble").after("<div class='bg_instantbox quote loading'></div>");
-		
+
 		//get url
 		var url = bubbleThis.find(".post-options a.post-quote").attr("href");
 		$.get(url).done(function(data) {
-			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html($(data).find("form#compose_entry"));
+            var pageHtml = $('<div>').html(data);
+            pageHtml.find('script').remove();
+
+			bubbleThis.find(".bg_instantbox.quote").removeClass("loading").html(pageHtml.find("form#compose_entry")[0].outerHTML);
             if (typeof(Format) === 'function') Format();
-            else self.port.emit('format');
+            else chrome.extension.sendMessage({elements: 'format'});
 		});
 	}
 	else {
@@ -180,21 +176,24 @@ $("body.forums .post .message .messagecontent .post-options ul a.bg_instantquote
 
 $("body.forums .post .message .messagecontent .post-options ul a.bg_instantedit").click( function() {
 	var bubbleThis = $(this).closest('.messagecontent');
-	
+
 	if (bubbleThis.find(".bg_instantbox.edit").length === 0) {
 		bubbleThis.find(".post-bubble").after("<div class='bg_instantbox edit loading'></div>");
-		
+
 		//get url
 		var url = bubbleThis.find(".post-options a.post-edit").attr("href");
 		$.get(url).done(function(data) {
-			bubbleThis.find(".bg_instantbox.edit").removeClass("loading").html($(data).find("form#compose_entry"));
+            var pageHtml = $('<div>').html(data);
+            pageHtml.find('script').remove();
+
+			bubbleThis.find(".bg_instantbox.edit").removeClass("loading").html(pageHtml.find("form#compose_entry")[0].outerHTML);
 		});
 	}
 	else {
 		$(this).closest('.messagecontent').find('.bg_instantbox.edit').slideToggle('slow');
 	}
 });
-        
+
 // Enable redirects on same page
 if (prefs['forum.externalLinks'] === true) {
 	$("body.forums .post a[href^='http://www.gaiaonline.com/gaia/redirect.php?r=']").on("click", function(e){
@@ -208,28 +207,37 @@ if (prefs['forum.externalLinks'] === true) {
 				thisurl += "?" + e.offsetX + "," + e.offsetY;
 			}
 
-			$.ajax({type: "GET", url: thisurl, dataType: "html",
-				success: function(data) {
-					$(".bgredirect").html($('<div>' + data + '</div>').html());
-					$(".bgredirect table.warn_block #warn_block #warn_head").append("<a class='bgclose' title='close'></a>");
-					$(".bgredirect a").attr("target", "_blank");
-					$(".bgredirect a.link_display, .bgredirect a.bgclose").on("click", function(){
-						$(".bgredirect").remove();
-					});
-				},
-				error: function() {
-					$(".bgredirect").remove();
-					window.open(thisurl);
-				}
-			});
+            $.ajax({
+                type: 'GET',
+                url: thisurl,
+                dataType: 'html'
+            }).done(function(data) {
+                var pageHtml = $('<div>').html(data);
+
+                if (pageHtml.find('.warn_block').length === 1) {
+                    $('.bgredirect').html(pageHtml.find('.warn_block')[0].outerHTML);
+                    $('.bgredirect table.warn_block #warn_block #warn_head').append('<a class="bgclose" title="close"></a>');
+                    $('.bgredirect a').attr('target', '_blank');
+                    $('.bgredirect a.link_display, .bgredirect a.bgclose').on('click', function(){
+                        $('.bgredirect').remove();
+                    });
+                }
+                else {
+                    $('.bgredirect').remove();
+                    window.open(thisurl);
+                }
+            }).fail(function() {
+                $('.bgredirect').remove();
+                window.open(thisurl);
+            });
 
 			return false;
 		}
 	});
 }
 
-// Add User Tagging
-/*if (prefs['usertags'] === true) {
+/* Add User Tagging
+if (prefs['usertags'] === true) {
     // check if local prefs exist
     if (typeof(prefs['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
         prefs['usertags.list'] = prefs['usertags.list'];
@@ -245,7 +253,7 @@ if (prefs['forum.externalLinks'] === true) {
             $(this).after('<div class="bgUserTag"><a target="_blank" title="Tag" userid="' + userid + '"></a><span></span></div>');
         }
     });
-	
+
     // Add stored tags
     var tags = prefs['usertags.list'];
 
@@ -264,7 +272,7 @@ if (prefs['forum.externalLinks'] === true) {
             }
         });
     }
-	
+
     $('body.forums .post .user_info_wrapper .user_info .bgUserTag > span').on('click', function(){
         if (!$(this).closest('.post').hasClass('bgut_loaded')) {
             var tagvalue = '', urlvalue = $(this).closest('.postcontent').find('.post-directlink a').attr('href');
@@ -273,7 +281,7 @@ if (prefs['forum.externalLinks'] === true) {
                 tagvalue = $(this).siblings('a').text();
                 if ($(this).siblings('a').attr('href')) urlvalue = $(this).siblings('a').attr('href');
             }
-			
+
             $(this).after('<div><h2>Tag ' +    $(this).closest('.user_info').find('.user_name').text() + '<a class="bgclose"></a></h2><form>\
                 <label for="bgut_tagtag">Tag</label>\
                 <input type="text" id="bgut_tagtag" maxlength="50" placeholder="Notes and comments" value="' + tagvalue + '">\
@@ -295,14 +303,14 @@ if (prefs['forum.externalLinks'] === true) {
     $('body.forums .post .user_info_wrapper .user_info').on('click', '.bgUserTag a.bgclose', function(){
         $(this).closest('.post').removeClass('bgut_open');
     });
-    
+
     $('body.forums .post .user_info_wrapper .user_info').on('click', '.bgUserTag a.bgut_save', function(){
         var letsSave = false,
         username = $(this).closest('.user_info').find('.user_name').text(),
         tag = $(this).siblings('#bgut_tagtag'),
         userid = $(this).siblings('#bgut_idtag'),
         url = $(this).siblings('#bgut_linktag');
-	
+
         // Tags
         if (!tag.val().match(/\S/) || tag.val().length < 1) tag.prev('label').addClass('bgerror');
         else $(this).siblings('label[for="bgut_tagtag"].bgerror').removeClass('bgerror');
@@ -349,7 +357,7 @@ if (prefs['forum.externalLinks'] === true) {
 }*/
 
 // Moves timestamp
-$('body.forums .post .message .messagecontent > .post-options > ul > li.post-meta').each(function () { 
+$('body.forums .post .message .messagecontent > .post-options > ul > li.post-meta').each(function () {
     $(this).appendTo($(this).closest('.postcontent').find('.user_info_wrapper .user_info'));
 });
 
@@ -357,11 +365,14 @@ $('body.forums .post .message .messagecontent > .post-options > ul > li.post-met
 
 // Check Storage and Fire
 $(document).ready(function() {
-    ForumJs();
+    if (document.location.pathname.substring(0,7) == '/forum/' || document.location.pathname.substring(0,6) == '/news/' || document.location.pathname == '/news') {
+        console.log('forum js running');
+    	ForumJs();
 
-   // Ajax page load
-    if ($('#topic_header_container #thread_header').length == 1) {
-        var observer = new window.MutationObserver(function(mutations) {ForumJs();});
-        observer.observe(document.getElementById('content-padding'), {attributes: false, childList: true, characterData: false});
-    } 
+        // Ajax page load
+        if ($('#topic_header_container #thread_header').length == 1) {
+            var observer = new window.MutationObserver(function(mutations) {ForumJs();});
+            observer.observe(document.getElementById('content-padding'), {attributes: false, childList: true, characterData: false});
+        }
+    }
 });

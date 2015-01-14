@@ -336,6 +336,5 @@ if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privms
 
 // Check Storage and Fire
 $(document).ready(function() {
-    console.log(prefs);
 	MainJs();
 });

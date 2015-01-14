@@ -1,19 +1,10 @@
 /*
-Post Format JS 
-Copyright (c) BetterGaia and Bowafishtech
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+Post Format JS
+Copyright (c) BetterGaia
 */
-/*global localStorage: false, console: false, $: false, self: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
-/*jshint sub:true */
-/*jshint multistr:true */
+/*jshint sub:true,multistr:true */
 
 function Format() {
-    // overwrite default prefs with any userset
-    for (var key in self.options.prefs) {
-        try {prefs[key] = self.options.prefs[key];}
-        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
-    }
-
     function repeat(s, n) {var a = []; while(a.length < n) {a.push(s);} return a.join('');} // for adding new lines
 
     // Run formatter
@@ -26,7 +17,7 @@ function Format() {
 
         // Adds formatting bar
         var formattingbar = '';
-        
+
         // check if recent is set
         var defaultFormatSet = false;
         if (prefs['format.list.recent'] != 'default' && prefs['format.list.useRecent'] === true) {
@@ -46,21 +37,21 @@ function Format() {
                 // if quote
                 if (post.val().substr(0,8) == '[quote="' && post.val().replace(/\n\s*/g,'').substr(-8) == '[/quote]') {
                     if (prefs['format.quote.removeFormatting'] === true) post.val(post.val().replace(/\[\/?(?:b|i|u|strike|code|url|color|size|align|img|imgleft|imgright|imgmap|youtube|spoiler).*?\]/img, ''));
-    
+
                     if (prefs['format.quote.spoilerWrap'] === true) {
                         var newPost = post.val().slice(0,-8);
                         newPost += '[/spoiler][/quote]';
                         newPost = newPost.replace(/\[quote=(.+?)\]/, '[quote=$1][spoiler]');
                         post.val(newPost);
                     }
-    
+
                     if (prefs['format.quote.endOfFormat'] === true) post.val(decodeURI(format[1]) + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + post.val());
                     else post.val(post.val() + '\n' + repeat('\n', parseInt(prefs['format.quote.rangeNumber'], 10)) + decodeURI(format[1]));
                 }
-    
+
                 // If blank
                 else if (post.val().length === 0) post.val(decodeURI(format[1]));
-                
+
                 // In the end
                 $('select[name=basic_type][identity="' + identity + '"]').val(format[2]);
             }
@@ -113,9 +104,11 @@ function Format() {
 } // ---
 
 // Check Storage and Fire
-if ((prefs['format'] === true) && 
-    ((document.location.pathname.indexOf('/forum/') > -1 && prefs['format.forums'] === true) ||
-    (document.location.pathname.indexOf('/guilds/posting.php') > -1 && prefs['format.guildForums'] === true) || 
-    (document.location.pathname.indexOf('/profile/privmsg.php') > -1 && prefs['format.pms'] === true) ||
-    (document.location.search.indexOf('mode=addcomment') > -1 && prefs['format.profileComments'] === true))
-) Format();
+$(document).ready(function() {
+    if ((prefs['format'] === true) &&
+        ((document.location.pathname.indexOf('/forum/') > -1 && prefs['format.forums'] === true) ||
+        (document.location.pathname.indexOf('/guilds/posting.php') > -1 && prefs['format.guildForums'] === true) ||
+        (document.location.pathname.indexOf('/profile/privmsg.php') > -1 && prefs['format.pms'] === true) ||
+        (document.location.search.indexOf('mode=addcomment') > -1 && prefs['format.profileComments'] === true))
+    ) Format();
+});

@@ -42,10 +42,12 @@ pageMod.PageMod({
     //exclude: ['*.gaiaonline.com/profiles/*/*/', '*.gaiaonline.com/launch/*', '*.gaiaonline.com/tank/*'],
     contentScriptWhen: 'start',
     attachTo: 'top',
-    contentScriptFile: ['./js/jquery.min.js', './js/handlebars.js', './js/prefs.js', './js/maincss.js', './js/main.js'],
+    contentScriptFile: ['./js/jquery.min.js', './js/handlebars.js', './js/prefs.js', './js/maincss.js', './js/main.js', './js/forumcss.js', './js/forum.js', './js/format.js'],
     contentScriptOptions: {
         prefs: ss.storage,
-        mainCssUrl: self.data.url('css/main.css')
+        url: self.data.url(''),
+        mainCssUrl: self.data.url('css/main.css'),
+        forumCssUrl: self.data.url('css/forum.css')
     },
     onAttach: function(worker) {
         worker.port.on('set', function(data) {
@@ -63,29 +65,7 @@ pageMod.PageMod({
     }
 });
 
-pageMod.PageMod({
-    include: ['http://www.gaiaonline.com/forum*', 'https://www.gaiaonline.com/forum*', 'http://www.gaiaonline.com/news*', 'https://www.gaiaonline.com/news*'],
-    contentScriptWhen: 'start',
-    attachTo: ['top'],
-    contentScriptFile: [self.data.url('js/jquery.min.js'), self.data.url('js/prefs.js'), self.data.url('js/forumcss.js'), self.data.url('js/forum.js')],
-    contentScriptOptions: {
-        prefs: ss.storage,
-        forumCssUrl: self.data.url('css/forum.css')
-    },
-    onAttach: function(worker) {
-        worker.port.on('set', function(data) {
-            ss.storage[data[0]] = data[1];
-        });
-        worker.port.on('remove', function(key) {
-            delete ss.storage[key];
-        });
-        worker.port.on('format', function() {
-            // format the page
-        });
-    }
-});
-
-pageMod.PageMod({
+/*pageMod.PageMod({
     include: ['http://www.gaiaonline.com/forum/compose/*', 'http://www.gaiaonline.com/guilds/posting.php*', 'http://www.gaiaonline.com/profile/privmsg.php*', 'http://www.gaiaonline.com/profiles/*'],
     contentScriptWhen: 'ready',
     attachTo: ['top'],
@@ -101,8 +81,9 @@ pageMod.PageMod({
             delete ss.storage[key];
         });
     }
-});
+});*/
 
+// Settings pagemod
 pageMod.PageMod({
     include: self.data.url('settings/main.html'),
     contentScriptWhen: 'start',
