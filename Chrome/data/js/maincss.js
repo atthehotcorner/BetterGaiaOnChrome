@@ -5,13 +5,13 @@ Copyright (c) BetterGaia
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = chrome.extension.getURL('code/css/font.css');
+    link.href = chrome.extension.getURL('data/css/font.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.documentElement.appendChild(link);
 
 var link2 = document.createElement('link');
-    link2.href = chrome.extension.getURL('code/css/main.css');
+    link2.href = chrome.extension.getURL('data/css/main.css');
     link2.type = 'text/css';
     link2.rel = 'stylesheet';
 document.documentElement.appendChild(link2);

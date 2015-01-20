@@ -1,0 +1,34 @@
+#layout {
+    padding-left: 150px;
+    position: relative;
+}
+
+#nav {
+    width: 150px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    background: #191818;
+    margin-left: -150px;
+}
+#nav img {width: 75px; display: block; margin: 0 auto;}
+
+#nav .pure-menu > ul > li {margin: 5px 0;}
+#nav .pure-menu a {color: #999;}
+#nav .pure-menu a.selected, #nav .pure-menu a:focus.selected {color: #FFF; background: #1F8DD6;}
+#nav .pure-menu a:hover {background: #333;}
+#nav .pure-menu a:focus {outline: none; color: #FFF; background: #333;}
+
+#nav .pure-menu.pure-menu-open {
+    background: none;
+    border: none;
+    text-align: left;
+}
+
+#nav .pure-menu ul li ul {position: static; visibility: visible;}
+#nav .pure-menu ul li ul a {padding-left: 40px;}
+
+#pages .page {display: none;}
+#pages .page.loaded.selected {display: block;}

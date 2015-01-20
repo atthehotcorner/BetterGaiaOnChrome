@@ -9,7 +9,7 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = chrome.extension.getURL('code/css/forum.css');
+    link.href = chrome.extension.getURL('data/css/forum.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.documentElement.appendChild(link);
