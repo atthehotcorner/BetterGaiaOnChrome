@@ -1,22 +1,19 @@
 /*
 Main CSS
-Copyright (c) BetterGaia and Bowafishtech
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+Copyright (c) BetterGaia
 */
 
 html {height: auto !important;}
 body {height: 100% !important; min-height: 100% !important;}
 body.time-day, body.time-dawn, body.time-dusk, body.time-night, body table.warn_block {background: #12403D url(http://s.cdn.gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left;}
 
-/* Glyphicons */
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/code/css/glyphicons-halflings-regular.woff') format('woff');
+@keyframes loading {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
-
 @-webkit-keyframes loading {
-    0% {-webkit-transform: rotate(0deg);}
-    100% {-webkit-transform: rotate(360deg);}
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
 
 @font-face {
@@ -62,7 +59,7 @@ body #editor #format_controls li {padding: 0; margin: 0 1px 0 0; cursor: pointer
 body #editor #format_controls li:hover {background-color: rgba(0,0,0,0.15); border-radius: 3px;}
 body #editor #format_controls li:active {background-color: #5AC8FA; border-radius: 3px;}
 
-body #editor #format_controls li a {width: 23px !important; height: 23px !important; padding: 0; border: 0; background-image: url(chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/editor.png);}
+body #editor #format_controls li a {width: 23px !important; height: 23px !important; padding: 0; border: 0; background-image: url(data:image/png;base64,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);}
 
 body #editor #format_controls li a.bg_spoiler {background-position: -524px top; cursor: pointer;}
 body #editor #format_controls li a.bg_addemoji {background-position: -546px top; cursor: pointer;}
@@ -112,10 +109,10 @@ body #gaia_header .hud-account > ul {display: block; float: right; overflow: vis
 
     /* Notifications */
     body #gaia_header .header_content .notificationChanges {opacity: 1; transition: opacity 0 ease 0;}
-    body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -570px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s, -webkit-filter 1s ease 5s;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling {position: fixed; left: 50%; top: 0; margin: 0 0 0 -570px; z-index: 700; border-radius: 0 0 4px 4px; box-shadow: 0 1px 3px -1px rgba(0,0,0,0.4); opacity: 0.5; transition: opacity 1s ease 5s;}
     body #gaia_header .header_content .notificationChanges.bgscrolling:hover {opacity: 1; transition: opacity 0 ease 0;}
-    body #gaia_header .header_content .notificationChanges.bgscrolling h3 {-webkit-transform: scaleY(-1); top: 7px;}
-    body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position-y: -4px;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling h3 {transform: scaleY(-1); top: 7px;}
+    body #gaia_header .header_content .notificationChanges.bgscrolling strong {background-position: 0 -4px;}
 
     /* Name */
     body #gaia_header .header_content #user_account.hud-account.hud-sprite-new {padding: 0; margin: 0; border-radius: 0 0 0 30px/75px; background: none; overflow: visible; position: relative;}
@@ -140,12 +137,17 @@ body #gaia_header .hud-account > ul {display: block; float: right; overflow: vis
     #bg_widgets li > a {height: 25px; color: #FFF; display: block; padding: 0 10px; line-height: 22px; cursor: pointer;}
         #bg_widgets li:first-of-type > a {padding-left: 15px;}
         #bg_widgets li:last-of-type > a {padding-right: 20px;}
-        @-webkit-keyframes zoom {
-            0% {-webkit-transform: scale(1); opacity: 0;}
+        @keyframes zoom {
+            0% {transform: scale(1); opacity: 0;}
             25% {opacity: 1;}
-            100% {-webkit-transform: scale(3.5); opacity: 0;}
+            100% {transform: scale(3.5); opacity: 0;}
         }
-        #bg_widgets li.bgsettings.bgwelcome:before {content: ''; display: block; border: 2px solid gold; position: absolute; top: 3px; right: 19px; border-radius: 20px; width: 15px; height: 15px; pointer-events: none; -webkit-animation: zoom 1.5s ease 0 infinite forwards; -webkit-filter: blur(1px);}
+        @-webkit-keyframes zoom {
+            0% {transform: scale(1); opacity: 0;}
+            25% {opacity: 1;}
+            100% {transform: scale(3.5); opacity: 0;}
+        }
+        #bg_widgets li.bgsettings.bgwelcome:before {content: ''; display: block; border: 2px solid gold; position: absolute; top: 3px; right: 19px; border-radius: 20px; width: 15px; height: 15px; pointer-events: none; animation: zoom 1.5s ease 0 infinite forwards; -webkit-animation: zoom 1.5s ease 0 infinite forwards;}
     #bg_widgets li:hover > a {font-size: 13px;}
     #bg_widgets li > a:hover {text-decoration: none !important;}
     #bg_widgets li > a:before {font-size: 13px; font-family: 'Glyphicons Halflings'; text-shadow: 0 1px 0 rgba(0,0,0,0.25);}
@@ -162,12 +164,12 @@ body #gaia_header .hud-account > ul {display: block; float: right; overflow: vis
 		#bg_widgets li.bgsettings > a:after {content: 'BetterGaia Settings';}
     #bg_widgets li:not(.bgopen):hover > a:after {display: block; opacity: 1; margin-top: 0;}
 
-    #bg_widgets li > div {display: none; transition: all 0.35s ease; -webkit-transform-origin: top; -webkit-transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 0; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0; /*max-height: 80vh;*/}
+    #bg_widgets li > div {display: none; transition: all 0.35s ease; transform-origin: top; transform: scale(0.2); background: #FFF; color: #222; border-radius: 3px; padding: 0; width: 200px; top: 28px; left: 50%; margin-left: -100px; position: absolute; z-index: 1; box-shadow: 0 1px 3px rgba(0,0,0,0.5); opacity: 0; /*max-height: 80vh;*/}
     #bg_widgets li > div:before {content: ''; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 7px solid #FFF; position: absolute; top: -7px; left: 50%; margin-left: -6px;}
     #bg_widgets li:first-of-type > div {margin-left: -98px;}
     #bg_widgets li:last-of-type > div {margin-left: -105px;}
     #bg_widgets li:not(.bgopen):hover > div {display: block;}
-    #bg_widgets li.bgopen > div {display: block; -webkit-transform: scale(1); opacity: 1;}
+    #bg_widgets li.bgopen > div {display: block; transform: scale(1); opacity: 1;}
 
     #bg_widgets li > div a {display: block; color: #222; padding: 7px 9px; border-bottom: 1px solid rgba(0,0,0,0.05); text-decoration: none !important; cursor: pointer;}
     #bg_widgets li > div a:hover {background: #7EACC5; color: #FFF !important;}
@@ -188,7 +190,7 @@ body #gaia_header .hud-account > ul {display: block; float: right; overflow: vis
     #bg_widgets li.bgwatchlist > div span {line-height: 30px; padding-left: 10px;}
 
     #bg_widgets li.bgloading > div {min-height: 75px;}
-    #bg_widgets li.bgloading > div:after {content: '\e030'; color: #222; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 15px auto; display: block; text-align: center; -webkit-animation: loading 1s infinite; -webkit-transform-origin: center center;}
+    #bg_widgets li.bgloading > div:after {content: '\e030'; color: #222; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 15px auto; display: block; text-align: center; -webkit-animation: loading 1s infinite; animation: loading 1s infinite; transform-origin: center center;}
 
     /* Settings */
     #bg_widgets li.bgsettings .bgversion {float: right;}
@@ -255,9 +257,9 @@ body.mygaia.app-page_mygaia #gaia_content.grid_ray_davies #bd {width: auto; over
 body.mygaia.app-page_mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g {position: relative; background: #F8FAFC;}
 
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab {border: 0; height: 35px; background: #FFF;}
-body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.link {-webkit-filter: contrast(1.23); height: 35px;}
-body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.link.mygaia-tab-overview {-webkit-filter: contrast(1.07);}
-body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.yuimenu_trigger {-webkit-filter: contrast(1.23); height: 35px;}
+body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.link {filter: contrast(1.23); -webkit-filter: contrast(1.23); height: 35px;}
+body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.link.mygaia-tab-overview {filter: contrast(1.07); -webkit-filter: contrast(1.07);}
+body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > a.yuimenu_trigger {filter: contrast(1.23); -webkit-filter: contrast(1.23); height: 35px;}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab > .yuimenu {margin: 35px 0 0 -1px;}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .tab_end {border: 0; width: 100px; background: linear-gradient(to right, #FFF, rgba(0,0,0,0));}
 body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .gaia_tab_orphans li.clear {display: none;}
@@ -271,8 +273,8 @@ body.mygaia.app-page_mygaia #gaia_content #mygaia_tabs .gaia_tab_orphans li.clea
 	body.mygaia #gaia_content #bd #friends2.mg_content .bg, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right > div + br {display: none;}
 
     /* Top image */
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg {-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); -webkit-filter: saturate(0.75); background-repeat: repeat-x; background-position-x: center;}
-    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both; background-repeat: repeat-x; background-position-x: center; -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.top_bg {mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0)); filter: saturate(0.75); -webkit-filter: saturate(0.75); background-repeat: repeat-x; background-position-x: center;}
+    body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .mg_sprite.btm_bg {clear: both; background-repeat: repeat-x; background-position-x: center; mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0)); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));}
 
     /* Left, Right */
     body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left, body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .right {position: relative; z-index: 1; margin: 1em; box-sizing: border-box;}
@@ -436,7 +438,7 @@ body.mail #bg_messages + table[style='clear:left;'] {display: none;}
 	body.mail #bg_messages .bgpm_list .bg_selecttypes span {display: block; float: left; padding: 0 0 0 45px; position: relative;}
 	body.mail #bg_messages .bgpm_list .bg_selecttypes span:before {content: 'Select:'; position: absolute; left: 0; top: 3px; font-size: 12px; font-weight: bold;}
 
-	body.mail #bg_messages .bgpm_list .bg_selecttypes span a {display: block; float: left; font-size: 12px; border: 1px solid; border-width: 1px 1px 1px 0; border-color: #BBB #AAA #999; padding: 2px 5px; background: linear-gradient(to bottom, #FFF 27%, #DDD) #FFF; color: #222 !important; cursor: pointer; -webkit-user-select: none;}
+	body.mail #bg_messages .bgpm_list .bg_selecttypes span a {display: block; float: left; font-size: 12px; border: 1px solid; border-width: 1px 1px 1px 0; border-color: #BBB #AAA #999; padding: 2px 5px; background: linear-gradient(to bottom, #FFF 27%, #DDD) #FFF; color: #222 !important; cursor: pointer;}
 		body.mail #bg_messages .bgpm_list .bg_selecttypes span a:first-child {border-radius: 4px 0 0 4px; border-width: 1px;}
 		body.mail #bg_messages .bgpm_list .bg_selecttypes span a:last-child {border-radius: 0 4px 4px 0;}
 
@@ -471,7 +473,7 @@ body.mail #gaia_content div[style="float: left; width: 760px;"] {float: none !im
 	body.mail #gaia_content #pm_content .bg_selecttypes span {display: block; float: left; padding: 0 0 0 40px; position: relative;}
 	body.mail #gaia_content #pm_content .bg_selecttypes span:before {content: 'Select'; position: absolute; left: 0; top: 4px; font-size: 12px; color: #555;}
 
-	body.mail #gaia_content #pm_content .bg_selecttypes span a {display: block; float: left; font-size: 12px; border: 1px solid #5AC8FA; border-width: 1px 1px 1px 0; padding: 3px 6px; background: rgba(255,255,255,0.75); color: #222 !important; cursor: pointer; -webkit-user-select: none;}
+	body.mail #gaia_content #pm_content .bg_selecttypes span a {display: block; float: left; font-size: 12px; border: 1px solid #5AC8FA; border-width: 1px 1px 1px 0; padding: 3px 6px; background: rgba(255,255,255,0.75); color: #222 !important; cursor: pointer;}
 	body.mail #gaia_content #pm_content .bg_selecttypes span a:first-child {border-radius: 5px 0 0 5px; border-left-width: 1px;}
 	body.mail #gaia_content #pm_content .bg_selecttypes span a:last-child {border-radius: 0 5px 5px 0;}
 	body.mail #gaia_content #pm_content .bg_selecttypes span a:hover {background: #5AC8FA; border-color: transparent;}
@@ -603,12 +605,18 @@ body.guilds #content > #content-padding {background: #FFF; width: 930px; margin:
 /* External Link Redirect */
 .bgredirect {border: 0; top: 0; position: fixed; z-index: 500; bottom: 0; left: 0; right: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.78);}
 .bgredirect table.warn_block {background: none;}
-.bgredirect table.warn_block #warn_block {-webkit-animation: popin 0.3s ease 0.1s 1 normal forwards; opacity: 0;}
+.bgredirect table.warn_block #warn_block {-webkit-animation: popin 0.3s ease 0.1s 1 normal forwards; animation: popin 0.3s ease 0.1s 1 normal forwards; opacity: 0;}
+
+@keyframes popin {
+    0% {opacity: 0; transform: scale(0.8);}
+    90% {opacity: 0.9; transform: scale(1);}
+    100% {opacity: 1; transform: scale(1);}
+}
 
 @-webkit-keyframes popin {
-	0% {opacity: 0; -webkit-transform: scale(0.8);}
-	90% {opacity: 0.9; -webkit-transform: scale(1);}
-	100% {opacity: 1; -webkit-transform: scale(1);}
+	0% {opacity: 0; transform: scale(0.8);}
+	90% {opacity: 0.9; transform: scale(1);}
+	100% {opacity: 1; transform: scale(1);}
 }
 
 .bgredirect table.warn_block .bgclose {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 0.6em; bottom: 1em;}
@@ -623,7 +631,7 @@ table.warn_block #warn_block {height: auto; width: 600px; position: relative; ma
 table.warn_block #warn_block > div {height: auto; border: 0; text-align: left; margin: 0; font: normal 13px/1.5 Arial, Helvetica, sans-serif;}
 table.warn_block #warn_block u {text-decoration: none; font-weight: bold;}
 
-table.warn_block #warn_block #warn_head {padding: 0.7em 0.5em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #C27D25, rgba(194,125,37,0)); position: absolute; bottom: calc(100% + 5px); width: 100%;}
+table.warn_block #warn_block #warn_head {padding: 0.7em 0.5em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at center bottom, #C27D25, rgba(194,125,37,0)); position: absolute; bottom: calc(100% + 5px); width: 100%;}
 table.warn_block #warn_block #warn_body {padding: 1em;}
 table.warn_block #warn_block #link_display {padding: 1em; position: absolute; top: 100%; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); width: 100%; border-bottom: 5px solid #3C3C3C; background: #fff;}
 table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline; line-height: 1.5; max-width: 490px; float: right; text-overflow: ellipsis; overflow: hidden; font-weight: bold;}
@@ -639,15 +647,16 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #dailyReward .bg_drawall:after {right: 7px; left: auto;}
 #dailyReward .bg_drawall:hover {opacity: 0.7;}
 
-#bg_drawall {position: absolute; top: 50px; left: 50%; margin: 0 0 0 -375px; width: 750px; z-index: 777; padding: 0; height: 0; overflow: none; opacity: 0; transition: opacity 0 ease 0; visibility: hidden;}
+#bg_drawall {position: absolute; top: 25px; left: 50%; margin: 0 0 0 -375px; width: 750px; z-index: 777; padding: 0; height: 0; overflow: none; opacity: 0; transition: opacity 0 ease 0; visibility: hidden;}
 #bg_drawall.bgopen {height: auto; overflow: visible; opacity: 1; transition: opacity .7s ease .2s; visibility: visible;}
 #bg_drawall.bgopen + div.bettergaia.mask {display: block; z-index: 500; background: #000; opacity: 0.75;}
 #bg_drawall * {box-sizing: border-box;}
 
-#bg_drawall h1 {padding: 0.7em 0.75em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: -webkit-radial-gradient(center bottom, ellipse farthest-side, #0092C0, rgba(85,146,141,0)); position: relative;}
+#bg_drawall h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at center bottom, #0092C0, rgba(85,146,141,0)); position: relative;}
 #bg_drawall ul li {overflow: hidden; position: relative;}
-#bg_drawall ul li .pure-u-1-5 {padding: 1.5em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #316589; color: #FFF; display: block; list-style: none; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;}
-#bg_drawall ul li .pure-u-4-5 {padding: 1.5em; background: rgba(255,255,255,0.9); transition: all 0.6s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;}
+#bg_drawall ul li .pure-u-1-5, #bg_drawall ul li .pure-u-4-5 {display: block; float: left; min-height: 58px;}
+#bg_drawall ul li .pure-u-1-5 {padding: 1.25em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #316589; color: #FFF; display: block; list-style: none; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset; width: 20%;}
+#bg_drawall ul li .pure-u-4-5 {padding: 1.25em; background: rgba(255,255,255,0.9); transition: all 0.6s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset; width: 80%;}
 #bg_drawall ul li .pure-u-4-5 p {margin: 0;}
 #bg_drawall ul li .pure-u-4-5 img {margin: -1em .5em -1em 0; height: 30px; width: 30px;}
 #bg_drawall ul li .pure-u-4-5 strong {flex: 1; margin: -1em .5em -1em 0;}
@@ -655,7 +664,11 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_drawall ul li .pure-u-4-5.bgexpand strong + p {max-height: 150px; transition-delay: .75s;}
 #bg_drawall ul li .pure-u-4-5 strong + p:after {display: block; content: '...'; background: #fff; position: absolute; bottom: 0; margin-left: 11em; left: 50%; border-radius: 25px 25px 0 0; box-shadow: 0 0 2px rgba(0,0,0,0.75); padding: 0 15px 3px; transition: all ease 2s;}
 #bg_drawall ul li .pure-u-4-5.bgexpand strong + p:after {bottom: -25px;}
-#bg_drawall ul li .pure-u-4-5 .pure-button {background: #E2B84A; font-size: 125%; display: block; transition: all 0.5s ease; margin: -1em 0; width: 100%; box-shadow: 0 0 1.5em #FFE5A3 inset; border: 1px solid #FFB800;}
+#bg_drawall ul li .pure-u-4-5 .pure-button {background: #E2B84A; font-size: 125%; display: block; transition: all 0.5s ease; margin: -1em 0; width: 100%; box-shadow: 0 0 1.5em #FFE5A3 inset; border: 1px solid #FFB800; padding: 0.5em; text-align: center; cursor: pointer;}
+@keyframes barberpole {
+    from { background-position: 0 0; }
+    to   { background-position: 0 100px; }
+}
 @-webkit-keyframes barberpole {
     from { background-position: 0 0; }
     to   { background-position: 0 100px; }
@@ -665,6 +678,7 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
     background-size: 100px 100px;
     background-image: linear-gradient(-45deg, rgba(255,255,255,0.25) 25%, rgba(255,255,255,0) 25%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.25) 75%, rgba(255,255,255,0) 75%, rgba(255,255,255,0));
     -webkit-animation: barberpole 0.5s linear infinite;
+    animation: barberpole 0.5s linear infinite;
 }
 #bg_drawall ul li.loading .pure-u-4-5 .pure-button {transform: scaleX(1.05) scaleY(1.8); opacity: 0; pointer-events: none;}
 
@@ -674,17 +688,26 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 
 #bg_drawall ul {border: 5px solid #3C3C3C; border-width: 5px 0;}
 
+@keyframes flipInX {
+    0% {transform: perspective(400px) rotateX(90deg); transform-origin: center top; opacity: 0;}
+    40% {transform: perspective(400px) rotateX(-10deg);}
+    70% {transform: perspective(400px) rotateX(10deg);}
+    100% {transform: perspective(0) rotateX(0deg); opacity: 1; animation-fill-mode: none;}
+}
 @-webkit-keyframes flipInX {
-    0% {-webkit-transform: perspective(400px) rotateX(90deg); -webkit-transform-origin: center top; opacity: 0;}
-    40% {-webkit-transform: perspective(400px) rotateX(-10deg);}
-    70% {-webkit-transform: perspective(400px) rotateX(10deg);}
-    100% {-webkit-transform: perspective(0) rotateX(0deg); opacity: 1; -webkit-animation-fill-mode: none;}
+    0% {transform: perspective(400px) rotateX(90deg); transform-origin: center top; opacity: 0;}
+    40% {transform: perspective(400px) rotateX(-10deg);}
+    70% {transform: perspective(400px) rotateX(10deg);}
+    100% {transform: perspective(0) rotateX(0deg); opacity: 1; -webkit-animation-fill-mode: none;}
 }
 
-#bg_drawall.bgopen ul li:nth-of-type(7), #bg_drawall.bgopen ul li:nth-of-type(8), #bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-duration: 0.9s; -webkit-animation-delay: .2s; -webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both; -webkit-backface-visibility: visible !important; -webkit-animation-name: flipInX;}
-#bg_drawall.bgopen ul li:nth-of-type(7) {-webkit-animation-delay: .1s;}
-#bg_drawall.bgopen ul li:nth-of-type(8) {-webkit-animation-delay: .2s;}
-#bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-delay: .3s; margin-bottom: 0;}
+#bg_drawall.bgopen ul li:nth-of-type(7), #bg_drawall.bgopen ul li:nth-of-type(8), #bg_drawall.bgopen ul li:nth-of-type(9) {
+    -webkit-animation-duration: 0.9s; -webkit-animation-delay: .2s; -webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both; -webkit-backface-visibility: visible !important; -webkit-animation-name: flipInX;
+    animation-duration: 0.9s; animation-delay: .2s; animation-timing-function: ease; animation-fill-mode: both; backface-visibility: visible !important; animation-name: flipInX;
+}
+#bg_drawall.bgopen ul li:nth-of-type(7) {-webkit-animation-delay: .1s; animation-delay: .1s;}
+#bg_drawall.bgopen ul li:nth-of-type(8) {-webkit-animation-delay: .2s; animation-delay: .2s;}
+#bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-delay: .3s; animation-delay: .3s; margin-bottom: 0;}
 
 /* Footer */
 body div#gaia_footer {width: 1140px; margin: 3em auto; padding: 0 !important; position: relative; font-size: 13px;}

@@ -5,7 +5,7 @@ Copyright (c) BetterGaia
 
 // Inject CSS
 var link = document.createElement('link');
-    link.href = chrome.extension.getURL('code/css/pure-min.css');
+    link.href = chrome.extension.getURL('code/css/font.css');
     link.type = 'text/css';
     link.rel = 'stylesheet';
 document.documentElement.appendChild(link);

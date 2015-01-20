@@ -4,11 +4,6 @@
         "scripts": ["code/js/jquery.min.js", "code/background.js", "code/js/analytics.js"],
         "persistent": false
     },
-    "browser_action": {
-        "default_icon": "images/128.png",
-        "default_popup": "code/popup/popup.html",
-        "default_title": "BetterGaia"
-    },
     "content_scripts": [ {
         "matches": [ "*://*.gaiaonline.com/*" ],
         "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
@@ -40,6 +35,6 @@
     "name": "BetterGaia",
     "options_page": "settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*", "*://*.bettergaia.com/*" ],
-    "version": "2015.5",
-    "web_accessible_resources": [ "code/css/pure-min.css", "code/css/main.css", "code/css/forum.css", "/code/css/glyphicons-halflings-regular.woff", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png", "/images/editor.png" ]
+    "version": "2015.8",
+    "web_accessible_resources": [ "code/css/font.css", "code/css/main.css", "code/css/forum.css", "/images/legacy.jpg", "/images/goldengaia.png", "/images/omnidrink.png" ]
 }
