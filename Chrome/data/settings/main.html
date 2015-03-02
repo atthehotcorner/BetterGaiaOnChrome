@@ -46,14 +46,12 @@
             <div class="page" data-page="Home">
                 <div class="header">
                     <h1>Settings</h1>
-                    <h2>A subtitle for your page goes here</h2>
+                    <p>A subtitle for your page goes here</p>
                 </div>
 
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
-                        <fieldset>
-
-                        </fieldset>
+                        <fieldset></fieldset>
                     </form>
                 </div>
             </div>
@@ -65,10 +63,40 @@
                 </div>
 
                 <div class="content">
-                    <form class="pure-form pure-form-stacked">
-                        <fieldset>
+                    <form class="pure-form">
+                        <table class="pure-table pure-table-horizontal">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>URL</th>
+                                    <th>Options</th>
+                                </tr>
+                            </thead>
 
-                        </fieldset>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="text"></td>
+                                    <td><input type="text"></td>
+                                    <td>2009</td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>Toyota</td>
+                                    <td>Camry</td>
+                                    <td>2012</td>
+                                </tr>
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>Hyundai</td>
+                                    <td>Elantra</td>
+                                    <td>2010</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </form>
                 </div>
             </div>
@@ -218,7 +246,24 @@
         {{/if_eq}}
         {{#if_eq type "select"}}
         <label for="{{key}}">{{description}}</label>
-        <select id="{{key}}">
+        <select id="{{key}}" data-pref="{{key}}">
+            {{#each values}}
+            <option value="{{value}}">{{name}}</option>
+            {{/each}}
+        </select>
+        {{/if_eq}}
+    {{/each}}
+    </script>
+    <script id="shortcuts-template" type="text/x-handlebars-template">
+    {{#each this}}
+        {{#if_eq type "checkbox"}}
+        <label for="{{key}}" class="pure-checkbox">
+            <input id="{{key}}" data-pref="{{key}}" type="checkbox"> {{description}}
+        </label>
+        {{/if_eq}}
+        {{#if_eq type "select"}}
+        <label for="{{key}}">{{description}}</label>
+        <select id="{{key}}" data-pref="{{key}}">
             {{#each values}}
             <option value="{{value}}">{{name}}</option>
             {{/each}}
@@ -229,5 +274,6 @@
     <script src="../js/jquery.min.js"></script>
     <script src="../js/handlebars.min.js"></script>
     <script src="../js/prefs.js"></script>
+    <script src="data.js"></script>
     <script src="main.js"></script>
 </body>

@@ -81,50 +81,47 @@ var style = document.createElement('style');
 document.documentElement.appendChild(style);
 
 // Instant CSS Updating
-if (prefs['instantUpdating'] === true && typeof(localPrefs['css']) == 'string') {
+if (prefs['instantUpdating'] === true && typeof(prefs['css']) == 'string') {
     var style2 = document.createElement('style');
         style2.type = 'text/css';
         style2.setAttribute('bg-updatedcss', '');
-        style2.appendChild(document.createTextNode(localPrefs['css']));
+        style2.appendChild(document.createTextNode(prefs['css']));
     document.documentElement.appendChild(style2);
 }
 
 } // ---
 
 // Get Storage and Fire
-if (prefs['appliedUserPrefs'] !== true)
-chrome.storage.sync.get(null, function(response) {
-  chrome.storage.local.get(null, function(response2) {
-    localPrefs = response2;
+if (prefs['appliedUserPrefs'] !== true) {
+    chrome.storage.local.get(null, function(response) {
+        for (var key in response) {
+            try {prefs[key] = response[key];}
+            catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
+        }
 
-    for (var key in response) {
-        try {prefs[key] = response[key];}
-        catch(e) {console.warn('BetterGaia: Missing pref \'' + e + '\'.');}
-    }
+        prefs['appliedUserPrefs'] = true;
 
-    prefs['appliedUserPrefs'] = true;
-
-    // Could use some code reuse
-    if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] === false) {
-        MainCss();
-        prefs['appliedMainCss'] = true;
-    }
-    if (typeof(MainJs) == 'function' && prefs['appliedMainJs'] === false) {
-        MainJs();
-        prefs['appliedMainJs'] = true;
-    }
-    if (typeof(ForumCss) == 'function' && prefs['appliedForumCss'] === false) {
-        ForumCss();
-        prefs['appliedForumCss'] = true;
-    }
-    if (typeof(ForumJs) == 'function' && prefs['appliedForumJs'] === false) {
-        ForumJs();
-        prefs['appliedForumJs'] = true;
-    }
-    if (typeof(Format) == 'function' && prefs['appliedFormat'] === false) {
-        Format();
-        prefs['appliedFormat'] = true;
-    }
-  });
-});
+        // Could be better written
+        if (typeof(MainCss) == 'function' && prefs['appliedMainCss'] === false) {
+            MainCss();
+            prefs['appliedMainCss'] = true;
+        }
+        if (typeof(MainJs) == 'function' && prefs['appliedMainJs'] === false) {
+            MainJs();
+            prefs['appliedMainJs'] = true;
+        }
+        if (typeof(ForumCss) == 'function' && prefs['appliedForumCss'] === false) {
+            ForumCss();
+            prefs['appliedForumCss'] = true;
+        }
+        if (typeof(ForumJs) == 'function' && prefs['appliedForumJs'] === false) {
+            ForumJs();
+            prefs['appliedForumJs'] = true;
+        }
+        if (typeof(Format) == 'function' && prefs['appliedFormat'] === false) {
+            Format();
+            prefs['appliedFormat'] = true;
+        }
+    });
+}
 else MainCss();

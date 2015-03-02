@@ -7,7 +7,7 @@ function MainJs() {
 
 // Credits
 $('body > #gaia_footer > p').append('<span id="bg_credits">\
-    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>'+ localPrefs['version'] +'</small></a> \
+    <span>You\'re using <a href="/forum/t.45053993/" target="_blank">BetterGaia <small>' + prefs['version'] + '</small></a> \
     by <a href="http://bettergaia.com/" target="_blank">The BetterGaia Team</a>.</span> \
     <a class="bgtopofpage" href="#">Back to Top</a> \
     <a name="bg_bottomofpage"></a>\
@@ -38,7 +38,7 @@ if (prefs['header.float'] === true && $('#gaia_header .header_content .notificat
 // Add BG Siderbar to MyGaia
 if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'] === true) {
     $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').prepend('<div id="bg_sidebar" class="mg_content">\
-        <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + localPrefs['version'] + '</small>\
+        <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + prefs['version'] + '</small>\
             <a class="pure-button"></a>\
         </div>\
         <div class="bd">\
@@ -54,10 +54,10 @@ if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'
 // Widgets
 $('#gaia_header #bg_userbar').prepend('<ul id="bg_widgets"><li class="bgsettings"><a></a><div></div></li></ul>');
 
-if (typeof(localPrefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
+if (typeof(prefs['welcome']) == 'undefined') $('#bg_widgets .bgsettings').addClass('bgwelcome');
 $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
     // Show welcome screen if new
-    if ($(this).parent().hasClass('bgwelcome') && typeof(localPrefs['welcome']) == 'undefined') {
+    if ($(this).parent().hasClass('bgwelcome') && typeof(prefs['welcome']) == 'undefined') {
         chrome.extension.sendMessage({elements: 'settings'});
         $(this).parent().removeClass('bgwelcome');
         return;
@@ -200,12 +200,6 @@ $(window).load(function() {
 
 // Shortcuts
 if (prefs['header.shortcuts'] === true) {
-    // check if local prefs exist
-    if (typeof(localPrefs['header.shortcuts.list']) == 'object' && $.isEmptyObject(prefs['header.shortcuts.list'])) {
-        prefs['header.shortcuts.list'] = localPrefs['header.shortcuts.list'];
-        console.warn('Your shortcuts are currently saved locally.');
-    }
-
     // check if empty
     if (!$.isEmptyObject(prefs['header.shortcuts.list'])) {
         $('#gaia_header #bg_userbar').prepend('<ul id="bg_shortcuts"><a>Shortcuts</a><div></div></ul>');
@@ -227,9 +221,9 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                 <h1>Draw All <a class="close" title="Close"></a></h1>\
                 <ul>\
                     {{#each this}}\
-                    <li class="pure-g">\
-                        <div class="pure-u-1-5">{{name}}</div>\
-                        <div class="pure-u-4-5"><a class="pure-button" data-candy="{{id}}">Collect</a></div>\
+                    <li>\
+                        <span>{{name}}</span>\
+                        <div><a data-candy="{{id}}">Collect</a></div>\
                     </li>\
                     {{/each}}\
                 </ul>\
@@ -247,7 +241,7 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                 $(this).parent().toggleClass('bgexpand');
             });
 
-            $('#bg_drawall .pure-button').on('click', function() {
+            $('#bg_drawall a[data-candy]').on('click', function() {
                 var thisCandy = $(this).closest('li');
                 thisCandy.addClass('loading');
 
@@ -277,12 +271,14 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                             {{/if}}\
                         </p>');
 
-                        thisCandy.children('.pure-u-4-5').html(template2(data));
+                        thisCandy.children('div').html(template2(data));
                     }
-                    else if (data['status'] == 'fail') thisCandy.children('.pure-u-4-5').html('<p>' + data['error']['message'] + '</p>');
-                    else thisCandy.children('.pure-u-4-5').html('<p>There was a problem getting your Daily Chance.</p>');
+                    else if (data['status'] == 'fail') {
+                        thisCandy.children('div').html('<p>' + data['error']['message'] + '</p>');
+                    }
+                    else thisCandy.children('div').html('<p>There was a problem getting your Daily Chance.</p>');
                 }).fail(function() {
-                    thisCandy.children('.pure-u-4-5').html('<p>There was a problem getting your Daily Chance.</p>');
+                    thisCandy.children('div').html('<p>There was a problem getting your Daily Chance.</p>');
                 }).always(function() {
                     thisCandy.removeClass('loading').addClass('loaded');
                 });
@@ -340,6 +336,102 @@ if (prefs['pms'] === true && document.location.pathname.indexOf('/profile/privms
 	});
 }
 
+// Fetch all announcements
+if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_announcement').length == 1) {
+    // Get number of remaining announcements
+    var remaining = parseInt($('#notifyItemList .notify_icon_announcement').text().replace(/\D/g, ''), 10);
+    if (remaining > 10) remaining = 10;
+
+    // Open model
+    $('#notifyItemList .notify_icon_announcement').on('click', function() {
+        if ($('#bg_anreader').length < 1) {
+            $('body').append('<div id="bg_anreader">\
+                <h1>Announcement Reader <a class="close" title="Close"></a></h1>\
+                <div class="bg_container">\
+                    <ul></ul>\
+                    <div class="content">\
+                        <span class="bg_spinner"></span>\
+                    </div>\
+                </div>\
+            </div>\
+            <div class="bettergaia mask"></div>');
+
+            var liTemplate = Handlebars.compile('<li class="new" data-announcement="{{i}}">\
+                <span class="username">{{username}}</span>\
+                <span class="title">{{title}}</span>\
+            </li>');
+            
+            var threadTemplate = Handlebars.compile('<div class="page" data-announcement="{{i}}">\
+                <div class="header">\
+                    <div class="avatar">{{{avatar}}}</div>\
+                    <a href="{{link}}" target="_blank">{{username}}</a>\
+                    <span>{{date}}</span>\
+                    <h1><a href="{{link}}" target="_blank">{{title}}</a></h1>\
+                </div>\
+                <div class="message">{{{content}}}</div>\
+            </div>');
+
+            $('#bg_anreader h1 .close').on('click', function() {
+                $('#bg_anreader').removeClass('bgopen');
+                $('html').removeClass('bg_noscroll');
+            });
+
+            function apply() {
+                $.ajax({
+                    url: '/news/',
+                    cache: false,
+                    dataType: 'html',
+                    headers: {'X-PJAX': true}
+                })
+                .done(function(html) {
+                    if ($('#thread_header #thread_title', html).length == 1) {
+                        var thread = {
+                            i: remaining,
+                            title: $('#thread_title a', html).text(),
+                            link: $('#thread_title a', html).attr('href'),
+                            username: $('#post-1 .user_info .user_name', html).text(),
+                            date: $('#post-1 .post-meta .timestamp', html).text(),
+                            content: $('#post-1 .post-bubble .speech_bubble > .content', html).html(),
+                            avatar: $('#post-1 .avi_box .avatar', html).html()
+                        };
+
+                        $('#bg_anreader ul').prepend(liTemplate(thread));
+                        $('#bg_anreader .content').prepend(threadTemplate(thread));
+                    }
+                    else {
+                        remaining = 0;
+                    }
+
+                    // Keep loading
+                    if (remaining > 0) {
+                        remaining--;
+                        apply();
+                    }
+                    // No more, end
+                    else {
+                        $('#bg_anreader').addClass('loaded');
+                        $('#bg_anreader .content .page .message a').attr('target', '_blank');
+
+                        $('#bg_anreader ul').on('click', 'li', function() {
+                            $('#bg_anreader ul li.active, #bg_anreader .content .page.active').removeClass('active');
+                            $(this).removeClass('new').addClass('active');
+                            $('#bg_anreader .content .page[data-announcement="' + $(this).attr('data-announcement') + '"]').addClass('active');
+                        });
+                        
+                        $('#bg_anreader ul li:first-child').click();
+                    }
+                });
+            }
+
+            apply();
+        }
+
+        $('#bg_anreader').addClass('bgopen');
+        $('html').addClass('bg_noscroll');
+        return false;
+    });
+}
+
 // Enable Instant CSS updating
 if (prefs['instantUpdating'] === true) {
     $(window).load(function() {
@@ -351,7 +443,7 @@ if (prefs['instantUpdating'] === true) {
         })
         .done(function(html) {
             if ($('.postcontent:eq(1) .postbody span[style="color:enabled"]', html).length == 1) {
-                var version = localPrefs['version'].replace(/\./g,'');
+                var version = prefs['version'].replace(/\./g,'');
                 html = $('.postcontent:eq(1) .postbody', html);
 
                 // look for new code

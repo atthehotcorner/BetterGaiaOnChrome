@@ -3,7 +3,7 @@ Post Format JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, window: false, document: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
@@ -27,12 +27,6 @@ if ((prefs['format'] === true) &&
 
         // Adds formatting bar
         var formattingbar = '';
-
-        // check if local prefs exist
-        if (typeof(localPrefs['format.list']) == 'object' && $.isEmptyObject(prefs['format.list'])) {
-            prefs['format.list'] = localPrefs['format.list'];
-            console.warn('Your formats are currently saved locally.');
-        }
         
         // check if recent is set
         var defaultFormatSet = false;

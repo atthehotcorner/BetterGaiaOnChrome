@@ -30,5 +30,14 @@
 #nav .pure-menu ul li ul {position: static; visibility: visible;}
 #nav .pure-menu ul li ul a {padding-left: 40px;}
 
-#pages .page {display: none;}
+#pages .page {display: none; padding: 0 2em;}
 #pages .page.loaded.selected {display: block;}
+#pages .page .header h1 + p {margin-top: -0.75em;}
+
+table {width: 100%;}
+.page[data-page="Shortcuts"] table input {width: 100%;}
+
+form label {cursor: pointer; margin: 1em 0 !important; max-width: 40em;}
+form label input[type="checkbox"] {opacity: 0.75;}
+form label:hover input[type="checkbox"] {opacity: 1;}
+form label + select {margin-top: -0.75em !important;}

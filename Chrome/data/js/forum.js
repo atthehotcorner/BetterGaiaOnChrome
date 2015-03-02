@@ -3,59 +3,11 @@ Forum JS
 Copyright (c) BetterGaia and Bowafishtech
 Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 */
-/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, localPrefs: false, window: false, document: false, Format: false */
+/*global localStorage: false, console: false, $: false, chrome: false, unescape: false, prefs: false, window: false, document: false, Format: false */
 /*jshint sub:true */
 /*jshint multistr:true */
 
 function ForumJs() {
-
-// Fetch all announcements
-if (prefs['announcementReader'] === true && document.location.pathname == '/news/' && $('#gaia_header #notifyItemList .notify_announcements .notify_icon_announcement').length == 1) {
-    // Get number of remaining announcements
-    var remaining = parseInt($('#gaia_header #notifyItemList .notify_announcements .notify_icon_announcement').text().replace(/\D/g, ''), 10);
-    if (remaining > 10) remaining = 10;
-
-    // Add button
-    var s = (remaining == 1)? '':'s';
-    $('#content').prepend('<a id="bgFetchAnnouncements">You still have ' + remaining + ' announcement' + s + ' to open. Would you like to open the rest on this page?</a>');
-
-    // Fetch
-    $('#bgFetchAnnouncements').on('click', function() {
-        $('#bgFetchAnnouncements').after('<h3 class="bgFAh3">' + (remaining + 1) + ', Oldest</h3>');
-
-        function apply() {
-            $.ajax({
-                url: '/news/',
-                cache: false,
-                dataType: 'html',
-                headers: {'X-PJAX': true}
-            })
-            .done(function(html) {
-                if ($('#thread_header #thread_title', html).length == 1) {
-                    var text = (remaining == 1)? ', Newest':'';
-                    $('#bgFetchAnnouncements').after('<h3 class="bgFAh3">' + remaining + text + '</h3><div id="content-padding">' + html + '</div>');
-                }
-                else {
-                    remaining = 0;
-                }
-
-                // Keep loading
-                if (remaining > 0) {
-                    remaining--;
-                    apply();
-                }
-                // No more, end
-                else {
-                    $('#gaia_header #notifyItemList .notify_announcements, #bgFetchAnnouncements').remove();
-                    ForumJs();
-                }
-            });
-        }
-
-        $(this).off('click').addClass('loading').text('Fetching your announcements...');
-        apply();
-    });
-}
 
 // Add thread preview
 if (prefs['forum.previewThreads'] === true) {
@@ -86,7 +38,7 @@ $("body.forums #content #content-padding #topic_header_container .detail-navlink
 <a class="bgpo_toggle bgpo_posts"><on>Hide</on><off>Show</off> Posts</a> <a class="bgpo_toggle bgpo_sigs"><on>Hide</on><off>Show</off>  Signatures</a></div>');
 
 // Adds Functions to Post Options
-if (typeof localPrefs['forum.hidePosts'] == 'boolean' && localPrefs['forum.hidePosts'] === true) {
+if (typeof prefs['forum.hidePosts'] == 'boolean' && prefs['forum.hidePosts'] === true) {
     $('body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts, body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_sigs').addClass('bgpo_on');
 	$('body.forums #post_container .post .post-signature').hide();
     $('body.forums #post_container .post').addClass('bgpc_hidden');
@@ -100,7 +52,7 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").removeClass("bgpc_hidden");
 
         // Disable persistance
-        chrome.storage.local.remove('forum.hidePosts', function() {delete localPrefs['forum.hidePosts'];});
+        chrome.storage.local.remove('forum.hidePosts', function() {delete prefs['forum.hidePosts'];});
 	}
 	else {
 		$("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
@@ -109,7 +61,7 @@ $('body.forums #topic_header_container .detail-navlinks .thread_options .bg_post
 		$("body.forums #post_container .post").addClass("bgpc_hidden");
 
         // Enable persistance
-        chrome.storage.local.set({'forum.hidePosts': true}, function() {localPrefs['forum.hidePosts'] = true;});
+        chrome.storage.local.set({'forum.hidePosts': true}, function() {prefs['forum.hidePosts'] = true;});
 	}
 });
 
@@ -241,12 +193,6 @@ if (prefs['forum.externalLinks'] === true) {
 
 // Add User Tagging
 if (prefs['usertags'] === true) {
-    // check if local prefs exist
-    if (typeof(localPrefs['usertags.list']) == 'object' && $.isEmptyObject(prefs['usertags.list'])) {
-        prefs['usertags.list'] = localPrefs['usertags.list'];
-        console.warn('Your tags are currently saved locally.');
-    }
-
     // Get userid and add tag links
     $('body.forums .post .user_info_wrapper .user_info .user_name').each(function() {
         if ($(this).siblings('.bgUserTag').length === 0) {
