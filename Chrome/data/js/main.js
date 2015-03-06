@@ -39,14 +39,14 @@ if (prefs['header.float'] === true && $('#gaia_header .header_content .notificat
 if (document.location.pathname.indexOf('/mygaia/') > -1 && prefs['mygaia.bgchat'] === true) {
     $('body.mygaia #gaia_content.grid_ray_davies #bd #yui-main .yui-g > .left').prepend('<div id="bg_sidebar" class="mg_content">\
         <div class="mg_sprite hd">BetterGaia <small class="bgversion">' + prefs['version'] + '</small>\
-            <a class="pure-button"></a>\
+            <a class="bg_expand"></a>\
         </div>\
         <div class="bd">\
             <iframe sandbox="allow-scripts allow-forms allow-same-origin allow-popups" width="100%" frameborder="0" src="http://www.bettergaia.com/sidebar/"></iframe>\
         </div>\
     </div>');
 
-    $('#bg_sidebar .pure-button').on('click', function() {
+    $('#bg_sidebar .bg_expand').on('click', function() {
         $('#gaia_content .left').toggleClass('bgexpanded');
     });
 }
@@ -395,7 +395,7 @@ if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_anno
                             avatar: $('#post-1 .avi_box .avatar', html).html()
                         };
 
-                        $('#bg_anreader ul').prepend(liTemplate(thread));
+                        $('#bg_anreader .bg_container > ul').prepend(liTemplate(thread));
                         $('#bg_anreader .content').prepend(threadTemplate(thread));
                     }
                     else {
@@ -412,13 +412,13 @@ if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_anno
                         $('#bg_anreader').addClass('loaded');
                         $('#bg_anreader .content .page .message a').attr('target', '_blank');
 
-                        $('#bg_anreader ul').on('click', 'li', function() {
-                            $('#bg_anreader ul li.active, #bg_anreader .content .page.active').removeClass('active');
+                        $('#bg_anreader .bg_container > ul').on('click', 'li', function() {
+                            $('#bg_anreader .bg_container > ul li.active, #bg_anreader .content .page.active').removeClass('active');
                             $(this).removeClass('new').addClass('active');
                             $('#bg_anreader .content .page[data-announcement="' + $(this).attr('data-announcement') + '"]').addClass('active');
                         });
                         
-                        $('#bg_anreader ul li:first-child').click();
+                        $('#bg_anreader .bg_container > ul li:first-child').click();
                     }
                 });
             }

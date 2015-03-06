@@ -49,10 +49,23 @@ var Settings = {
         }
         else if (pageName == 'Personalize') {
             // nothing at the moment
-        }
+        }*/
         else if (pageName == 'Background') {
+            $.ajax({
+                type: 'GET',
+                url: 'backgrounds.json',
+                dataType: 'text json',
+                cache: false
+            }).done(function(data) {
+                $.each(data['Backgrounds'], function(index, url) {
+                    var html;
+                    if (url == 'default') html = '<a data-url="' + url + '"></a>';
+                    else html = '<a data-url="' + url + '" style="background-image: url(' + url + ');"></a>';
+                    $('.page[data-page="Background"] .options').append(html);
+                });
+            });
         }
-        else if (pageName == 'Header') {
+        /*else if (pageName == 'Header') {
         }
         else if (pageName == 'Logo') {
         }
