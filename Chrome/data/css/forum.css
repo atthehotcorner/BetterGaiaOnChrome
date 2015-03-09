@@ -140,9 +140,9 @@ body.forums #gaia_content.ss_2Columns_flexiLeft_wideRight > #yui-main > .yui-b {
 	body.forums #gaia_content table.forum-list tr td.title .one-line-title a.bgThreadPreview {cursor: pointer; font-size: 11px; font-weight: bold;}
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox {padding: 0;}
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox > td {padding: 0;}
-	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox > td > div {display: block; clear: both; padding: 10px; position: relative; background: #316589; border: 3px solid rgba(0,0,0,0.2); border-width: 3px 0; overflow: hidden;}
+	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox > td > div {display: block; clear: both; padding: 10px; position: relative; background: #0288D1; border: 3px solid rgba(0,0,0,0.2); border-width: 3px 0; overflow: hidden;}
 
-    body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div {background: #316589; font-size: 0; height: 125px;}
+    body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div {background: #0288D1; font-size: 0; height: 125px;}
     body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox.loading > td > div:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; animation: loading 1s infinite; -webkit-animation: loading 1s infinite; transform-origin: center center; -webkit-transform-origin: center center;}
 
 	body.forums #gaia_content table.forum-list tr.bgThreadPreviewBox .bgavi {width: 120px; float: left; clear: none;}
@@ -401,9 +401,9 @@ body.forums #content #post_container .post .postcontent {}
     body.forums .post-options ul li > a.bg_instantedit > span:before {content: '\270f';}
 
 		/* Instants boxes */
-		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox {display: block; clear: both; padding: 1em; position: relative; background: #316589; color: #FFF; order: 2; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox {display: block; clear: both; padding: 1em; position: relative; background: #0288D1; color: #FFF; order: 2; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
     body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox *[class^="rc_"] {display: none;}
-		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading {background: #316589; font-size: 0; height: 150px;}
+		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading {background: #0288D1; font-size: 0; height: 150px;}
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox.loading:before {content: '\e030'; color: #FFF; font-size: 45px; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; animation: loading 1s infinite; -webkit-animation: loading 1s infinite; transform-origin: center center; -webkit-transform-origin: center center;}
 
 		body.forums #content #post_container .post .postcontent .message .messagecontent .bg_instantbox form > .yui-main {float: left; width: 75%;}
@@ -494,7 +494,7 @@ body.forums #content #post_container .post .postcontent {}
 
 /* Styles Thread Page while loading */
 body.forums #pjax-overlay {position: static !important; height: auto !important; width: auto !important;}
-body.forums #pjax-overlay h3:nth-of-type(1) {position: fixed; font-size: 0 !important; left: 50%; top: 50%; margin: -70px 0 0 -60px; z-index: 1000; background: #316589; padding: 0 40px 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.25);}
+body.forums #pjax-overlay h3:nth-of-type(1) {position: fixed; font-size: 0 !important; left: 50%; top: 50%; margin: -70px 0 0 -60px; z-index: 1000; background: #0288D1; padding: 0 40px 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.25);}
 body.forums #pjax-overlay h3:nth-of-type(1):before {content: '\e030'; color: #FFF; font-size: 45px !important; font-family: 'Glyphicons Halflings'; line-height: 47px; height: 45px; width: 45px; margin: 40px auto 25px; display: block; text-align: center; animation: loading 1s infinite; -webkit-animation: loading 1s infinite; transform-origin: center center; -webkit-transform-origin: center center; text-shadow: none;}
 
 /* Styles Posting Page */

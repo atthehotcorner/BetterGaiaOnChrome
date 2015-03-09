@@ -51,6 +51,16 @@ var Settings = {
             // nothing at the moment
         }*/
         else if (pageName == 'Background') {
+            $('.page[data-page="Background"] .options').on('click', 'a[data-url]', function() {
+                var image = $(this).attr('data-url');
+                if (image == 'default') $('#preview').attr('style', '');
+                else $('#preview').css('background-image', 'url(' + image + ')');
+                $(this).parent().children('.selected').removeClass('selected');
+                $(this).addClass('selected');
+                
+                $('input[data-pref="background.image"]').val(image).change();
+            });
+            
             $.ajax({
                 type: 'GET',
                 url: 'backgrounds.json',
@@ -61,15 +71,30 @@ var Settings = {
                     var html;
                     if (url == 'default') html = '<a data-url="' + url + '"></a>';
                     else html = '<a data-url="' + url + '" style="background-image: url(' + url + ');"></a>';
-                    $('.page[data-page="Background"] .options').append(html);
+                    $('.page[data-page="Background"] .options .custom').before(html);
                 });
+
+                // set selected
+                $('.page[data-page="Background"] .options a[data-url="' + $('input[data-pref="background.image"]').val() + '"]').addClass('selected');
             });
         }
         /*else if (pageName == 'Header') {
-        }
+        }*/
         else if (pageName == 'Logo') {
+            $('.page[data-page="Logo"] .options').on('click', 'a[data-url]', function() {
+                var image = $(this).attr('data-url');
+                if (image == 'default') $('#preview .header .wrap .logo').attr('style', '');
+                else $('#preview .header .wrap .logo').css('background-image', 'url(' + image + ')');
+                $(this).parent().children('.selected').removeClass('selected');
+                $(this).addClass('selected');
+                
+                $('input[data-pref="header.logo"]').val(image).change();
+            });
+
+            // set selected
+            $('.page[data-page="Logo"] .options a[data-url="' + $('input[data-pref="header.logo"]').val() + '"]').addClass('selected');
         }
-        else if (pageName == 'Colors') {
+        /*else if (pageName == 'Colors') {
         }
         else if (pageName == 'Forums') {
         }
@@ -101,6 +126,7 @@ var Settings = {
     init: function() {
         // Save prefs
         $('#pages').on('change', '.page.loaded *[data-pref]', function() {
+            console.log('change');
             var pref = $(this).attr('data-pref'), save = {};
 
             // Checkbox

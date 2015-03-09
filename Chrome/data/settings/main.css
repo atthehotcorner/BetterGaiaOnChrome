@@ -34,7 +34,7 @@ body {font-size: 14px;}
 #nav .pure-menu ul li ul a {padding-left: 40px;}
 
 #pages {height: 100vh; position: relative;}
-#pages .page {display: none; padding: 0 2em; height: 100%; overflow: auto;}
+#pages .page {display: none; padding: 0 2em 1em; height: 100%; overflow: auto;}
 #pages .page.loaded.selected {display: block;}
 #pages .page > .header {font-family: Questrial, sans-serif; text-align: center; border-bottom: 1px solid #eee; margin: 2em 0;}
 #pages .page > .header h1 {font-size: 3em; margin: 0 0 0.25em; font-weight: normal;}
@@ -44,15 +44,19 @@ table {width: 100%;}
 .page[data-page="Shortcuts"] table input {width: 100%;}
 
 .options:after {display: table; content: ''; clear: both;}
-.options a {width: 5em; height: 5em; display: inline-block; float: left; margin: 0 0.75em 0.75em 0; background-color: #eee; cursor: pointer; position: relative;}
-.options a:hover {box-shadow: 0 0 0 0.35em rgba(0,0,0,0.5) inset;}
-.options a.selected {box-shadow: 0 0 0 0.35em #4CA5FF inset !important;}
-.options a.selected:after {content: '\2714'; background: #4CA5FF; height: 1.5em; width: 1.5em; color: #FFF; display: block; text-align: center; top: 1px; right: 1px; position: absolute; font-size: 1em; line-height: 1.5em;}
+.options a {width: 5em; height: 5em; display: inline-block; float: left; margin: 0 0.75em 0.75em 0; background-color: #eee; cursor: pointer; position: relative; text-align: center; line-height: 5em;}
+.options a:hover {box-shadow: 0 0 0 0.35em #9E9E9E inset;}
+.options a.selected {box-shadow: 0 0 0 0.35em #03A9F4 inset !important;}
+.options a.selected:after {content: '\2714'; background: #03A9F4; height: 1.5em; width: 1.5em; color: #FFF; display: block; text-align: center; top: 1px; right: 1px; position: absolute; font-size: 1em; line-height: 1.5em;}
+.options a.custom:before {content: '\e234'; font-family: 'Glyphicons Halflings'; font-size: 2em;}
 
-form label {cursor: pointer; margin: 1em 0 !important; max-width: 40em;}
+form label {cursor: pointer; margin: 0 0 0.75em !important; max-width: 75%; padding: 0.5em 0;}
 form label input[type="checkbox"] {opacity: 0.75;}
 form label:hover input[type="checkbox"] {opacity: 1;}
 form label + select {margin-top: -0.75em !important;}
+form input, form select {cursor: pointer;}
+form input[type=color] {height: 2.75em; padding: 0.15em 0.25em; background: #fff;}
+form label + input[type=color] {margin: -0.5em 0 1em !important;}
 
 #preview {overflow: auto; background: #12403d url(http://gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left; width: calc(50% - 3em); height: calc(100vh - 97px - 6em); position: absolute; top: calc(97px + 4em); left: 2em; display: none;}
 #preview .header {height: 150px; background: url(http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_barton_tile_sprite.jpg) repeat-x;}

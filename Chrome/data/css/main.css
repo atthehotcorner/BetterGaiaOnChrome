@@ -628,13 +628,13 @@ table.warn_block {display: table; position: absolute; top: 0; left: 0; height: 1
 table.warn_block * {box-sizing: border-box;}
 table.warn_block td[valign="middle"] {display: table-cell; vertical-align: middle;}
 
-table.warn_block #warn_block {height: auto; width: 600px; position: relative; margin: -3.5% 0 0; border: 0; background: none; display: block; padding: 0; background: rgba(255,255,255,0.9); border-top: 5px solid #3C3C3C; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+table.warn_block #warn_block {height: auto; width: 600px; position: relative; margin: -3.5% 0 0; border: 0; background: none; display: block; padding: 0; background: rgba(255,255,255,0.9); border-top: 5px solid #37474F; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 table.warn_block #warn_block > div {height: auto; border: 0; text-align: left; margin: 0; font: normal 13px/1.5 Arial, Helvetica, sans-serif;}
 table.warn_block #warn_block u {text-decoration: none; font-weight: bold;}
 
 table.warn_block #warn_block #warn_head {padding: 0.7em 0.5em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at center bottom, #C27D25, rgba(194,125,37,0)); position: absolute; bottom: calc(100% + 5px); width: 100%;}
 table.warn_block #warn_block #warn_body {padding: 1em;}
-table.warn_block #warn_block #link_display {padding: 1em; position: absolute; top: 100%; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); width: 100%; border-bottom: 5px solid #3C3C3C; background: #fff;}
+table.warn_block #warn_block #link_display {padding: 1em; position: absolute; top: 100%; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); width: 100%; border-bottom: 5px solid #37474F; background: #fff;}
 table.warn_block #warn_block #link_display a.link_display {white-space: nowrap; display: inline; line-height: 1.5; max-width: 490px; float: right; text-overflow: ellipsis; overflow: hidden; font-weight: bold;}
 table.warn_block #warn_block #link_display a.link_display:hover {color: #5682C4; text-decoration: underline;}
 table.warn_block #warn_block #warn_no_logout {padding: 0 1em;}
@@ -653,15 +653,15 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_drawall.bgopen + div.bettergaia.mask {display: block; z-index: 99998; background: #000; opacity: 0.75;}
 #bg_drawall * {box-sizing: border-box;}
 
-#bg_drawall h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at center bottom, #0092C0, rgba(85,146,141,0)); position: relative;}
+#bg_drawall h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at bottom center, rgba(179, 229, 252, 0.75), transparent 95%); position: relative;}
 #bg_drawall h1 .close {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 0.6em; bottom: 1em;}
 #bg_drawall h1 .close:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
 #bg_drawall h1 .close:hover:after {background: #FFF; color: #000;}
 
-#bg_drawall ul {border: 5px solid #3C3C3C; border-width: 5px 0;}
+#bg_drawall ul {border: 5px solid #37474F; border-width: 5px 0;}
 #bg_drawall ul li {overflow: hidden; position: relative; list-style: none;}
 #bg_drawall ul li span, #bg_drawall ul li div {display: block; float: left; min-height: 58px;}
-#bg_drawall ul li span {padding: 1.25em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #316589; color: #FFF; display: block; list-style: none; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset; width: 20%;}
+#bg_drawall ul li span {padding: 1.25em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #0288D1; color: #FFF; display: block; list-style: none; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset; width: 20%;}
 #bg_drawall ul li div {padding: 1.25em; background: rgba(255,255,255,0.9); transition: all 0.6s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset; width: 80%;}
 #bg_drawall ul li div p {margin: 0;}
 #bg_drawall ul li div img {margin: -1em .5em -1em 0; height: 30px; width: 30px;}
@@ -670,7 +670,9 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_drawall ul li div.bgexpand strong + p {max-height: 150px; transition-delay: .75s;}
 #bg_drawall ul li div strong + p:after {display: block; content: '...'; background: #fff; position: absolute; bottom: 0; margin-left: 11em; left: 50%; border-radius: 25px 25px 0 0; box-shadow: 0 0 2px rgba(0,0,0,0.75); padding: 0 15px 3px; transition: all ease 2s;}
 #bg_drawall ul li div.bgexpand strong + p:after {bottom: -25px;}
-#bg_drawall ul li div a[data-candy] {background: #E2B84A; font-size: 125%; display: block; transition: all 0.5s ease; margin: -1em 0; width: 100%; box-shadow: 0 0 1.5em #FFE5A3 inset; border: 1px solid #FFB800; padding: 0.5em; text-align: center; cursor: pointer;}
+#bg_drawall ul li div a[data-candy] {background: linear-gradient(to bottom, #FFB74D, #FFA726); font-size: 125%; display: block; transition: all 0.5s ease; margin: -1em 0; width: 100%; box-shadow: 0 1px 0 #FFF3E0 inset; border: 1px solid #FFA726; padding: 0.6em; border-radius: 1.5em/3.5em; text-align: center; cursor: pointer;}
+#bg_drawall ul li div a[data-candy]:hover {background: linear-gradient(to bottom, #FFCC80, #FFB74D); border-color: #FFB74D;}
+#bg_drawall ul li div a[data-candy]:active {background: linear-gradient(to top, #FFCC80, #FFB74D); border-color: #FFB74D;}
 @keyframes barberpole {
     from { background-position: 0 0; }
     to   { background-position: 0 100px; }
@@ -680,7 +682,7 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
     to   { background-position: 0 100px; }
 }
 #bg_drawall ul li.loading div {
-    background-color: #E2B84A;
+    background-color: #FFB74D;
     background-size: 100px 100px;
     background-image: linear-gradient(-45deg, rgba(255,255,255,0.25) 25%, rgba(255,255,255,0) 25%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.25) 75%, rgba(255,255,255,0) 75%, rgba(255,255,255,0));
     -webkit-animation: barberpole 0.5s linear infinite;
@@ -715,12 +717,12 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_anreader.bgopen + div.bettergaia.mask {display: block; z-index: 99998; background: #000; opacity: 0.75; position: fixed;}
 #bg_anreader * {box-sizing: border-box;}
 
-#bg_anreader > h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at center bottom, #0092C0, rgba(85,146,141,0)); position: relative;}
+#bg_anreader > h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at bottom center, rgba(179, 229, 252, 0.75), transparent 95%); position: relative;}
 #bg_anreader > h1 .close {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 0.6em; bottom: 1em;}
 #bg_anreader > h1 .close:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
 #bg_anreader > h1 .close:hover:after {background: #FFF; color: #000;}
 
-#bg_anreader .bg_container {border: 5px solid #3C3C3C; border-width: 5px 0; min-height: 500px; height: calc(100vh - 125px);}
+#bg_anreader .bg_container {border: 5px solid #37474F; border-width: 5px 0; min-height: 500px; height: calc(100vh - 125px);}
 
 #bg_anreader .bg_container > ul {width: 275px; float: left; list-style: none; overflow: auto; height: 100%; position: relative;}
 #bg_anreader .bg_container > ul:empty:after {content: 'Loading Announcements'; display: block; text-align: center; color: #FFF; font-size: 1.25em; font-weight: bold; margin: -0.75em 0 0; width: 100%; top: 50%; position: absolute;}
@@ -728,8 +730,8 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_anreader .bg_container > ul li:hover {background: rgba(255,255,255,0.95);}
 #bg_anreader .bg_container > ul li span {display: block;}
 #bg_anreader .bg_container > ul li span.title {font: normal 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif;}
-#bg_anreader .bg_container > ul li.active {background: #316589; color: #FFF;}
-#bg_anreader .bg_container > ul li.new {border-left: 5px solid #84A977; padding-left: calc(1.25em - 5px);}
+#bg_anreader .bg_container > ul li.active {background: #0288D1; color: #FFF;}
+#bg_anreader .bg_container > ul li.new {border-left: 5px solid #40C4FF; padding-left: calc(1.25em - 5px);}
 #bg_anreader .bg_container > ul li.new span.title {font-weight: bold;}
 
 #bg_anreader .bg_container .content {width: calc(100% - 275px); float: right; background: #FFF; height: 100%; position: relative;}
@@ -744,7 +746,7 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_anreader .bg_container .content .page .header a:hover {text-decoration: underline;}
 #bg_anreader .bg_container .content .page .header h1 {padding: 0.25em 0 0.8em; margin: 0;}
 #bg_anreader .bg_container .content .page .header h1 a {font: normal 22px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif;}
-#bg_anreader .bg_container .content .page .message {overflow: hidden; padding: 1.5em 0;}
+#bg_anreader .bg_container .content .page .message {overflow: hidden; padding: 1.5em 0; font: normal 13px/1.231 'Lucida Grande', LucidaGrande, Lucida, Verdana, sans-serif;}
 #bg_anreader .bg_container .content .page .message .quote {padding: 0; margin: 10px 0;}
 #bg_anreader .bg_container .content .page .message .quote .cite {padding: 3px 5px; display: inline-block; background: rgba(0,0,0,0.05);}
 #bg_anreader .bg_container .content .page .message .quote .quoted {background: rgba(0,50,83,0.025); border: 1px solid rgba(0,0,0,0.05); padding: 10px;}
@@ -757,8 +759,8 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 }
 .bg_spinner, .bg_spinner:before, .bg_spinner:after {border-radius: 100%;}
 .bg_spinner:before, .bg_spinner:after {content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
-.bg_spinner:before {border: 5px solid; border-color: rgb(169,196,207);}
-.bg_spinner:after {border-top: 4px solid; border-bottom: 4px solid; border-color: rgb(222,137,203);}
+.bg_spinner:before {border: 5px solid; border-color: #81D4FA; box-shadow: 0 0 0.1em #81D4FA, 0 0 0.1em #81D4FA inset;}
+.bg_spinner:after {border-top: 4px solid; border-bottom: 4px solid; border-color: #E040FB;}
 @-webkit-keyframes spinner {to {-webkit-transform: rotate(360deg);}}
 @-moz-keyframes spinner {to {-moz-transform: rotate(360deg);}}
 @keyframes spinner {to {transform: rotate(360deg);}}

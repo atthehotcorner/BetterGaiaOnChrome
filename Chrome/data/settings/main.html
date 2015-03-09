@@ -108,8 +108,7 @@
                     <p>Here's a preview of your current picks.</p>
                 </div>
 
-                <div class="content">
-                </div>
+                <div class="content"></div>
             </div>
 
             <div class="page" data-page="Background">
@@ -121,7 +120,9 @@
                 <div class="content pure-g">
                     <div class="pure-u-1-2"></div>
                     <div class="pure-u-1-2">
-                        <div class="options"></div>
+                        <div class="options">
+                            <a data-url="" class="custom" title="Other"></a>
+                        </div>
                         <form class="pure-form pure-form-stacked">
                             <fieldset></fieldset>
                         </form>
@@ -138,9 +139,7 @@
                 <div class="content pure-g">
                     <div class="pure-u-1-2"></div>
                     <form class="pure-u-1-2 pure-form pure-form-stacked">
-                        <fieldset>
-
-                        </fieldset>
+                        <fieldset></fieldset>
                     </form>
                 </div>
             </div>
@@ -155,8 +154,10 @@
                     <div class="pure-u-1-2"></div>
                     <div class="pure-u-1-2">
                         <div class="options">
+                            <a data-url="default"></a>
                             <a data-url="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/goldengaia.png"></a>
                             <a data-url="chrome-extension://lmgjagdflhhfjflolfalapokbplfldna/images/omnidrink.png"></a>
+                            <a data-url="" class="custom" title="Other"></a>
                         </div>
                         <form class="pure-form pure-form-stacked">
                             <fieldset></fieldset>
@@ -174,9 +175,7 @@
                 <div class="content pure-g">
                     <div class="pure-u-1-2"></div>
                     <form class="pure-u-1-2 pure-form pure-form-stacked">
-                        <fieldset>
-
-                        </fieldset>
+                        <fieldset></fieldset>
                     </form>
                 </div>
             </div>
@@ -235,9 +234,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
-                        <fieldset>
-
-                        </fieldset>
+                        <fieldset></fieldset>
                     </form>
                 </div>
             </div>
@@ -250,9 +247,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
-                        <fieldset>
-
-                        </fieldset>
+                        <fieldset></fieldset>
                     </form>
                 </div>
             </div>
@@ -285,6 +280,14 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
             <option value="{{value}}">{{name}}</option>
             {{/each}}
         </select>
+        {{/if_eq}}
+        {{#if_eq type "color"}}
+        <label for="{{key}}">{{description}}</label>
+        <input id="{{key}}" data-pref="{{key}}" type="color">
+        {{/if_eq}}
+        {{#if_eq type "text"}}
+        <label for="{{key}}"{{#if hidden}} hidden{{/if}}>{{description}}</label>
+        <input id="{{key}}" data-pref="{{key}}" type="text" placeholder="{{description}}"{{#if hidden}} hidden{{/if}}>
         {{/if_eq}}
     {{/each}}
     </script>

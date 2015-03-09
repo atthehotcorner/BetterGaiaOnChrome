@@ -47,6 +47,11 @@ var data = {
     }],
     
     Background: [{
+        key: 'background.image',
+        type: 'text',
+        description: 'Background image',
+        hidden: true
+    }, {
         key: 'background.repeat',
         type: 'checkbox',
         description: 'Tile background image'
@@ -54,10 +59,6 @@ var data = {
         key: 'background.float',
         type: 'checkbox',
         description: 'Float background when scrolling'
-    }, {
-        key: 'background.color',
-        type: 'text',
-        description: 'Background color'
     }, {
         key: 'background.position',
         type: 'select',
@@ -73,27 +74,38 @@ var data = {
             {name: 'Bottom Right', value: 'bottom right'}
         ],
         description: 'Position of background image'
+    }, {
+        key: 'background.color',
+        type: 'color',
+        description: 'Background color'
+    }],
+    
+    Logo: [{
+        key: 'header.logo',
+        type: 'text',
+        description: 'Logo image',
+        hidden: true
     }],
     
     Colors: [{
         key: 'header.nav',
-        type: 'text',
+        type: 'color',
         description: 'Navigation base color'
     }, {
         key: 'header.nav.hover',
-        type: 'text',
+        type: 'color',
         description: 'Navigation hover color'
     }, {
         key: 'header.nav.current',
-        type: 'text',
+        type: 'color',
         description: 'Navigation selected color'
     }, {
         key: 'forum.threadHeader',
-        type: 'text',
+        type: 'color',
         description: 'Forums main color'
     }, {
         key: 'forum.postHeader',
-        type: 'text',
+        type: 'color',
         description: 'Forums posts color'
     }],
 
