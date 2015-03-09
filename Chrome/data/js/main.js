@@ -217,9 +217,9 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
     // Open model
     $('#dailyReward .bg_drawall').on('click', function() {
         if ($('#bg_drawall').length < 1) {
-            var template = Handlebars.compile('<div id="bg_drawall">\
+            var template = Handlebars.compile('<div id="bg_drawall" class="bg_model">\
                 <h1>Draw All <a class="close" title="Close"></a></h1>\
-                <ul>\
+                <ul class="bg_container">\
                     {{#each this}}\
                     <li>\
                         <span>{{name}}</span>\
@@ -228,13 +228,13 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
                     {{/each}}\
                 </ul>\
             </div>\
-            <div class="bettergaia mask"></div>');
+            <div class="bg_mask"></div>');
 
             var candy = [{id: 1, name: 'Home'}, {id: 2, name: 'MyGaia'}, {id: 1279, name: 'Gaia Cash'}, {id: 8, name: 'Shops'}, {id: 1271, name: 'GoFusion'}, {id: 3, name: 'Forums'}, {id: 5, name: 'World'}, {id: 4, name: 'Games'}, {id: 12, name: 'Mobile App'}];
             $('body').append(template(candy));
 
             $('#bg_drawall h1 .close').on('click', function() {
-                $('#bg_drawall').removeClass('bgopen');
+                $('#bg_drawall').removeClass('open');
             });
 
             $('#bg_drawall ul').on('click', '.bgreward', function() {
@@ -285,7 +285,7 @@ if (prefs['header.drawAll'] === true && ['/', '/mygaia/', '/market/', '/forum/',
             });
         }
 
-        $('#bg_drawall').addClass('bgopen');
+        $('#bg_drawall').addClass('open');
     });
 }
 
@@ -345,7 +345,7 @@ if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_anno
     // Open model
     $('#notifyItemList .notify_icon_announcement').on('click', function() {
         if ($('#bg_anreader').length < 1) {
-            $('body').append('<div id="bg_anreader">\
+            $('body').append('<div id="bg_anreader" class="bg_model">\
                 <h1>Announcement Reader <a class="close" title="Close"></a></h1>\
                 <div class="bg_container">\
                     <ul></ul>\
@@ -354,7 +354,7 @@ if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_anno
                     </div>\
                 </div>\
             </div>\
-            <div class="bettergaia mask"></div>');
+            <div class="bg_mask"></div>');
 
             var liTemplate = Handlebars.compile('<li class="new" data-announcement="{{i}}">\
                 <span class="username">{{username}}</span>\
@@ -372,7 +372,7 @@ if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_anno
             </div>');
 
             $('#bg_anreader h1 .close').on('click', function() {
-                $('#bg_anreader').removeClass('bgopen');
+                $('#bg_anreader').removeClass('open');
                 $('html').removeClass('bg_noscroll');
             });
 
@@ -426,7 +426,7 @@ if (prefs['announcementReader'] === true && $('#notifyItemList .notify_icon_anno
             apply();
         }
 
-        $('#bg_anreader').addClass('bgopen');
+        $('#bg_anreader').addClass('open');
         $('html').addClass('bg_noscroll');
         return false;
     });

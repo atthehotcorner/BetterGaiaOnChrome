@@ -8,7 +8,7 @@ var prefs = {
     // General
     'adsHide': true,
     'instantUpdating': true,
-    'notifications': '15',
+    'notifications': '60',
     'announcementReader': true,
 
     // Background

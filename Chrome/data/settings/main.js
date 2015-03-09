@@ -78,8 +78,32 @@ var Settings = {
                 $('.page[data-page="Background"] .options a[data-url="' + $('input[data-pref="background.image"]').val() + '"]').addClass('selected');
             });
         }
-        /*else if (pageName == 'Header') {
-        }*/
+        else if (pageName == 'Header') {
+            $.ajax({
+                type: 'GET',
+                url: 'headers.json',
+                dataType: 'text json',
+                cache: false
+            }).done(function(data) {
+                // get host prefix
+                var host = data['info']['host'];
+                delete data['info'];
+
+                // add header options to page
+                $.each(data, function(key, headers) {
+                    // Add title
+                    $('.page[data-page="Header"] .options').prepend('<h4>' + key + '</h4><div class="h' + key + '"></div>');
+
+                    // Add headers
+                    $.each(headers, function(name, url) {
+                        // check if url needs prefix
+                        if (url[0] != 'default' && url[0].substring(0,7) != 'http://' && url[0].substring(0,19) != 'chrome-extension://') url[0] = host + url[0];
+                        if (url[1] != 'default' && url[1].substring(0,7) != 'http://' && url[1].substring(0,19) != 'chrome-extension://') url[1] = host + url[1];
+                        $('.page[data-page="Header"] .options .h' + key).append('<a data-url="' + url[0] + '" data-base-url="' + url[1] + '">' + name + '</a>');
+                    });
+                });
+            });
+        }
         else if (pageName == 'Logo') {
             $('.page[data-page="Logo"] .options').on('click', 'a[data-url]', function() {
                 var image = $(this).attr('data-url');
@@ -101,10 +125,11 @@ var Settings = {
         else if (pageName == 'PostFormat') {
         }
         else if (pageName == 'UserTags') {
-        }
+        }*/
         else if (pageName == 'About') {
             // nothing at the moment
-        }*/
+            $('.page[data-page="About"] .version').text(prefs.version);
+        }
     },
 
     onload: function() {
@@ -126,7 +151,6 @@ var Settings = {
     init: function() {
         // Save prefs
         $('#pages').on('change', '.page.loaded *[data-pref]', function() {
-            console.log('change');
             var pref = $(this).attr('data-pref'), save = {};
 
             // Checkbox

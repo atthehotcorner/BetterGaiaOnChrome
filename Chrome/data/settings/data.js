@@ -79,6 +79,18 @@ var data = {
         type: 'color',
         description: 'Background color'
     }],
+
+    Header: [{
+        key: 'header.background',
+        type: 'text',
+        description: 'Header image',
+        hidden: true
+    }, {
+        key: 'header.background.base',
+        type: 'text',
+        description: 'Header image base',
+        hidden: true
+    }],
     
     Logo: [{
         key: 'header.logo',
@@ -178,18 +190,18 @@ var data = {
     }, {
         key: 'format.forums',
         type: 'checkbox',
-        description: 'Forums'
+        description: 'Use in Forums'
     }, {
         key: 'format.guildForums',
         type: 'checkbox',
-        description: 'Guilds'
+        description: 'Use in Guilds'
     }, {
         key: 'format.pms',
         type: 'checkbox',
-        description: 'Private Messages'
+        description: 'Use in Private Messages'
     }, {
         key: 'format.profileComments',
         type: 'checkbox',
-        description: 'Profile Comments'
+        description: 'Use in Profile Comments'
     }]
 };

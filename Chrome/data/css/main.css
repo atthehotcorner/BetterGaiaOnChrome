@@ -640,6 +640,35 @@ table.warn_block #warn_block #link_display a.link_display:hover {color: #5682C4;
 table.warn_block #warn_block #warn_no_logout {padding: 0 1em;}
 table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 
+/* Spinner */
+.bg_spinner {
+	position: relative; display: inline-block; width: 1em; height: 1em; font-size: 100px; vertical-align: middle; overflow: hidden; text-indent: 100%;
+	-webkit-animation: 1s spinner linear infinite;
+	-moz-animation: 1s spinner linear infinite;
+	animation: 1s spinner linear infinite;
+}
+.bg_spinner, .bg_spinner:before, .bg_spinner:after {border-radius: 100%;}
+.bg_spinner:before, .bg_spinner:after {content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+.bg_spinner:before {border: 5px solid; border-color: #81D4FA; box-shadow: 0 0 0.1em #81D4FA, 0 0 0.1em #81D4FA inset;}
+.bg_spinner:after {border-top: 4px solid; border-bottom: 4px solid; border-color: #E040FB;}
+@-webkit-keyframes spinner {to {-webkit-transform: rotate(360deg);}}
+@-moz-keyframes spinner {to {-moz-transform: rotate(360deg);}}
+@keyframes spinner {to {transform: rotate(360deg);}}
+
+/* BetterGaia Model */
+.bg_model {position: absolute; top: 25px; left: 50%; z-index: 99999; margin: 0; padding: 0; display: none; color: #222;}
+.bg_model * {box-sizing: border-box;}
+.bg_model.open {display: block;}
+.bg_mask {display: none;}
+.bg_model.open + .bg_mask {display: block; z-index: 99998; background: #000; opacity: 0.75; position: absolute; top: 0; left: 0; right: 0; bottom: 0;}
+
+.bg_model > h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, sans-serif; color: #fff; background: radial-gradient(ellipse farthest-side at bottom center, rgba(179,229,252,0.75), transparent 95%); position: relative;}
+.bg_model > h1 .close {cursor: pointer; font: normal 0.65em/1.4em 'Glyphicons Halflings'; color: #FFF; padding: 0 0.25em; margin: 0.4em -0.35em 0 0; border-radius: 1.5em/3.5em; float: right;}
+.bg_model > h1 .close:after {content: '\e014';}
+.bg_model > h1 .close:hover {background: #FFF; color: #222;}
+
+.bg_model > .bg_container {border: 5px solid #37474F; border-width: 5px 0;}
+
 /* Draw All */
 #dailyReward {z-index: 1;}
 #dailyReward .bg_drawall {background: linear-gradient(to bottom right, #FF1B1B, #850019); border: 1px solid #C8CED2; position: absolute; right: -25px; bottom: 16px; cursor: pointer; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.5) inset, 0 1px 1px rgba(0,0,0,0.7); box-sizing: border-box; font: bold 9px/7px 'Palatino Linotype', 'Book Antiqua', Palatino, serif; color: #FFCC00; text-transform: uppercase; padding: 6px 5px;}
@@ -648,17 +677,7 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #dailyReward .bg_drawall:after {right: 7px; left: auto;}
 #dailyReward .bg_drawall:hover {opacity: 0.7;}
 
-#bg_drawall {position: absolute; top: 25px; left: 50%; margin: 0 0 0 -375px; width: 750px; z-index: 99999; padding: 0; display: none;}
-#bg_drawall.bgopen {display: block;}
-#bg_drawall.bgopen + div.bettergaia.mask {display: block; z-index: 99998; background: #000; opacity: 0.75;}
-#bg_drawall * {box-sizing: border-box;}
-
-#bg_drawall h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at bottom center, rgba(179, 229, 252, 0.75), transparent 95%); position: relative;}
-#bg_drawall h1 .close {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 0.6em; bottom: 1em;}
-#bg_drawall h1 .close:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
-#bg_drawall h1 .close:hover:after {background: #FFF; color: #000;}
-
-#bg_drawall ul {border: 5px solid #37474F; border-width: 5px 0;}
+#bg_drawall {margin-left: -375px; width: 750px;}
 #bg_drawall ul li {overflow: hidden; position: relative; list-style: none;}
 #bg_drawall ul li span, #bg_drawall ul li div {display: block; float: left; min-height: 58px;}
 #bg_drawall ul li span {padding: 1.25em; font: bold 15px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; background: #0288D1; color: #FFF; display: block; list-style: none; box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset; width: 20%;}
@@ -703,26 +722,17 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
     100% {transform: perspective(0) rotateX(0deg); opacity: 1; -webkit-animation-fill-mode: none;}
 }
 
-#bg_drawall.bgopen ul li:nth-of-type(7), #bg_drawall.bgopen ul li:nth-of-type(8), #bg_drawall.bgopen ul li:nth-of-type(9) {
+#bg_drawall.open ul li:nth-of-type(7), #bg_drawall.open ul li:nth-of-type(8), #bg_drawall.open ul li:nth-of-type(9) {
     -webkit-animation-duration: 0.9s; -webkit-animation-delay: .2s; -webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both; -webkit-backface-visibility: visible !important; -webkit-animation-name: flipInX;
     animation-duration: 0.9s; animation-delay: .2s; animation-timing-function: ease; animation-fill-mode: both; backface-visibility: visible !important; animation-name: flipInX;
 }
-#bg_drawall.bgopen ul li:nth-of-type(7) {-webkit-animation-delay: .1s; animation-delay: .1s;}
-#bg_drawall.bgopen ul li:nth-of-type(8) {-webkit-animation-delay: .2s; animation-delay: .2s;}
-#bg_drawall.bgopen ul li:nth-of-type(9) {-webkit-animation-delay: .3s; animation-delay: .3s; margin-bottom: 0;}
+#bg_drawall.open ul li:nth-of-type(7) {-webkit-animation-delay: .1s; animation-delay: .1s;}
+#bg_drawall.open ul li:nth-of-type(8) {-webkit-animation-delay: .2s; animation-delay: .2s;}
+#bg_drawall.open ul li:nth-of-type(9) {-webkit-animation-delay: .3s; animation-delay: .3s; margin-bottom: 0;}
 
 /* Announcement Reader */
-#bg_anreader {top: 25px; left: 50%; margin: 0 0 0 -550px; width: 1100px; z-index: 99999; color: #222; position: fixed; font-family: sans-serif; display: none;}
-#bg_anreader.bgopen {display: block;}
-#bg_anreader.bgopen + div.bettergaia.mask {display: block; z-index: 99998; background: #000; opacity: 0.75; position: fixed;}
-#bg_anreader * {box-sizing: border-box;}
-
-#bg_anreader > h1 {padding: 0.7em; margin: 0; font: normal 27px "Century Gothic", "TeXGyreAdventorBold", Arial, Tahoma, Verdana, sans-serif; text-shadow: 0 1px 0 rgba(0,0,0,0.2); color: #fff; background: radial-gradient(ellipse farthest-side at bottom center, rgba(179, 229, 252, 0.75), transparent 95%); position: relative;}
-#bg_anreader > h1 .close {cursor: pointer; height: 16px; width: 16px; position: absolute; right: 0.6em; bottom: 1em;}
-#bg_anreader > h1 .close:after {content: "\00D7"; color: #FFF; width: 19px; height: 19px; display: block; position: absolute; top: 0; right: 0; text-align: center; border-radius: 15px; font: bold 24px/20px Arial, Helvetica, sans-serif; text-shadow: none;}
-#bg_anreader > h1 .close:hover:after {background: #FFF; color: #000;}
-
-#bg_anreader .bg_container {border: 5px solid #37474F; border-width: 5px 0; min-height: 500px; height: calc(100vh - 125px);}
+#bg_anreader {margin-left: -550px; width: 1100px; position: fixed;}
+#bg_anreader .bg_container {min-height: 500px; height: calc(100vh - 125px);}
 
 #bg_anreader .bg_container > ul {width: 275px; float: left; list-style: none; overflow: auto; height: 100%; position: relative;}
 #bg_anreader .bg_container > ul:empty:after {content: 'Loading Announcements'; display: block; text-align: center; color: #FFF; font-size: 1.25em; font-weight: bold; margin: -0.75em 0 0; width: 100%; top: 50%; position: absolute;}
@@ -750,20 +760,6 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 #bg_anreader .bg_container .content .page .message .quote {padding: 0; margin: 10px 0;}
 #bg_anreader .bg_container .content .page .message .quote .cite {padding: 3px 5px; display: inline-block; background: rgba(0,0,0,0.05);}
 #bg_anreader .bg_container .content .page .message .quote .quoted {background: rgba(0,50,83,0.025); border: 1px solid rgba(0,0,0,0.05); padding: 10px;}
-
-.bg_spinner {
-	position: relative; display: inline-block; width: 1em; height: 1em; font-size: 100px; vertical-align: middle; overflow: hidden; text-indent: 100%;
-	-webkit-animation: 1s spinner linear infinite;
-	-moz-animation: 1s spinner linear infinite;
-	animation: 1s spinner linear infinite;
-}
-.bg_spinner, .bg_spinner:before, .bg_spinner:after {border-radius: 100%;}
-.bg_spinner:before, .bg_spinner:after {content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
-.bg_spinner:before {border: 5px solid; border-color: #81D4FA; box-shadow: 0 0 0.1em #81D4FA, 0 0 0.1em #81D4FA inset;}
-.bg_spinner:after {border-top: 4px solid; border-bottom: 4px solid; border-color: #E040FB;}
-@-webkit-keyframes spinner {to {-webkit-transform: rotate(360deg);}}
-@-moz-keyframes spinner {to {-moz-transform: rotate(360deg);}}
-@keyframes spinner {to {transform: rotate(360deg);}}
 
 /* Footer */
 body div#gaia_footer {width: 1140px; margin: 3em auto; padding: 0 !important; position: relative; font-size: 13px;}
