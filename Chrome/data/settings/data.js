@@ -128,7 +128,7 @@ var data = {
     }, {
         key: 'usertags',
         type: 'checkbox',
-        description: 'Let me add notes about other users'
+        description: 'Use user tags to add notes about other users'
     }, {
         key: 'forum.constrain',
         type: 'checkbox',

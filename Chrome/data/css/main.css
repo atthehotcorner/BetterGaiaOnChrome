@@ -732,6 +732,7 @@ table.warn_block #warn_block #notice_acct_prefs {padding: 1em;}
 
 /* Announcement Reader */
 #bg_anreader {margin-left: -550px; width: 1100px; position: fixed;}
+#bg_anreader + .bg_mask {position: fixed;}
 #bg_anreader .bg_container {min-height: 500px; height: calc(100vh - 125px);}
 
 #bg_anreader .bg_container > ul {width: 275px; float: left; list-style: none; overflow: auto; height: 100%; position: relative;}

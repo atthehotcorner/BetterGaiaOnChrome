@@ -54,7 +54,7 @@ css += '.time-day div.town-barton .header_content, .time-dawn div.town-barton .h
 
 // Header Background Base
 if (prefs['header.background.base'] != 'default')
-css += '.time-day div.town-barton, .time-dawn div.town-barton, .time-dusk div.town-barton, .time-night div.town-barton {background: url(' + prefs['header.background.base'] + ') repeat-x;}';
+css += '.time-day div.town-barton, .time-dawn div.town-barton, .time-dusk div.town-barton, .time-night div.town-barton {background-image: url(' + prefs['header.background.base'] + '); background-repeat: repeat;}';
 
 // Header Background Stretch
 if (prefs['header.background.stretch'] === false)

@@ -276,30 +276,11 @@ if (prefs['usertags'] === true) {
             prefs['usertags.list'][userid.val()] = [username, tag.val(), url.val(), Date.now()];
 
             // Save
-            chrome.storage.sync.set({'usertags.list': prefs['usertags.list']}, function(){
-                function saved() {
-                    $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
-                    tag.closest('.post').removeClass('bgut_loaded bgut_open');
-                    tag.closest('div').remove();
-                }
-
-                if (typeof(chrome.runtime.lastError) == 'object') {
-                    console.warn('Error when setting tags: ' + chrome.runtime.lastError['message']);
-
-                    // save to local
-                    if (chrome.runtime.lastError['message'] == 'QUOTA_BYTES_PER_ITEM quota exceeded') {
-                        chrome.storage.local.set({'usertags.list': prefs['usertags.list']}, function(){
-                            console.log('tags saved locally.');
-                            chrome.storage.sync.set({'usertags.list': {}});
-                            saved();
-                        });
-                    }
-                }
-                else {
-                    console.log('tags saved to sync.');
-                    chrome.storage.local.remove('usertags.list');
-                    saved();
-                }
+            chrome.storage.local.set({'usertags.list': prefs['usertags.list']}, function(){
+                console.log('tags saved locally.');
+                $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
+                tag.closest('.post').removeClass('bgut_loaded bgut_open');
+                tag.closest('div').remove();
             });
         }
     });
