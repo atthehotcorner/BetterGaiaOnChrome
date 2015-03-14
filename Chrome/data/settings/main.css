@@ -28,6 +28,7 @@ body {font-size: 14px; text-rendering: optimizespeed; font-family: FreeSans,Arim
 
 #nav .pure-menu > ul > li {margin: 5px 0;}
 #nav .pure-menu a {color: #BDBDBD;}
+#nav .pure-menu a.alert:after {content: '\e086'; font-family: 'Glyphicons Halflings'; padding-left: 0.5em; color: gold;}
 #nav .pure-menu a.selected, #nav .pure-menu a:focus.selected {color: #FFF; background: #0091EA;}
 #nav .pure-menu a:hover {background: #37474F;}
 #nav .pure-menu a:focus {outline: none; color: #FFF; background: #455A64;}
@@ -119,7 +120,7 @@ form label + input[type=text], form label + input[type=color] {margin: -0.5em 0 
 .page[data-page="PostFormat"] .content .text-center {position: fixed; bottom: 0; width: calc(100% - 150px); right: 0; padding: 0 0 2em; background: linear-gradient(to bottom, transparent, #fff);}
 .page[data-page="PostFormat"] .formats {padding-bottom: 2.5em;}
 .page[data-page="PostFormat"] .formats .format, .page[data-page="PostFormat"] .formats .sortable-placeholder {margin-bottom: 0.5em;}
-.page[data-page="PostFormat"] .formats .format .pure-u-4-5 {padding-top: 0.5em; display: block;}
+.page[data-page="PostFormat"] .formats .format .pure-u-4-5 strong {padding-top: 0.5em; display: block; cursor: pointer;}
 .page[data-page="PostFormat"] .formats .format .pure-u-1-5 {text-align: right;}
 .page[data-page="PostFormat"] .formats .format strong:empty:before {content: 'No Title'; font-weight: normal; color: #9E9E9E; font-style: italic;} 
 
@@ -131,3 +132,5 @@ form label + input[type=text], form label + input[type=color] {margin: -0.5em 0 
 
 body[class^="model-"] {overflow: hidden;}
 .model-background .model.background, .model-background #mask, .model-header .model.header, .model-header #mask, .model-logo .model.logo, .model-logo #mask, .model-format .model.format, .model-format #mask, .model-reset .model.reset, .model-reset #mask {display: block;}
+
+.transferInfo {background: #EEF5F5; border: 1px solid rgba(0,0,0,0.05); padding: 0 1em 1em; margin-bottom: 2em;}

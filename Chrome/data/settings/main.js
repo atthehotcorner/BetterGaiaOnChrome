@@ -270,7 +270,7 @@ var Settings = {
             
             $('.page[data-page="PostFormat"] .add').on('click', function() {
                 $('.page[data-page="PostFormat"] .save').show();
-                $('.page[data-page="PostFormat"] fieldset .formats').append(formatsTemplate([['New', '', 0]])).sortable('reload');
+                $('.page[data-page="PostFormat"] fieldset .formats').append(formatsTemplate([['', '', 0]])).sortable('reload');
             });
 
             $('.page[data-page="PostFormat"] .formats').on('click', '.delete', function() {
@@ -343,6 +343,42 @@ var Settings = {
             });
         }
     },
+    
+    transfer: function() {
+        // Get old settings
+        chrome.storage.sync.get(null, function(response) {
+            var prefsToMigrate = {'2015transfer': true};
+
+            for (var key in response) {
+                console.log(key + ' ' + response[key]);
+                try {
+                    // skip if not in current list of prefs
+                    if (typeof prefs.default[key] == 'undefined') continue;
+                    else if (key == 'format.list') {
+                        if ($.isEmptyObject(response['format.list'])) continue;
+                    }
+                    else if (key == 'header.shortcuts.list') {
+                        if ($.isEmptyObject(response['header.shortcuts.list'])) continue;
+                    }
+                    else if (key == 'usertags.list') {
+                        if ($.isEmptyObject(response['usertags.list'])) continue;
+                    }
+                    // Add if not default
+                    if (JSON.stringify(response[key]) != JSON.stringify(prefs.default[key])) prefsToMigrate[key] = response[key];
+                }
+                catch(e) {
+                    // if not in the list of prefs
+                    console.log(e);
+                }
+            }
+
+            // Send to local Chrome Storage
+            console.log(prefsToMigrate);
+            chrome.storage.local.set(prefsToMigrate, function() {
+                location.reload();
+            });
+        });
+    },
 
     onload: function() {
         // Save a default
@@ -361,6 +397,18 @@ var Settings = {
     },
 
     init: function() {
+        // check if transfer needed
+        chrome.storage.sync.get(null, function(response) {
+            if (!$.isEmptyObject(response) && prefs['2015transfer'] === false) {
+                $('.page[data-page="About"] .transferInfo').show();
+                $('#nav a[href="#About"]').addClass('alert');
+
+                $('.page[data-page="About"] .transferInfo a').on('click', function() {
+                    Settings.transfer();
+                });
+            }
+        });
+
         // Save prefs
         $('#pages').on('change', '.page.loaded *[data-pref]', function() {
             var pref = $(this).attr('data-pref'), save = {};

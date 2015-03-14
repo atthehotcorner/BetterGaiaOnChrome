@@ -254,6 +254,11 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
                     <h1>BetterGaia</h1>
                     <p>Change the way you experience Gaia.</p>
                 </div>
+
+                <div class="content transferInfo" style="display: none;">
+                    <p>We've found settings from past BetterGaia installations. Would you like to transfer them over?</p>
+                    <a class="pure-button pure-button-primary">Transfer</a>
+                </div>
                 
                 <div class="content pure-g">
                     <div class="pure-u-1-4">
@@ -269,7 +274,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
                         <a class="pure-button" target="_blank" href="http://www.bettergaia.com/">BetterGaia.com</a>
                         <a class="pure-button" target="_blank" href="http://www.bettergaia.com/donate/">Contribute</a>
                         <a class="pure-button reset">Reset</a>
-                        <a class="pure-button" target="_blank" href="http://www.gaiaonline.com/forum/t.45053993/">Support</a>
+                        <a class="pure-button" target="_blank" href="http://www.gaiaonline.com/forum/t.96293729/">Support</a>
                     </div>
                 </div>
             </div>
@@ -412,7 +417,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
             </div>
 
             <div class="pure-u-1-5">
-                <a class="pure-button delete">Delete</a>
+                <a class="pure-button button-error delete">Delete</a>
             </div>
         </div>
     {{/each}}
@@ -427,7 +432,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
             <div class="pure-u-1-5">
                 <a class="pure-button edit">Edit</a>
-                <a class="pure-button delete">Delete</a>
+                <a class="pure-button button-error delete">Delete</a>
             </div>
         </div>
     {{/each}}
@@ -441,7 +446,11 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
             </div>
             
             <div class="pure-u-2-5">
+                {{#if this.[2]}}
                 <a href="{{urlComplete this.[2]}}" target="_blank">{{this.[1]}}</a>
+                {{else}}
+                {{this.[1]}}
+                {{/if}}
             </div>
 
             <div class="pure-u-1-5">
@@ -449,7 +458,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
             </div>
 
             <div class="pure-u-1-5">
-                <a class="pure-button delete">Delete</a>
+                <a class="pure-button button-error delete">Delete</a>
             </div>
         </div>
     {{/each}}

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"version": 20140217,
+		"version": 20140314,
 		"host": "http://i.imgur.com/"
 	},
 	"2009": {
@@ -126,6 +126,13 @@
 	"Frozen Repose CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/5fde46e9edcd.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/d4b2dbd23775.jpg"],
 	"Bitter Slumber": ["http://s.cdn.gaiaonline.com/images/event/xmas2014/201412_xmasheader.jpg", "http://s.cdn.gaiaonline.com/images/event/xmas2014/201412_xmasheader_cut.jpg"]
   },
+    "2015": {
+		"New Attitude CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/031863aab421.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/00cc68fa2feb.jpg"],
+		"Ships Going Down CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/866ee81a6367.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/99fbb353cb95.jpg"],
+		"Love Me Not VDAY": ["http://s.cdn.gaiaonline.com/images/event/vday2015/2015valentines_header.jpg", "http://s.cdn.gaiaonline.com/images/event/vday2015/2015valentines_header_cut.jpg"],
+		"Brainologists Unite CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/d9c8d86f8f39.png", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/a6bcf56e6716.jpg"],
+		"Tendit Ad Astra CI": ["http://w.cdn.gaiaonline.com/mfs/index/adminupload/dc75a97ffef8.jpg", "http://w.cdn.gaiaonline.com/mfs/index/adminupload/cbcde1a26746.jpg"]
+	},
 	"Towns": {
 		"Barton & Current Events": ["default", "default"],
 		"Aekea": ["http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_aekea_sprite.jpg", "http://s.cdn.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_aekea_tile_sprite.jpg"],

@@ -63,6 +63,7 @@ var prefs = {
     'forum.post.bgContainer': false,
     'forum.pollHide': false,
     'forum.postOffWhite': false,
+    'forum.reduceTransparency': false,
 
     'forum.threadHeader': '#BF7F40',
     'forum.postHeader': '#CFE6F9',
@@ -101,5 +102,6 @@ var prefs = {
     'appliedForumCss': false,
     'appliedForumJs': false,
     'appliedFormat': false,
-    'version': '2015'
+    'version': '2015',
+    '2015transfer': false
 };

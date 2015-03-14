@@ -157,6 +157,10 @@ var data = {
         key: 'forum.postOffWhite',
         type: 'checkbox',
         description: 'Show posts with an off-white background'
+    }, {
+        key: 'forum.reduceTransparency',
+        type: 'checkbox',
+        description: 'Reduce transparency in forums'
     }],
     
     PostFormat: [{

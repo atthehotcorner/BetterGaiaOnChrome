@@ -309,7 +309,7 @@ body.forums #content #post_container .post .postcontent {}
 				body .bgUserTag div form .bgut_save:active {background: #FFF; border-color: rgba(0,0,0,0.5);}
 		body .post.bgut_open .bgUserTag div {display: block;}
 		body .post.bgut_open.bgpc_hidden .bgUserTag div {display: none;}
-		body .post.bgut_open .postcontent .message, body .post.bgut_open .postcontent .post-signature {filter: blur(2px); -webkit-filter: blur(2px); opacity: 0.9; transition: opacity 1s; pointer-events: none; -webkit-user-select: none; -moz-user-select: none;}
+		body .post.bgut_open .postcontent .message, body .post.bgut_open .postcontent .post-signature {opacity: 0.9; transition: opacity 1s; pointer-events: none; -webkit-user-select: none; -moz-user-select: none;}
 
 		/* Timestamp */
 		body.forums #content #post_container .post .postcontent .user_info_wrapper li.post-meta {position: relative; float: right;  padding: 0.75em 1em;}
@@ -350,6 +350,9 @@ body.forums #content #post_container .post .postcontent {}
 		body.forums #content #post_container .post .postcontent .avatar_wrapper .achievement_share .ribbon_wrap * {box-sizing: content-box;}
 		body.forums #content #post_container .post .postcontent .avatar_wrapper .achievement_share ul {margin: 0 0 0 2px;}
 		body.forums #content #post_container .post .postcontent .avatar_wrapper .achievement_share ul li {margin: 0 7px 0 0;}
+
+        /* Marriage */
+        body.forums #content #post_container .post .postcontent .avatar_wrapper #marriage_share {background: #FFF; border-radius: 2px;}
 
 		/* User Status Bars */
 		body.forums #content #post_container .post .postcontent .avatar_wrapper .forum_userstatus {margin: 0; text-align: right; padding: 3px; width: 120px; background: #FFF; border-radius: 2px; height: 21px; border: 0; overflow: visible;}

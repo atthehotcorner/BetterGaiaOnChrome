@@ -40,6 +40,9 @@ css += 'body.forums #content #post_container .post > .postcontent {border-radius
 // Make posts off white
 if (prefs['forum.postOffWhite'] === true) {css += 'body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble {background-color: rgba(255,255,255,0.9);} body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble div.content, body.forums #content #post_container .post .postcontent .message .messagecontent .post-bubble .avi-speech:not(.document) .avi-speech-bd {background-color: transparent;}';}
 
+// 
+if (prefs['forum.reduceTransparency'] === true) {css += 'body.forums #content #content-padding > #topic_header_container #thread_header, body.forums #content #content-padding > #topic_header_container #thread_poll, body.forums #content #content-padding > #topic_header_container .detail-navlinks, body.forums #content #post_container .post .postcontent .message .messagecontent .post-options, body.forums #content #post_container .post .postcontent .post-signature, body.forums #content #content-padding > #navlinks_pag {background-color: #FFF;}';}
+
 // Put post options on top
 if (prefs['forum.post.optionsBottom'] === false)
 css += 'body.forums #content #post_container .post .postcontent .message .messagecontent {flex-direction: column-reverse;}';
