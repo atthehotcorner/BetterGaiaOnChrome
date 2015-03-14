@@ -7,7 +7,6 @@ Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or 
 var prefs = {
     // General
     'adsHide': true,
-    'instantUpdating': true,
     'notifications': '60',
     'announcementReader': true,
 
@@ -102,5 +101,5 @@ var prefs = {
     'appliedForumCss': false,
     'appliedForumJs': false,
     'appliedFormat': false,
-    'version': '2014'
+    'version': '2015'
 };

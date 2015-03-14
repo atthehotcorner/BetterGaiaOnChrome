@@ -66,16 +66,13 @@
                 </div>
 
                 <div class="content">
-                    <div class="text-center" style="display: none;">
-                        <a class="pure-button pure-button-primary save">Save Changes</a>
-                    </div>
-
                     <form class="pure-form pure-form-stacked">
                         <fieldset></fieldset>
                     </form>
 
                     <div class="text-center">
                         <a class="pure-button add">Add Shortcut</a>
+                        <a class="pure-button pure-button-primary save" style="display: none;">Save Changes</a>
                     </div>
                 </div>
             </div>
@@ -111,7 +108,7 @@
             <div class="page fullWidth" data-page="Header">
                 <div class="header">
                     <h1>Header</h1>
-                    <p>Select a image to use for the header.</p>
+                    <p>Select a image to use for the header. When Gaia is advertising with a header, that will be shown instead.</p>
                 </div>
 
                 <div class="content pure-g">
@@ -224,14 +221,11 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
                         <fieldset>
-                            <div class="text-center" style="display: none;">
-                                <a class="pure-button pure-button-primary save">Save Changes</a>
-                            </div>
-                            
                             <div class="formats"></div>
 
                             <div class="text-center">
                                 <a class="pure-button add">Add Format</a>
+                                <a class="pure-button pure-button-primary save" style="display: none;">Save Changes</a>
                             </div>
                         </fieldset>
                     </form>
@@ -246,11 +240,11 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
-                        <fieldset>
-                            <div class="text-center" style="display: none;">
-                                <a class="pure-button pure-button-primary save">Save Changes</a>
-                            </div>
-                        </fieldset>
+                        <fieldset></fieldset>
+
+                        <div class="text-center">
+                            <a class="pure-button pure-button-primary save" style="display: none;">Save Changes</a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -287,18 +281,8 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
         <div class="content">
             <form class="pure-form pure-form-stacked">
                 <fieldset>
-                    <input type="radio" name="backgroundModel" id="onebackground" checked>
-                    <input type="radio" name="backgroundModel" id="twobackground">
-                    
                     <label for="onebackground">From an URL</label>
-                    <div>
-                        <input type="text" placeholder="URL">
-                    </div>
-
-                    <label for="twobackground">From this computer</label>
-                    <div>
-                        <input type="file" accept="image/*">
-                    </div>
+                    <input id="onebackground" type="text" placeholder="URL">
                 </fieldset>
             </form>
 
@@ -314,22 +298,9 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
         <div class="content">
             <form class="pure-form pure-form-stacked">
                 <fieldset>
-                    <input type="radio" name="headerModel" id="oneheader" checked>
-                    <input type="radio" name="headerModel" id="twoheader">
-                    
                     <label for="oneheader">From an URL</label>
-                    <div>
-                        <input type="text" placeholder="Back Image URL">
-                        <input type="text" placeholder="Front Image URL">
-                    </div>
-
-                    <label for="twoheader">From this computer</label>
-                    <div>
-                        <label>Back Image</label>
-                        <input type="file" accept="image/*">
-                        <label>Front Image</label>
-                        <input type="file" accept="image/*">
-                    </div>
+                    <input type="text" placeholder="Back Image URL">
+                    <input type="text" placeholder="Front Image URL">
                 </fieldset>
             </form>
 
@@ -345,18 +316,8 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
         <div class="content">
             <form class="pure-form pure-form-stacked">
                 <fieldset>
-                    <input type="radio" name="logoModel" id="onelogo" checked>
-                    <input type="radio" name="logoModel" id="twologo">
-                    
                     <label for="onelogo">From an URL</label>
-                    <div>
-                        <input type="text" placeholder="URL">
-                    </div>
-
-                    <label for="twologo">From this computer</label>
-                    <div>
-                        <input type="file" accept="image/*">
-                    </div>
+                    <input id="onelogo" type="text" placeholder="URL">
                 </fieldset>
             </form>
 
@@ -368,12 +329,18 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
     </div>
 
     <div class="model format">
-        <h1>Edit <input type="text" placeholder="Name"></h1>
+        <h1>Edit Format</h1>
         <div class="content">
             <form class="pure-form pure-form-stacked">
                 <fieldset>
-                    <textarea></textarea>
-                    <select>
+                    <label for="format-name">Name</label>
+                    <input id="format-name" type="text" placeholder="Name" class="pure-input-1">
+                    
+                    <label for="format-text">Format</label>
+                    <textarea id="format-text" class="pure-input-1" placeholder="Format" rows="7"></textarea>
+
+                    <label for="format-type">Style</label>
+                    <select id="format-type">
                         <option value="0">Say</option>
                         <option value="1">Whisper</option>
                         <option value="2">Shout</option>

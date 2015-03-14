@@ -56,7 +56,7 @@ var Settings = {
                 handle: 'label',
                 forcePlaceholderSize: true
             }).bind('sortupdate', function(e, ui) {
-                $('.page[data-page="Shortcuts"] .save').parent().show();
+                $('.page[data-page="Shortcuts"] .save').show();
             });
             
 
@@ -67,21 +67,21 @@ var Settings = {
                 });
 
                 chrome.storage.local.set({'header.shortcuts.list': links}, function() {
-                    $('.page[data-page="Shortcuts"] .save').parent().hide();
+                    $('.page[data-page="Shortcuts"] .save').hide();
                 });                
             });
-            
+
             $('.page[data-page="Shortcuts"] .add').on('click', function() {
-                $('.page[data-page="Shortcuts"] .save').parent().show();
+                $('.page[data-page="Shortcuts"] .save').show();
                 $('.page[data-page="Shortcuts"] fieldset').append(shortcutsTemplate([['', '']])).sortable('reload');
             });
             
             $('.page[data-page="Shortcuts"] fieldset').on('keypress', 'input', function() {
-                $('.page[data-page="Shortcuts"] .save').parent().show();
+                $('.page[data-page="Shortcuts"] .save').show();
             });
 
             $('.page[data-page="Shortcuts"] fieldset').on('click', '.delete', function() {
-                $('.page[data-page="Shortcuts"] .save').parent().show();
+                $('.page[data-page="Shortcuts"] .save').show();
                 $(this).parentsUntil('fieldset').remove();
             });
         }
@@ -104,21 +104,12 @@ var Settings = {
             });
 
             $('.model.background .action').on('click', function() {
-                var image = '';
-
-                // url
-                if ($('#onebackground').prop('checked')) {
-                    image = $('.model.background input[placeholder="URL"]').val();
-                }
-                // file
-                else if ($('#twobackground').prop('checked')) {
-                    var reader = new FileReader(),
-                        file = $('.model.background input[type="file"]')[0].files[0];
-                    if (file) image = reader.readAsDataURL(file);
-                }
-
+                var image = $('.model.background input[placeholder="URL"]').val();
+                $('#preview').css('background-image', 'url(' + image + ')');
+                
                 $('.page[data-page="Background"] .selected').removeClass('selected');
                 $('.page[data-page="Background"] .custom').attr('data-url', image).addClass('selected');
+
                 $('input[data-pref="background.image"]').val(image).change();
                 $('body').removeClass('model-background');
             });
@@ -147,6 +138,8 @@ var Settings = {
         else if (pageName == 'Header') {
             $('.page[data-page="Header"] .options').on('click', 'a[data-url][data-base-url]', function() {
                 if ($(this).hasClass('custom')) {
+                    $('.model.header input[placeholder="Back Image URL"]').val($(this).attr('data-base-url'));
+                    $('.model.header input[placeholder="Front Image URL"]').val($(this).attr('data-url'));
                     $('body').addClass('model-header');
                     return;
                 }
@@ -164,6 +157,21 @@ var Settings = {
                 
                 $('input[data-pref="header.background.base"]').val(base).change();
                 $('input[data-pref="header.background"]').val(image).change();
+            });
+
+            $('.model.header .action').on('click', function() {
+                var base = $('.model.header input[placeholder="Back Image URL"]').val();
+                var image = $('.model.header input[placeholder="Front Image URL"]').val();
+
+                $('#preview .header').css('background-image', 'url(' + base + ')');
+                $('#preview .header .wrap').css('background-image', 'url(' + image + ')');
+                
+                $('.page[data-page="Header"] .selected').removeClass('selected');
+                $('.page[data-page="Header"] .custom').attr({'data-url': image, 'data-base-url': base}).addClass('selected');
+                
+                $('input[data-pref="header.background.base"]').val(base).change();
+                $('input[data-pref="header.background"]').val(image).change();
+                $('body').removeClass('model-header');
             });
 
             $.ajax({
@@ -189,14 +197,23 @@ var Settings = {
                         $('.page[data-page="Header"] .options .h' + key).append('<a data-url="' + url[0] + '" data-base-url="' + url[1] + '" title="' + name + '">' + name + '</a>');
                     });
                 });
-                
+
                 // set selected
-                $('.page[data-page="Header"] .options a[data-url="' + $('input[data-pref="header.background"]').val() + '"][data-base-url="' + $('input[data-pref="header.background.base"]').val() + '"]').addClass('selected');
+                if ($('.page[data-page="Header"] .options a[data-url="' + $('input[data-pref="header.background"]').val() + '"][data-base-url="' + $('input[data-pref="header.background.base"]').val() + '"]').length > 0) {
+                    $('.page[data-page="Header"] .options a[data-url="' + $('input[data-pref="header.background"]').val() + '"][data-base-url="' + $('input[data-pref="header.background.base"]').val() + '"]').addClass('selected');
+                }
+                else {
+                    $('.page[data-page="Header"] .options a.custom').attr({
+                        'data-url': $('input[data-pref="header.background"]').val(),
+                        'data-base-url': $('input[data-pref="header.background.base"]').val()
+                    }).addClass('selected');
+                }
             });
         }
         else if (pageName == 'Logo') {
             $('.page[data-page="Logo"] .options').on('click', 'a[data-url]', function() {
                 if ($(this).hasClass('custom')) {
+                    $('.model.logo input[placeholder="URL"]').val($(this).attr('data-url'));
                     $('body').addClass('model-logo');
                     return;
                 }
@@ -210,8 +227,22 @@ var Settings = {
                 $('input[data-pref="header.logo"]').val(image).change();
             });
 
+            $('.model.logo .action').on('click', function() {
+                var image = $('.model.logo input[placeholder="URL"]').val();
+                $('#preview .header .wrap .logo').css('background-image', 'url(' + image + ')');
+
+                $('.page[data-page="Logo"] .selected').removeClass('selected');
+                $('.page[data-page="Logo"] .custom').attr('data-url', image).addClass('selected');
+
+                $('input[data-pref="header.logo"]').val(image).change();
+                $('body').removeClass('model-logo');
+            });
+            
             // set selected
-            $('.page[data-page="Logo"] .options a[data-url="' + $('input[data-pref="header.logo"]').val() + '"]').addClass('selected');
+            if ($('.page[data-page="Logo"] .options a[data-url="' + $('input[data-pref="header.logo"]').val() + '"]').length > 0) $('.page[data-page="Logo"] .options a[data-url="' + $('input[data-pref="header.logo"]').val() + '"]').addClass('selected');
+            else {
+                $('.page[data-page="Logo"] .options a.custom').attr('data-url', $('input[data-pref="header.logo"]').val()).addClass('selected');
+            }
         }
 
         else if (pageName == 'PostFormat') {
@@ -219,7 +250,7 @@ var Settings = {
                 handle: 'strong',
                 forcePlaceholderSize: true
             }).bind('sortupdate', function(e, ui) {
-                $('.page[data-page="PostFormat"] .save').parent().show();
+                $('.page[data-page="PostFormat"] .save').show();
             });
             
 
@@ -233,33 +264,34 @@ var Settings = {
                 });
 
                 chrome.storage.local.set({'format.list': formats}, function() {
-                    $('.page[data-page="PostFormat"] .save').parent().hide();
+                    $('.page[data-page="PostFormat"] .save').hide();
                 });
             });
             
             $('.page[data-page="PostFormat"] .add').on('click', function() {
-                $('.page[data-page="PostFormat"] .save').parent().show();
+                $('.page[data-page="PostFormat"] .save').show();
                 $('.page[data-page="PostFormat"] fieldset .formats').append(formatsTemplate([['New', '', 0]])).sortable('reload');
             });
 
             $('.page[data-page="PostFormat"] .formats').on('click', '.delete', function() {
-                $('.page[data-page="PostFormat"] .save').parent().show();
+                $('.page[data-page="PostFormat"] .save').show();
                 $(this).parentsUntil('.formats').remove();
             });
 
             $('.page[data-page="PostFormat"] .formats').on('click', '.edit', function() {
-                $('.page[data-page="PostFormat"] .save').parent().show();
+                $('.page[data-page="PostFormat"] .save').show();
 
                 var format = $(this).parentsUntil('.formats', '.format');
+                $('.page[data-page="PostFormat"] .format.editing').removeClass('editing');
                 format.addClass('editing');
-                $('.model.format h1 input').val(format.find('strong').text());
+                $('.model.format input').val(format.find('strong').text());
                 $('.model.format textarea').val(decodeURI(format.attr('data-bbcode')));
                 $('.model.format select').val(format.attr('data-poststyle'));
                 $('body').addClass('model-format');
             });
 
             $('.model.format .action').on('click', function() {
-                $('.page[data-page="PostFormat"] .format.editing strong').text($('.model.format h1 input').val());
+                $('.page[data-page="PostFormat"] .format.editing strong').text($('.model.format input').val());
                 $('.page[data-page="PostFormat"] .format.editing').attr({
                     'data-bbcode': encodeURI($('.model.format textarea').val()),
                     'data-poststyle': $('.model.format select').val()
@@ -274,7 +306,7 @@ var Settings = {
             $('.page[data-page="UserTags"] fieldset').append(usertagsTemplate(prefs['usertags.list']));
             
             $('.page[data-page="UserTags"] fieldset').on('click', '.delete', function() {
-                $('.page[data-page="UserTags"] .save').parent().show();
+                $('.page[data-page="UserTags"] .save').show();
                 $(this).parentsUntil('fieldset').remove();
             });
 
@@ -287,7 +319,7 @@ var Settings = {
                 });
 
                 chrome.storage.local.set({'usertags.list': tags}, function() {
-                    $('.page[data-page="UserTags"] .save').parent().hide();
+                    $('.page[data-page="UserTags"] .save').hide();
                 });
             });
         }
