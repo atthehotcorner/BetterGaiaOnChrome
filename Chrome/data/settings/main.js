@@ -14,10 +14,12 @@ Handlebars.registerHelper('timeFromEpoch', function(epoch) {
     return new Date(epoch).toLocaleDateString();
 });
 Handlebars.registerHelper('stringify', function(item) {
-    return JSON.stringify(item);
+    var strung = JSON.stringify(item);
+    return strung;
 });
 var template = Handlebars.compile($('#option-template').html()),
     shortcutsTemplate = Handlebars.compile($('#shortcuts-template').html()),
+    formatsTemplate = Handlebars.compile($('#formats-template').html()),
     usertagsTemplate = Handlebars.compile($('#usertags-template').html());
 
 // Debug message
@@ -30,7 +32,7 @@ var Settings = {
     pageInit: function(pageName) {
         if (['Home', 'Background', 'Header', 'Logo', 'Colors', 'Forums', 'PostFormat', 'UserTags'].indexOf(pageName) > -1) {
             // Compile HTML
-            $('.page[data-page="' + pageName + '"] fieldset').html(template(data[pageName]));
+            $('.page[data-page="' + pageName + '"] fieldset').append(template(data[pageName]));
 
             // Set prefs
             $('.page[data-page="' + pageName + '"] *[data-pref]').each(function() {
@@ -50,19 +52,48 @@ var Settings = {
         }
 
         if (pageName == 'Shortcuts') {
-            $('.page[data-page="Shortcuts"] fieldset').html(shortcutsTemplate(prefs['header.shortcuts.list']));
-            
-            $('.page[data-page="Shortcuts"] .add').on('click', function() {
-                $('.page[data-page="Shortcuts"] fieldset').append(shortcutsTemplate([['', '']]));
+            $('.page[data-page="Shortcuts"] fieldset').html(shortcutsTemplate(prefs['header.shortcuts.list'])).sortable({
+                handle: 'label',
+                forcePlaceholderSize: true
+            }).bind('sortupdate', function(e, ui) {
+                $('.page[data-page="Shortcuts"] .save').parent().show();
             });
             
+
+            $('.page[data-page="Shortcuts"] .save').on('click', function() {
+                var links = [];
+                $('.page[data-page="Shortcuts"] fieldset .shortcut').each(function() {
+                    links.push([$(this).find('input[placeholder="Name"]').val(), $(this).find('input[placeholder="URL"]').val()]);
+                });
+
+                chrome.storage.local.set({'header.shortcuts.list': links}, function() {
+                    $('.page[data-page="Shortcuts"] .save').parent().hide();
+                });                
+            });
+            
+            $('.page[data-page="Shortcuts"] .add').on('click', function() {
+                $('.page[data-page="Shortcuts"] .save').parent().show();
+                $('.page[data-page="Shortcuts"] fieldset').append(shortcutsTemplate([['', '']])).sortable('reload');
+            });
+            
+            $('.page[data-page="Shortcuts"] fieldset').on('keypress', 'input', function() {
+                $('.page[data-page="Shortcuts"] .save').parent().show();
+            });
+
             $('.page[data-page="Shortcuts"] fieldset').on('click', '.delete', function() {
+                $('.page[data-page="Shortcuts"] .save').parent().show();
                 $(this).parentsUntil('fieldset').remove();
             });
         }
 
         else if (pageName == 'Background') {
             $('.page[data-page="Background"] .options').on('click', 'a[data-url]', function() {
+                if ($(this).hasClass('custom')) {
+                    $('.model.background input[placeholder="URL"]').val($(this).attr('data-url'));
+                    $('body').addClass('model-background');
+                    return;
+                }
+                
                 var image = $(this).attr('data-url');
                 if (image == 'default') $('#preview').attr('style', '');
                 else $('#preview').css('background-image', 'url(' + image + ')');
@@ -70,6 +101,26 @@ var Settings = {
                 $(this).addClass('selected');
                 
                 $('input[data-pref="background.image"]').val(image).change();
+            });
+
+            $('.model.background .action').on('click', function() {
+                var image = '';
+
+                // url
+                if ($('#onebackground').prop('checked')) {
+                    image = $('.model.background input[placeholder="URL"]').val();
+                }
+                // file
+                else if ($('#twobackground').prop('checked')) {
+                    var reader = new FileReader(),
+                        file = $('.model.background input[type="file"]')[0].files[0];
+                    if (file) image = reader.readAsDataURL(file);
+                }
+
+                $('.page[data-page="Background"] .selected').removeClass('selected');
+                $('.page[data-page="Background"] .custom').attr('data-url', image).addClass('selected');
+                $('input[data-pref="background.image"]').val(image).change();
+                $('body').removeClass('model-background');
             });
 
             $.ajax({
@@ -86,12 +137,20 @@ var Settings = {
                 });
 
                 // set selected
-                $('.page[data-page="Background"] .options a[data-url="' + $('input[data-pref="background.image"]').val() + '"]').addClass('selected');
+                if ($('.page[data-page="Background"] .options a[data-url="' + $('input[data-pref="background.image"]').val() + '"]').length > 0) $('.page[data-page="Background"] .options a[data-url="' + $('input[data-pref="background.image"]').val() + '"]').addClass('selected');
+                else {
+                    $('.page[data-page="Background"] .options a.custom').attr('data-url', $('input[data-pref="background.image"]').val()).addClass('selected');
+                }
             });
         }
 
         else if (pageName == 'Header') {
             $('.page[data-page="Header"] .options').on('click', 'a[data-url][data-base-url]', function() {
+                if ($(this).hasClass('custom')) {
+                    $('body').addClass('model-header');
+                    return;
+                }
+
                 var base = $(this).attr('data-base-url');
                 if (base == 'default') $('#preview .header').attr('style', '');
                 else $('#preview .header').css('background-image', 'url(' + base + ')');
@@ -137,6 +196,11 @@ var Settings = {
         }
         else if (pageName == 'Logo') {
             $('.page[data-page="Logo"] .options').on('click', 'a[data-url]', function() {
+                if ($(this).hasClass('custom')) {
+                    $('body').addClass('model-logo');
+                    return;
+                }
+
                 var image = $(this).attr('data-url');
                 if (image == 'default') $('#preview .header .wrap .logo').attr('style', '');
                 else $('#preview .header .wrap .logo').css('background-image', 'url(' + image + ')');
@@ -151,26 +215,99 @@ var Settings = {
         }
 
         else if (pageName == 'PostFormat') {
+            $('.page[data-page="PostFormat"] .formats').append(formatsTemplate(prefs['format.list'])).sortable({
+                handle: 'strong',
+                forcePlaceholderSize: true
+            }).bind('sortupdate', function(e, ui) {
+                $('.page[data-page="PostFormat"] .save').parent().show();
+            });
+            
+
+            $('.page[data-page="PostFormat"] .save').on('click', function() {
+                var formats = [];
+                $('.page[data-page="PostFormat"] fieldset .format').each(function() {
+                    var name = $(this).find('strong').text();
+                    var bbcode = $(this).attr('data-bbcode');
+                    var style = $(this).attr('data-poststyle');
+                    formats.push([name, bbcode, parseInt(style, 10)]);
+                });
+
+                chrome.storage.local.set({'format.list': formats}, function() {
+                    $('.page[data-page="PostFormat"] .save').parent().hide();
+                });
+            });
+            
+            $('.page[data-page="PostFormat"] .add').on('click', function() {
+                $('.page[data-page="PostFormat"] .save').parent().show();
+                $('.page[data-page="PostFormat"] fieldset .formats').append(formatsTemplate([['New', '', 0]])).sortable('reload');
+            });
+
+            $('.page[data-page="PostFormat"] .formats').on('click', '.delete', function() {
+                $('.page[data-page="PostFormat"] .save').parent().show();
+                $(this).parentsUntil('.formats').remove();
+            });
+
+            $('.page[data-page="PostFormat"] .formats').on('click', '.edit', function() {
+                $('.page[data-page="PostFormat"] .save').parent().show();
+
+                var format = $(this).parentsUntil('.formats', '.format');
+                format.addClass('editing');
+                $('.model.format h1 input').val(format.find('strong').text());
+                $('.model.format textarea').val(decodeURI(format.attr('data-bbcode')));
+                $('.model.format select').val(format.attr('data-poststyle'));
+                $('body').addClass('model-format');
+            });
+
+            $('.model.format .action').on('click', function() {
+                $('.page[data-page="PostFormat"] .format.editing strong').text($('.model.format h1 input').val());
+                $('.page[data-page="PostFormat"] .format.editing').attr({
+                    'data-bbcode': encodeURI($('.model.format textarea').val()),
+                    'data-poststyle': $('.model.format select').val()
+                });
+                
+                $('.page[data-page="PostFormat"] .format.editing').removeClass('editing');
+                $('body').removeClass('model-format');
+            });
         }
 
         else if (pageName == 'UserTags') {
-            $('.page[data-page="UserTags"] fieldset').html(usertagsTemplate(prefs['usertags.list']));
+            $('.page[data-page="UserTags"] fieldset').append(usertagsTemplate(prefs['usertags.list']));
             
             $('.page[data-page="UserTags"] fieldset').on('click', '.delete', function() {
+                $('.page[data-page="UserTags"] .save').parent().show();
                 $(this).parentsUntil('fieldset').remove();
+            });
+
+            $('.page[data-page="UserTags"] .save').on('click', function() {
+                var tags = {};
+                $('.page[data-page="UserTags"] .usertag').each(function() {
+                    var userid = $(this).attr('data-userid');
+                    var tag = JSON.parse(decodeURI($(this).attr('data-tag')));
+                    tags[userid] = tag;
+                });
+
+                chrome.storage.local.set({'usertags.list': tags}, function() {
+                    $('.page[data-page="UserTags"] .save').parent().hide();
+                });
             });
         }
 
         else if (pageName == 'About') {
             // nothing at the moment
             $('.page[data-page="About"] .version').text(prefs.version);
+
             $('.page[data-page="About"] .reset').on('click', function() {
+                $('body').addClass('model-reset');
+            });
+
+            $('.model.reset a.action').on('click', function() {
                 localStorage.clear();
                 chrome.storage.local.clear(function(){
                     chrome.storage.sync.clear(function(){
                         chrome.runtime.reload();
                     });
                 });
+                $('body').removeClass('model-reset');
             });
         }
     },
@@ -271,6 +408,11 @@ var Settings = {
         if (window.location.hash === '') $('#nav .pure-menu a[href="#Home"]').click();
         else $('#nav .pure-menu a[href="' + window.location.hash + '"]').click();
 
+        // Models
+        $('.model .text-right a.cancel').on('click', function() {
+            $('body').attr('class', '');
+        });
+        
         // Preview
         var background = {
             'background-repeat': (prefs['background.repeat'])? 'repeat':'no-repeat',

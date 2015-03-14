@@ -2,6 +2,11 @@
 body {font-size: 14px;}
 .text-center {text-align: center;}
 .text-right {text-align: right;}
+.button-success, .button-error, .button-warning, .button-secondary {color: white; border-radius: 4px; text-shadow: 0 1px 1px rgba(0,0,0,0.2);}
+.button-success {background: rgb(28, 184, 65);}
+.button-error {background: rgb(202, 60, 60);}
+.button-warning {background: rgb(223, 117, 20);}
+.button-secondary {background: rgb(66, 184, 221);}
 
 #layout {
     padding-left: 150px;
@@ -66,7 +71,7 @@ form label + select {margin: -0.5em 0 0.75em !important;}
 form input[type=color] {height: 2.75em; padding: 0.15em 0.25em; background: #fff;}
 form label + input[type=text], form label + input[type=color] {margin: -0.5em 0 1em !important;}
 
-#preview {overflow: auto; width: calc(50% - 8em); height: calc(100vh - 97px - 6em); position: fixed; top: calc(97px + 4em); margin: 0 0 0 2em; display: none; background-position: center top; background-repeat: repeat;}
+#preview {overflow: auto; width: calc(50% - 8em); height: calc(100vh - 97px - 6em); position: fixed; top: calc(97px + 4em); margin: 0 0 0 2em; display: none; background-position: center top; background-repeat: repeat; z-index: 0;}
 #preview:not([style]), #preview[style=""] {background: #12403d url(http://gaiaonline.com/images/global_bg/bg2.jpg) repeat-x fixed bottom left !important;}
 #preview .header {font-size: 12px; height: 150px; background: url(http://gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_barton_tile_sprite.jpg) repeat-x;}
 #preview .header .wrap {background: url(http://gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_barton_sprite.jpg) top left no-repeat; height: 150px; max-width: 1140px;}
@@ -77,7 +82,7 @@ form label + input[type=text], form label + input[type=color] {margin: -0.5em 0 
 #preview .nav:after {display: table; content: ''; clear: both;}
 #preview .nav a {padding: 0.5em 1em; text-decoration: none; text-shadow: 0 -1px 0 rgba(0,0,0,0.25); display: block; float: left; font-weight: bold; color: #FFF; line-height: 20px; transition: background-color 0.7s ease, box-shadow 0.25s ease;}
 #preview .nav a:first-child {background: radial-gradient(ellipse at bottom center, #00FFFF, transparent 95%); background-position-y: -1px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
-#preview .nav a:nth-of-type(3) {transition: none; background-image: radial-gradient(ellipse at bottom center, #396C7C, transparent 95%); background-position-y: -1px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
+#preview .nav a:nth-of-type(3) {transition: none; background-image: radial-gradient(ellipse at bottom center, #5EAEC7, transparent 95%); background-position-y: -1px; box-shadow: 0 0 0.25em rgba(0,0,0,0.25);}
 #preview .body {font-size: 12px; padding: 1em; max-width: 1140px;}
 #preview .body .linklist {background: #A16B36; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); border-radius: 5px 5px 0 0; line-height: 15px; font-size: 13px;}
 #preview .body .linklist a {display: inline-block; padding: 1em; background: linear-gradient(to right, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1)); margin: 0 0.5em 0 0; color: rgba(255,255,255,0.5); position: relative;}
@@ -100,3 +105,19 @@ form label + input[type=text], form label + input[type=color] {margin: -0.5em 0 
 .page[data-page="Header"] .options a.custom:before {font-size: 1.5em;}
 .page[data-page="Header"] .options h3 {margin: 0 0 1em;}
 .page[data-page="Header"] .options > div {margin-bottom: 0.5em;}
+
+.page[data-page="UserTags"] fieldset:empty:after {content: 'You don\'t have any tags yet.';}
+
+.page[data-page="PostFormat"] .formats .format strong:empty:before {content: 'No Title'; font-weight: normal; color: #9E9E9E; font-style: italic;} 
+
+.sortable-placeholder {background: #EEF5F5; border: 1px solid rgba(0,0,0,0.05);}
+
+.model {display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; background: #fff; padding: 1.5em 2em; width: 30em; max-height: 80vh; overflow: auto;}
+#mask {display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #263238; opacity: 0.75; z-index: 1;}
+
+.model input[type="radio"] {display: none;}
+.model input[type="radio"][id^="one"]:not(:checked) ~ label[for^="one"] + div, .model input[type="radio"][id^="two"]:not(:checked) ~ label[for^="two"] + div {display: none;}
+.model input[type="radio"][id^="one"]:checked ~ label[for^="one"]:before, .model input[type="radio"][id^="two"]:checked ~ label[for^="two"]:before {content: "\e013"; font-family: 'Glyphicons Halflings'; padding-right: 0.5em;}
+
+body[class^="model-"] {overflow: hidden;}
+.model-background .model.background, .model-background #mask, .model-header .model.header, .model-header #mask, .model-logo .model.logo, .model-logo #mask, .model-format .model.format, .model-format #mask, .model-reset .model.reset, .model-reset #mask {display: block;}

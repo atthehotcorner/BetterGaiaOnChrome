@@ -66,6 +66,10 @@
                 </div>
 
                 <div class="content">
+                    <div class="text-center" style="display: none;">
+                        <a class="pure-button pure-button-primary save">Save Changes</a>
+                    </div>
+
                     <form class="pure-form pure-form-stacked">
                         <fieldset></fieldset>
                     </form>
@@ -116,7 +120,7 @@
                         <div class="options">
                             <h4>Other</h4>
                             <div>
-                                <a data-url="" class="custom" title="Other"></a>
+                                <a data-url="" data-base-url="" class="custom" title="Other"></a>
                             </div>
                         </div>
 
@@ -201,7 +205,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
             <div class="page" data-page="Forums">
                 <div class="header">
                     <h1>Forums</h1>
-                    <p>A subtitle for your page goes here</p>
+                    <p>Change how the forums are.</p>
                 </div>
 
                 <div class="content">
@@ -219,7 +223,17 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
-                        <fieldset></fieldset>
+                        <fieldset>
+                            <div class="text-center" style="display: none;">
+                                <a class="pure-button pure-button-primary save">Save Changes</a>
+                            </div>
+                            
+                            <div class="formats"></div>
+
+                            <div class="text-center">
+                                <a class="pure-button add">Add Format</a>
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -232,7 +246,11 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
                 <div class="content">
                     <form class="pure-form pure-form-stacked">
-                        <fieldset></fieldset>
+                        <fieldset>
+                            <div class="text-center" style="display: none;">
+                                <a class="pure-button pure-button-primary save">Save Changes</a>
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </div>
@@ -263,6 +281,129 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
             </div>
         </div>
     </div>
+
+    <div class="model background">
+        <h1>Background</h1>
+        <div class="content">
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <input type="radio" name="backgroundModel" id="onebackground" checked>
+                    <input type="radio" name="backgroundModel" id="twobackground">
+                    
+                    <label for="onebackground">From an URL</label>
+                    <div>
+                        <input type="text" placeholder="URL">
+                    </div>
+
+                    <label for="twobackground">From this computer</label>
+                    <div>
+                        <input type="file" accept="image/*">
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="text-right">
+                <a class="pure-button cancel">Cancel</a>
+                <a class="pure-button pure-button-primary action">Save</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="model header">
+        <h1>Header</h1>
+        <div class="content">
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <input type="radio" name="headerModel" id="oneheader" checked>
+                    <input type="radio" name="headerModel" id="twoheader">
+                    
+                    <label for="oneheader">From an URL</label>
+                    <div>
+                        <input type="text" placeholder="Back Image URL">
+                        <input type="text" placeholder="Front Image URL">
+                    </div>
+
+                    <label for="twoheader">From this computer</label>
+                    <div>
+                        <label>Back Image</label>
+                        <input type="file" accept="image/*">
+                        <label>Front Image</label>
+                        <input type="file" accept="image/*">
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="text-right">
+                <a class="pure-button cancel">Cancel</a>
+                <a class="pure-button pure-button-primary action">Save</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="model logo">
+        <h1>Logo</h1>
+        <div class="content">
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <input type="radio" name="logoModel" id="onelogo" checked>
+                    <input type="radio" name="logoModel" id="twologo">
+                    
+                    <label for="onelogo">From an URL</label>
+                    <div>
+                        <input type="text" placeholder="URL">
+                    </div>
+
+                    <label for="twologo">From this computer</label>
+                    <div>
+                        <input type="file" accept="image/*">
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="text-right">
+                <a class="pure-button cancel">Cancel</a>
+                <a class="pure-button pure-button-primary action">Save</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="model format">
+        <h1>Edit <input type="text" placeholder="Name"></h1>
+        <div class="content">
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <textarea></textarea>
+                    <select>
+                        <option value="0">Say</option>
+                        <option value="1">Whisper</option>
+                        <option value="2">Shout</option>
+                        <option value="3">Think</option>
+                        <option value="4">Document</option>
+                        <option value="5">Ornate</option>
+                    </select>
+                </fieldset>
+            </form>
+
+            <div class="text-right">
+                <a class="pure-button cancel">Cancel</a>
+                <a class="pure-button pure-button-primary action">Save</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="model reset">
+        <h1>Reset</h1>
+        <div class="content">
+            <p>All of your set preferences will be removed. This cannot be undone.</p>
+
+            <div class="text-right">
+                <a class="pure-button cancel">Cancel</a>
+                <a class="pure-button button-warning action">Reset</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mask"></div>
 
     <script id="option-template" type="text/x-handlebars-template">
     {{#each this}}
@@ -310,9 +451,24 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
     {{/each}}
     </script>
 
+    <script id="formats-template" type="text/x-handlebars-template">
+    {{#each this}}    
+        <div class="pure-g format" data-bbcode="{{this.[1]}}" data-poststyle="{{this.[2]}}">
+            <div class="pure-u-4-5">
+                <strong>{{this.[0]}}</strong>
+            </div>
+
+            <div class="pure-u-1-5">
+                <a class="pure-button edit">Edit</a>
+                <a class="pure-button delete">Delete</a>
+            </div>
+        </div>
+    {{/each}}
+    </script>
+
     <script id="usertags-template" type="text/x-handlebars-template">
     {{#each this}}    
-        <div class="pure-g usertag" data-tag="{{stringify this}}">
+        <div class="pure-g usertag" data-userid="{{@key}}" data-tag="{{stringify this}}">
             <div class="pure-u-1-5">
                 {{this.[0]}}
             </div>
@@ -335,6 +491,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/handlebars.min.js"></script>
     <script src="../js/prefs.js"></script>
+    <script src="html.sortable.min.js"></script>
     <script src="data.js"></script>
     <script src="main.js"></script>
 </body>
