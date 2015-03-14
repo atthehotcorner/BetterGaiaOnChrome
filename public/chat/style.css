@@ -1,3 +1,5 @@
 html {overflow-x: hidden;}
 #scroll_down {width: 25px; height: 25px; bottom: 2px; left: 2px; right: auto;}
 #scroll_down .scrollButton-icon {top: 1px; left: 1px; width: 25px; height: 25px;}
+#header .header-avatar, #header .header-channel {display: none;}
+#header .header-status {left: 1em;}
