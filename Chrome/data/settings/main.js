@@ -419,17 +419,21 @@ var Settings = {
             else save[pref] = $(this).val();
 
             // Change menu visiblity
-            if (pref == 'format') {
+            if (pref == 'header.shortcuts') {
+                if (save[pref] === false) $('#nav a[href="#Shortcuts"]').parent().hide();
+                else $('#nav a[href="#Shortcuts"]').parent().show();
+            }
+            else if (pref == 'format') {
                 if (save[pref] === false) $('#nav a[href="#PostFormat"]').parent().hide();
                 else $('#nav a[href="#PostFormat"]').parent().show();
             }
-            if (pref == 'usertags') {
+            else if (pref == 'usertags') {
                 if (save[pref] === false) $('#nav a[href="#UserTags"]').parent().hide();
                 else $('#nav a[href="#UserTags"]').parent().show();
             }
 
             // Change notifications
-            if (pref == 'notifications') {
+            else if (pref == 'notifications') {
                 if (save[pref] == '0') {
                     chrome.alarms.clear('gaia-notifications');
                     chrome.notifications.clear('gaia-notify', function() {});
@@ -440,17 +444,17 @@ var Settings = {
             }
 
             // Preview
-            if (pref == 'background.repeat') {
+            else if (pref == 'background.repeat') {
                 if (save[pref] === false) $('#preview').css('background-repeat', 'no-repeat');
                 else $('#preview').css('background-repeat', 'repeat');
             }
-            if (pref == 'background.position') $('#preview').css('background-position', save[pref]);
-            if (pref == 'background.color') $('#preview').css('background-color', save[pref]);
-            if (pref == 'header.nav') $('#preview .nav, #preview .header .wrap .username').css('background-color', save[pref]);
-            if (pref == 'header.nav.hover') $('#preview .nav a:nth-of-type(3)').css('background-image', 'radial-gradient(ellipse at bottom center, ' + save[pref] + ', transparent 95%)');
-            if (pref == 'header.nav.current') $('#preview .nav a:first-child').css('background-image', 'radial-gradient(ellipse at bottom center, ' + save[pref] + ', transparent 95%)');
-            if (pref == 'forum.threadHeader') $('#preview .body .linklist').css('background-color', save[pref]);
-            if (pref == 'forum.postHeader') $('#preview .body .username').css('background-color', save[pref]);
+            else if (pref == 'background.position') $('#preview').css('background-position', save[pref]);
+            else if (pref == 'background.color') $('#preview').css('background-color', save[pref]);
+            else if (pref == 'header.nav') $('#preview .nav, #preview .header .wrap .username').css('background-color', save[pref]);
+            else if (pref == 'header.nav.hover') $('#preview .nav a:nth-of-type(3)').css('background-image', 'radial-gradient(ellipse at bottom center, ' + save[pref] + ', transparent 95%)');
+            else if (pref == 'header.nav.current') $('#preview .nav a:first-child').css('background-image', 'radial-gradient(ellipse at bottom center, ' + save[pref] + ', transparent 95%)');
+            else if (pref == 'forum.threadHeader') $('#preview .body .linklist').css('background-color', save[pref]);
+            else if (pref == 'forum.postHeader') $('#preview .body .username').css('background-color', save[pref]);
 
             // Chrome Storage
             if (prefs.default[pref] == save[pref]) chrome.storage.local.remove(pref);
@@ -476,6 +480,7 @@ var Settings = {
         });
 
         // Change menu visiblity
+        if (prefs['header.shortcuts'] === false) $('#nav a[href="#Shortcuts"]').parent().hide();
         if (prefs['format'] === false) $('#nav a[href="#PostFormat"]').parent().hide();
         if (prefs['usertags'] === false) $('#nav a[href="#UserTags"]').parent().hide();
 

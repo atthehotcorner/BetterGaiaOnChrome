@@ -16,6 +16,10 @@ var data = {
         type: 'checkbox',
         description: 'Stretch the header background'
     }, {
+        key: 'header.shortcuts',
+        type: 'checkbox',
+        description: 'Use Shortcuts by your username'
+    }, {
         key: 'header.float',
         type: 'checkbox',
         description: 'Float username and notifications when scrolling'
@@ -43,7 +47,11 @@ var data = {
             {name: '1 hour', value: 60},
             {name: 'Never', value: 0}
         ],
-        description: 'When logged in, check for and show new notifications on the desktop every'
+        description: 'When logged in, check for and show a desktop notification every'
+    }, {
+        key: 'notifications.ignoreAnnouncements',
+        type: 'checkbox',
+        description: 'If the only notifications are announcements, don\'t show a desktop notification'
     }],
     
     Background: [{
@@ -166,19 +174,19 @@ var data = {
     PostFormat: [{
         key: 'format.list.useRecent',
         type: 'checkbox',
-        description: 'Set the format I last used as the default format'
+        description: 'Set the format last used as the default format'
     }, {
         key: 'format.quote.endOfFormat',
         type: 'checkbox',
-        description: 'Place my format before the post I quote'
+        description: 'Place format before the post quoted'
     }, {
         key: 'format.quote.removeFormatting',
         type: 'checkbox',
-        description: 'Remove BBCode from posts I quote'
+        description: 'Remove BBCode from posts quoted'
     }, {
         key: 'format.quote.spoilerWrap',
         type: 'checkbox',
-        description: 'Wrap posts I quote in a spoiler tag'
+        description: 'Wrap posts quoted in a spoiler tag'
     }, {
         key: 'format.quote.rangeNumber',
         type: 'select',
@@ -190,7 +198,7 @@ var data = {
             {name: '4 lines', value: 4},
             {name: '5 lines', value: 5}
         ],
-        description: 'Seperate my post format and the quote with'
+        description: 'Seperate format and the quote with'
     }, {
         key: 'format.forums',
         type: 'checkbox',

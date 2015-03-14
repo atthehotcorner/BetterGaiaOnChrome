@@ -35,6 +35,6 @@
     "name": "BetterGaia",
     "options_page": "data/settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*", "*://*.bettergaia.com/*" ],
-    "version": "2015.8",
+    "version": "2015.9",
     "web_accessible_resources": [ "data/css/font.css", "data/css/main.css", "data/css/forum.css", "/data/assets/legacy.jpg", "/data/assets/goldengaia.png", "/data/assets/omnidrink.png" ]
 }
