@@ -1,8 +1,7 @@
-/*
-BetterGaia
-Copyright (c) BetterGaia
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
-*/
+// Background JS Copyright (c) BetterGaia
+/* Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited. */
+/*global chrome: false, console: false, Handlebars: false, prefs: false*/
+/*jshint browser: true, jquery: true, multistr: true, sub: true*/
 
 // Check if install, update
 chrome.runtime.onInstalled.addListener(function(details) {
@@ -19,14 +18,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             else chrome.tabs.create({url: optionsUrl});
         });
     }
-    else if (request.elements == 'reset') {sendResponse({'reset': true});}
 });
 
 // On start
 chrome.runtime.onStartup.addListener(function() {
     // Create alarm for user notifications
-    chrome.storage.sync.get(['notifications'], function(data) {
-        if (typeof(data['notifications']) == 'undefined') data['notifications'] = '15';
+    chrome.storage.local.get(['notifications'], function(data) {
+        if (typeof(data['notifications']) == 'undefined') data['notifications'] = '60';
         if (parseInt(data['notifications']) > 0) chrome.alarms.create('gaia-notifications', {when: 0, periodInMinutes: parseInt(data['notifications'])});
     });
 });

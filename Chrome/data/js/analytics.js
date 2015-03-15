@@ -1,8 +1,6 @@
-/*
-Analytics JS 
-Copyright (c) BetterGaia and Bowafishtech
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
-*/
+// Analytics JS Copyright (c) BetterGaia
+/*global chrome: false, console: false, Handlebars: false, prefs: false*/
+/*jshint browser: true, jquery: true, multistr: true, sub: true*/
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-32843062-1']);

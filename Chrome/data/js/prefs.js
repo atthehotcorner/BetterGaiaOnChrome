@@ -1,8 +1,4 @@
-/*
-Preferences JS
-Copyright (c) BetterGaia
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
-*/
+// Preferences JS Copyright (c) BetterGaia
 
 var prefs = {
     // General
@@ -97,12 +93,7 @@ var prefs = {
     },
 
     // Other
-    'appliedUserPrefs': false,
-    'appliedMainCss': false,
-    'appliedMainJs': false,
-    'appliedForumCss': false,
-    'appliedForumJs': false,
-    'appliedFormat': false,
+    'appliedPrefs': false,
     'version': '2015',
     '2015transfer': false
 };

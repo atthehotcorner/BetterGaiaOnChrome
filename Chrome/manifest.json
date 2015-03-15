@@ -7,22 +7,12 @@
     "content_scripts": [ {
         "matches": [ "*://*.gaiaonline.com/*" ],
         "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
-        "js": [ "data/js/prefs.js", "data/js/maincss.js" ],
+        "js": [ "data/js/prefs.js", "data/js/css.js" ],
         "run_at": "document_start"
     }, {
         "matches": [ "*://*.gaiaonline.com/*" ],
         "exclude_globs": [ "*://*.gaiaonline.com/profiles/*/*/", "*://*.gaiaonline.com/launch/*", "*://*.gaiaonline.com/tank/*"],
-        "js": [ "data/js/jquery.min.js", "data/js/handlebars.min.js", "data/js/main.js" ]
-    }, {
-        "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
-        "js": [ "data/js/forumcss.js" ],
-        "run_at": "document_start"
-    }, {
-        "matches": [ "*://*.gaiaonline.com/forum", "*://*.gaiaonline.com/forum/*", "*://*.gaiaonline.com/news", "*://*.gaiaonline.com/news/*" ],
-        "js": [ "data/js/forum.js" ]
-    }, {
-        "matches": [ "*://*.gaiaonline.com/forum/compose/*", "*://*.gaiaonline.com/guilds/posting.php*", "*://*.gaiaonline.com/profile/privmsg.php*", "*://*.gaiaonline.com/profiles/*mode=addcomment*" ],
-        "js": [ "data/js/format.js" ]
+        "js": [ "data/js/jquery.min.js", "data/js/handlebars.min.js", "data/js/js.js" ]
     }],
     "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'",
     "description": "Change the way you experience Gaia.",
