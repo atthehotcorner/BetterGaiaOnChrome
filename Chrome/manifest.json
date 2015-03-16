@@ -1,4 +1,5 @@
 {
+    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+3k5RD9NlHD1+UPzzgUwFo55V0GJgjbXEgvCXNK64ay+ecQOIkq1NThYJGsGUIJRauJBWciF2e4SJig/KDnWL85UQtF9Vad163nf4Sd55gRL5WOw8TrgGpkidVG2N7Xvzm4hXj2txfI6kAvvc4ymXbVXEvmgC5mnwOufFJFjfyQIDAQAB",
     "background": {
         "scripts": ["data/js/jquery.min.js", "background.js", "data/js/analytics.js"],
         "persistent": false
