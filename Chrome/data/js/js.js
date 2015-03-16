@@ -16,7 +16,7 @@ var BGjs = {
             }
         }
 
-        if ((prefs['format'] !== true) && (
+        if ((prefs['format'] === true) && (
             (document.location.pathname.indexOf('/forum/compose/') > -1 && prefs['format.forums'] === true) ||
             (document.location.pathname.indexOf('/guilds/posting.php') > -1 && prefs['format.guildForums'] === true) || 
             (document.location.pathname.indexOf('/profile/privmsg.php') > -1 && prefs['format.pms'] === true) ||

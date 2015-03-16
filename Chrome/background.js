@@ -35,36 +35,43 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 		$.get('http://gaiaonline.com/supportal/header', function(data) {
 			var r = $('<div/>').html(data);
 
-			if (r.find('#notifyBubbleContainer').length == 1) {
-				var text = [], userimg = '';
+            chrome.storage.local.get(['notifications.ignoreAnnouncements'], function(storage) {
+                var ignoreAnnouncements = false;
+                if (typeof(storage['notifications.ignoreAnnouncements']) != 'undefined') ignoreAnnouncements = true;
+                
+                if (r.find('#notifyBubbleContainer').length == 1) {
+                    var text = [], userimg = '';
 
-				r.find('#notifyBubbleContainer #notifyItemList li a').each(function(index) {
-					var count = $(this).text().replace(/(^\d+)(.+$)/i,'$1');
-					text.push({title: count, message: $(this).text().substring(count.length + 1)});
-				});
+                    if (ignoreAnnouncements && r.find('#notifyItemList > li').length == 1 && r.find('#notifyItemList > li.notify_announcements').length == 1) return;
 
-				if (typeof r.find('#gaia_header .header_content .imgAvatar a img').attr('src') === 'string') {
-					userimg = r.find('#gaia_header .header_content .imgAvatar a img').attr('src');
-				}
-				else if (typeof r.find('#gaia_header #animated_item object object img').attr('src') === 'string') {
-					userimg = r.find('#gaia_header #animated_item object object img').attr('src');
-				}
+                    r.find('#notifyBubbleContainer #notifyItemList li a').each(function(index) {
+                        var count = $(this).text().replace(/(^\d+)(.+$)/i,'$1');
+                        text.push({title: count, message: $(this).text().substring(count.length + 1)});
+                    });
 
-				if (text.length > 0) {
-					chrome.notifications.create('gaia-notify', {
-						type: 'list',
-						iconUrl: userimg,
-						title: 'Hey ' + r.find('#gaia_header .avatarName span').text().slice(0,-1) + ', you got...',
-						message: '',
-						items: text,
-						buttons: [{title: 'Go to Gaia'}, {title: 'Hide these notifications for now'}],
-						priority: 1
-					}, function() {});
-				}
-			}
-            else {
-                chrome.notifications.clear('gaia-notify', function(){});
-            }
+                    if (typeof r.find('#gaia_header .header_content .imgAvatar a img').attr('src') === 'string') {
+                        userimg = r.find('#gaia_header .header_content .imgAvatar a img').attr('src');
+                    }
+                    else if (typeof r.find('#gaia_header #animated_item object object img').attr('src') === 'string') {
+                        userimg = r.find('#gaia_header #animated_item object object img').attr('src');
+                    }
+
+                    if (text.length > 0) {
+                        chrome.notifications.create('gaia-notify', {
+                            type: 'list',
+                            iconUrl: userimg,
+                            title: 'Hey ' + r.find('#gaia_header .avatarName span').text().slice(0,-1) + ', you got...',
+                            message: '',
+                            items: text,
+                            buttons: [{title: 'Go to Gaia'}, {title: 'Hide these notifications for now'}],
+                            priority: 1
+                        }, function() {});
+                    }
+                }
+                else {
+                    chrome.notifications.clear('gaia-notify', function(){});
+                }
+            });
 		}, 'html');
 	}
 });

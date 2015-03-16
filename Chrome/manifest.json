@@ -1,5 +1,4 @@
 {
-    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+3k5RD9NlHD1+UPzzgUwFo55V0GJgjbXEgvCXNK64ay+ecQOIkq1NThYJGsGUIJRauJBWciF2e4SJig/KDnWL85UQtF9Vad163nf4Sd55gRL5WOw8TrgGpkidVG2N7Xvzm4hXj2txfI6kAvvc4ymXbVXEvmgC5mnwOufFJFjfyQIDAQAB",
     "background": {
         "scripts": ["data/js/jquery.min.js", "background.js", "data/js/analytics.js"],
         "persistent": false
@@ -25,6 +24,6 @@
     "name": "BetterGaia",
     "options_page": "data/settings/main.html",
     "permissions": [ "alarms", "tabs", "storage", "notifications", "*://*.gaiaonline.com/*", "*://*.bettergaia.com/*" ],
-    "version": "2015.9",
+    "version": "2015.9.1",
     "web_accessible_resources": [ "data/css/font.css", "data/css/main.css", "data/css/forum.css", "/data/assets/legacy.jpg", "/data/assets/goldengaia.png", "/data/assets/omnidrink.png" ]
 }
