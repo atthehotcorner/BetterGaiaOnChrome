@@ -6,7 +6,8 @@
 
 body, .pure-g, .pure-g [class *="pure-u"] {font-family: Lato, FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;}
 
-html, body {height: 100%;}
+html, body {height: 100%; font-size: 13px;
+  word-wrap: break-word;}
 
 h1, h2, h3, h4, h5, h6, label {
     color: #222;
