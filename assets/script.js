@@ -53,9 +53,8 @@ $(window).scroll(function() {
 
 
 $('.download .chrome').on('click', function() {
-    try {
+    if (typeof chrome.webstore.install === 'function') {
         chrome.webstore.install('https://chrome.google.com/webstore/detail/lmgjagdflhhfjflolfalapokbplfldna');
         return false;
     }
-    catch (error) {}
 });
