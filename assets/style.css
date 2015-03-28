@@ -1,0 +1,347 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.7em;
+    color: #222;
+    font-size: 13px;
+}
+
+body, .pure-g, .pure-g [class *="pure-u"] {font-family: Lato, FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;}
+
+h1, h2, h3, h4, h5, h6, label {
+    color: #222;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.15em;
+}
+h1 {font-size: 3.05em;}
+h2 {font-size: 2em;}
+h3 {font-size: 1.5em;}
+h4 {font-size: 1em;}
+h5 {font-size: 0.75em;}
+h6 {font-size: 0.5em;}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-center {text-align: center;}
+.text-right {text-align: right;}
+
+/* Layout */
+.splash {
+    position: relative;
+    z-index: 0;
+    height: 35em;
+}
+.splash .block {
+    background: url(splash.png) center bottom;
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    height: 35em;
+}
+
+.wrapper {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.block {
+    padding: 2em;
+    overflow: hidden;
+}
+.block h2 ~ p:last-of-type {margin-bottom: 1.5em;}
+
+.contain {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ribbon {
+    background: #2196F3;
+    color: #FFF;
+    position: relative;
+}
+.ribbon.dark {background: #1976D2;}
+.ribbon.darker {background: #0D47A1;}
+.ribbon.black {background: #263238;}
+.ribbon h1, .ribbon h2,.ribbon h3, .ribbon h4, .ribbon h5, .ribbon h6, .ribbon label {
+    color: #FFF;
+}
+
+.list h4 {margin-bottom: 0;}
+.list h4 i {
+    border-radius: 1em;
+    width: 2em;
+    height: 2em;
+    background: #2196F3;
+    color: #fff;
+    text-align: center;
+    line-height: 2em;
+    margin-right: 0.25em;
+}
+
+.download img {
+    width: 1.1em;
+    height: 1.1em;
+    display: block;
+    margin: -0.1em 0 0.3em -1px;
+}
+.download a.pure-button-primary {margin-left: 0.5em;}
+
+/*
+ * -- PURE FORM STYLES --
+ * Style the form inputs and labels
+ */
+.pure-form label {
+    margin: 1em 0 0;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.pure-form input[type] {
+    border: 2px solid #ddd;
+    box-shadow: none;
+    font-size: 100%;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+/*
+ * -- PURE BUTTON STYLES --
+ * I want my pure-button elements to look a little different
+ */
+.pure-button {
+    background-color: #1976D2;
+    color: white;
+    padding: 0.5em 2em;
+    border-radius: 0.35em;
+}
+
+a.pure-button-primary {
+    background: white;
+    color: #2196F3;
+}
+
+
+/*
+ * -- MENU STYLES --
+ * I want to customize how my .pure-menu looks at the top of the page
+ */
+.header {height: 3.75em;}
+
+.home-menu {
+    padding: 0.5em;
+}
+.home-menu {
+    background: #2d3e50;
+}
+.pure-menu.pure-menu-fixed {
+    /* Fixed menus normally have a border at the bottom. */
+    border-bottom: none;
+    /* I need a higher z-index here because of the scroll-over effect. */
+    z-index: 4;
+}
+
+.home-menu .pure-menu-heading {
+    padding: 0;
+    float: left;
+    color: #E3F2FD;
+    margin: -0.5em 0 -0.5em -0.5em;
+}
+
+.home-menu .pure-menu-heading span {
+    display: block;
+    float: left;
+}
+
+.home-menu .pure-menu-heading .logo {
+    padding: 0 1em;
+    background: #E3F2FD;
+}
+.home-menu .pure-menu-heading .logo img {
+    width: 3.75em;
+    display: block;
+}
+
+.home-menu .pure-menu-heading .logo-text {
+    padding: 1.05em 0 0 1em;
+}
+
+.home-menu a {
+    color: #E3F2FD;
+}
+.home-menu ul {float: right;}
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #90CAF9;
+}
+
+/* For previews */
+.drawall, .areader {
+    margin: 3em auto -2em;
+    padding-bottom: 0;
+}
+.drawall h1, .areader h1 {
+    padding: 0.7em;
+    margin: 0;
+    font: normal 1.75em 'Century Gothic', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    background: radial-gradient(ellipse farthest-side at bottom center, rgba(179,229,252,0.4), transparent 85%);
+    position: relative;
+}
+.drawall .container, .areader .container {
+    border: 0.35em solid #37474F;
+    border-width: 0.35em 0;
+}
+
+.drawall {
+    width: 45em;
+    height: 25em;
+    overflow: hidden;
+}
+.drawall .pure-u-1-5 {
+    padding: 1.25em;
+    font-weight: bold;
+    background: #0288D1;
+    color: #FFF;
+    box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;
+}
+.drawall .pure-u-4-5 {
+    padding: 1.25em;
+    background: rgba(255,255,255,0.9);
+    transition: all 0.6s ease;
+    box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;
+    min-height: 67px;
+}
+.drawall .pure-u-4-5 a {
+    background: linear-gradient(to bottom, #FFB74D, #FFA726);
+    color: black;
+    display: block;
+    transition: all 0.5s ease;
+    box-shadow: 0 1px 0 #FFF3E0 inset;
+    border: 1px solid #FFA726;
+    padding: 0.3em;
+    margin: -0.4em 0;
+    border-radius: 1.5em/3.5em;
+    text-align: center;
+}
+
+.drawall .first .pure-u-4-5 {max-height: 4.2em;}
+.drawall .first .pure-u-4-5 div {display: none;}
+
+@keyframes barberpole {
+    from { background-position: 0 0; }
+    to   { background-position: 0 100px; }
+}
+@-webkit-keyframes barberpole {
+    from { background-position: 0 0; }
+    to   { background-position: 0 100px; }
+}
+
+.drawall.state-1 .first .pure-u-4-5 a {
+    background: linear-gradient(to top, #FFCC80, #FFB74D);
+    border-color: #FFB74D;
+    -webkit-transform: scaleX(1.05) scaleY(1.8);
+    transform: scaleX(1.05) scaleY(1.8);
+    opacity: 0;
+}
+.drawall.state-1 .first .pure-u-4-5 {
+    background-color: #FFB74D;
+    background-size: 100px 100px;
+    background-image: linear-gradient(-45deg, rgba(255,255,255,0.25) 25%, rgba(255,255,255,0) 25%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.25) 75%, rgba(255,255,255,0) 75%, rgba(255,255,255,0));
+  -webkit-animation: barberpole 0.5s linear infinite;
+    animation: barberpole 0.5s linear infinite;
+}
+
+.drawall.state-2 .first .pure-u-4-5 {max-height: 8em;}
+.drawall.state-2 .first .pure-u-4-5 a {display: none;}
+.drawall.state-2 .first .pure-u-4-5 div {display: block; color: #000;}
+.drawall.state-2 .first .pure-u-4-5 div > * {float: left; display: inline-block;}
+.drawall.state-2 .first .pure-u-4-5 div strong {width: 30%; position: relative; padding-left: 35px;}
+.drawall.state-2 .first .pure-u-4-5 div strong img {position: absolute; left: 0;}
+.drawall.state-2 .first .pure-u-4-5 div p {margin: 0; width: 70%;}
+
+.areader {
+    width: 60em;
+    height: 25em;
+    overflow: hidden;
+    color: #000 !important;
+}
+.areader .container .pure-u-1-3 div {
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 1em 0.25em -1em rgba(0,0,0,0.25) inset;
+    padding: 0.75em 1em;
+    border-left: 5px solid #2196F3;
+}
+.areader .container .pure-u-1-3 div.first {
+    background: #0288D1;
+    color: #FFF;
+    border-color: transparent;
+}
+.areader .container .pure-u-1-3 div > * {
+    display: block;
+}
+.areader .container .pure-u-1-3 div > a {
+    font-weight: bold;
+}
+.areader .container .pure-u-2-3 {
+    background: white;
+    overflow: hidden;
+}
+.areader .container .pure-u-2-3 h2 {
+    color: #0D47A1; 
+    margin: 0; 
+    padding: 0.65em 0.5em 0.65em 115px; 
+    box-shadow: 0 0 0.25em rgba(0,0,0,0.25);
+    position: relative;
+    overflow: hidden;
+}
+.areader .container .pure-u-2-3 h2 img {
+    position: absolute;
+    top: -10px;
+    left: 5px;
+}
+.areader .container .pure-u-2-3 p {margin: 1em;}
+
+.notification {background: #FFF; color: #000; box-shadow: 0 0 0.25em rgba(0,0,0,0.25); -webkit-transition: all 0.5s ease; transition: all 0.5 ease;}
+.notification.state-0 {opacity: 0; -webkit-transform: scale(0.9); transform: scale(0.9);}
+.notification.state-1 {opacity: 1; -webkit-transform: scale(1); transform: scale(1);}
+.notification div {overflow: hidden;}
+.notification div img {float: left; margin: -10px 0 -40px;}
+.notification div strong {margin: 0.5em 0 0; display: block;}
+.notification div p {margin: 0;}
+.notification a {display: block; padding: 0.5em 1em; border-top: 1px solid rgba(0,0,0,0.1);}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 48em) {
+    body {
+        font-size: 16px; /* We increase the body font size */
+    }
+
+    .list {margin: -0.25em -0.5em;}
+    .list .pure-u-md-1-4 {padding: 0.25em 0.5em;}
+}
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large devices, we want to over-ride some
+ * of the mobile and tablet styles.
+ */
+@media (min-width: 78em) {
+    .list {margin: -0.5em -1em;}
+    .list .pure-u-md-1-4 {padding: 0.5em 1em;}
+}
