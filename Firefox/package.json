@@ -1,3 +1,4 @@
+
 {
     "name": "bettergaia",
     "title": "BetterGaia",
@@ -7,5 +8,5 @@
     "icon": "data/assets/logo.png",
     "author": "BetterGaia (http://www.bettergaia.com/)",
     "license": "BetterGaia License",
-    "version": "2015.9.fx"
+    "version": "2015.10.fx"
 }
