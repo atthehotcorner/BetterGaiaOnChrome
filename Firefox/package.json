@@ -4,8 +4,8 @@
     "id": "bettergaia@bowafishtech.co.cc",
     "homepage": "http://www.bettergaia.com/",
     "description": "Change the way you experience Gaia.",
-    "icon": "data/images/128.png",
+    "icon": "data/assets/logo.png",
     "author": "BetterGaia (http://www.bettergaia.com/)",
     "license": "BetterGaia License",
-    "version": "2015.8.fx"
+    "version": "2015.9.fx"
 }
