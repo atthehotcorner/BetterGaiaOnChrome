@@ -6,8 +6,8 @@
 
 body, .pure-g, .pure-g [class *="pure-u"] {font-family: Lato, FreeSans, Arimo, "Droid Sans", Helvetica, Arial, sans-serif;}
 
-html, body {height: 100%; font-size: 13px;
-  word-wrap: break-word;}
+html, body {height: 100%; font-size: 13px; word-wrap: break-word;}
+body {overflow-x: hidden;}
 
 h1, h2, h3, h4, h5, h6, label {
     color: #222;
@@ -33,7 +33,7 @@ a.pure-button-primary {
 
 .pure-g {height: 100%;}
 
-.pure-u-1-5 {background: #2d3e50; color: #fff;}
+.pure-u-1-5 {background: #2d3e50; color: #fff; height: 100%;}
 #menu {text-align: center;}
 #menu > a {padding: 0.5em 0.6em; display: block; background: #E3F2FD; line-height: 0; transition: all 0.25s ease;}
 #menu > a img {width: 100%; max-width: 5em; display: inline-block;}
@@ -43,7 +43,7 @@ a.pure-button-primary {
 #menu ul li a i {display: block; font-size: 2em; margin: 0 0 0.1em; transition: all 0.25s ease;}
 #menu ul li.active {font-weight: bold; background: #2196F3;}
 
-.pure-u-4-5 {padding: 0 1em; box-sizing: border-box; overflow: auto; transition: opacity 0.25s ease;}
+.pure-u-4-5 {padding: 0 1em; box-sizing: border-box; overflow: auto; transition: opacity 0.25s ease; height: 100%;}
 .pure-u-4-5.loading {opacity: 0.5; pointer-events: none;}
 .pure-u-4-5[data-page="chat.html"] {overflow: hidden;}
 .pure-u-4-5[data-page="chat.html"] iframe {width: 80vw; margin: 0 -1em; height: 100vh; overflow: hidden;}
