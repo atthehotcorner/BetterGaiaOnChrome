@@ -1,8 +1,8 @@
 BetterGaia
 ==========
 
-![Logo](Chrome/images/logo/128.png)
+![Logo](Chrome/data/assets/logo.png)
 
-Change the way you experience Gaia Online. The only Mozilla Firefox and Google Chrome extention that redesigns Gaia.
+Change the way you experience Gaia Online. The only Mozilla Firefox and Google Chrome extension that redesigns Gaia.
 
-**Please** read the license before anything.
+**Please read the license before anything.**

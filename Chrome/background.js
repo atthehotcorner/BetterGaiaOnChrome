@@ -1,5 +1,5 @@
 // Background JS Copyright (c) BetterGaia
-/* Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited. */
+// Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
 /*global chrome: false, console: false, Handlebars: false, prefs: false*/
 /*jshint browser: true, jquery: true, multistr: true, sub: true*/
 
@@ -10,8 +10,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
 
 // Send data to scripts
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    if (request.elements == 'format') {chrome.tabs.executeScript(sender.tab.id, {file: 'data/js/format.js'});}
-    else if (request.elements == 'settings') {
+    if (request.elements == 'settings') {
         var optionsUrl = chrome.runtime.getURL('data/settings/main.html');
         chrome.tabs.query({url: optionsUrl}, function(tabs) {
             if (tabs.length) chrome.tabs.update(tabs[0].id, {active: true});

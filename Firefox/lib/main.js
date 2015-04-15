@@ -1,8 +1,7 @@
-/*
-BetterGaia
-Copyright (c) BetterGaia
-Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
-*/
+// Background JS Copyright (c) BetterGaia
+// Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
+/*global chrome: false, console: false, Handlebars: false, prefs: false, require: false*/
+/*jshint browser: true, jquery: true, moz: true, multistr: true, sub: true*/
 
 // APIs
 var pageMod = require('sdk/page-mod');
@@ -16,33 +15,26 @@ if (['install', 'upgrade', 'enable'].indexOf(self.loadReason) != -1) {
     ss.storage.version = self.version;
 }
 
-/* Analytics - will create privacy policy
-// https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
-// http://stackoverflow.com/questions/7715878/unique-identifier-for-each-addon-user
-// https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/util_uuid
-if (!ss.storage.hasOwnProperty('userid')) ss.storage.userid = require('sdk/util/uuid').uuid()['number'];
-Request({
-    url: 'https://ssl.google-analytics.com/collect',
-    content: {
-        'v': 1,
-        'tid': 'UA-32843062-4',
-        'cid': '35009a79-1a05-49d7-b876-2b884d0f825b', //ss.storage.userid,
-        't': 'pageview',
-        'an': 'BetterGaia for Firefox',
-        'av': self.version
-    },
-    onComplete: function(response) {
-        console.log(response);
-    }
-}).post();*/
-
-// Attach Page Mod
+// CSS PageMod
 pageMod.PageMod({
     include: '*.gaiaonline.com',
-    //exclude: ['*.gaiaonline.com/profiles/*/*/', '*.gaiaonline.com/launch/*', '*.gaiaonline.com/tank/*'],
+    exclude: [/.+\.gaiaonline.com\/profiles\/.+\/.+\//, /.+\.gaiaonline.com\/(launch|tank)\/.*/],
     contentScriptWhen: 'start',
     attachTo: 'top',
-    contentScriptFile: ['./js/jquery.min.js', './js/handlebars.js', './js/prefs.js', './js/maincss.js', './js/main.js', './js/forumcss.js', './js/forum.js', './js/format.js'],
+    contentScriptFile: ['./js/prefs.js', './js/css.js'],
+    contentScriptOptions: {
+        prefs: ss.storage,
+        baseUrl: self.data.url('')
+    }
+});
+
+// JS PageMod
+pageMod.PageMod({
+    include: '*.gaiaonline.com',
+    exclude: [/.+\.gaiaonline.com\/profiles\/.+\/.+\//, /.+\.gaiaonline.com\/(launch|tank)\/.*/],
+    contentScriptWhen: 'ready',
+    attachTo: 'top',
+    contentScriptFile: ['./js/jquery.min.js', './js/prefs.js', './js/handlebars.min.js', './js/js.js'],
     contentScriptOptions: {
         prefs: ss.storage,
         baseUrl: self.data.url('')
@@ -57,7 +49,7 @@ pageMod.PageMod({
         worker.port.on('settings', function() {
             var tabIndex = -1;
             for (let tab of tabs) {
-                if (tab.url == 'resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/settings/main.html') {
+                if (tab.url.indexOf('resource://bettergaia-at-bowafishtech-dot-co-dot-cc/bettergaia/data/settings/main.html') != -1) {
                     tabIndex = tab.index;
                     break;
                 }
@@ -65,18 +57,15 @@ pageMod.PageMod({
             if (tabIndex > -1) tabs[tabIndex].activate();
             else tabs.open(self.data.url('settings/main.html'));
         });
-        /*worker.port.on('getHtml', function(url) {
-            worker.port.emit(url, self.data.load(url));
-        });*/
     }
 });
 
 // Settings Page Mod
 pageMod.PageMod({
-    include: self.data.url('settings/main.html'),
-    contentScriptWhen: 'start',
+    include: self.data.url('settings/main.html') + '*',
+    contentScriptWhen: 'ready',
     attachTo: 'top',
-    contentScriptFile: ['./js/jquery.min.js', './js/prefs.js'],
+    contentScriptFile: ['./js/jquery.min.js', './js/handlebars.min.js', './js/prefs.js', './settings/html.sortable.min.js', './settings/data.js', './settings/main.js'],
     contentScriptOptions: {
         prefs: ss.storage,
     },
@@ -86,6 +75,14 @@ pageMod.PageMod({
         });
         worker.port.on('remove', function(key) {
             delete ss.storage[key];
+        });
+        worker.port.on('reset', function() {
+            for (var key in ss.storage) {
+                try {delete ss.storage[key];}
+                catch(e) {console.warn('BetterGaia: could not remove preference, \'' + e + '\'.');}
+            }
+            ss.storage.version = self.version;
+            worker.port.emit('reload');
         });
     }
 });
