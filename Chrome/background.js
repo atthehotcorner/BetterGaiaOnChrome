@@ -1,7 +1,7 @@
 // Background JS Copyright (c) BetterGaia
 // Unauthorized copying, sharing, adaptation, publishing, commercial usage, and/or distribution, its derivatives and/or successors, via any medium, is strictly prohibited.
-/*global chrome: false, console: false, Handlebars: false, prefs: false*/
-/*jshint browser: true, jquery: true, multistr: true, sub: true*/
+/*global chrome: false, console: false, Handlebars: false, prefs: false, require: false*/
+/*jshint browser: true, jquery: true, moz: true, multistr: true, sub: true*/
 
 // Check if install, update
 chrome.runtime.onInstalled.addListener(function(details) {

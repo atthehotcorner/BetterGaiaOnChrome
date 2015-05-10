@@ -1,8 +1,13 @@
 // CSS JS Copyright (c) BetterGaia
-/*global chrome: false, console: false, Handlebars: false, prefs: false*/
-/*jshint browser: true, jquery: true, multistr: true, sub: true*/
+/*global chrome: false, console: false, Handlebars: false, prefs: false, require: false, self: false*/
+/*jshint browser: true, jquery: true, moz: true, multistr: true, sub: true*/
 
 var BGcss = {
+    getURL: function(url) {
+        if (typeof chrome == 'object') return chrome.extension.getURL(url);
+        else if (typeof self == 'object') return self.options.baseUrl + url.replace(/data\//, '');
+    },
+    
     inject: {
         link: function(url) {
             var link = document.createElement('link');
@@ -23,8 +28,9 @@ var BGcss = {
     
     main: function() {
         // Inject stylesheets
-        this.inject.link(chrome.extension.getURL('data/css/font.css'));
-        this.inject.link(chrome.extension.getURL('data/css/main.css'));
+        this.inject.link(this.getURL('data/css/font.css'));
+        this.inject.link(this.getURL('data/css/main.css'));
+        this.inject.link(this.getURL('data/css/wbbtheme.css'));
         
         // CSS container
         var css = '';
@@ -84,7 +90,7 @@ var BGcss = {
 
     forum: function() {
         // Inject Stylesheets
-        this.inject.link(chrome.extension.getURL('data/css/forum.css'));
+        this.inject.link(this.getURL('data/css/forum.css'));
 
         // CSS container
         var css = '';
@@ -135,14 +141,25 @@ if (prefs['appliedPrefs'] !== true) {
     prefs.default = JSON.parse(JSON.stringify(prefs));
 
     // Get settings
-    chrome.storage.local.get(null, function(response) {
-        for (var key in response) {
-            try {prefs[key] = response[key];}
+    if (typeof chrome == 'object') {
+        chrome.storage.local.get(null, function(response) {
+            for (var key in response) {
+                try {prefs[key] = response[key];}
+                catch(e) {console.warn('BetterGaia: unused preference, \'' + e + '\'.');}
+            }
+
+            prefs['appliedPrefs'] = true;
+            BGcss.init();
+        });
+    }
+    else if (typeof self == 'object') {
+        for (var key in self.options.prefs) {
+            try {prefs[key] = self.options.prefs[key];}
             catch(e) {console.warn('BetterGaia: unused preference, \'' + e + '\'.');}
         }
 
         prefs['appliedPrefs'] = true;
         BGcss.init();
-    });
+    }
 }
 else BGcss.init();

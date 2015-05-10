@@ -1,8 +1,26 @@
 // JS JS Copyright (c) BetterGaia
-/*global chrome: false, console: false, Handlebars: false, prefs: false*/
-/*jshint browser: true, jquery: true, multistr: true, sub: true*/
+/*global chrome: false, console: false, Handlebars: false, prefs: false, require: false, self: false*/
+/*jshint browser: true, jquery: true, moz: true, multistr: true, sub: true*/
 
 var BGjs = {
+    set: function(key, value) {
+        if (typeof chrome == 'object') {
+            var object = {};
+            object[key] = value;
+            chrome.storage.local.set(object);
+        }
+        else if (typeof self == 'object') self.port.emit('set', [key, value]);
+    },
+    unset: function(key) {
+        if (typeof chrome == 'object') chrome.storage.local.remove(key);
+        else if (typeof self == 'object') self.port.emit('remove', key);
+    },
+
+    openSettings: function() {
+        if (typeof chrome == 'object') chrome.extension.sendMessage({elements: 'settings'});
+        else if (typeof self == 'object') self.port.emit('settings');
+    },
+
     init: function() {
         BGjs.main();
 
@@ -77,7 +95,7 @@ BGjs.main = function() {
 
     $('#bg_widgets > li.bgsettings > a').on('click.bgsettings', function() {
         // BetterGaia Settings
-        chrome.extension.sendMessage({elements: 'settings'});
+        BGjs.openSettings();
 
         // Open
         $(this).parent().siblings('li').removeClass('bgopen');
@@ -479,7 +497,8 @@ BGjs.forum = function() {
             $("body.forums #post_container .post").removeClass("bgpc_hidden");
 
             // Disable persistance
-            chrome.storage.local.remove('forum.hidePosts', function() {delete prefs['forum.hidePosts'];});
+            BGjs.unset('forum.hidePosts');
+            delete prefs['forum.hidePosts'];
         }
         else {
             $("body.forums #content #content-padding #topic_header_container .detail-navlinks .thread_options .bg_postoptions .bgpo_posts").addClass("bgpo_on");
@@ -488,7 +507,8 @@ BGjs.forum = function() {
             $("body.forums #post_container .post").addClass("bgpc_hidden");
 
             // Enable persistance
-            chrome.storage.local.set({'forum.hidePosts': true}, function() {prefs['forum.hidePosts'] = true;});
+            BGjs.set('forum.hidePosts', true);
+            prefs['forum.hidePosts'] = true;
         }
     });
 
@@ -702,11 +722,10 @@ BGjs.forum = function() {
                 prefs['usertags.list'][userid.val()] = [username, tag.val(), url.val(), Date.now()];
 
                 // Save
-                chrome.storage.local.set({'usertags.list': prefs['usertags.list']}, function(){
-                    $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
-                    tag.closest('.post').removeClass('bgut_loaded bgut_open');
-                    tag.closest('div').remove();
-                });
+                BGjs.set('usertags.list', prefs['usertags.list']);
+                $('body.forums .post .user_info_wrapper .user_info .bgUserTag a[userid="' + userid.val() + '"]').attr({href: url.val()}).text(tag.val());
+                tag.closest('.post').removeClass('bgut_loaded bgut_open');
+                tag.closest('div').remove();
             }
         });
     }
@@ -730,6 +749,9 @@ BGjs.format = function() {
 
     // Run formatter
     $('textarea[name="message"]:not([identity]), textarea[name="comment"]:not([identity])').each(function() {
+        // bbcode editor
+        //$(this).wysibb();
+        
         var identity = Date.now();
         var post = $(this);
 
@@ -810,11 +832,11 @@ BGjs.format = function() {
 
             // set as last used
             if ($(this).index() !== 0) {
-                chrome.storage.local.set({'format.list.recent': $(this).text()});
+                BGjs.set('format.list.recent', $(this).text());
                 prefs['format.list.recent'] = $(this).text();
             }
             else {
-                chrome.storage.local.remove('format.list.recent');
+                BGjs.unset('format.list.recent');
                 prefs['format.list.recent'] = 'default';
             }
         }
@@ -829,14 +851,25 @@ if (prefs['appliedPrefs'] !== true) {
     prefs.default = JSON.parse(JSON.stringify(prefs));
 
     // Get settings
-    chrome.storage.local.get(null, function(response) {
-        for (var key in response) {
-            try {prefs[key] = response[key];}
+    if (typeof chrome == 'object') {
+        chrome.storage.local.get(null, function(response) {
+            for (var key in response) {
+                try {prefs[key] = response[key];}
+                catch(e) {console.warn('BetterGaia: unused preference, \'' + e + '\'.');}
+            }
+
+            prefs['appliedPrefs'] = true;
+            BGjs.init();
+        });
+    }
+    else if (typeof self == 'object') {
+        for (var key in self.options.prefs) {
+            try {prefs[key] = self.options.prefs[key];}
             catch(e) {console.warn('BetterGaia: unused preference, \'' + e + '\'.');}
         }
 
         prefs['appliedPrefs'] = true;
         BGjs.init();
-    });
+    }
 }
 else BGjs.init();

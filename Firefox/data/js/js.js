@@ -16,7 +16,7 @@ var BGjs = {
         else if (typeof self == 'object') self.port.emit('remove', key);
     },
 
-    openSettings() {
+    openSettings: function() {
         if (typeof chrome == 'object') chrome.extension.sendMessage({elements: 'settings'});
         else if (typeof self == 'object') self.port.emit('settings');
     },
