@@ -175,7 +175,7 @@
                         <div class="username">BetterGaia</div>
                     </div>
                 </div>
-                        
+
                 <div class="nav">
                     <a>MyGaia</a>
                     <a>Shops</a>
@@ -183,7 +183,7 @@
                     <a>World</a>
                     <a>Games</a>
                 </div>
-                        
+
                 <div class="body">
                     <div class="linklist">
                         <a>Gaia Forums</a><a>Gaia Online</a><a>Gaia Guides and Resources</a>
@@ -259,7 +259,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
                     <p>We've found settings from past BetterGaia installations. Would you like to transfer them over?</p>
                     <a class="pure-button pure-button-primary">Transfer</a>
                 </div>
-                
+
                 <div class="content pure-g">
                     <div class="pure-u-1-4">
                         <img src="../assets/logo.png" class="pure-img">
@@ -267,7 +267,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
 
                     <div class="pure-u-3-4">
                         <p>Version <strong class="version">0</strong>.</p>
-                        <p>The only extension that redesignes Gaia. Thank you Gaia Online, our contributors, our beta testers, and of course the regulars.</p>
+                        <p>The only extension that redesigns Gaia. Thank you Gaia Online, our contributors, our beta testers, and of course the regulars.</p>
                         <p>&copy; <a href="http://www.bettergaia.com/" target="_blank">The BetterGaia Team</a>.</p>
                         <br>
                         <br>
@@ -340,7 +340,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
                 <fieldset>
                     <label for="format-name">Name</label>
                     <input id="format-name" type="text" placeholder="Name" class="pure-input-1">
-                    
+
                     <label for="format-text">Format</label>
                     <textarea id="format-text" class="pure-input-1" placeholder="Format" rows="7"></textarea>
 
@@ -404,7 +404,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
     </script>
 
     <script id="shortcuts-template" type="text/x-handlebars-template">
-    {{#each this}}    
+    {{#each this}}
         <div class="pure-g shortcut">
             <div class="pure-u-2-5">
                 <label for="name{{@index}}">Name</label>
@@ -424,7 +424,7 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
     </script>
 
     <script id="formats-template" type="text/x-handlebars-template">
-    {{#each this}}    
+    {{#each this}}
         <div class="pure-g format" data-bbcode="{{this.[1]}}" data-poststyle="{{this.[2]}}">
             <div class="pure-u-4-5">
                 <strong>{{this.[0]}}</strong>
@@ -439,12 +439,12 @@ PEOPLE WON'T BE SURE YOU'VE DONE ANYTHING AT ALL.</strong><br>
     </script>
 
     <script id="usertags-template" type="text/x-handlebars-template">
-    {{#each this}}    
+    {{#each this}}
         <div class="pure-g usertag" data-userid="{{@key}}" data-tag="{{stringify this}}">
             <div class="pure-u-1-5">
                 {{this.[0]}}
             </div>
-            
+
             <div class="pure-u-2-5">
                 {{#if this.[2]}}
                 <a href="{{urlComplete this.[2]}}" target="_blank">{{this.[1]}}</a>
