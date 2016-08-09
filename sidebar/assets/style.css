@@ -39,6 +39,7 @@ a.pure-button-primary {
 #menu > a img {width: 100%; max-width: 5em; display: inline-block;}
 #menu ul {list-style: none; padding: 0; margin: 0.25em 0;}
 #menu ul li {display: block; text-align: center; transition: all 0.25s ease;}
+#menu ul li.hidden {display: none;}
 #menu ul li a {display: block; padding: 0.5em 0; color: #fff; text-decoration: none; outline: none; transition: all 0.25s ease;}
 #menu ul li a i {display: block; font-size: 2em; margin: 0 0 0.1em; transition: all 0.25s ease;}
 #menu ul li.active {font-weight: bold; background: #2196F3;}
