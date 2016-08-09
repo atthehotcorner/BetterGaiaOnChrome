@@ -20,4 +20,8 @@ $(document).ready(function() {
     });
 
     $('#menu a[href="home.html"]').click();
+
+    $('.pure-u-4-5').on('click', '.test', function() {
+      $('#menu a[href="test.html"]').click();
+    });
 });
