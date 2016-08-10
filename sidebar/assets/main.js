@@ -16,7 +16,8 @@ $(document).ready(function() {
             $('.pure-u-4-5').removeClass('loading');
         });
 
-        ga('send', 'pageview', '/sidebar/' + $(this).attr('href'));
+        ga('set', 'page', '/sidebar/' + $(this).attr('href'));
+        ga('send', 'pageview');
         return false;
     });
 
@@ -24,7 +25,11 @@ $(document).ready(function() {
 
     $('.pure-u-4-5').on('click', '.test', function() {
       $('#menu a[href="test.html"]').click();
-      ga('send', 'event', 'Link', 'click', 'Firefox Testing');
+      ga('send', 'event', 'Link', 'click', 'Firefox Testing Info');
+    });
+
+    $('.pure-u-4-5').on('click', '.test-exit', function() {
+      ga('send', 'event', 'Link', 'click', 'Firefox Testing Exit');
     });
 });
 
@@ -34,4 +39,5 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-48760437-2', 'auto');
-ga('send', 'pageview', '/sidebar/home.html');
+ga('set', 'page', '/sidebar/home.html');
+ga('send', 'pageview');
